@@ -1,0 +1,62 @@
+<section class="container-fluid content"><!-- start of middle_part -->
+  <div class="container">
+    <div class="row"><!-- start of row -->
+
+      <app-left-menu></app-left-menu>
+
+      <div class="col-md-9 col-sm-8 col-xs-12"><!-- start of right_part -->
+        <div class="col-xs-12 no-padding review_heading"><!-- start of review_heading -->
+          <h3>My Wallet <span></span></h3>
+        </div><!-- end of review_heading -->
+
+        <div class="col-xs-12 no-padding review_heading margin-md-top"><!-- start of total_balance -->
+          <h3>
+            Total Points <span></span>
+            <span class="wallet_total"> {{pbPoints}}</span>
+          </h3>
+        </div>
+
+        <div class="col-xs-12 no-padding review_heading margin-lg-top">
+          <h3 class="col-md-9 col-sm-8 col-xs-12">
+            My Transactions <span></span>
+          </h3>          
+        </div>
+
+        <div class="col-sm-12 col-xs-12 no-padding responsive-mobile-table">
+
+          <table class="col-xs-12 table-bordered table-condensed no-padding no-border cart_table">
+            <thead>
+            <tr>
+              <th>Description</th>
+              <th>Type</th>
+              <th>Points</th>
+              <th>Date</th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            <tr *ngFor="let item of dataList;"><!-- start of product_cart -->
+              <td data-title="Description">
+                {{item.comments}}
+              </td>
+              <td data-title="Type">
+				{{item.transaction_type}}
+              </td>
+              <td data-title="PB Points">
+				{{item.pb_points}}
+			  </td>
+              <td data-title="Date">
+				{{item.transaction_date}}
+			  </td>
+            </tr>
+
+            </tbody>
+          </table>
+
+        </div><!-- end of transactions -->
+      </div><!-- end of right_part -->
+
+    </div><!-- end of row -->
+  </div>
+</section><!-- end of middle_part -->

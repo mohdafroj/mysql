@@ -1,0 +1,100 @@
+    <section class="container-fluid content"><!-- start of middle_part -->
+        <div class="container">
+            <div class="row"><!-- start of row -->
+
+                <div class="col-sm-12 col-xs-12 main_heading margin-md-top xs-no-padding"><!-- start of heading_part -->
+                    <h3>
+                        <span>
+                            Contact Us
+                            <img src="assets/images/heading_img.png" class="img-responsive" alt="Square">
+                        </span>
+                    </h3>
+                    <p>
+                        Feel free to say hello!
+                    </p>
+                </div><!-- end of heading_part -->
+
+                <div class="col-sm-12 col-xs-12 xs-no-padding"><!-- start of map -->
+                	<div class="col-sm-12 col-xs-12 address_map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.0080480479583!2d77.14594441498167!3d28.65947768961189!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d02fe4cb6354d%3A0x362372d946156aff!2sPerfumebooth!5e0!3m2!1sen!2sin!4v1503294392544" allowfullscreen></iframe>
+                    </div>
+                </div><!-- end of map -->
+
+                <div class="col-sm-12 col-xs-12 xs-no-padding"><!-- start of content -->
+                    <div class="col-sm-4 col-xs-12 no-padding-left xs-no-padding"><!-- start of contact_detail -->
+                    	<div class="col-xs-12 no-padding review_heading"><!-- start of review_heading -->
+                            <h3>Contact Detail <span></span></h3>
+                        </div><!-- end of review_heading -->
+
+                        <div class="col-sm-12 col-xs-12 no-padding footer_link contact_detail">
+                            <p>
+                                <i class="fa fa-map-marker"></i> 70B/35A, 3rd Floor, Rama Road Industrial Area, New Delhi – 110015
+                            </p>
+                            <p>
+                                <i class="fa fa-phone"></i> Ph - 011-40098888
+                            </p>
+                            <p>
+                                <a href="#">
+                                    <i class="fa fa-envelope"></i> connect@perfumebooth.com
+                                </a>
+                            </p>
+							<p><a href=" https://wa.me/918588099979"><i class="fa fa-whatsapp" aria-hidden="true"></i>WhatsApp</a></p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-8 col-xs-12 no-padding-right xs-no-padding footer_link">
+                    	<div class="col-xs-12 no-padding review_heading"><!-- start of review_heading -->
+                            <h3>We&rsquo;re here to help you <span></span></h3>
+                        </div><!-- end of review_heading -->
+
+                        <div class="col-xs-12 login_form"><!-- start of form_part -->
+                            <form class="col-xs-12 no-padding" [formGroup]="rForm" (ngSubmit)="contactUs(rForm.value);">
+                                <p class="col-xs-12 account_line text-uppercase">
+                                    <span>* Required Fields</span>
+                                </p>
+                                <div class="form-group col-sm-6 col-xs-12 rinput"><!-- start of Fname -->
+              <input type="text" class="form-control" formControlName="firstname">
+              <span *ngIf="rForm.controls.firstname.invalid && !rForm.controls.firstname.dirty" class="filed_name">First Name*</span>
+              <span *ngIf="rForm.controls.firstname.invalid && rForm.controls.firstname.dirty" class="filed_name error_span">First Name*</span>
+              <span *ngIf="rForm.controls.firstname.valid" class="filed_name complete_filed">First Name*</span>
+                                </div><!-- end of Fname -->
+
+                                <div class="form-group col-sm-6 col-xs-12 rinput"><!-- start of Lname -->
+              <input type="text" class="form-control" formControlName="lastname">
+              <span *ngIf="rForm.controls.lastname.invalid && !rForm.controls.lastname.dirty" class="filed_name">Last Name*</span>
+              <span *ngIf="rForm.controls.lastname.invalid && rForm.controls.lastname.dirty" class="filed_name error_span">Last Name*</span>
+              <span *ngIf="rForm.controls.lastname.valid" class="filed_name complete_filed">Last Name*</span>
+                                </div><!-- end of Lname -->
+
+                                <div class="form-group col-sm-6 col-xs-12 rinput"><!-- start of email -->
+              <input type="email" class="form-control" formControlName="email" (keyup)="upperToLower($event);">
+              <span *ngIf="rForm.controls.email.invalid && !rForm.controls.email.dirty" class="filed_name">Email*</span>
+              <span *ngIf="rForm.controls.email.invalid && rForm.controls.email.dirty" class="filed_name error_span">Please enter a valid email id!</span>
+              <span *ngIf="rForm.controls.email.valid" class="filed_name complete_filed">Email*</span>
+                                </div><!-- end of email -->
+
+                                <div class="form-group col-sm-6 col-xs-12 rinput"><!-- start of mobile_number -->
+              <input type="text" class="form-control" formControlName="mobile" maxlength="10">
+              <span *ngIf="rForm.controls.mobile.invalid && !rForm.controls.mobile.dirty" class="filed_name">Mobile Number*</span>
+              <span *ngIf="rForm.controls.mobile.invalid && rForm.controls.mobile.dirty" class="filed_name error_span">Please enter a 10 digit mobile number!</span>
+              <span *ngIf="rForm.controls.mobile.valid" class="filed_name complete_filed">Mobile Number*</span>
+                                </div><!-- end of mobile_number -->
+
+                                <div class="form-group col-sm-12 col-xs-12 rinput"><!-- start of address -->
+              <textarea class="form-control" formControlName="comment" rows="1" placeholder=""></textarea>
+              <span *ngIf="rForm.controls.comment.invalid && !rForm.controls.comment.dirty" class="filed_name">Comment*</span>
+              <span *ngIf="rForm.controls.comment.invalid && rForm.controls.comment.dirty" class="filed_name error_span">Please enter comment!</span>
+              <span *ngIf="rForm.controls.comment.valid" class="filed_name complete_filed">Comment*</span>
+                                </div>
+				<span class="text-center text-danger">{{msg}}</span>
+                                <div class="form-group col-sm-12 col-xs-12 text-right xs-no-padding"><!-- start of login_button -->
+                                    <button type="submit" class="btn from-left cart_btn" [disabled]="!rForm.valid">Submit</button>
+                                </div><!-- end of login_button -->
+                            </form>
+                        </div><!-- end of form_part -->
+                    </div>
+                </div><!-- end of contact_detail -->
+
+            </div><!-- end of row -->
+        </div>
+    </section><!-- end of middle_part -->

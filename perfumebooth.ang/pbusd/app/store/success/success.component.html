@@ -1,0 +1,48 @@
+<section class="container-fluid content"><!-- start of middle_part -->
+  <div class="container">
+    <div class="row"><!-- start of row -->
+
+      <div class="col-sm-12 col-xs-12 main_heading margin-md-top xs-no-padding"><!-- start of heading_part -->
+        <h3>
+                        <span>
+                            Order Confirmation
+                            <img src="assets/images/heading_img.png" class="img-responsive" alt="Square">
+                        </span>
+        </h3>
+        <p>
+          We hope you loved shopping with us
+        </p>
+      </div><!-- end of heading_part -->
+      <div class="col-sm-12 col-xs-12 confirmed_detail xs-no-padding"><!-- start of content -->
+        <p class="font-17 margin-md-bottom">
+          <strong>{{orderMessage}}</strong>
+        </p>
+
+        <p class="font-17">
+          <strong>Order Number is : {{orderNumber}}</strong>
+        </p>
+        <p class="font-17 margin-md-bottom">
+          You will receive an email confirmation shortly by <a href="mailto:connect@perfumebooth.com" class="text-cgreen">connect@perfumebooth.com</a>
+        </p>
+
+        <!--p class="font-17 margin-md-bottom">
+          <a href="#" target="_blank" class="text-cgreen">Print Receipt</a>
+        </p-->
+
+        <p class="font-17 margin-md-bottom">
+          Your shipment is on processing.You can also track your order by clicking on below link or from your account.
+        </p>
+		<p class="font-17 margin-md-bottom">
+          Please don`t refresh or reload page!
+        </p>
+        <div class="text-center">
+          <a routerLink="/customer/orders/" class="btn from-right-checkout btn_checkout">
+            Track Your Order
+          </a>
+        </div>
+      </div><!-- end of content -->
+
+    </div><!-- end of row -->
+  </div>
+</section><!-- end of middle_part -->
+

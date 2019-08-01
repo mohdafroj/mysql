@@ -1,0 +1,332 @@
+    <section class="container-fluid content"><!-- start of middle_part -->        
+        <div class="container">
+            <div class="row"><!-- start of row -->                
+                <div class="col-sm-12 col-xs-12 main_heading margin-md-top"><!-- start of heading_part -->
+                    <h3><span> FAQ<img src="assets/images/heading_img.png" class="img-responsive" alt="Square"></span></h3>
+                    <p>Everything you want to know about Perfumebooth</p>
+                </div><!-- end of heading_part -->                
+                <accordion [closeOthers]="oneAtATime" class="col-sm-12 col-xs-12 panel-group faq_panel"><!-- start of content class="col-sm-12 col-xs-12 panel-group faq_panel" id="accordion" role="tablist" aria-multiselectable="true" -->
+                                    
+                    <h4 class="no-padding text-cgreen"><b>Scent Shot :-</b></h4>
+
+                    <accordion-group (click)="setAction(7);">
+                        <div class="text-align" accordion-heading>
+							<i class="more-less glyphicon" [ngClass]="{'glyphicon-plus':index != 7, 'glyphicon-minus':index == 7}"></i>
+                            What is Scent Shot?
+                        </div>
+                        Scent Shot is a stylish box that consists of 7 international perfumes and a carry case that is used to carry the smaller perfume vials and make it look bigger and stylish. It makes the smaller perfume vials easy enough to fit in your hand yet small enough to fit in your pocket or purse. 
+					</accordion-group>
+                    
+                    <accordion-group (click)="setAction(8);">
+                        <div class="text-align" accordion-heading>
+							<i class="more-less glyphicon" [ngClass]="{'glyphicon-plus':index != 8, 'glyphicon-minus':index == 8}"></i>
+                            What do I get inside the Scent Shot Box?
+                        </div>
+                        Inside the Scent shot Box, you will get 7 perfumes chosen from 7 brands, one carry case, packed in a sleek box which you can keep on your dressing table, and an instruction guide. 
+					</accordion-group>
+                    
+                    <accordion-group (click)="setAction(9);">
+                        <div class="text-align" accordion-heading>
+							<i class="more-less glyphicon" [ngClass]="{'glyphicon-plus':index != 9, 'glyphicon-minus':index == 9}"></i>
+                            What are the sizes of the seven perfumes?
+                        </div>
+                        The perfumes are 0.17oz each packed in a handmade vial with a spray nozzle on top sealed with silicone gel.
+					</accordion-group>
+                                        
+                    <accordion-group (click)="setAction(10);">
+                        <div class="text-align" accordion-heading>
+							<i class="more-less glyphicon" [ngClass]="{'glyphicon-plus':index != 10, 'glyphicon-minus':index == 10}"></i>
+                            How long will the Scent Shot Box last?
+                        </div>
+                        Each box contains seven perfumes of 5ml each. With 14 sprays a day, the Scent Shot Box should last for more than 30 days.
+					</accordion-group>
+                                        
+                    <accordion-group (click)="setAction(11);">
+                        <div class="text-align" accordion-heading>
+							<i class="more-less glyphicon" [ngClass]="{'glyphicon-plus':index != 11, 'glyphicon-minus':index == 11}"></i>
+                            Can I choose the variants of perfumes I want to add in a Scent Shot Box?
+                        </div>
+                        No. All variants of perfumes have been handpicked and chosen as per the personality of the box.
+					</accordion-group>
+                                        
+                    <accordion-group (click)="setAction(12);">
+                        <div class="text-align" accordion-heading>
+							<i class="more-less glyphicon" [ngClass]="{'glyphicon-plus':index != 12, 'glyphicon-minus':index == 12}"></i>
+                            Can I apply two or more discount vouchers at once?
+                        </div>
+                        Perfume Booth does not offer an option to add two or more discount codes against one order.
+					</accordion-group>
+                                        
+                    <accordion-group (click)="setAction(13);">
+                        <div class="text-align" accordion-heading>
+							<i class="more-less glyphicon" [ngClass]="{'glyphicon-plus':index != 13, 'glyphicon-minus':index == 13}"></i>
+                            My discount voucher does not work. What do I do?
+                        </div>
+                        Please write to us at connect@perfumebooth.com  we will get back to you at the earliest.
+					</accordion-group>
+                                        
+                    <h4 class="no-padding text-cgreen"><b>Perfume vs. Deodorant :-</b></h4>
+                                                            
+                    <accordion-group (click)="setAction(27);">
+                        <div class="text-align" accordion-heading>
+							<i class="more-less glyphicon" [ngClass]="{'glyphicon-plus':index != 27, 'glyphicon-minus':index == 27}"></i>
+                            What is the difference between a deodorant and a perfume?
+                        </div>
+                        Deodorants are primarily used to cover body odour, where as perfumes are used to give long-lasting fragrance.
+					</accordion-group>
+					
+                    <accordion-group (click)="setAction(28);">
+                        <div class="text-align" accordion-heading>
+							<i class="more-less glyphicon" [ngClass]="{'glyphicon-plus':index != 28, 'glyphicon-minus':index == 28}"></i>
+                            What is the difference between an EDT and an EDP?
+                        </div>
+                        An EDT has about 8-12% perfume content where as an EDP has 12-18% perfume content.
+					</accordion-group>
+					
+                    <accordion-group (click)="setAction(29);">
+                        <div class="text-align" accordion-heading>
+							<i class="more-less glyphicon" [ngClass]="{'glyphicon-plus':index != 29, 'glyphicon-minus':index == 29}"></i>
+                            How long does an EDT last?
+                        </div>
+                        An EDT should last for about 4 hours.
+					</accordion-group>
+					
+                    <accordion-group (click)="setAction(30);">
+                        <div class="text-align" accordion-heading>
+							<i class="more-less glyphicon" [ngClass]="{'glyphicon-plus':index != 30, 'glyphicon-minus':index == 30}"></i>
+                            How long does an EDP last?
+                        </div>
+                        An EDP should last for about 6 hours.
+					</accordion-group>
+					
+                    <h4 class="no-padding text-cgreen"><b>How to use perfumes properly :-</b></h4>
+                    
+                    <accordion-group (click)="setAction(31);">
+                        <div class="text-align" accordion-heading>
+							<i class="more-less glyphicon" [ngClass]="{'glyphicon-plus':index != 31, 'glyphicon-minus':index == 31}"></i>
+                            How can I properly apply perfumes?
+                        </div>
+                        Read the brochure in the box for all the details.
+					</accordion-group>
+					
+                    <accordion-group (click)="setAction(32);">
+                        <div class="text-align" accordion-heading>
+							<i class="more-less glyphicon" [ngClass]="{'glyphicon-plus':index != 32, 'glyphicon-minus':index == 32}"></i>
+                            How many times should I spray the perfume?
+                        </div>
+                        About 6-8 sprays at one time are good enough. The key to wearing perfume is that the more sublime it is, the classier it is. Do not overspray.
+					</accordion-group>
+                                        
+                    <accordion-group (click)="setAction(33);">
+                        <div class="text-align" accordion-heading>
+							<i class="more-less glyphicon" [ngClass]="{'glyphicon-plus':index != 33, 'glyphicon-minus':index == 33}"></i>
+                            What are the parts I should spray at?
+                        </div>
+                        Perfumes should be sprayed at pulse point. Please click here to know more.
+					</accordion-group>
+                                        
+                    <accordion-group (click)="setAction(34);">
+                        <div class="text-align" accordion-heading>
+							<i class="more-less glyphicon" [ngClass]="{'glyphicon-plus':index != 34, 'glyphicon-minus':index == 34}"></i>
+                            Do perfumes last for only 2-3 hours?
+                        </div>
+                        Perfumes last longer when you are in a closed environment, preferably air-conditioned. When you sweat a lot, the perfumes will not last that long.
+					</accordion-group>
+                    
+                    <accordion-group (click)="setAction(35);">
+                        <div class="text-align" accordion-heading>
+							<i class="more-less glyphicon" [ngClass]="{'glyphicon-plus':index != 35, 'glyphicon-minus':index == 35}"></i>
+                            Does every perfume smell different on different people?
+                        </div>
+                        Everybody has their own smell. So, obviously different perfumes will smell differently or different people. It’s very important to find the right perfume for your body.
+					</accordion-group>
+                    
+                    <accordion-group (click)="setAction(36);">
+                        <div class="text-align" accordion-heading>
+							<i class="more-less glyphicon" [ngClass]="{'glyphicon-plus':index != 36, 'glyphicon-minus':index == 36}"></i>
+                            Why should you change perfume frequently?
+                        </div>
+                        Your nose gets used to/immune to the same smell if you use the same perfume every day. You should keep changing perfumes but have a favourite one that becomes synonymous to your identity.
+					</accordion-group>
+                    
+                    <accordion-group (click)="setAction(37);">
+                        <div class="text-align" accordion-heading>
+							<i class="more-less glyphicon" [ngClass]="{'glyphicon-plus':index != 37, 'glyphicon-minus':index == 37}"></i>
+                            What are the precautions I need to take while wearing perfume?
+                        </div>
+						<p class="font-15"><b>Don’t keep the perfume under the sun :-</b></p>
+						<ul>
+							<li>Never overspray perfumes.</li>
+							<li>Keep changing perfumes.</li>
+							<li>Carry your perfume in your pocket/purse to reapply whenever needed.</li>
+						</ul>
+					</accordion-group>
+                    
+                    <h4 class="no-padding text-cgreen"><b>About the perfume :-</b></h4>
+                    
+                    <accordion-group (click)="setAction(38);">
+                        <div class="text-align" accordion-heading>
+							<i class="more-less glyphicon" [ngClass]="{'glyphicon-plus':index != 38, 'glyphicon-minus':index == 38}"></i>
+                            Where are the perfumes imported from?
+                        </div>
+                        Most of the perfumes are imported from France and the UAE.
+					</accordion-group>
+					
+                    <accordion-group (click)="setAction(39);">
+                        <div class="text-align" accordion-heading>
+							<i class="more-less glyphicon" [ngClass]="{'glyphicon-plus':index != 39, 'glyphicon-minus':index == 39}"></i>
+                            How good is the quality of these perfumes?
+                        </div>
+                        These perfumes are as good as any of your international brands.
+					</accordion-group>
+					
+                    <accordion-group (click)="setAction(40);">
+                        <div class="text-align" accordion-heading>
+							<i class="more-less glyphicon" [ngClass]="{'glyphicon-plus':index != 40, 'glyphicon-minus':index == 40}"></i>
+                            Why are the perfumes sold at such basic prices?
+                        </div>
+                        The money spent by international brands on advertising, marketing, branding, license fee, etc are minimal in our case. Additionally the perfumes are sent to you directly, so there are no middlemen involved and that makes the price amazing.
+					</accordion-group>
+					
+                    <h4 class="no-padding text-cgreen"><b>Rating :-</b></h4>
+                    
+                    <accordion-group (click)="setAction(41);">
+                        <div class="text-align" accordion-heading>
+							<i class="more-less glyphicon" [ngClass]="{'glyphicon-plus':index != 41, 'glyphicon-minus':index == 41}"></i>
+                            Why should I rate or give feedback on the website?
+                        </div>
+                        Rating and feedback enables other users to get view on how other consumers such as you think about the product. This will help other customers make a better purchase.
+					</accordion-group>
+					
+                    <h4 class="no-padding text-cgreen"><b>Billing :-</b></h4>
+
+                    <accordion-group (click)="setAction(42);">
+                        <div class="text-align" accordion-heading>
+							<i class="more-less glyphicon" [ngClass]="{'glyphicon-plus':index != 42, 'glyphicon-minus':index == 42}"></i>
+                            What are the different forms of payment?
+                        </div>
+                        Debit card and credit card options are available.
+					</accordion-group>
+                    
+                    <h4 class="no-padding text-cgreen"><b>Shipping :-</b></h4>
+					
+                    <accordion-group (click)="setAction(44);">
+                        <div class="text-align" accordion-heading>
+							<i class="more-less glyphicon" [ngClass]="{'glyphicon-plus':index != 44, 'glyphicon-minus':index == 44}"></i>
+                            Can I track my order?
+                        </div>
+                        Yes, the option to track the order is available. Once your order is dispatched, you will receive an SMS with the name of the courier company and the AWB number. You may track your order from the company website using this number.
+					</accordion-group>
+                       
+                    <accordion-group (click)="setAction(45);">
+                        <div class="text-align" accordion-heading>
+							<i class="more-less glyphicon" [ngClass]="{'glyphicon-plus':index != 45, 'glyphicon-minus':index == 45}"></i>
+                            How much does shipping cost?
+                        </div>
+						<p>We provide Standard shipping for free to our every customer. It takes somewhere between 7-14 days for the product to reach.
+						<p>However, you can opt for Express shipping for a minimal cost of $5 to get your product in just 3-7 days.</p>
+					</accordion-group>
+                    
+                    <accordion-group (click)="setAction(46);">
+                        <div class="text-align" accordion-heading>
+							<i class="more-less glyphicon" [ngClass]="{'glyphicon-plus':index != 46, 'glyphicon-minus':index == 46}"></i>
+                            How much is the shipping time?
+                        </div>
+                        We dispatch the stock within 24-48 working hours. Delivery time may vary from 7-14 days, depending on your location. Express shipping orders are delivered within 3-7 days.
+					</accordion-group>
+                    
+                    <accordion-group (click)="setAction(47);">
+                        <div class="text-align" accordion-heading>
+							<i class="more-less glyphicon" [ngClass]="{'glyphicon-plus':index != 47, 'glyphicon-minus':index == 47}"></i>
+                            Where does The Perfume Booth ship?
+                        </div>
+                        While buying the product you may enter the zip code to check if we deliver the stock to the mentioned area. We cover maximum area in USA with the help of our logistic partners.
+					</accordion-group>
+                                           
+                    <h4 class="no-padding text-cgreen"><b>Returns and refunds :-</b></h4>
+                    
+                    <accordion-group (click)="setAction(48);">
+                        <div class="text-align" accordion-heading>
+							<i class="more-less glyphicon" [ngClass]="{'glyphicon-plus':index != 48, 'glyphicon-minus':index == 48}"></i>
+                            What is the return policy?
+                        </div>
+                        Products once purchased cannot be returned unless they are received in a damaged condition. In that case, we are happy to send a replacement.
+					</accordion-group>
+                    
+					<accordion-group (click)="setAction(49);">
+                        <div class="text-align" accordion-heading>
+							<i class="more-less glyphicon" [ngClass]="{'glyphicon-plus':index != 49, 'glyphicon-minus':index == 49}"></i>
+                            Do you offer refunds?
+                        </div>
+                        If your product is received in a damaged condition, we will send you a replacement. Refunds are given under special conditions. Feel free to reach out to us.
+					</accordion-group>
+                    
+                    <accordion-group (click)="setAction(50);">
+                        <div class="text-align" accordion-heading>
+							<i class="more-less glyphicon" [ngClass]="{'glyphicon-plus':index != 50, 'glyphicon-minus':index == 50}"></i>
+                            What do I do if I receive the product as damaged?
+                        </div>
+                        If the products are received as damaged, please mail us a picture of the product along with the courier box and details at connect@perfumebooth.com
+					</accordion-group>
+                    
+                    <accordion-group (click)="setAction(51);">
+                        <div class="text-align" accordion-heading>
+							<i class="more-less glyphicon" [ngClass]="{'glyphicon-plus':index != 51, 'glyphicon-minus':index == 51}"></i>
+                            For bloggers
+                        </div>
+                        We will offer free Scent Shot Box to fashion and beauty bloggers who wish to cover us. Please send your details on connect@perfumebooth.com and we will get in touch with you.
+					</accordion-group>
+                    
+					<accordion-group (click)="setAction(52);">
+                        <div class="text-align" accordion-heading>
+							<i class="more-less glyphicon" [ngClass]="{'glyphicon-plus':index != 52, 'glyphicon-minus':index == 52}"></i>
+                            For press
+                        </div>
+                        Do you wish to cover us? Please get in touch with us on connect@perfumebooth.com and our representative will get in touch with you.
+					</accordion-group>
+                    
+                    <accordion-group (click)="setAction(53);">
+                        <div class="text-align" accordion-heading>
+							<i class="more-less glyphicon" [ngClass]="{'glyphicon-plus':index != 53, 'glyphicon-minus':index == 53}"></i>
+                            Bulk enquiry
+                        </div>
+                        For bulk enquiry, please write to us on connect@perfumebooth.com and our representative will get in touch with you.
+					</accordion-group>
+                    
+                    <accordion-group (click)="setAction(54);">
+                        <div class="text-align" accordion-heading>
+							<i class="more-less glyphicon" [ngClass]="{'glyphicon-plus':index != 54, 'glyphicon-minus':index == 54}"></i>
+                            Corporate gifting
+                        </div>
+                        For corporate gifting, please write to us on connect@perfumebooth.com and our representative will get in touch with you.
+					</accordion-group>
+                    
+                    <accordion-group (click)="setAction(56);">
+                        <div class="text-align" accordion-heading>
+							<i class="more-less glyphicon" [ngClass]="{'glyphicon-plus':index != 56, 'glyphicon-minus':index == 56}"></i>
+                            Careers
+                        </div>
+                        Please write to us on the email stated below and our representative will get in touch with you. Email Id is connect@perfumebooth.com
+					</accordion-group>
+                    
+                    <accordion-group (click)="setAction(57);">
+                        <div class="text-align" accordion-heading>
+							<i class="more-less glyphicon" [ngClass]="{'glyphicon-plus':index != 57, 'glyphicon-minus':index == 57}"></i>
+                            Mission
+                        </div>
+                        To be creative, young and dynamic throughout the life of the organization with a view to build an institution that stands for customer service, employee benefit, profits and steady growth.
+					</accordion-group>
+                    
+                    <accordion-group (click)="setAction(58);">
+                        <div class="text-align" accordion-heading>
+							<i class="more-less glyphicon" [ngClass]="{'glyphicon-plus':index != 58, 'glyphicon-minus':index == 58}"></i>
+                            Vision
+                        </div>
+                        To be the world’s largest sellers of perfumes by focusing on giving customers the best quality perfumes at the cheapest possible price.
+					</accordion-group>
+                    
+                </accordion><!-- end of contact_detail -->
+            
+			</div><!-- end of row -->
+        </div>
+    </section><!-- end of middle_part -->

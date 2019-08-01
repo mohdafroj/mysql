@@ -1,0 +1,154 @@
+<div *ngIf="homeContent" class="content index_2_div" style="padding-top:0;">
+  <!--div class="sale_banner_img">
+        <img src="assets/images/home/sale_banner.jpg" alt="Sale Banner" class="img-responsive center-block hidden-xs">
+    <img src="assets/images/home/sale_banner_mobile.jpg" alt="Sale Banner" class="img-responsive center-block visible-xs">
+
+      </div><!-- end of banner_image -->
+
+      <section class="container-fluid scent_shot_div"><!-- start of section_1 -->
+        <div class="container">
+              <div class="col-sm-4 col-xs-12 col-sm-push-8 col-xs-push-0 xs-no-padding"><!-- start of image_detail -->
+                  <div [@scentShotFadeInDown]="scentShotFadeInDown" class="col-sm-12 col-xs-12 content_div xs-no-padding"><!-- start of upper_part -->
+                      <a routerLink="/scent-shot">
+                          <h1>
+                              Scent <span>Shot</span>
+                          </h1>
+                          <p>
+                              World of Fragrance Packed In One Box
+                          </p>
+                      </a>
+                      <a routerLink="/scent-shot" class="btn btn-div-more"><span>Know More</span></a>
+                  </div><!-- end of upper_part -->
+              </div><!-- end of image_detail -->
+              
+              <div class="col-sm-8 col-xs-12 col-sm-pull-4 col-xs-pull-0 overflow_hidden"><!-- start of image_part -->
+                  <a [@scentShotFadeInLeft]="scentShotFadeInLeft" routerLink="/scent-shot" class="product_img_div">
+                      <img src="assets/images/home/scent-shot.png" class="img-responsive center-block" alt="Scent Shot">
+                  </a>
+              </div><!-- end of image_part -->
+          </div>
+      </section><!-- end of section_1 -->
+  
+      <section class="container-fluid gradient_div">
+        <div class="container">                
+              <div class="col-sm-4 col-xs-12 xs-no-padding">
+                  <div [@selfieFadeInUp]="selfieFadeInUp" class="col-sm-12 col-xs-12 content_div content_div_right xs-no-padding">
+                    <a routerLink="/perfume-bottle/all">
+                          <h1>
+                              Luxury <span>Perfume</span>
+                          </h1>
+                          <p>
+                              Discover the Magical World of Perfumes
+                          </p>
+                      </a>
+                      <a routerLink="/perfume-bottle/all" class="btn btn-div-more"><span>Know More</span></a>
+                  </div>
+              </div>
+              
+              <div class="col-sm-8 col-xs-12 overflow_hidden">
+                  <a [@selfieFadeInRight]="selfieFadeInRight" routerLink="/perfume-bottle/all" class="product_img_div">
+                      <img src="assets/images/home/perfume.png" class="img-responsive center-block" alt="Perfume">
+                  </a>
+              </div>
+          </div>
+      </section>
+  
+      <section class="container-fluid gradient_div"><!-- start of section_3 -->
+        <div class="container">                
+              <div class="col-sm-4 col-xs-12 col-sm-push-8 col-xs-push-0 xs-no-padding"><!-- start of image_detail -->
+                  <div [@perfumeFadeInUp]="perfumeFadeInUp" class="col-sm-12 col-xs-12 content_div xs-no-padding"><!-- start of upper_part -->
+                      <a routerLink="/deodorant">
+                          <h1>
+                              Deodorant
+                          </h1>
+                          <p>
+                              Stay Fresh For Long
+                          </p>
+                      </a>
+                      <a routerLink="/deodorant" class="btn btn-div-more"><span>Know More</span></a>
+                  </div><!-- end of upper_part -->
+              </div><!-- end of image_detail -->
+              
+              <div class="col-sm-8 col-xs-12 col-sm-pull-4 col-xs-pull-0 overflow_hidden"><!-- start of image_part -->
+                  <a [@perfumeFadeInDown]="perfumeFadeInDown" routerLink="/deodorant" class="product_img_div">
+                      <img src="assets/images/home/deo.png" class="img-responsive center-block" alt="Deodorant">
+                  </a>
+              </div><!-- end of image_part -->
+          </div>
+      </section><!-- end of section_3 -->
+  
+      <section class="container-fluid gradient_div">
+        <div class="container">                
+              <div class="col-sm-4 col-xs-12 xs-no-padding">
+                  <div [@deoFadeInUp]="deoFadeInUp" class="col-sm-12 col-xs-12 content_div content_div_right xs-no-padding">
+                      <a routerLink="/body-mist">
+                          <h3>
+                              Body <span>Mist</span>
+                          </h3>
+                          <p>
+                              Freshness in Every Spritz
+                          </p>
+                      </a>
+                      <a routerLink="/body-mist" class="btn btn-div-more"><span>Know More</span></a>
+                  </div>
+              </div>
+              
+              <div class="col-sm-8 col-xs-12 overflow_hidden">
+                  <a [@deoFadeInRight]="deoFadeInRight" routerLink="/deodorant" class="product_img_div">
+                      <img src="assets/images/home/bodymist.png" class="img-responsive center-block" alt="Bodymist">
+                  </a>
+              </div>
+          </div>
+      </section>
+  
+      <!--section class="container-fluid gradient_div">
+        <div class="container">                
+              <div class="col-sm-4 col-xs-12 col-sm-push-8 col-xs-push-0 xs-no-padding">
+                  <div [@bodyMistFadeInDown]="bodyMistFadeInUp" class="col-sm-12 col-xs-12 content_div xs-no-padding">
+                      <a routerLink="/body-mist">
+                          <h3>
+                              Body <span>Mist</span>
+                          </h3>
+                          <p>
+                              Freshness in Every Spritz
+                          </p>
+                      </a>
+                      <a routerLink="/body-mist" class="btn btn-div-more"><span>Know More</span></a>
+                  </div>
+              </div>
+              
+              <div class="col-sm-8 col-xs-12 col-sm-pull-4 col-xs-pull-0 overflow_hidden">
+                  <a [@bodyMistFadeInDown]="bodyMistFadeInDown"  routerLink="/body-mist" class="product_img_div">
+                      <img src="assets/images/home/bodymist.png" class="img-responsive center-block" alt="Bodymist">
+                  </a>
+              </div>
+          </div>
+      </section-->
+  </div>
+
+<div *ngIf="!homeContent" class="content index_2_div">
+      <section class="container-fluid scent_shot_div"><!-- start of section_1 -->
+        <div class="container">
+              <div class="col-sm-4 col-xs-12 col-sm-push-8 col-xs-push-0 xs-no-padding"><!-- start of image_detail -->
+                  <div [@scentShotFadeInDown]="scentShotFadeInDown" class="col-sm-12 col-xs-12 content_div xs-no-padding"><!-- start of upper_part -->
+                      <a routerLink="/scent-shot">
+                          <h1>
+                              Scent <span>Shot</span>
+                          </h1>
+                          <p>
+                              Say hello to the new fragrance.
+                          </p>
+                      </a>
+                      <a routerLink="/scent-shot" class="btn btn-div-more"><span>Know More</span></a>
+                  </div><!-- end of upper_part -->
+              </div><!-- end of image_detail -->
+              
+              <div class="col-sm-8 col-xs-12 col-sm-pull-4 col-xs-pull-0 overflow_hidden"><!-- start of image_part -->
+                  <a [@scentShotFadeInLeft]="scentShotFadeInLeft" routerLink="/scent-shot" class="product_img_div">
+                      <img src="assets/images/home/scent-shot.png" class="img-responsive center-block" alt="Scent Shot">
+                  </a>
+              </div><!-- end of image_part -->
+          </div>
+      </section><!-- end of section_1 -->
+  </div>
+   

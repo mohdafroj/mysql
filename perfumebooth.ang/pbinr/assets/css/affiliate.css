@@ -1,0 +1,33 @@
+html, body{margin: 0px; padding: 0px; height:100%; font-family: 'Titillium-Regular'; color:rgba(0, 0, 0, 0.7);}
+
+.wrapper {min-height:100%;position:relative; padding-top:0.01%;}
+.header{}
+.content{padding-bottom:540px; padding-top:150px;} /* Height of the footer element */
+.footer{width:100%; height:auto; position:absolute; bottom:0;}
+
+.bg-l-gray{background:#f3f3f3;}
+
+/* start of table_css */
+.affiliate_table tr th{padding:15px 10px !important; text-align:center; color:rgba(0,0,0,0.7); font-weight:600; border-width:1px 1px !important; font-size:15px; vertical-align:middle;}
+.affiliate_table tr td{padding:10px 15px !important; vertical-align:middle; position:relative; text-align:center;}
+.affiliate_table tr td p{margin:0;}
+.affiliate_table tr td:first-child, .affiliate_table tr th:first-child{border-left:none !important;}
+.affiliate_table tr td:last-child, .affiliate_table tr th:last-child{border-right:none !important;}
+
+/* start of media css */
+@media (min-width:768px) and (max-width:991px) {
+	.content{padding-bottom:540px; padding-left:0; padding-right:0;}
+}
+
+@media (min-width:992px) and (max-width:1200px) { 
+	
+}
+
+@media (max-width:767px){
+	.footer{position:relative;}
+	.content{padding-bottom:20px; padding-top:170px;}
+	
+	/* start of table */
+	.responsive-mobile-table .affiliate_table tr{margin-bottom:15px;}
+	.affiliate_table tr td{padding:8px 10px 8px 50% !important; text-align:right;}
+}

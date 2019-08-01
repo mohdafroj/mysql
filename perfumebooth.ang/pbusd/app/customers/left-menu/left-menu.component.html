@@ -1,0 +1,39 @@
+<div class="col-md-3 col-sm-4 col-xs-12 xs-no-padding"><!-- start of left_part -->
+  <cutomer-picture></cutomer-picture>
+  <div class="col-sm-12 col-xs-12 no-padding"><!-- start of right_part -->
+    <div class="col-xs-12 no-padding review_heading account_toggle" [ngClass]="openClass" (click)="toggleAction();"><!-- start of review_heading -->
+      <h3>My Account <span></span></h3>
+      <span class="visible-xs"><i class="fa fa-angle-left"></i></span>
+    </div><!-- end of review_heading -->
+
+    <ul class="list-unstyled profile_list col-sm-12 col-xs-12" [ngClass]="toggleOpenClass"><!-- start of list -->
+      <li>
+        <a routerLink="/customer/profile" routerLinkActive="active"><img src="assets/images/heading_img.png" alt="profile_list_img" class="img-responsive"> My Profile</a>
+      </li>
+      <li>
+        <a routerLink="/customer/account-detail" routerLinkActive="active"><img src="assets/images/heading_img.png" alt="profile_list_img" class="img-responsive"> Account Detail</a>
+      </li>
+      <li>
+        <a routerLink="/customer/address-book" routerLinkActive="active"><img src="assets/images/heading_img.png" alt="profile_list_img" class="img-responsive"> Address Book</a>
+      </li>
+      <li>
+        <a routerLink="/customer/orders" routerLinkActive="active"><img src="assets/images/heading_img.png" alt="profile_list_img" class="img-responsive"> My Order</a>
+      </li>
+      <li>
+        <a routerLink="/customer/wishlist" routerLinkActive="active"><img src="assets/images/heading_img.png" alt="profile_list_img" class="img-responsive"> My Wishlist</a>
+      </li>
+      <li>
+        <a routerLink="/customer/wallet" routerLinkActive="active"><img src="assets/images/heading_img.png" alt="profile_list_img" class="img-responsive"> My Wallet</a>
+      </li>
+      <li>
+        <a routerLink="/customer/products-reviews" routerLinkActive="active"><img src="assets/images/heading_img.png" alt="profile_list_img" class="img-responsive"> My Reviews</a>
+      </li>
+      <li>
+        <a routerLink="/customer/newsletter" routerLinkActive="active"><img src="assets/images/heading_img.png" alt="profile_list_img" class="img-responsive"> Newsletter</a>
+      </li>
+      <li>
+        <a routerLink="/customer/security-updates" routerLinkActive="active"><img src="assets/images/heading_img.png" alt="profile_list_img" class="img-responsive"> Security</a>
+      </li>
+    </ul><!-- end of list -->
+  </div><!-- end of right_part -->
+</div><!-- end of left_part -->

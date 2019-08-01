@@ -1,0 +1,47 @@
+html, body{margin: 0px; padding: 0px; height:100%; /*font-family: 'Titillium-Regular';*/ color:rgba(0, 0, 0, 0.7);}
+
+.wrapper {min-height:100%;position:relative; padding-top:0.01%;}
+.header{}
+.content{padding-bottom:540px; padding-top:20px; padding-left:0; padding-right:0;} /* Height of the footer element */
+.footer{width:100%; height:auto; position:absolute; bottom:0;}
+
+/* start of brand_logo css */
+.brand_border{border:1px solid #ccc; padding:0 !important; margin-bottom:-1px !important; margin-right:-1px !important;}
+.brand_border a{display:block; width:100%; background:#fff;}
+
+/* start of list_item css */
+.thumbnail_content{padding:10px 5px; position:static; z-index:2; text-align:center; border-top:1px solid transparent;}
+.thumbnail_name{padding-bottom:6px; margin:0; margin-top:0; font-weight:bold; z-index:2;}
+.thumbnail_name a{color:rgba(0,0,0,0.8); font-size:16px; text-decoration:none;}
+.item_border .thumbnail_image{margin:0; z-index:2; padding:10px 0 0;}
+.item_border{float:left; width:100%; border:1px solid transparent; position:relative; transition:all ease 0.5s; -moz-transition:all ease 0.5s; -ms-transition:all ease 0.5s; -o-transition:all ease 0.5s; -webkit-transition:all ease 0.5s;}
+.item_border:hover .thumbnail_content{background:#fff; border-top:1px solid #ececec; transition:all ease 0.5s; -moz-transition:all ease 0.5s; -ms-transition:all ease 0.5s; -o-transition:all ease 0.5s; -webkit-transition:all ease 0.5s;}
+
+/* start border animation effect css */
+.item_border:before, .item_border:after{box-sizing:inherit; content:""; position:absolute; width:100%; height:100%; left:0; z-index:1;}
+.border_center:before, .border_center:after{top:0; bottom:0; width:100%; height:100%; transform-origin:center;}
+.border_center:before{border-top:1px solid #4b6c99; border-bottom:1px solid #4b6c99; transform:scale3d(0,1,1);}
+.border_center:after{border-left:1px solid #4b6c99; border-right:1px solid #4b6c99; transform:scale3d(1,0,1);}
+.border_center:hover:before, .border_center:hover:after{transform:scale3d(1,1,1); transition: transform 0.5s;}
+/* end border animation effect css */
+
+/* start of media css */
+@media (min-width:768px) and (max-width:991px) {
+	.content{padding-bottom:540px; padding-left:0; padding-right:0;}
+	.brand_logo ul li{padding:0 15px;}
+	.brand_logo ul li img{width:60px;}
+	
+	/* start of testimonials css */
+	.testimonial_banner{height:215px;}
+}
+
+@media (min-width:992px) and (max-width:1200px) {
+	.brand_logo ul li{padding:0 15px;}
+}
+
+@media (max-width:767px){
+	.footer{position:relative;}
+	.content{padding-bottom:20px; padding-top:20px;}
+	
+	.item_border{margin-bottom:20px; padding:0 1px;}
+}

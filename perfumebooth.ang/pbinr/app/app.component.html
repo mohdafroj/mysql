@@ -1,0 +1,14 @@
+<div class="scrollUp" [ngClass]="topScrollStatus" (click)="scrollToTop();">
+  <button type="button" class="scroll_bottom"><span><i class="fa fa-caret-up"></i></span></button>
+</div>
+<div class="thetop"></div>
+
+<div *ngIf="stripMessage != ''" class="offer_strip">
+	<p [innerHTML]="sanitizer.bypassSecurityTrustHtml(stripMessage)"></p>
+</div>
+
+<div class="wrapper">
+    <header></header>
+    <router-outlet></router-outlet>
+	<footer class="container-fluid no-padding footer" *ngIf="footerActive"></footer>
+</div>

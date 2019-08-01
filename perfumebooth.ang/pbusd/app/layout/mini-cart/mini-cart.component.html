@@ -1,0 +1,70 @@
+                    <ul class="nav navbar-nav navbar-right nav_menu">
+						<li class="dropdown visible-xs searchbar_text">
+                            <a href="#searchbar" data-toggle="collapse"><i class="fa fa-search"></i></a>                            
+                        </li>
+                        <li class="dropdown dropdown_new">
+						    
+							<a aria-expanded="false" class="dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+								<i class="fa fa-user"></i> <b class="caret"></b>
+							</a>
+							<ul class="dropdown-menu dropdown-menu_new">
+                <li *ngIf="userId == 0" class="login_register_link">
+                      <span><a routerLink="/customer/login">Login</a></span>
+                      <span><a routerLink="/customer/registration">Register</a></span>
+                </li>
+                <li *ngIf="userId > 0" class="login_register_link">
+                    <span><a (click)="customerLogout();">Logout</a></span>
+                </li>
+                <li *ngIf="userId > 0" role="menuitem"><a routerLink="/customer/profile">Profile</a></li>
+							  <li *ngIf="userId > 0" role="menuitem"><a routerLink="/customer/orders">Track Orders</a></li>
+							  <li *ngIf="userId > 0" role="menuitem"><a routerLink="/checkout/cart/">Cart</a></li>
+							  <li role="menuitem"><a routerLink="/prive-member">Prive Member</a></li>							  
+							</ul>
+							
+                        </li>
+						
+						<li class="dropdown dropdown_1 dropdown_new">
+							<button class="dropdown-toggle shopping-cart" data-toggle="dropdown" [ngClass]="topScrollClass">
+								<i class="fa fa-shopping-cart"></i> <span class="text-cgreen">{{cart.length}}</span>
+							</button>
+
+                        <div class="dropdown-menu dropdown-menu_1 dropdown-menu_new" role="menu"><!-- start of cart_detail -->
+						<span class="shopping_arow"><i class="fa fa-chevron-down"></i></span>
+                          <p class="font-15 col-xs-12">{{cart.length}} Items in your cart</p>
+
+                          <div *ngIf="cart.length > 0" class="scrollDiv">
+                            <div class="col-xs-12 detail autoscroll"><!-- start of detail -->
+                              <div class="cart_item" *ngFor="let item of cart"><!-- start of item_1 -->
+                                <div class="cart_image">
+                                  <img *ngFor="let img of item.images" [src]="img.url" [alt]="item.name" class="img-responsive center-block">
+                                </div>
+                                <div class="cart_detail">
+                                  <h3>{{item.name}}</h3>
+                                  <p>Size: {{item.size}} {{ item.unit | uppercase }} X {{item.cart_quantity}}</p>
+                                  <h4><label [innerHTML]="sanitizer.bypassSecurityTrustHtml(curencyLogo)"></label> {{item.price}}</h4>
+                                  <span class="item_close">
+                                        <button (click)="removeItem(item.cart_id);" data-target="#removeItemFromPopup" data-toggle="modal">
+                                                <span class="icon_cross"></span>
+                                                <span class="icon_cross"></span>
+                                        </button>
+                                  </span>
+                                </div>
+                              </div><!-- end of item_1 -->
+                            </div><!-- end of detail -->
+                          </div>
+
+                          <div *ngIf="cart.length > 0" class="col-xs-12 cart_total"><!-- start of total_price -->
+                            <p class="col-xs-6 no-padding font-16">Total:</p>
+                            <p class="col-xs-6 no-padding text-right font-16">
+                              <label [innerHTML]="sanitizer.bypassSecurityTrustHtml(curencyLogo)"></label> {{total}}
+                            </p>
+                          </div><!-- end of total_price -->
+
+                          <div *ngIf="cart.length > 0" class="col-xs-12 text-center margin-bottom margin-top cart_popup_btn"><!-- start of checkout_btn -->
+                            <a routerLink="/checkout/cart/" id="hideMiniCart" class="btn from-left-checkout btn_checkout">VIEW CART</a>
+                          </div><!-- end of checkout_btn -->
+                        </div><!-- end of cart_detail -->
+                      </li>
+
+                    </ul>
+<delete-item></delete-item>

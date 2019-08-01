@@ -1,0 +1,43 @@
+	<div class="{{headerClass}}">
+        <nav class="navbar nav_div {{toggledClass}}" id="wrapper"><!-- start of navbar -->
+            <div class="container">
+                <div class="navbar-header">
+					<a *ngIf="headerClass !=''" (click)="historyBack();" class="back_btn visible-xs">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a *ngIf="priveMember" class="navbar-brand logo_div pbprive_logo" routerLink="/">
+                    	<img src="assets/images/logo_prive.svg" alt="Logo" class="img-responsive">
+                    </a>
+                    <a *ngIf="!priveMember" class="navbar-brand logo_div" routerLink="/">
+                    	<img src="assets/images/logo.svg" alt="Logo" class="img-responsive">
+                    </a>
+                </div>
+				
+                <div class="nav">
+					<app-mini-cart></app-mini-cart>
+                    <product-search></product-search>
+                </div>
+
+                <div class="navbar-header hidden-xs">
+                    <button type="button" class="navbar-toggle {{buttonClass}}" id="menu-toggle" (click)="toggleMenu();" data-target="#menu-toggle">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse hidden-xs" id="sidebar-wrapper"><!-- start of menu -->
+                    <ul class="nav navbar-nav nav_menu_1">
+                        <li class="dropdown" [ngClass]="{'active':(secondParam == '')}">
+                        	<a routerLink="{{customDir}}"><i class="fa fa-home fa-lg"></i></a>
+                        </li>
+                        <li class="dropdown" [ngClass]="{'active':(secondParam == 'scent-shot' && thirdParam != 'refills')}">
+                        	<a routerLink="/{{customDir}}/scent-shot">Scent Shot</a>
+                        </li>
+                        <li class="dropdown" [ngClass]="{'active':(secondParam == 'perfume-bottle')}">
+                        	<a routerLink="/{{customDir}}/perfume-bottle/all">Perfumes</a>
+                        </li>
+                    </ul>
+                </div><!-- end of menu -->
+            </div>
+        </nav><!-- end of navbar -->
+	</div>

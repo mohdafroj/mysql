@@ -1,0 +1,192 @@
+<section class="container-fluid content"><!-- start of middle_part -->
+  <div class="container">
+    <div class="row"><!-- start of row -->
+
+      <app-left-menu></app-left-menu>
+
+      <div class="col-md-9 col-sm-8 col-xs-12"><!-- start of right_part -->
+        <div class="col-xs-12 no-padding review_heading"><!-- start of review_heading -->
+          <h3>My Wallet <span></span></h3>
+        </div><!-- end of review_heading -->
+
+        <div class="col-xs-12 no-padding review_heading margin-md-top"><!-- start of total_balance -->
+          <h3>
+            Total Balance <span></span>
+            <span class="wallet_total"><i class="fa fa-rupee"></i> {{totalBallence | number:'2.2-2'}}</span>
+          </h3>
+        </div><!-- end of total_balance -->
+
+        <div class="col-sm-12 col-xs-12 wallet_summary"><!-- start of wallet_summary -->
+          <div class="col-sm-12 col-xs-12 no-padding wallet_div"><!-- start of wallet_div -->
+            <div class="col-sm-10 col-xs-8 no-padding-left xs-no-padding"><!-- start of summary -->
+              <div class="col-sm-5 col-xs-12 no-padding-left xs-no-padding"><!-- start of left -->
+                <p>501 Voucher</p>
+              </div><!-- end of left -->
+
+              <div class="col-sm-7 col-xs-12 no-padding-right xs-no-padding"><!-- start of right -->
+                <div class="col-sm-5 col-xs-5 no-padding">
+                  <p>&nbsp;<i class="fa fa-rupee"></i>501 X {{v5}}</p>
+                </div>
+
+                <div class="col-sm-2 col-xs-2 no-padding text-center">
+                  <p>=</p>
+                </div>
+
+                <div class="col-sm-5 col-xs-5 no-padding text-right">
+                  <p><i class="fa fa-rupee"></i>{{501 * v5  | number:'2.2-2'}}</p>
+                </div>
+              </div><!-- end of right -->
+            </div><!-- end of summary -->
+
+            <div class="col-sm-2 col-xs-4 no-padding-right xs-no-padding"><!-- start of button -->
+              <!--a href="#" class="btn btn-div-buy btn-1b">
+                Add
+              </a-->
+            </div><!-- end of button -->
+          </div><!-- end of wallet_div -->
+
+          <div class="col-sm-12 col-xs-12 no-padding wallet_div"><!-- start of wallet_div -->
+            <div class="col-sm-10 col-xs-8 no-padding-left xs-no-padding"><!-- start of summary -->
+              <div class="col-sm-5 col-xs-12 no-padding-left xs-no-padding"><!-- start of left -->
+                <p>100 Voucher</p>
+              </div><!-- end of left -->
+
+              <div class="col-sm-7 col-xs-12 no-padding-right xs-no-padding"><!-- start of right -->
+                <div class="col-sm-5 col-xs-5 no-padding">
+                  <p>&nbsp;<i class="fa fa-rupee"></i>100 X {{v3}}</p>
+                </div>
+
+                <div class="col-sm-2 col-xs-2 no-padding text-center">
+                  <p>=</p>
+                </div>
+
+                <div class="col-sm-5 col-xs-5 no-padding text-right">
+                  <p><i class="fa fa-rupee"></i>{{100 * v3 | number:'2.2-2'}}</p>
+                </div>
+              </div><!-- end of right -->
+            </div><!-- end of summary -->
+
+            <div class="col-sm-2 col-xs-4 no-padding-right xs-no-padding"><!-- start of button -->
+              <!--a href="#" class="btn btn-div-buy btn-1b">
+                Add
+              </a-->
+            </div><!-- end of button -->
+          </div><!-- end of wallet_div -->
+
+          <div class="col-sm-12 col-xs-12 no-padding wallet_div"><!-- start of wallet_div -->
+            <div class="col-sm-10 col-xs-8 no-padding-left xs-no-padding"><!-- start of summary -->
+              <div class="col-sm-5 col-xs-12 no-padding-left xs-no-padding"><!-- start of left -->
+                <p>Pay Booth Point</p>
+              </div><!-- end of left -->
+
+              <div class="col-sm-7 col-xs-12 no-padding-right xs-no-padding"><!-- start of right -->
+                <div class="col-sm-5 col-xs-5 no-padding">
+                  <p>"<i class="fa fa-rupee"></i>1 = 1 Point"</p>
+                </div>
+
+                <div class="col-sm-2 col-xs-2 no-padding text-center">
+                  <p>=</p>
+                </div>
+
+                <div class="col-sm-5 col-xs-5 no-padding text-right">
+                  <p><i class="fa fa-rupee"></i>{{pbPoints | number:'2.2-2'}}</p>
+                </div>
+              </div><!-- end of right -->
+            </div><!-- end of summary -->
+
+            <div class="col-sm-2 col-xs-4 no-padding-right xs-no-padding"><!-- start of button -->
+              <!--a href="#" class="btn btn-div-buy btn-1b">
+                Earn
+              </a-->
+            </div><!-- end of button -->
+          </div><!-- end of wallet_div -->
+
+          <div class="col-sm-12 col-xs-12 no-padding wallet_div"><!-- start of wallet_div -->
+            <div class="col-sm-10 col-xs-8 no-padding-left xs-no-padding"><!-- start of summary -->
+              <div class="col-sm-5 col-xs-12 no-padding-left xs-no-padding"><!-- start of left -->
+                <p>Pay Booth Cash</p>
+              </div><!-- end of left -->
+
+              <div class="col-sm-7 col-xs-12 no-padding-right xs-no-padding"><!-- start of right -->
+                <div class="col-sm-5 col-xs-5 no-padding hidden-xs">
+                  <p>&nbsp;</p>
+                </div>
+
+                <div class="col-sm-2 col-xs-2 no-padding text-center hidden-xs">
+                  <p>=</p>
+                </div>
+
+                <div class="col-sm-5 col-xs-12 no-padding text-right">
+                  <p><i class="fa fa-rupee"></i>{{pbCash | number:'2.2-2'}}</p>
+                </div>
+              </div><!-- end of right -->
+            </div><!-- end of summary -->
+
+            <div class="col-sm-2 col-xs-4 no-padding-right xs-no-padding"><!-- start of button -->
+              <!--a href="#" class="btn btn-div-buy btn-1b">
+                Add
+              </a-->
+            </div><!-- end of button -->
+          </div><!-- end of wallet_div -->
+        </div><!-- end of wallet_summary -->
+
+        <div class="col-xs-12 no-padding review_heading margin-lg-top"><!-- start of Transactions_heading -->
+          <h3 class="col-md-9 col-sm-8 col-xs-12">
+            My Transactions <span></span>
+          </h3>
+
+          <div class="col-md-3 col-sm-4 col-xs-12 no-padding xs-no-padding select_box"><!-- start of dropdown -->
+            <select class="selectpicker show-tick form-control">
+              <option title="Sort by">Sort by</option>
+              <option>Low to high</option>
+              <option>High to low</option>
+            </select>
+          </div><!-- end of dropdown -->
+        </div><!-- end of Transactions_heading -->
+
+        <div class="col-sm-12 col-xs-12 no-padding responsive-mobile-table"><!-- start of transactions -->
+
+          <table class="col-xs-12 table-bordered table-condensed no-padding no-border cart_table">
+            <thead>
+            <tr>
+              <th>Description</th>
+              <th>Type</th>
+              <th>PB Cash</th>
+              <th>PB Points</th>
+              <th>PB Voucher</th>
+              <th>Date</th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            <tr *ngFor="let item of dataList;"><!-- start of product_cart -->
+              <td data-title="Description">
+                {{item.comments}}
+              </td>
+              <td data-title="Type">
+				{{item.transaction_type}}
+              </td>
+              <td data-title="PB Cash">
+				{{item.pb_cash}}
+			  </td>
+              <td data-title="PB Points">
+				{{item.pb_points}}
+			  </td>
+              <td data-title="PB Voucher">
+				{{item.voucher_amount}}
+			  </td>
+              <td data-title="Date">
+				{{item.transaction_date}}
+			  </td>
+            </tr><!-- end of product_cart -->
+
+            </tbody>
+          </table>
+
+        </div><!-- end of transactions -->
+      </div><!-- end of right_part -->
+
+    </div><!-- end of row -->
+  </div>
+</section><!-- end of middle_part -->

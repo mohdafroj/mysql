@@ -1,0 +1,127 @@
+html, body{margin: 0px; padding: 0px; height:100%; /*font-family: 'Titillium-Regular';*/ color:rgba(0, 0, 0, 0.7);}
+
+.wrapper {min-height:100%;position:relative; padding-top:0.01%;}
+.header{}
+.content{padding-bottom:540px; padding-top:20px; padding-left:0; padding-right:0;} /* Height of the footer element */
+.footer{width:100%; height:auto; position:absolute; bottom:0;}
+
+.selfie_generic_div{padding-bottom:80px; padding-top:30px;}
+.selfie_generic_div:last-child{padding-bottom:0;}
+
+/* start of gender_button css */
+.gender_div{padding:10px 0 0; margin-bottom:20px; border-bottom:1px solid #ccc; text-align:center;}
+.gender_div ul{display:inline-block;}
+.gender_div ul li{padding:0; position:relative;}
+.gender_div ul li a{border-width:1px 1px 0px 1px; border-style:solid; border-color:#ccc; font-weight:600; display:inline-block; padding:4px 20px; margin-right:0; font-size:14px; color:rgba(0,0,0,0.7); border-radius:0; background:none; transition:all ease 0.5s; -webkit-transition:all ease 0.5s; -moz-transition:all ease 0.5s; -ms-transition:all ease 0.5s; -o-transition:all ease 0.5s;}
+.gender_div ul li a:hover, .gender_div ul li a:focus, .gender_div ul li a:active{color:#4b6c99; border-width:1px 1px 0px 1px; border-style:solid; border-color:#4b6c99;}
+.gender_div ul li a.active{background:#4b6c99; color:#fff; box-shadow:none; border-width:1px 1px 0px 1px; border-style:solid; border-color:#4b6c99;}
+
+/* start of image-detail css */
+.detail_heading{padding:0px 0 10px; margin:0; color:rgba(0,0,0,0.7);}
+.detail_heading span.product_name{font-size:18px; color:rgba(0,0,0,0.8); text-transform:uppercase; display:inline-block; padding:0 0px 5px 0;}
+.detail_size{font-size:14px; color:rgba(0,0,0,0.6); padding:0 0 5px 0; display:block; font-weight:300;}
+.detail_size span, .brand_name span{background:#df5745; color:#fff; border-radius:4px; font-size:10px; text-transform:uppercase; padding:3px 5px 3px; display:inline-block; letter-spacing:1px; margin-left:5px; font-weight:500;}
+.detail_rating{padding:0 0 0 10px; display:inline-block;}
+.detail_rating .starrr{display:inline-block;}
+.detail_rating span{display:inline-block; color:#4b6c99;}
+.brand_name{font-size:15px; color:rgba(0,0,0,0.6); display:block; text-transform:uppercase; font-weight:300;}
+.brand_flag{display:inline-block; padding-left:5px;}
+.brand_flag img{width:18px; margin-top:-2px;}
+.detail_price{margin:0; padding:10px 0 20px;}
+.detail_price p.detail_mrp{color:rgba(0,0,0,0.7); font-size:15px; padding:0 0 5px 0; text-transform:uppercase; line-height:20px;}
+.detail_price p.detail_prive{font-size:15px; color:#4b6c99; padding:0; text-transform:uppercase;}
+.detail_price p.detail_prive small{padding-left:10px;}
+.detail_price p.detail_prive span{font-weight:bold;}
+.detail_price p.selfie_content{color:rgba(0,0,0,0.6); font-size:12px; line-height:20px; padding:0; text-align:justify;}
+/* start of male_female css */
+.male_female_div{position:absolute; top:10px; left:0; z-index:9; display:inline-block; padding:4px; background:#fff;}
+.male_female_div img{width:25px; opacity:.5;}
+.detail_button .btn{display:inline-block;}
+.detail_button .btn-div-cart, .detail_button .btn-div-buy{font-size:12px; height:35px; line-height:35px; margin-right:10px;}
+/* start of image_slider css */
+div[id*='carousel-'] a.left{background-image:none; opacity:1; text-shadow:none; color:rgba(0,0,0,0.5); left:0px;}
+div[id*='carousel-'] a.right{background-image:none; opacity:1; text-shadow:none; color:rgba(0,0,0,0.5); right:0px;}
+div[id*='carousel-'] a span{top:50%; font-size:24px; transform:translateY(-50%);}
+.image_slider_div{bottom:-45px;}
+.image_slider_div li{background:#ccc; border:none;}
+.image_slider_div li.active{background:#4b6c99;}
+/* start of enlarge_slider */
+.enlarge_popup{margin-top:12px;}
+.enlarge_popup li{padding:0; width:14.28%; float:left;}
+.enlarge_popup li .btn{background:none; padding:0; box-shadow:0 0 4px rgba(0,0,0,0.15); border-radius:0; display:block; width:100%;}
+.enlarge_popup_slider{background:#fff;}
+.male_female_1{left:30px;}
+.brand_name .slider_flag{padding:0; background:none;}
+
+/* start of brand slider css*/
+.touch_slider{margin:0 auto; text-align:center;}
+.brand_slider{margin-bottom:15px; padding:0;}
+.brand_slider .item .thumb_div{margin-bottom:0;}
+.brand_slider .item .thumb_div a img{width:70px; display:none;}
+.brand_slider .item .thumb_div a img:first-child{display:block;}
+.brand_slider .item .thumb_div .ca-content .ca-main{padding:0;}
+.brand_slider .item .thumb_div .ca-content .ca-main a{font-size:12px;}
+.brand_slider p{text-align:center; margin-bottom:15px;}
+.brand_slider p span{border-bottom:1px solid rgba(0,0,0,0.1); font-size:16px; color:#4b6c99; font-weight:bold;}
+.brand_slider ul.lSPager{display:none;}
+.brand_slider .item .thumb_div span.ca-icon a{display:inline-block; border:2px solid transparent;}
+.brand_slider .item .thumb_div.active span.ca-icon a{border:2px solid #4b6c99;}
+.brand_slider .item .thumb_div.active .ca-content h2 a{color:#4b6c99;}
+
+/* start filter tab css */
+.filter_heading{padding:10px 10px 10px 0; border-width:1px 1px 1px 0; border-style:solid; border-color:rgba(0,0,0,0.1);}
+.filter_heading h3{margin:0; position:relative; font-size:18px; font-weight:600;}
+.filter_heading h3 span{position:absolute; right:0; bottom:0; font-size:12px; font-weight:500; text-transform:uppercase; color:#4b6c99; cursor:pointer;}
+.filter_tab{border-right:1px solid rgba(0,0,0,0.1); padding:0;}
+.filter_tab .panel{box-shadow:none; border-bottom:1px solid rgba(0,0,0,0.1); border-right:0; margin:0; border-radius:0;}
+.filter_tab .panel .panel-heading{padding:0;}
+.filter_tab .panel .panel-heading h4 span{padding:10px 15px 10px 0; display:block; color:rgba(0,0,0,0.9); font-size:15px;}
+.filter_tab .panel-collapse .panel-body{padding:10px 10px 10px 0; border-top:1px solid rgba(0,0,0,0.1);}
+.filter_tab .panel-collapse .panel-body a{display:block; padding:10px 0; color:#636363; text-decoration:none;}
+.filter_tab .panel-collapse .panel-body .checkbox label{padding:0 0 3px; font-size:13px;}
+.panel_open .collapse{display:block; height:100% !important;}
+
+/* start of radio css */
+.filter_tab .panel-collapse .panel-body .radio_btn{position:relative;}
+.filter_tab .panel-collapse .panel-body .radio_btn input[type=radio]{position: absolute; visibility: hidden;}
+.filter_tab .panel-collapse .panel-body .radio_btn label{display: inline-block; position: relative; font-size: 13px; padding: 3px 10px 2px 28px; z-index: 9; cursor: pointer; color:rgba(0,0,0,0.7); font-weight:500; -webkit-transition: all 0.25s linear;}
+.filter_tab .panel-collapse .panel-body .radio_btn label i{font-size:13px;}
+.filter_tab .panel-collapse .panel-body .radio_btn .check{display: block; position: absolute; border: 2px solid rgba(0, 0, 0, 0.5); border-radius: 100%; height: 15px; width: 15px; top: 5px; left: 0px; z-index: 5; transition: border .25s linear; -webkit-transition: border .25s linear;}
+.filter_tab .panel-collapse .panel-body .radio_btn:hover .check {border: 2px solid #4b6c99;}
+.filter_tab .panel-collapse .panel-body .radio_btn .check::before {display: block; position: absolute; content: ''; border-radius: 100%; height: 5px; width: 5px; top: 3px; left: 3px; margin: auto; transition: background 0.25s linear; -webkit-transition: background 0.25s linear;}
+.filter_tab .panel-collapse .panel-body .radio_btn input[type=radio]:checked ~ .check {border: 2px solid #4b6c99;}
+.filter_tab .panel-collapse .panel-body .radio_btn input[type=radio]:checked ~ .check::before{background: #4b6c99;}
+
+/* start of media css */
+@media (min-width:768px) and (max-width:991px) {
+	.content{padding-bottom:540px; padding-left:0; padding-right:0;}
+	.brand_logo ul li{padding:0 15px;}
+	.brand_logo ul li img{width:60px;}
+}
+
+@media (min-width:992px) and (max-width:1200px) {
+	.brand_logo ul li{padding:0 15px;}
+}
+
+@media (max-width:767px){
+	.footer{position:relative;}
+	.content{padding-bottom:20px; padding-top:20px;}
+	
+	/* start of male femle */
+	.male_female_div{top:50px;}
+	.male_female_div img{width:20px;}
+	.male_female_1{top:0;}
+	
+	.detail_heading, .detail_price, .detail_button{text-align:center;}
+	.xs_detail_price{margin-top:25px;}
+	.enlarge_popup li{padding:0;}
+	.enlarge_popup li .btn{box-shadow:0 0 4px rgba(0,0,0,0.15); border-radius:0;}
+	.selfie_generic_div{padding-bottom:30px; padding-top:10px;}
+	
+	/* start of brand slider css*/
+	.brand_slider{margin-bottom:0;}
+	.brand_slider .item .thumb_div a img{width:100%;}
+	.brand_slider .item .thumb_div.ca-content .ca-main a{font-size:11px;}
+	.brand_slider ul.lSPager{display:block; margin:0;}
+	.brand_slider .lSAction{display:none !important;}
+}

@@ -1,0 +1,54 @@
+<section class="container-fluid content"><!-- start of middle_part -->
+  <div class="container">
+    <div class="row"><!-- start of row -->
+
+      <app-left-menu></app-left-menu>
+
+      <div class="col-md-9 col-sm-8 col-xs-12"><!-- start of right_part -->
+        <div class="col-xs-12 no-padding review_heading"><!-- start of review_heading -->
+          <h3>My Wishlist <span></span></h3>
+        </div><!-- end of review_heading -->
+
+        <div class="col-sm-12 col-xs-12 no-padding responsive-mobile-table"><!-- start of content -->
+
+          <table class="col-xs-12 table-bordered table-condensed no-padding no-border cart_table">
+            <thead>
+            <tr>
+              <th>Product Name</th>
+              <th></th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            <tr *ngFor="let item of wishlist; let i = index;"><!-- start of product_cart -->
+              <td data-title="Product Name">
+                <div class="addcart_image">
+                  <img [src]="(item.product.product_images.img_base != undefined ) ? item.product.product_images.img_base : 'assets/images/product/default/is-base.jpg'" [alt]="item.title" class="center-block img-responsive">
+                </div>
+                <div class="addcart_detail">
+                  <p>{{item.title}}</p>
+                  <span>Size: {{(item.product.size+ ' ' +item.product.unit).toUpperCase() }}</span>
+                  <div *ngIf="item.isStock; then stockIf else stockElse"></div>
+                  <p *ngIf="item.product.is_stock != 'in_stock'"><span>Sold Out</span></p>
+                  <p *ngIf="item.product.is_stock == 'in_stock'" class="instock_text"><span>In Stock</span></p>
+                </div>
+              </td>
+              <td data-title="Price" class="total_text">
+                <h4>
+                  <a routerLink="/{{item.product.url_key}}" class="btn from-left cart_btn btn_outline">View</a>
+                  <a (click)="updateWishlist(item.product.id, i);">
+                    <span><i class="fa fa-trash-o"></i></span>
+                  </a>
+                </h4>
+              </td>
+            </tr><!-- end of product_cart -->
+            </tbody>
+          </table>
+
+        </div><!-- end of content -->
+      </div><!-- end of right_part -->
+
+    </div><!-- end of row -->
+  </div>
+</section><!-- end of middle_part -->

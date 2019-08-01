@@ -1,0 +1,134 @@
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import './../node_modules/ngx-toastr/toastr.css';
+@import 'https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700';
+@import './assets/css/bootstrap.min.css';
+@import './assets/css/font-awesome.min.css';
+@import './assets/css/custom.css';
+
+/* You can add global styles to this file, and also import other style files */
+html, body{margin: 0px; padding: 0px; font-family: 'Roboto Condensed', sans-serif; color:rgba(0, 0, 0, 0.7);}
+body{margin: 0px; padding: 0px; font-family: 'Roboto Condensed', sans-serif; letter-spacing:0.5px;}
+
+.wrapper {min-height:100%;position:relative; padding-top:32px;}
+.content{padding-bottom:540px; padding-top:20px;} /* Height of the footer element */
+footer{width:100%; height:auto; position:absolute; bottom:0;}
+
+app-*{width:100%; float:left; position:relative;}
+
+ul.nav_menu_1 li.active a { color: #ed1b62; }
+.plus_bar{height:1px; background:#666666; width:10px; display:block; /*margin:0 5px;*/}
+.plus_bar:first-child{transform:rotate(90deg);}
+.equal_bar{height:1px; background:#666666; width:10px; display:block; margin:1px 0px;}
+
+.combo_offers ngx-tile{padding-right:10px !important;}
+
+.Thumbnail_slider_btn{height:130px !important;}
+
+.leftRs {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  width: 35px;
+  height: 35px;
+  line-height:35px;
+  box-shadow: none;
+  border:none;
+  left: 0;
+  background:none; font-size:36px;
+}
+
+.rightRs {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  width: 35px;
+  height: 35px;
+  line-height:35px;
+  box-shadow: none;
+  border:none;
+  right: 0;
+  background:none; font-size:36px;
+}
+
+/deep/ #tawkchat-container .round #tawkchat-status-text-container{width:50px; height:50px; background:#28373f; box-shadow:0 0px 15px -3px rgba(0,0,0,0.5);}
+/deep/ #tawkchat-container .round #tawkchat-status-icon:before{font-size:22px; line-height:50px;}
+
+
+.checkbox label:after, 
+.radio label:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.checkbox .cr,
+.radio .cr {
+    position: relative;
+    display: inline-block;
+    border: 1px solid #a9a9a9;
+    border-radius: 0;
+    width: 1.3em;
+    height: 1.3em;
+    float: left;
+    margin-right: .5em;
+}
+
+.radio .cr {
+    border-radius: 50%;
+}
+
+.checkbox .cr .cr-icon,
+.radio .cr .cr-icon {
+    position: absolute;
+    font-size: .8em;
+    line-height: 0;
+    top: 50%;
+    left: 20%;
+}
+
+.radio .cr .cr-icon {
+    margin-left: 0.04em;
+}
+
+.checkbox label input[type="checkbox"],
+.radio label input[type="radio"] {
+    display: none;
+}
+
+.checkbox label input[type="checkbox"] + .cr > .cr-icon,
+.radio label input[type="radio"] + .cr > .cr-icon {
+    transform: scale(3) rotateZ(-20deg);
+    opacity: 0;
+    transition: all .3s ease-in;
+}
+
+.checkbox label input[type="checkbox"]:checked + .cr > .cr-icon,
+.radio label input[type="radio"]:checked + .cr > .cr-icon {
+    transform: scale(1) rotateZ(0deg);
+    opacity: 1;
+}
+
+.checkbox label input[type="checkbox"]:disabled + .cr,
+.radio label input[type="radio"]:disabled + .cr {
+    opacity: .5;
+}
+
+.accordion_main_div .panel-group .panel{border:0; box-shadow:none; margin-bottom:15px;}
+.accordion_main_div .panel-group .panel .panel-heading{padding:0;}
+.accordion_main_div .panel-group .panel .panel-heading .panel-title .accordion-toggle{display:block; padding:10px 15px; text-decoration:none; background:#f5f5f5; color:#636363;}
+.accordion_main_div .panel-group .panel .panel-collapse .panel-body{padding:15px 10px; border:1px solid rgba(0,0,0,0.1);}
+
+.accordion_main_div .panel-group .panel.panel-open .panel-heading .panel-title .accordion-toggle{background:#4b6c99; color:#fff;}
+
+
+@media (max-width:767px){
+	.content{padding-bottom:20px; padding-top:20px;}
+  app-footer{position:relative !important;}
+  /* start header top margin css */
+  .prive_box + app-header, .prive_box + .wrapper app-header{margin-top:55px;}
+  .login_form form .form-group input, .login_form .form-group textarea{font-size:16px;}
+
+}
+

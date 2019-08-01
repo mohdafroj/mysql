@@ -1,0 +1,12 @@
+@import './../../../../assets/css/animate.css';
+@import './../../../../assets/css/lightslider.css';
+@import './../../../../assets/css/scent-shot.css';
+
+.content-slider .rightRs{right:-10px;}
+.content-slider .leftRs{left:-10px;}
+.brnd_slider{width:100%;}
+.transition-timer-carousel .item{padding:0;}
+.content-slider.row-flex-wrap{margin-top:0;}
+/deep/ .touch_slider_2 .item{padding:0 5px;}
+
+

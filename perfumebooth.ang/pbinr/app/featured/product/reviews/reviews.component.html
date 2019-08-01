@@ -1,0 +1,148 @@
+<div class="col-xs-12 margin-xlg-top xs-no-padding"><!-- start of review_section -->
+	<div class="col-xs-12 no-padding review_heading"><!-- start of review_heading -->
+		<h3>Reviews And Rating <span></span></h3>
+	</div><!-- end of review_heading -->
+	
+	<div class="col-sm-12 col-xs-12 no-padding customer_rate"><!-- start of Rating -->
+		<div class="col-sm-6 col-xs-12 no-padding-left xs-no-padding margin-top"><!-- start of review_average -->
+			<div class="show_rating">
+				<h4>Average user rating</h4>
+				
+				<div class="col-sm-4 col-xs-5 average_rate"><!-- start of average_rating -->
+					<div class="starrr">
+						<i *ngFor="let itemactive of getFinalRating(customerRating);" class="fa fa-star gradient_use color-star"></i>
+						<i *ngFor="let itemnonactive of getRemainingRating(customerRating);"  class="fa fa-star gradient_use"></i>
+					</div>
+					<h3>{{customerRating + '/' + customerReviews }}</h3>
+				</div><!-- end of average_rating -->
+				
+				<div class="col-sm-8 col-xs-7 average_progress"><!-- start of average_progress -->
+				
+					<div *ngFor="let rate of progressRating;" class="col-sm-12 col-xs-12 no-padding"><!-- start of progress_1 -->
+						<span>{{ rate.rating }} <i class="fa fa-star"></i></span>
+						<span class="progress"><!-- start of progress_bar -->
+							<mat-progress-bar class="progress-bar" [color]="'warn'" [value]="rate.progress" [bufferValue]="'0'"></mat-progress-bar>
+						</span><!-- end of progress_bar -->
+						<span>{{ rate.review }}</span>
+					</div><!-- end of progress_1 -->
+															
+				</div><!-- end of average_progress -->
+			</div>
+		</div><!-- end of review_average -->
+		
+		<div class="col-sm-6 col-xs-12 no-padding-right xs-no-padding margin-top"><!-- start of write_a_review -->
+			<div class="review_form">
+				<h5 class="text-uppercase">Have you purchased this items?</h5>
+				<button type="submit" class="btn from-right cart_btn" data-target="#rateReview" data-toggle="modal" role="button">Reviews and Rating</button>	
+			</div>
+		</div><!-- end of write_a_review -->
+	</div><!-- end of Rating -->					
+</div><!-- end of review_section -->
+
+<div *ngIf="reviewsList.length" class="col-xs-12 no-padding"><!-- start of review_part -->
+	
+	<div class="col-sm-12 col-xs-12 no-padding customer_reviews_div"><!-- start of right_part -->
+		<h3>Customer Reviews <span></span></h3>
+		
+		<div class="col-xs-12 no-padding margin-top"><!-- start of customer_review -->
+			
+			<div *ngIf="reviewsList.length == 0" class="col-xs-12 review_box">                                
+				<div class="col-sm-12 col-xs-12 review_bottom">
+					<p>Sorry, there are no review for <strong>"{{result.title}}"</strong></p>
+				</div>                                    
+			</div>
+			
+			
+			<div *ngFor="let item of reviewsList" class="col-xs-12 review_box"><!-- start of review_box -->
+			
+				<div class="col-sm-12 col-xs-12 review_top"><!-- start of review_top -->
+					<h4>
+						{{item.title}} 
+					</h4>
+					<h5>
+						<span class="starrr">
+							<i class="fa fa-star gradient_use color-star" *ngFor="let i of getFinalRating(item.rating)"></i>
+							<i class="fa fa-star gradient_use" *ngFor="let j of getRemainingRating(item.rating)"></i>
+						</span>
+						<span>By {{item.customer.name}}</span>
+						<span>{{item.created}}</span>
+					</h5>
+				</div><!-- end of review_top -->
+				
+				<div class="col-sm-12 col-xs-12 review_bottom"><!-- start of review_content -->
+					<p [innerHTML]="sanitizer.bypassSecurityTrustHtml(item.description)"></p>
+				</div><!-- end of review_content -->
+				
+			</div><!-- end of review_box -->
+			
+			
+		</div><!-- end of customer_review -->
+			
+		<div *ngIf="moreReviewsFlag" class="col-xs-12 no-padding margin-top"><!-- start of button -->
+			<button (click)="loadMoreReviews();" class="btn from-right cart_btn btn_outline">
+				Load More
+			</button>
+			<span>{{reviewsLoader}}</span>
+		</div><!-- end of button -->
+	</div><!-- end of right_part -->
+</div><!-- end of review_part -->
+
+
+<!-- start of review_popup -->
+<div id="rateReview" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+	
+		<!-- Modal content-->
+		<div class="modal-content modal-sm col-sm-offset-3">
+			<div class="modal-header no-padding no-border">
+				<button type="button" class="close video_close" data-dismiss="modal">
+					<span class="icon_cross"></span>
+					<span class="icon_cross"></span>
+				</button>
+			</div>
+			<div class="modal-body col-sm-12 col-xs-12 login_popup_div">
+				<h3 class="clearfix">Reviews And Rating</h3>
+				<div class="col-xs-12 login_form"><!-- start of form_part -->
+					<form [formGroup] = "rForm" (ngSubmit) = "addReview(rForm.value);" class="col-xs-12 no-padding">
+						<div class="col-xs-12 no-padding margin-md-bottom text-center"><!-- start of rating -->
+							<h5 class="no-margin text-uppercase padding-bottom">Rate It</h5>
+							<div class="starrr">
+								<i *ngFor="let item of reviewSelected" (click)="selectReview(item);" class="fa fa-star gradient_use color-star" style="cursor:pointer;"></i>
+								<i *ngFor="let item of reviewRemain" (click)="unselectReview(item);" class="fa fa-star gradient_use" style="cursor:pointer;"></i>
+							</div>
+						</div><!-- end of rating -->
+						
+						<div class="form-group select_box_1 col-xs-12 no-padding rinput"><!-- start of select_box -->
+							<select formControlName="title" class="form-control">
+								<option value="" title="Title">Select Title</option>
+								<option value="Affordable" title="Affordable">Affordable</option>
+								<option value="Average" title="Average">Average</option>
+								<option value="Awesome" title="Awesome">Awesome</option>
+								<option value="Brilliant" title="Brilliant">Brilliant</option>
+								<option value="Classy" title="Classy">Classy</option>
+								<option value="Excellent" title="Excellent">Excellent</option>
+								<option value="Exotic" title="Exotic">Exotic</option>
+								<option value="Okay" title="Okay">Okay</option>
+								<option value="Sensual" title="Sensual">Sensual</option>
+								<option value="Soothing" title="Soothing">Soothing</option>
+							</select>
+						</div><!-- end of select_box -->
+						
+						<div class="form-group col-xs-12 no-padding rinput"><!-- start of textarea -->
+							<textarea class="form-control" formControlName="description" cols="2"></textarea>
+							<span *ngIf="rForm.controls.description.invalid" class="filed_name">Write here*</span>
+							<span *ngIf="rForm.controls.description.valid" class="filed_name complete_filled">Write here*</span>
+						</div><!-- end of textarea -->
+						<div class="form-group"><p [ngClass]="{'':reviewStatus === 0,'text-danger':reviewStatus === 1,'text-success':reviewStatus === 2}" [innerHTML]="sanitizer.bypassSecurityTrustHtml(reviewMsg)"></p></div>
+						
+						<div class="form-group col-xs-12 no-padding"><!-- start of submit_button -->
+							<button type="submit" class="btn from-right cart_btn btn-block margin-bottom" [disabled]="!rForm.valid">Submit</button>
+						</div><!-- end of submit_button -->
+					</form>
+				</div><!-- end of form_part -->
+			</div>
+		</div>
+	
+	</div>
+</div>
+<!-- end of review_popup -->

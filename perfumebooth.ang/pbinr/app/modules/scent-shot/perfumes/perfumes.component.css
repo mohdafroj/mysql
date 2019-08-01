@@ -1,0 +1,35 @@
+@import './../../../../assets/css/thumbnail.css';
+@import './../../../../assets/css/lightslider.css';
+@import './../../../../assets/css/perfume_selfie.css';
+
+/deep/ .ngxcarouselPointDefault .ngxcarouselPoint li.active{background:#38b8bf !important; transform:scale(1.1) !important;}
+.selfie_generic_div .carousel{float:left;}
+/deep/ .contains_slider .item{padding:0 !important; text-align:center;}
+/deep/ .touch_slider .ngxcarouselPointDefault ul{padding:0 !important; display:none !important;}
+
+/* start of contains_list and contains lines css of dynamic */
+.kit_contains_div {padding:25px 0 15px;}
+/deep/ .kit_contains_div p{color:rgba(0,0,0,0.7); font-size:16px; padding:0 0 2px 0; line-height:20px; margin:0}
+/deep/ .kit_contains_div ul{padding:8px 0 15px; margin:5px 0 0 0;}
+/deep/ .kit_contains_div ul li{font-size:14px; color:rgba(0,0,0,0.8); font-weight:300; padding:0 0 15px 15px; position:relative; list-style:none; line-height:1.1;}
+/deep/ .kit_contains_div ul li:last-child{padding-bottom:0;}
+/deep/ .kit_contains_div ul li:before{content:"-"; position:absolute; left:0; top:7px; color:rgba(0,0,0,0.4); font-size:25px; line-height:0;}
+/deep/ .kit_contains_div p:last-child{color:rgba(0,0,0,0.6); font-size:12px; line-height:20px; padding:0; text-align:justify; padding:10px 0 0px;}
+
+.rightRs{right:-5px !important;}
+.leftRs{left:-5px !important;}
+/deep/ ul.ngucarouselPoint{display:none;}
+
+/* nav_tabs css */
+.nav_tabs{margin:20px 0;}
+.nav_tabs ul{margin:0 0 15px; border-width:1px 0; border-style:solid; border-color:#ccc; display:flex; align-items:center;}
+.nav_tabs ul li{padding:0; position:relative;}
+.nav_tabs ul li a{padding:8px 15px; font-size:14px; color:#28373f; text-decoration:none; display:block; transition:all ease 0.5s; -webkit-transition:all ease 0.5s;}
+.nav_tabs ul li a:hover, .nav_tabs ul li.active a{color:#ed1b62;}
+.nav_tabs ul li + li:before{content:"|"; position:absolute; left:-3px; top:8px; font-size:12px; color:#bbbbbb;}
+.nav_tabs .tab-pane{padding:0 15px 15px;}
+.nav_tabs .tab-pane p{line-height:24px; color:rgba(0,0,0,0.6);}
+
+@media (max-width:767px){
+	/deep/ .touch_slider .ngxcarouselPointDefault ul{padding:12px !important; display:inline-block !important;}
+}

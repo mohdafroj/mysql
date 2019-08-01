@@ -1,0 +1,38 @@
+/* start of review_form */
+.customer_rate{padding:0 0 40px 0; margin-bottom:40px; border-bottom:1px solid #ccc;}
+.review_form{position:relative; float:left; width:100%; padding:20px 15px; text-align:center;}
+.review_form .form-group label{font-weight:500;}
+.review_form .form-group .form-control{border-radius:0px;}
+.review_form .form-group textarea{resize:none;}
+.review_form .form-group .form-control:focus{box-shadow:none; border:1px solid #333333;}
+/* start of average_bar css */
+.show_rating{position:relative; width:100%; float:left; border-right:1px solid #ccc;}
+.show_rating h4{color:#28373f; font-size:14px; margin:0; padding-bottom:25px; float:left; width:100%; text-transform:uppercase;}
+.show_rating .average_rate{padding:0 10px 0 0;}
+.show_rating .average_rate i{font-size:17px;}
+.show_rating .average_rate h3{font-size:22px; color:#28373f; margin:0; padding-top:4px;}
+.show_rating .average_progress{padding:0 0 0 10px;}
+.show_rating .average_progress div[class*='col-']{display:flex; align-items:center; padding-bottom:4px;}
+.show_rating .average_progress div[class*='col-'] span{font-size:14px; color:#28373f; padding:0 2px;}
+.show_rating .average_progress div[class*='col-'] span.progress .progress-bar{
+	background: -moz-linear-gradient(left, #005586 0%, #00a9bd 100%);
+	background:-webkit-linear-gradient(left, #005586 0%,#00a9bd 100%);
+	background: linear-gradient(to right, #005586 0%,#00a9bd 100%);
+}
+.show_rating .average_progress div[class*='col-'] span i{font-size:13px; color:#808080;}
+.show_rating .average_progress div[class*='col-'] .progress{width:50%; height:3px; margin:0 4px;}
+
+/* start of customer_review */
+.customer_reviews_div h3{color:#28373f; font-weight:700; text-transform:uppercase; font-size:20px; margin:0 0 15px 0;}
+.review_box{border-radius:0px; padding:15px 0 30px; margin-bottom:20px; border-bottom:1px solid #ddd;}
+.review_top{padding:0 0 5px;}
+.review_top h4{color:#28373f; font-size:14px; margin:0; padding:0 0 12px;}
+.review_top h5{padding:0 0 10px; margin:0; display:flex; align-items:center;}
+.review_top h5 span{display:inline-block; color:#28373f; font-size:13px; padding:0 10px; position:relative;}
+.review_top h5 span:nth-child(1){padding-left:0;}
+.review_top h5 span:nth-child(3){color:rgba(0,0,0,0.5);}
+.review_top h5 span + span:before{content:"|"; position:absolute; left:-2px; top:2px; color:rgba(0,0,0,0.5); font-size:11px;}
+.review_bottom{padding:5px 0 0;}
+.review_bottom p{color:rgba(0,0,0,0.6); font-size:12px; line-height:20px; text-align:justify; margin:0;}
+.login_form .starrr i{font-size:17px;}
+

@@ -1,0 +1,58 @@
+<section class="container-fluid content"><!-- start of middle_part -->
+  <div class="container">
+    <div class="row"><!-- start of row -->
+      <app-left-menu></app-left-menu>
+      <div class="col-md-9 col-sm-8 col-xs-12"><!-- start of right_part -->
+        <div class="col-xs-12 no-padding review_heading"><!-- start of review_heading -->
+          <h3>My Profile <span></span></h3>
+        </div><!-- end of review_heading -->
+
+        <div class="col-sm-12 col-xs-12 no-padding"><!-- start of content -->
+          <div class="col-sm-12 col-xs-12 profile_detail"><!-- start of first_name -->
+            <p class="col-md-3 col-sm-4 col-xs-5">First Name</p>
+            <p class="col-md-9 col-sm-8 col-xs-7">{{response.firstname}}</p>
+          </div><!-- end of first_name -->
+
+          <div class="col-sm-12 col-xs-12 profile_detail"><!-- start of last_name -->
+            <p class="col-md-3 col-sm-4 col-xs-5">Last Name</p>
+            <p class="col-md-9 col-sm-8 col-xs-7">{{response.lastname}}</p>
+          </div><!-- end of last_name -->
+
+          <div class="col-sm-12 col-xs-12 profile_detail"><!-- start of gender -->
+            <p class="col-md-3 col-sm-4 col-xs-5">Gender</p>
+            <p class="col-md-9 col-sm-8 col-xs-7">{{response.gender.substring(0, 1).toUpperCase() + response.gender.substring(1)}}</p>
+          </div><!-- end of gender -->
+
+          <div class="col-sm-12 col-xs-12 profile_detail"><!-- start of dob -->
+            <p class="col-md-3 col-sm-4 col-xs-5">Date Of Birth</p>
+            <p class="col-md-9 col-sm-8 col-xs-7">{{response.dob.substring(0,10)}}</p>
+          </div><!-- end of dob -->
+
+          <div class="col-sm-12 col-xs-12 profile_detail"><!-- start of mobile_no -->
+            <p class="col-md-3 col-sm-4 col-xs-5">Mobile Number</p>
+            <p class="col-md-9 col-sm-8 col-xs-7">{{response.mobile}}</p>
+          </div><!-- end of mobile_no -->
+
+          <div class="col-sm-12 col-xs-12 profile_detail"><!-- start of email -->
+            <p class="col-md-3 col-sm-4 col-xs-5">E-Mail</p>
+            <p class="col-md-9 col-sm-8 col-xs-7">{{response.email}}</p>
+          </div><!-- end of email -->
+
+          <div class="col-sm-12 col-xs-12 profile_detail">
+            <a routerLink="/customer/account-detail" class="btn from-left-checkout btn_checkout">Edit Profile</a>
+          </div>
+          <!--div class="col-sm-12 col-xs-12 profile_detail">
+            <p class="col-md-3 col-sm-4 col-xs-5">Refer Link:</p>
+            <p class="col-md-9 col-sm-8 col-xs-7">{{refLink}}</p>
+          </div>
+          <div class="col-sm-12 col-xs-12 profile_detail">
+            <p class="col-md-3 col-sm-4 col-xs-5"></p>
+            <div class="col-md-9 col-sm-8 col-xs-7"><button (click)="copyLink();" class="btn from-left cart_btn">Copy Link</button></div>
+          </div-->
+        </div><!-- end of content -->
+      </div><!-- end of right_part -->
+
+    </div><!-- end of row -->
+  </div>
+</section><!-- end of middle_part -->
+

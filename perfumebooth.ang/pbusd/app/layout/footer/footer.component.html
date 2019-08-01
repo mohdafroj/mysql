@@ -1,0 +1,174 @@
+        <div class="footer_social"><!-- start of footer_top -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="col-md-7 col-sm-5 col-xs-12 no-padding"><!-- start of media_link -->
+                            <ul class="list-unstyled list-inline social_icon">
+                                <li>
+                                    <a href="https://www.facebook.com/perfumeboothindia" target="_blank"><i class="fa fa-facebook facebook hovicon effect-8"></i></a>
+                                </li>
+                                <li>
+                                    <a href="https://twitter.com/perfumebooth" target="_blank"><i class="fa fa-twitter twitter hovicon effect-8"></i></a>
+                                </li>
+                                <li>
+                                    <a href="https://www.instagram.com/perfumeboothindia/" target="_blank"><i class="fa fa-instagram instagram hovicon effect-8"></i></a>
+                                </li>
+                                <li>
+                                    <a href="https://www.youtube.com/c/perfumebooth" target="_blank"><i class="fa fa-youtube googleplus hovicon effect-8"></i></a>
+                                </li>
+                                <li>
+                                    <a href="https://in.pinterest.com/perfumeboothin/" target="_blank"><i class="fa fa-pinterest-p pinterest hovicon effect-8"></i></a>
+                                </li>
+                            </ul>
+                        </div><!-- end of media_link -->
+
+                        <div class="col-md-5 col-sm-7 col-xs-12 no-padding"><!-- start of subscribe -->
+                            <form class="form-horizontal" [formGroup]="rForm" (ngSubmit)="newsletterSubscribe(rForm.value);">
+                                <div class="form-group no-margin newsletter_div">
+                                    <label class="control-label col-sm-3 col-xs-12 xs-no-padding">Newsletter</label>
+                                    <div class="col-sm-9 col-xs-12 xs-no-padding">
+                                        <div class="input-group">
+											<input type="email" class="form-control" formControlName="email">
+                                            <span class="input-group-btn">
+                                                <button [disabled]="!rForm.valid" class="btn btn-div-subscribe btn_checkout from-left-checkout" type="submit">Subscribe</button>
+                                            </span>
+                                        </div><!-- /input-group -->
+                                    </div>
+                                </div>
+                            </form>
+                        </div><!-- end of subscribe -->
+                    </div>
+                </div>
+            </div>
+        </div><!-- end of footer_top -->
+
+        <div class="footer_div"><!-- start of footer_bottom -->
+            <div class="container">
+                <div class="row"><!-- start of row -->
+
+                    <div class="col-xs-12 no-padding"><!-- start of upper_part -->
+
+                        <div class="col-sm-4 col-xs-12 footer_link"><!-- start of about_section -->
+                            <h4 (click)="footerToggle(1);" class="aboutUs footer_tab_heading {{infoActive}}">Information</h4>
+                            <ul class="list-unstyled footer_tab_content {{infoShow}}" [hidden]="showDevice">
+                                <li>
+                                    <a routerLink="/about-us" routerLinkActive="active">About Us</a>
+                                </li>
+                                <li>
+                                    <a routerLink="/privacy-policy" routerLinkActive="active">Privacy Policy</a>
+                                </li>
+                                <li>
+                                    <a routerLink="/terms-of-use" routerLinkActive="active">Terms and Conditions</a>
+                                </li>
+                                <li>
+                                    <a routerLink="/testimonials" routerLinkActive="active">Testimonials</a>
+                                </li>
+                                <li>
+                                    <a routerLink="/disclaimers" routerLinkActive="active">Disclaimers</a>
+                                </li>
+                                <li>
+                                    <a routerLink="/faq" routerLinkActive="active">FAQ</a>
+                                </li>
+                            </ul>
+                        </div><!-- end of about_section -->
+
+                        <div class="col-sm-4 col-xs-12 footer_link"><!-- start of products_section -->
+                            <h4 (click)="footerToggle(2);" class="product footer_tab_heading {{custActive}}">Customer Service</h4>
+                            <ul class="list-unstyled footer_tab_content {{custShow}}" [hidden]="showDevice">
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-envelope"></i> connect@perfumebooth.com
+                                    </a>
+                                </li>
+                                <li>
+                                    <a routerLink="/contact-us" routerLinkActive="active">Contact US</a>
+                                </li>
+                                <!--li>
+                                    <a routerLink="/sitemap" routerLinkActive="active">Sitemap</a>
+                                </li-->
+                                <li *ngIf="userId > 0">
+                                    <a routerLink="/customer/profile" routerLinkActive="active">Profile</a>
+                                </li>
+                                <li *ngIf="userId > 0">
+                                    <a routerLink="/customer/orders" routerLinkActive="active">Track Orders</a>
+                                </li>
+                                <li *ngIf="userId == 0">
+                                    <a routerLink="/customer/login" routerLinkActive="active">Login</a>
+                                </li>
+                                <li *ngIf="userId == 0">
+                                    <a routerLink="/customer/registration" routerLinkActive="active">Registration</a>
+                                </li>
+                                <li>
+                                    <a routerLink="/prive-member" routerLinkActive="active">Prive Member</a>
+                                </li>
+                            </ul>
+                        </div><!-- end of products_section -->
+
+                        <div class="col-sm-4 col-xs-12 footer_link"><!-- start of follow_section -->
+                            <h4 (click)="footerToggle(3);" class="followUs footer_tab_heading {{prodActive}}">Products</h4>
+                            <ul class="list-unstyled footer_tab_content {{prodShow}}" [hidden]="showDevice">
+                                <li>
+                                    <a routerLink="/" routerLinkActive="active">Home</a>
+                                </li>
+                                <li>
+                                    <a routerLink="/scent-shot" routerLinkActive="active">Scent Shot</a>
+                                </li>
+                                <li>
+                                    <a routerLink="/perfume-bottle" routerLinkActive="active">Perfumes</a>
+                                </li>
+                            </ul>
+                        </div><!-- end of follow_section -->
+
+                    </div><!-- end of upper_part -->
+
+                    <div class="col-sm-12 col-xs-12"><!-- start of middle_part -->
+                        <div class="col-sm-12 col-xs-12 footer_security">
+                            <div class="col-sm-6 col-xs-12 no-padding">
+                            	<p class="text-white no-margin xs_text_center">We accept all major debit and credit cards</p>
+                                <ul class="list-unstyled list-inline cards_icn_2">
+                                    <li>
+                                        <img src="assets/images/cards_icon/maestro.svg" alt="maestro" class="img-responsive center-block">
+                                    </li>
+                                    <li>
+                                        <img src="assets/images/cards_icon/mastercard.svg" alt="mastercard" class="img-responsive center-block">
+                                    </li>
+                                    <li>
+                                        <img src="assets/images/cards_icon/visa.svg" alt="visa" class="img-responsive center-block">
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="col-sm-6 col-xs-12 no-padding margin-top">
+                                <ul class="list-unstyled list-inline cards_icn">
+                                    <li>
+                                        <img src="assets/images/cards_icon/security/100_percentage.svg" alt="100 Percentage" title="100 Percentage" class="img-responsive center-block">
+                                    </li>
+                                    <li>
+                                        <img src="assets/images/cards_icon/security/largest_collection.svg" alt="Largest Collection" title="Largest Collection" class="img-responsive center-block">
+                                    </li>
+                                    <li>
+                                        <img src="assets/images/cards_icon/security/safe_secure.svg" alt="Safe Secure" title="Safe Secure" class="img-responsive center-block">
+                                    </li>
+                                    <li>
+                                        <img src="assets/images/cards_icon/security/ssl.svg" alt="ssl" title="ssl" class="img-responsive center-block">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div><!-- end of middle_part -->
+
+                    <div class="col-xs-12 footer_reserved"><!-- start of disclaimer -->
+                        <p>
+                            Shop 100% authentic products with confidence. All transactions on Perfume Booth are secured  by SSL and secured payment gateway.
+                        </p>
+                    </div><!-- end of disclaimer -->
+                    
+                    <div class="col-xs-12 footer_reserved">
+                        <p>
+                            Copyright © 2016-{{currentYear}} PerfumeBooth Pvt. Ltd. All Rights Reserved.
+                        </p>
+                    </div>
+
+                </div><!-- end of row -->
+            </div>
+        </div><!-- end of footer_bottom -->
