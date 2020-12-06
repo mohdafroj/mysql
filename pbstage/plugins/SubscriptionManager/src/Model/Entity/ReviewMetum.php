@@ -14,7 +14,7 @@ use Cake\ORM\Entity;
  *
  * @property \SubscriptionManager\Model\Entity\Review $review
  */
-class ReviewMetum extends Entity
+class ReviewMeta extends Entity
 {
 
     /**
