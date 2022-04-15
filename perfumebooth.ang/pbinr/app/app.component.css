@@ -1,7 +1,0 @@
-/* start of offer_strip css */
-.offer_strip{position:fixed; left:0; top:0; width:100%; background:#ec297b; padding:6px 5px; text-align:center; z-index:5;}
-.offer_strip p{color:#fff; font-size:12px; display:inline-block; margin-bottom:0; letter-spacing:1px; font-weight:500; position:relative;}
-
-@media (max-width:767px){
-	.footer{position:relative;}
-}
