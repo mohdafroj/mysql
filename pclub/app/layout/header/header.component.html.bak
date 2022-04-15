@@ -1,0 +1,120 @@
+	<nav class="navbar navbar-expand-md navbar-light nav-top">		
+        <div class="container p-0" id="wrapper">
+			<a class="navbar-brand" routerLink="/">
+				<img src="assets/images/logo.svg" alt="Logo" class="img-fluid">
+			</a>
+			<button id="menuToggle" (click)= "actveMenu = !actveMenu;" class="cta navbar-toggler" [ngClass]="{'active': actveMenu, 'collapsed': !actveMenu}" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" [attr.aria-expanded]="actveMenu" aria-label="Toggle navigation">
+                <span class="toggle-btn type1"></span>
+            </button>
+            <div class="navbar-collapse">
+			
+				<div class="mr-auto collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav nav_menu">
+						<li class="nav-item">
+							<a class="nav-link my-btn checkout_btn from-left sticky-top" routerLink="/shopnow">Shop Now</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link d-md-none" [routerLink]="['/', 'shopnow']" [queryParams]="{type: config.categories.category1.key}">{{config.categories.category1.title}}</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link d-md-none" [routerLink]="['/', 'shopnow']" [queryParams]="{type: config.categories.category2.key}">{{config.categories.category2.title}}</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link d-md-none" [routerLink]="['/', 'shopnow']" [queryParams]="{type: config.categories.category3.key}">{{config.categories.category3.title}}</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link d-md-none" [routerLink]="['/', 'shopnow']" [queryParams]="{type: config.categories.category4.key}">{{config.categories.category4.title}}</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link d-md-none" [routerLink]="['/', 'shopnow']" [queryParams]="{type: config.categories.category5.key}">{{config.categories.category5.title}}</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link d-md-none" [routerLink]="['/', 'shopnow']" [queryParams]="{type: config.categories.category6.key}">{{config.categories.category6.title}}</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" routerLink="/scent-match">Scent Match</a>
+						</li>
+						<li class="nav-item" *ngIf="userId > 0">
+							<a class="nav-link" routerLink="/customer/refer-and-earn">Refer &amp; Earn</a>
+						</li>
+						<!--li class="nav-item">
+							<a class="nav-link px-3" routerLink="/subscription">Subscription Box</a>
+						</li-->
+					</ul>
+				</div>
+				<!--a class="nav-link my-btn checkout_btn from-left mobileShopNowBtn sticky-top d-md-none d-block" routerLink="/shopnow">
+					Shop Now
+				</a-->
+
+				<ul class="navbar-nav d-flex flex-row">
+					<li class="nav-item dropdown user-menu">
+						<a class="nav-link px-2 dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user ml-2"></i></a>
+						<div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+							<div *ngIf="userId == 0" class="loginReg_text">
+								<a class="dropdown-item enter-form" routerLink="/login" >Login or Register</a>
+							</div>
+							<a *ngIf="userId > 0" class="dropdown-item" routerLink="/customer/profile">Profile</a>
+							<a *ngIf="userId > 0" class="dropdown-item" routerLink="/checkout/cart/">Cart</a>
+							<a *ngIf="userId > 0" class="dropdown-item" routerLink="/customer/orders">Track Orders</a>
+							<a *ngIf="userId > 0" class="dropdown-item" (click)="customerLogout();" [ngStyle]="{'cursor': 'pointer'}">Logout</a>
+						</div>
+					</li>						
+					
+					<li class="nav-item dropdown cart-menu" [ngClass]="{'show':showCart}"><!-- start of cart_dropdown -->
+						<a (click)="showCart = !showCart;" class="nav-link px-2 shopping-cart dropdown-toggle sticky-top" [ngClass]="{'sticky-top-affix':shonowSticky}" data-toggle="dropdown" role="button" aria-haspopup="true" [attr.aria-expanded]="showCart"><i class="fas fa-shopping-cart ml-2"></i><sup class="badge badge-primary rounded-circle">{{cartLength}}</sup></a>
+						<div *ngIf="showCartMenu" class="dropdown-menu dropdown-menu-right animate slideIn" [ngClass]="{'show':showCart}" [ngStyle]="{'max-height': '400px', 'overflow-y':'scroll'}" aria-labelledby="cartDropdown">
+							<span class="cart_close d-block d-md-none">×</span>
+							<div class="d-flex pb-2"><!-- start of heading -->
+								<span class="mr-auto text-secondary">{{cartLength}} Items</span> 
+								<span class="text-right font-weight-light">Total: <span class="text-black font-weight-bold"><label [innerHTML]="sanitizer.bypassSecurityTrustHtml(cartCurrency)"></label>{{cartTotal | number:'2.2-2'}}</span></span>
+								<div class="clearfix"></div>
+							</div><!-- end of heading -->
+							
+							<div *ngFor="let item of shoppingCart;" class="d-flex border-top py-3"><!-- start of cart_row -->
+								<div class="pr-2"><!-- start of image_section -->
+									<a routerLink="/{{item.url_key}}">
+										<img [src]="item.images[0].url" [alt]="item.name" [title]="item.name" width="70" class="img-fluid">
+									</a>
+								</div><!-- end of image_section -->
+
+								<div class="flex-grow-1"><!-- start of content_section -->
+									<a routerLink="/{{item.url_key}}" class="item-name d-block">{{item.name}}</a>
+									<span class="item-price"><label [innerHTML]="sanitizer.bypassSecurityTrustHtml(cartCurrency)"></label>{{item.price | number:'2.2-2'}}</span>
+									<span class="item-quantity">Quantity: {{item.cart_quantity}}</span>
+									<!--button type="button" (click)="removeItem(item.cart_id);" class="btn close-btn" data-toggle="modal" data-target="#confirmModal">
+										<span class="icon-cross">&nbsp;</span>
+										<span class="icon-cross">&nbsp;</span>
+									</button-->
+								</div><!-- end of content_section -->
+							</div><!-- end of cart_row -->
+
+							<div *ngFor="let item of shoppingPack;" class="d-flex border-top py-3"><!-- start of cart_row -->
+								<div class="pr-2"><!-- start of image_section -->
+								<a>
+									<img [src]="item.image" [alt]="item.title" width="70" class="img-fluid">
+								</a>
+								</div><!-- end of image_section -->
+
+								<div class="flex-grow-1"><!-- start of content_section -->
+								<a class="item-name d-block">{{item.title}}</a>
+								<span class="item-price"><label [innerHTML]="sanitizer.bypassSecurityTrustHtml(cartCurrency)"></label>{{item.price | number:'2.2-2'}}</span>
+								<span class="item-quantity">Quantity: {{item.cart_quantity}}</span>
+								<!--button type="button" class="btn close-btn">
+									<span class="icon-cross">&nbsp;</span>
+									<span class="icon-cross">&nbsp;</span>
+								</button-->
+								</div><!-- end of content_section -->
+							</div><!-- end of cart_row -->
+							
+							<div class="d-flex mt-3"><!-- start of checkout_btn -->
+								<a routerLink="/checkout/cart"  class="btn my-btn checkout_btn from-left btn-block">Checkout</a>
+							</div><!-- end of checkout_btn -->
+						</div><!-- end of dropdown -->
+					</li>
+
+				</ul>
+				<!--delete-item></delete-item-->			
+			</div>
+        </div><!-- end of navbar -->
+	</nav>
+<div class="modal fade global_popup account" id="loginHeaderPopup" (loggedUser)="onLogged($event);"></div>

@@ -1,0 +1,39 @@
+
+/* start of section_box css */
+.section_box{padding:4rem 0; position:relative;}
+.section_gradient:before{content:""; position:absolute; top:0; left:0; width:100%; height:100%; z-index:-1;
+	background:linear-gradient(rgba(241,241,241,.8), rgba(241,241,241,.5), rgba(255,255,255,1));
+	-moz-background:linear-gradient(rgba(241,241,241,.8), rgba(241,241,241,.5), rgba(255,255,255,1));
+	-webkit-background:linear-gradient(rgba(241,241,241,.8), rgba(241,241,241,.5), rgba(255,255,255,1));
+	-o-background:linear-gradient(rgba(241,241,241,.8), rgba(241,241,241,.5), rgba(255,255,255,1));}
+.pattern_image{background-image:url(../images/home/pattern.svg); background-repeat:repeat;}
+
+/************ start of login_register css ************/
+.login_register_div{position:relative; background:#ffffff; padding-top:3rem;}
+.login_register_div .account_div{position:relative; text-align:center;}
+.login_register_div .account_div .avatar{padding:.5rem; box-shadow:0 -1rem 1.2rem rgba(0, 0, 0, 0.05); border-radius:50%; position:absolute; top:-5.5rem; left:50%; transform:translateX(-50%); background:#fff; width:6rem; height:6rem; overflow:hidden; display:flex; align-items:center; justify-content:center;}
+.login_register_div .account_div .avatar img{filter:opacity(.3); -webkit-filter:opacity(.3); width: 4rem;}
+.login_register_div .account_div p{font-size:1rem; color:rgba(0,0,0,0.6); text-transform:capitalize; font-weight:300; display:inline-block; padding-top:1rem; margin:0 auto;}
+.login_register_div form .form-group p{text-align:center;}
+.login_register_div form .form-group p .resend_otp{padding:0; border:none; background:none; color:#f03f3f; cursor:pointer; font-size:1rem; text-decoration:underline; font-style:italic;}
+
+/****************** start of media css *******************/
+
+@media (max-width: 767.98px) {
+	/* start of brief_subscription_box css */
+	.section_box{padding:1rem 0;}
+	.section_box:not(:last-child){padding-bottom:3rem;}
+	
+	/********** start login_register css *******************/
+	.login_register_mPadding{padding:5.5rem .5rem 3rem;}
+	.login_register_div .account_div p{font-size:.9rem;}
+	.login_register_div form .form-group p{font-size:.85rem; line-height:1.8;}
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+	
+}
+
+@media (max-width: 575px) {
+	
+}

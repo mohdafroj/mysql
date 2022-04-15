@@ -1,0 +1,35 @@
+<section class="container-fluid content"><!-- start of middle_part -->
+  <div class="container">
+    <div class="row"><!-- start of row -->
+      <app-left-menu></app-left-menu>
+      <div class="col-md-9 col-sm-8 col-xs-12"><!-- start of right_part -->
+        <div class="col-xs-12 no-padding review_heading"><!-- start of review_heading -->
+          <h3>Newsletter <span></span></h3>
+        </div><!-- end of review_heading -->
+
+        <div class="col-sm-12 col-xs-12 no-padding account_newsletter"><!-- start of content -->
+          <form class="col-xs-12 no-padding" [formGroup]="rForm" (ngSubmit)="updateNewsletterStatus(rForm.value);">
+            <p class="col-xs-12 account_line text-uppercase hide">
+              Email-Id: {{response.email}} <a>Mobile: {{response.mobile}}</a>
+            </p>
+
+            <div class="form-group col-sm-6 col-xs-12 no-padding"><!-- start of register_forgot -->
+                <span class="forgot_text checkbox">
+                  <label>
+                    <input type="checkbox" formControlName="newsletter" [value]="1">
+                    <span class="cr"><i class="cr-icon fa fa-check"></i></span> Subscribe for newsletter
+                  </label>
+                </span>
+            </div><!-- end of register_forgot -->
+            <div class="form-group col-sm-6 col-xs-12 no-padding"><!-- start of login_button -->
+              <button type="submit" class="btn from-left cart_btn">Save</button>
+            </div><!-- end of login_button -->
+            <p class="col-xs-12 no-padding text-success">{{msg}}</p>
+          </form>
+        </div><!-- end of content -->
+      </div><!-- end of right_part -->
+
+    </div><!-- end of row -->
+  </div>
+</section><!-- end of middle_part -->
+

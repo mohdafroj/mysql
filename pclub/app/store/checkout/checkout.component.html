@@ -1,0 +1,435 @@
+	<div class="content"><!-- start of middle_page -->
+    	
+        <section class="container-fluid mt-4"><!-- start of product_listing -->
+        	<div class="container"><!-- start of container -->
+            	<div class="row"><!-- start of row -->
+                     
+                    <!-- start of left_section -->
+                    <div class="col-lg-8 col-12 pl-0 pr-lg-3 pr-0"><!-- start of table_div -->
+                        <div *ngIf="userId == 0" class="col-12 p-0 m-auto text-center"><!-- start of tab_link -->
+                        	<label>
+                                 Login / Buy as a Guest
+                            </label>
+						</div>
+                        
+                        <div *ngIf="userId > 0" class="col-12 p-0 m-auto"><!-- start of tab_link -->
+                        	<ul *ngIf="!selectedAddress['id']" class="nav nav-tabs tab_link">
+                            	<li class="nav-item">
+                                	<button type="button" class="nav-link" [ngClass]="{'active': (tabIndex == 1)}">
+                                    	Address
+                                        <span class="step_line step_complete">&nbsp;</span>
+                                        <span class="step_line backline">&nbsp;</span>
+                                    </button>
+                                </li>
+                            	<li class="nav-item">
+                                	<button type="button" class="nav-link" [ngClass]="{'active': (tabIndex == 2)}">
+                                    	Review
+                                        <span class="step_line step_complete">&nbsp;</span>
+                                        <span class="step_line backline">&nbsp;</span>
+                                    </button>
+                                </li>
+                            	<li class="nav-item">
+                                	<button type="button" class="nav-link" [ngClass]="{'active': (tabIndex == 3)}">
+                                    	Payment
+                                        <span class="step_line step_complete">&nbsp;</span>
+                                        <span class="step_line backline">&nbsp;</span>
+                                    </button>
+                                </li>
+                            </ul>
+                        	<ul *ngIf="selectedAddress['id']" class="nav nav-tabs tab_link">
+                            	<li class="nav-item">
+                                	<button type="button" data-target="#shipAddress" data-toggle="tab" class="nav-link" [ngClass]="{'active': (tabIndex == 1)}">
+                                    	Address
+                                        <span class="step_line step_complete">&nbsp;</span>
+                                        <span class="step_line backline">&nbsp;</span>
+                                    </button>
+                                </li>
+                            	<li class="nav-item">
+                                	<button type="button" data-target="#reviewOrder" data-toggle="tab" class="nav-link" [ngClass]="{'active': (tabIndex == 2)}">
+                                    	Review
+                                        <span class="step_line step_complete">&nbsp;</span>
+                                        <span class="step_line backline">&nbsp;</span>
+                                    </button>
+                                </li>
+                            	<li class="nav-item">
+                                	<button type="button" data-target="#paymentMethod" data-toggle="tab" class="nav-link" [ngClass]="{'active': (tabIndex == 3)}">
+                                    	Payment
+                                        <span class="step_line step_complete">&nbsp;</span>
+                                        <span class="step_line backline">&nbsp;</span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div><!-- end of tab_link -->
+                        
+                        <div class="col-12 p-0 tab-content mt-4"><!-- start of tab_content -->
+                            
+                            <div [hidden]="userId != 0" class="tab-pane form_filed fade active show">
+									<p class="required_text">Customer Details <span>All Fields Required</span></p>
+									<form class="needs-validation" [formGroup]="userTypeForm" novalidate>
+									<div class="row">
+										<div class="form-group col-6 text-center">
+											<input type="radio" (change)="loginStatusType='olduser';" [value]="'olduser'" formControlName="loginStatusType"> Login 
+										</div>
+										<div class="form-group col-6 text-center">
+											<input type="radio" (change)="loginStatusType='newuser';" [value]="'newuser'" formControlName="loginStatusType"> Buy as a Guest 
+										</div>									
+									</div>
+									</form>
+									<form [hidden]="loginStatusType == 'newuser'" class="needs-validation" [formGroup]="loginForm" (submit)="customerLogin(loginForm.value);" novalidate>
+										<div class="row">
+											<div class="col-12 form-group">
+												<p [ngClass]="resObj.textClass" [innerHTML]="resObj.message"></p>
+												<p *ngIf="isStep == 2">If not received within 3 minutes please click on <span class="resend_otp" [ngStyle]="{'text-decoration': 'underline', 'cursor':'pointer', 'color':'red'}" (click)="resendLoginOtp();">Resend OTP</span></p>
+												<p [ngClass]="resObj.otpClass" [innerHTML]="resObj.otpMessage"></p>
+											</div>
+											<div class="col-12 form-group" [hidden]="isStep != 1">
+												<input type="text" class="form-control" formControlName="username" placeholder="Email / Phone Number" autofocus>
+											</div>
+											<div class="col-12 form-group" [hidden]="isStep == 1">
+												<input type="password" class="form-control" formControlName="otp">
+											</div>
+											<div class="col-12 form-group">
+												<button type="submit" class="btn my-btn checkout_btn from-left btn-block submt_btn">{{ (isStep == 1) ? 'Login':'Verify' }}</button>
+												<button *ngIf="isStep == 2" type="button" class="btn my-btn btn-block back-btn" (click)="getBack();"><span><span class="fa fa-angle-left"></span> Back</span></button>
+											</div>
+										</div>	
+									</form>
+									
+									<form [hidden]="loginStatusType != 'newuser'" class="needs-validation mt-3" [formGroup]="registerForm" (submit)="customerRegister(registerForm.value);">
+										<div class="row">
+											<div class="col-12 form-group">
+												<p [ngClass]="resObj['textClass']" [innerHTML]="resObj['message']"></p>
+												<p *ngIf="isStep == 2" class="text-success">If not received within 3 minutes please click on <span [ngStyle]="{'text-decoration': 'underline', 'cursor': 'pointer'}" (click)="resendOtpRegister();">Resend OTP</span></p>
+												<p [ngClass]="resObj['otpClass']" [innerHTML]="resObj['otpMessage']"></p>
+											</div>
+
+											<div [hidden]="isStep != 1" class="col-12 form-group">
+												<input type="text" class="form-control" formControlName="username" placeholder="Enter your name">
+											</div><!-- end of username -->
+
+											<div [hidden]="isStep != 1" class="col-12 form-group">
+												<input type="email" class="form-control" formControlName="email" placeholder="Enter your email">
+											</div><!-- end of email -->
+
+											<div [hidden]="isStep != 1" class="col-12 form-group">
+												<input type="text" class="form-control" formControlName="mobile" placeholder="Enter your mobile number" max-length="10">
+											</div>					
+											
+											<div [hidden]="isStep == 1" class="col-12 form-group">
+												<input type="text" class="form-control" formControlName="otp" placeholder="Enter OTP">
+											</div>					
+											
+											<div class="col-12 form-group">
+												<button type="submit" class="btn my-btn checkout_btn from-left btn-block submt_btn">{{ (isStep == 1) ? 'Continue':'Verify' }}</button>
+												<button *ngIf="isStep == 2" (click)="getBack();" type="button" class="btn my-btn btn-block back-btn"><span><span class="fa fa-angle-left"></span> Back</span></button>
+											</div>
+										</div>
+									</form>			
+									<form class="needs-validation mt-3">
+										<div class="row">
+											<div class="col-12 form-group">
+												<a [routerLink]="['/','checkout','cart']" class="btn my-btn btn_outline from-left btn-block">Cancel</a>
+											</div>
+										</div>                                    
+									</form>
+                            </div>
+                            
+                            <div [hidden]="userId == 0" id="shipAddress" class="tab-pane form_filed fade" [ngClass]="{'active show': (tabIndex == 1)}"><!-- start of shipAddress -->
+                            	<p class="required_text">Shipping Address <span>All Fields Required</span></p>
+								<form class="needs-validation" [formGroup]="rForm" (submit)="saveAddress(rForm.value);" novalidate><!-- start of form -->
+                            	
+                                	<div *ngIf="addresses['address'] && addresses['address'].length" class="row address_form"><!-- start of address_form -->
+                                    	
+										<div *ngFor="let item of addresses['address'];" class="form-check col-md-6 col-12"><!-- start of product_div -->
+                                            <label class="toggle"><!-- start of label -->
+                                                
+                                                <div class="add_radio">
+                                                    <input *ngIf="item.set_default == '1'" type="radio" name="toggle" checked="checked">
+                                                    <input *ngIf="item.set_default == '0'" type="radio" name="toggle">
+                                                    <span class="label-text"></span>
+                                                </div>
+                                                
+                                                <address><!-- start of address_row -->
+                                                    <span><strong>{{item.firstname+' '+item.lastname+', '+item.mobile}}</strong></span>
+                                                    <span>{{item.address+' '+item.city+', '+item.state+ ', '+item.pincode}}</span>
+                                                    <button type="button" (click)="saveAddress(item);" class="btn my-btn checkout_btn from-left">
+                                                        Deliver Here
+                                                    </button>
+                                                </address><!-- end of address_row -->
+                                                
+                                                <div class="edit_address" (click)="editAddress(item);" data-target="#formFieldPopup" data-toggle="modal"><!-- start of edit_address -->
+                                                	<i class="far fa-edit"></i>
+                                                </div><!-- end of edit_address -->
+                                                    
+                                            </label><!-- end of label -->
+                                        </div><!-- end of product_div -->
+                                        
+                                        <div [hidden]="addressId != -1" class="form-check col-md-6 col-12"><!-- start of product_div -->
+                                            <label class="toggle add_new_address" (click)="addNewAddress();"><!-- start of label -->
+                                                
+                                                <address><!-- start of address_row -->
+                                                    <span><strong><i class="fas fa-plus"></i></strong></span>
+                                                    <span>Add a new address</span>
+                                                </address><!-- end of address_row -->
+                                                    
+                                            </label><!-- end of label -->
+                                        </div><!-- end of product_div -->
+                                        <div [hidden]="addressId != -1" class="col-md-12 col-12"><!-- start of product_div -->
+                                            <p [ngClass]="addressResponse.textClass"  [innerHTML]="addressResponse.message"></p>
+                                        </div><!-- end of product_div -->
+                                    </div><!-- end of address_form -->
+                                	
+                                    <div [hidden]="addressId == -1" class="row"><!-- start of form_field -->
+									
+											<div class="form-group col-sm-6 col-12"><!-- start of emailField -->
+												<input type="email" class="form-control" formControlName="email" placeholder="Enter Email" required>
+												<div class="valid-feedback">Valid</div>
+												<div class="invalid-feedback">Please fill out this field</div>
+											</div><!-- end of emailField -->
+										
+											<div class="form-group col-sm-6 col-12"><!-- start of mobileNumber -->
+												<input type="text" class="form-control" formControlName="mobile" placeholder="Enter mobile number" required>
+											</div><!-- end of mobileNumber -->
+										
+											<div class="form-group col-sm-6 col-12"><!-- start of Fname -->
+												<input type="hidden" class="form-control" formControlName="id" [value]="addressId">
+												<input type="text" class="form-control" formControlName="firstname" placeholder="Enter first Name" required>
+												<div class="valid-feedback">Valid</div>
+												<div class="invalid-feedback">Please fill out this field</div>
+											</div><!-- end of Fname -->
+										
+											<div class="form-group col-sm-6 col-12"><!-- start of Lname -->
+												<input type="text" class="form-control" formControlName="lastname" placeholder="Enter last Name" required>
+												<div class="valid-feedback">Valid</div>
+												<div class="invalid-feedback">Please fill out this field</div>
+											</div><!-- end of Lname -->
+										
+											<div class="form-group col-sm-6 col-12"><!-- start of addressField -->
+												<textarea class="form-control" formControlName="address" placeholder="Enter address" required></textarea>
+											</div><!-- end of addressField -->
+										
+											<div class="form-group col-sm-6 col-12"><!-- start of zipCode -->
+												<input type="text" class="form-control" formControlName="pincode" placeholder="Enter zip code" required>
+											</div><!-- end of zipCode -->
+										
+											<div class="form-group col-sm-6 col-12"><!-- start of cityField -->
+												<input type="text" class="form-control" formControlName="city" placeholder="Enter city" required>
+											</div><!-- end of cityField -->
+										
+											<div class="form-group col-sm-6 col-12"><!-- start of stateField -->
+												<select *ngIf="addresses['states']" class="custom-select form-control" formControlName="state" required>
+													<option *ngFor="let item of addresses.states" [value]="item.title">{{item.title}}</option>
+												</select>
+											</div><!-- end of City -->
+										
+											<div class="form-group col-sm-6 col-12"><!-- start of countryField -->
+												<input type="text" class="form-control" formControlName="country" [value]="'India'" readonly>
+											</div><!-- end of countryField -->
+											
+											<div *ngIf="addressResponse['message']" class="form-group col-sm-6 col-12 errorMszShow"><!-- start of countryField -->
+												<p [ngClass]="addressResponse.textClass"  [innerHTML]="addressResponse.message"></p>
+											</div><!-- end of countryField -->
+											
+											<div class="form-group col-12 checkoutBtn"><!-- start of button -->
+												<button type="submit" class="btn my-btn checkout_btn from-left">Save &amp; Continue</button>
+												<button type="button" (click)="cancelAddress();" class="btn my-btn btn_outline from-left">Cancel</button>
+											</div><!-- end of button -->
+                                    </div><!-- end of form_field -->
+								</form><!-- end of form -->
+                                    
+                            </div><!-- end of shipAddress -->
+                            
+                            <div id="reviewOrder" class="tab-pane fade" [ngClass]="{'active show': (tabIndex == 2)}"><!-- start of reviewOrder -->
+                                <p class="required_text">Review Your Order</p>
+                                
+                                    <div *ngFor="let item of shoppingCart;" class="col-12 cartReviewDiv"><!-- start of row_section -->
+                                    	<div class="cartImage"><!-- start of cartImage -->
+                                        	<img [src]="item.images[0].url" [alt]="item.name" [title]="item.name" class="img-fluid" width="70">
+                                        </div><!-- end of cartImage -->
+                                        
+                                    	<div class="cartDetail"><!-- start of cartDetail -->
+                                        
+                                        	<div class="cartDetailHalf productNameImages"><!-- start of productNameImages -->
+                                            	<h6>{{item.title}}</h6>                                                
+                                            </div><!-- end of productNameImages -->
+                                            
+                                            <div class="cartDetailHalf productPriceSize"><!-- start of productPriceSize -->
+                                            	<span>{{item.cart_quantity}} Qty</span> <span><label [innerHTML]="sanitizer.bypassSecurityTrustHtml(cartCurrency)"></label>{{item.price * item.cart_quantity | number:'2.2-2'}} <del *ngIf="item['discount']['original'] != undefined">₹{{item.discount.original * item.cart_quantity | number:'2.2-2'}}</del></span>
+                                            </div><!-- end of productPriceSize -->
+                                            
+                                        </div><!-- end of cartDetail -->
+                                    </div><!-- end of row_section -->
+                                	
+                                    <div *ngFor="let item of shoppingPack;" class="col-12 cartReviewDiv"><!-- start of row_section -->
+                                    	<div class="cartImage"><!-- start of cartImage -->
+                                        	<img [src]="item.image" [alt]="item.title" [title]="item.title" class="img-fluid" width="70">
+                                        </div><!-- end of cartImage -->
+                                        
+                                    	<div class="cartDetail"><!-- start of cartDetail -->
+                                        
+                                        	<div class="cartDetailHalf productNameImages"><!-- start of productNameImages -->
+                                            	<h6>{{item.title}}</h6>
+                                                
+                                                <div class="Pack_image"><!-- start of pack_of_images -->
+                                                    <span *ngFor="let prod of item.products">
+                                                        <img [src]="prod.image" [alt]="prod.title" [title]="prod.title" class="img-fluid" width="70">
+                                                    </span>
+                                                </div><!-- end of pack_of_images -->
+                                            </div><!-- end of productNameImages -->
+                                            
+                                            <div class="cartDetailHalf productPriceSize"><!-- start of productPriceSize -->
+                                            	<span>{{item.cart_quantity}} Qty</span> <span><label [innerHTML]="sanitizer.bypassSecurityTrustHtml(cartCurrency)"></label>{{item.price * item.cart_quantity | number:'2.2-2'}}</span>
+                                            </div><!-- end of productPriceSize -->
+                                            
+                                        </div><!-- end of cartDetail -->
+                                    </div><!-- end of row_section -->
+                                    
+                                    <div class="col-12 cartReviewDiv checkoutBtn"><!-- start of button -->
+                                    	<button type="button" (click)="tabIndex = 3;" class="btn my-btn checkout_btn from-left">
+                                        	Continue
+                                        </button>
+                                    </div><!-- end of button -->
+                                    
+                            </div><!-- end of reviewOrder -->
+                            
+                            <div id="paymentMethod" class="tab-pane fade" [ngClass]="{'active show': (tabIndex == 3)}"><!-- start of paymentMethod -->
+                                <p class="required_text">Payment Method</p>
+                                
+                                <form class="d-block" [formGroup]="methodForm"><!-- start of form -->
+                                	
+                                    <div class="radio_div row paymentMethodDiv"><!-- start of payment_options -->
+                                        <div *ngFor="let item of paymentMethodData" class="form-check col-sm-6 col-12"><!-- start of radio_button -->
+                                            <label class="toggle">
+                                                <input type="radio" id="pg-{{item.id}}" (change)="onSelectionChange(item.id);" [value]="item.id" formControlName="paymentMethod"> <span class="label-text">{{item.title}}</span><span [innerHTML]="sanitizer.bypassSecurityTrustHtml(item.message)"></span>
+                                            </label>
+                                        </div><!-- end of radio_button -->                                        
+                                    </div><!-- end of payment_options -->
+                                    
+                                    <div class="d-flex p-2 bg-light lastCartReview"><!-- start of lasrCartReview -->
+                                        <address *ngIf="selectedAddress['email']">
+                                        	<strong>{{selectedAddress.email}}</strong><br />
+                                        	<strong>{{selectedAddress.firstname+' '+selectedAddress.lastname}}</strong>, {{selectedAddress.address+', '+selectedAddress.city+', '+selectedAddress.state+', '+selectedAddress.country}}, <strong>{{selectedAddress.pincode}}</strong>
+                                        </address>
+                                    </div><!-- end of lasrCartReview -->
+                                    <div *ngIf="credits['message']" class="d-flex p-2 bg-light lastCartReview cashBackText"><!-- start of lasrCartReview -->
+                                        <address>
+                                        	<strong>CashBack Offer :</strong> {{credits['message']}}
+                                        </address>
+                                    </div><!-- end of lasrCartReview -->
+                                    <div class="col-12 cartReviewDiv checkoutBtn"><!-- start of button -->
+										<a class="text-right" id="getOtpPopup" href="#otpPopup" data-toggle="modal"></a>
+										<span [ngClass]="{'text-success': (finalStatus == true), 'text-danger': (finalStatus == false)}">{{finalMessage}}</span>&nbsp;&nbsp;
+                                    	<button type="submit" (click)="checkData();" class="btn my-btn checkout_btn from-left">
+                                        	Place Order
+                                        </button>
+                                    </div><!-- end of button -->
+                                    
+                                </form><!-- end of form -->
+                            </div><!-- end of paymentMethod -->
+                
+                        </div><!-- end of tab_content -->
+                        
+                    </div><!-- end of table_div -->
+                    <!-- End of left_section -->
+                    
+                    <div class="col-lg-4 col-12 pr-0 pl-lg-3 pl-0"><!-- start of summary_section -->
+                    
+                    	<div class="summary_detail"><!-- start of order_summary -->
+                            <div class="summary_heading d-md-block d-none">Order summary</div>
+                            
+                            <!-- start of Order summary button -->
+                            <div class="summary_heading order_detail_mobileBtn collapsed d-md-none d-block" data-toggle="collapse" data-target="#priceDetail">
+                            	Order summary 
+								<span><label [innerHTML]="sanitizer.bypassSecurityTrustHtml(cartCurrency)"></label>{{ grandFinalTotal | number:'2.2-2' }}</span>
+                            </div>
+                            <!-- end of Order summary button -->
+                            
+                            <div class="price_detail collapse" id="priceDetail"><!-- start of price_detail -->
+                                <p class="font-italic mb-3">Shipping and additional costs are calculated based on values you have entered.</p>
+                                
+                                <ul class="list-unstyled"><!-- start of price_break -->
+                                    <li class="d-flex justify-content-between py-3 border-bottom">
+                                        <span>Order Subtotal <small class="font-italic pl-1">(Including tax)</small></span><strong><label [innerHTML]="sanitizer.bypassSecurityTrustHtml(cartCurrency)"></label>{{ cartTotal | number:'2.2-2' }}</strong>
+                                    </li>
+                                    <li *ngIf="discounts['cash'] && discounts['cash'] > 0" class="d-flex justify-content-between py-3 border-bottom">
+                                        <span>Wallet Discount</span><strong><small>(-)</small>&nbsp;<label [innerHTML]="sanitizer.bypassSecurityTrustHtml(cartCurrency)"></label>{{discounts.cash | number:'2.2-2'}}</strong>
+                                    </li>
+                                    <li *ngIf="discounts['coupon'] && discounts['coupon'] > 0" class="d-flex justify-content-between py-3 border-bottom">
+                                        <span>Coupon Discount</span><strong><small>(-)</small>&nbsp;<label [innerHTML]="sanitizer.bypassSecurityTrustHtml(cartCurrency)"></label>{{discounts.coupon | number:'2.2-2'}}</strong>
+                                    </li>
+                                    <li class="d-flex justify-content-between py-3 border-bottom">
+                                        <span>Total Discounts</span><strong><small>(-)</small>&nbsp;<label [innerHTML]="sanitizer.bypassSecurityTrustHtml(cartCurrency)"></label>{{discounts.amount | number:'2.2-2'}}</strong>
+                                    </li>
+                                    <li *ngIf="codAmount > 0" class="d-flex justify-content-between py-3 border-bottom">
+                                        <span>Cash On Delivery</span><strong><small>(+)</small>&nbsp;<label [innerHTML]="sanitizer.bypassSecurityTrustHtml(cartCurrency)"></label>{{codAmount | number:'2.2-2'}}</strong>
+                                    </li>
+                                    <li class="d-flex justify-content-between py-3 border-bottom">
+                                        <span>Shipping and handling</span><strong><small>(+)</small>&nbsp;<label [innerHTML]="sanitizer.bypassSecurityTrustHtml(cartCurrency)"></label>{{shippingAmount | number:'2.2-2'}}</strong>
+                                    </li>
+                                    <li class="d-flex justify-content-between py-3 border-bottom">
+                                        <h6 class="font-weight-bold text-uppercase m-0">Total</h6>
+                                        <h5 class="font-weight-bold m-0"><label [innerHTML]="sanitizer.bypassSecurityTrustHtml(cartCurrency)"></label>{{grandFinalTotal | number:'2.2-2'}}</h5>
+                                    </li>
+                                </ul><!-- end of price_break -->
+                            </div><!-- end of price_detail -->
+                            <!-- start of highlight_div -->
+                            <div class="price_display_div"></div>
+                            <!-- end of highlight_div -->
+                            
+                        </div><!-- end of order_summary -->
+                        
+                    </div><!-- start of summary_section -->
+                    
+                </div><!-- end of row -->
+            </div><!-- end of container -->
+        </section><!-- end of product_listing -->
+    
+    </div><!-- end of middle_page -->
+        
+    <!-- The product_detail_popup -->
+    <div class="modal fade global_popup" id="otpPopup">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content border-0 rounded-0 gender_popup form_filed">
+            
+                <!-- Modal Header -->
+                <div class="modal-header border-0">
+					<span [ngClass]="otpResponse['textClass']" [innerHTML]="otpResponse['message']"></span>
+                    <button type="button" id="closeOtpPopup" class="btn close-btn close-modal" data-dismiss="modal" aria-label="Close">
+                        <span class="icon-cross" aria-hidden="true">&nbsp;</span>
+                        <span class="icon-cross" aria-hidden="true">&nbsp;</span>
+                    </button>
+                </div>
+                
+                <form class="needs-validation" #otpForm="ngForm" (ngSubmit)="verifyOtp();" novalidate><!-- start of form -->
+                    <!-- Modal body -->
+                    <div class="modal-body"><!-- start of modal-body -->
+                    
+                        <p>Please enter OTP</p>
+                        
+                        <div class="row"><!-- start of form_field -->
+                                            
+                            <div class="form-group col-12"><!-- start of Fname -->
+								<input type="text" class="form-control" name="otpResponse['otp']" [(ngModel)]="otpResponse['otp']" placeholder="Enter OTP" required>
+                            </div><!-- end of Fname -->
+                        
+                        </div><!-- end of form_field -->
+                        
+                    </div><!-- end of modal-body -->
+                    
+                    <div class="modal-footer">
+                        <button type="submit" class="btn my-btn checkout_btn from-left">Submit</button>
+                    </div>
+					
+                </form><!-- end of form -->
+            
+            </div>
+        </div>
+    </div>
+
+<form id="paymentForm" [action]="paymentGatewayUrl" [hidden]="true" method="post">
+  <input type="hidden" name="order_id" value="{{orderId}}">
+  <input type="hidden" name="customer_id" value="{{userId}}">
+  <input type="hidden" name="customer_auth" value="{{customerAuth}}">  
+</form>
+<!-- end of Loginmodal -->
+<!-- start of page js -->

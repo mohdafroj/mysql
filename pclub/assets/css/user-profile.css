@@ -1,0 +1,94 @@
+
+/************* staro of user_profile_main ************************/
+.user_profile_upper{padding:0; margin-top:-1rem; background:#ee9591; height:10rem;}
+.user_profile_upper .row{min-height:9rem; position:relative;}
+.user_profile_upper .row .profile_image{position:absolute; bottom:-9rem; left:0; z-index:1;}
+.user_profile_upper .row .profile_image figure{display:flex; align-items:center; justify-content:center; background:#ffffff; width:12rem; height:12rem; border:.5rem solid #f4f4f4; border-radius:50%; overflow:hidden;}
+.user_profile_upper .row .profile_image figure span{position:absolute; bottom:1.8rem; left:50%; transform:translateX(-50%); z-index:1; cursor:pointer;}
+.user_profile_upper .row .profile_image figure span img{filter:contrast(30%);}
+.user_profile_upper .row .edit_profile .btn:hover{border-color:#3b4e76;}
+.user_profile_lower{position:relative; margin-bottom:5rem; padding:1rem 0; background:#f4f4f4;}
+.user_profile_lower .row{justify-content:space-between;}
+.user_profile_lower h4{font-size:1.2rem; color:rgba(0,0,0,0.7); text-transform:capitalize; font-weight:bold; padding-left:13rem;}
+.user_profile_lower a{font-size:1rem; color:#3b4e76; text-transform:capitalize; text-decoration:underline; transition:ease all .3s; -webkit-transition:ease all .3s;}
+.user_profile_lower a:hover{text-decoration:none; color:#ee9591;}
+
+/************** start of profileUpload_div css ******************/
+.profileUpload_div{position:absolute; top:90%; max-height:4.5rem; height:auto;}
+.profileUpload_div ul{margin:0; border:.1rem solid rgba(0,0,0,0.1); padding:.6rem .8rem; background:#ffffff; position:relative; text-align:center;}
+.profileUpload_div ul:before{content:"\f0d8"; font-family:"Font Awesome 5 Free"; font-style:normal; font-weight:bolder; font-variant:normal; font-size:2rem; color:#ffffff; line-height:.5rem; text-shadow:0 0 0rem rgb(0, 0, 0); position:absolute; top:-0.57rem; left:50%; transform:translateX(-50%); display:inline-block;}
+.profileUpload_div ul li{padding:0; line-height:1;}
+.profileUpload_div ul li .uploadText{font-size:.8rem; color:rgba(0,0,0,0.6); margin:0; cursor:pointer; transition:ease all .3s; -webkit-transition:ease all .3s;}
+.profileUpload_div ul li:not(:last-child) .uploadText{padding:.5rem 0; margin-bottom:.3rem; border-width:0 0 .1rem 0; border-style:solid; border-color:rgba(0,0,0,0.1);}
+.profileUpload_div ul li:first-child .uploadText{padding-top:0;}
+.profileUpload_div ul li .uploadText:hover{color:#3b4e76;}
+
+/*********** start of sidebar_menu_main css ************/
+.sidebar_menu_main{padding:0;}
+.sidebar_menu_main .sidebar_menu{position:relative; display:block; width:100%; padding:1.5rem 0;}
+.sidebar_menu_main .sidebar_menu:not(:last-child){border-bottom:.1rem solid rgba(0,0,0,0.1);}
+.sidebar_menu_main .sidebar_menu .sidebar_heading{padding:.6rem 0; font-size:.85rem; color:rgba(0,0,0,0.5); text-transform:capitalize; display:block; letter-spacing:.03rem;}
+.sidebar_menu_main .sidebar_menu .sidebar_link{padding:0; font-size:.85rem; color:rgba(0,0,0,0.8); text-transform:capitalize; display:block; margin:.5rem 0; letter-spacing:.03rem; transition:ease all .3s; -webkit-transition:ease all .3s;}
+.sidebar_menu_main .sidebar_menu .sidebar_link:hover{color:#ee9591;}
+.sidebar_menu_main .sidebar_menu .sidebar_link.active{color:#ee9591; font-weight:bolder;}
+
+/************* start of user_detail_main css *************/
+.user_detail_main{border-left:.1rem solid rgba(0,0,0,0.1); padding-left:2rem;}
+
+/*********** start of overview css ************/
+.user_detail_box{display:block; border:.1rem solid rgba(0,0,0,0.1); width:100%; padding:3.5rem 0.5rem; height:100%; position:relative; text-align:center; cursor:pointer; transition:ease all .3s; -webkit-transition:ease all .3s;}
+.user_detail_box figure{margin-bottom:1.5rem;}
+.user_detail_box figure img{filter:contrast(40%); transition:ease all .3s; -webkit-transition:ease all .3s;}
+.user_detail_box p{font-size:1rem; color:rgba(0,0,0,0.8); text-transform:capitalize; display:block; font-weight:bolder; margin-bottom:.2rem; transition:ease all .3s; -webkit-transition:ease all .3s;}
+.user_detail_box span{display:block; font-size:.8rem; color:rgba(0,0,0,0.5);}
+/******* hover css ********/
+.user_detail_box:hover{border-color:#3b4e76;}
+.user_detail_box:hover figure img{filter:contrast(100%);}
+.user_detail_box:hover p{color:#3b4e76;}
+
+
+/**************** start of media css **************/
+@media (min-width: 992px) and (max-width: 1200px) {
+	/************* staro of user_profile_main ************************/
+	.user_profile_upper .row .profile_image figure{width:10rem; height:10rem;}
+	.user_profile_lower h4{padding-left:11rem;}
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+	/************* staro of user_profile_main ************************/
+	.user_profile_upper .row .profile_image figure{width:10rem; height:10rem;}
+	.user_profile_lower h4{padding-left:11rem;}
+	
+	/************* start of user_detail_main css *************/
+	.user_detail_main{padding-left:1rem;}	
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+	
+}
+
+@media (max-width: 767.98px) {
+	/************* staro of user_profile_main ************************/
+	.user_profile_upper{height:8rem;}
+	.user_profile_upper .row{min-height:7rem;}
+	.user_profile_upper .row .profile_image{bottom:-4.5rem; left:0.5rem; z-index:9;}
+	.user_profile_upper .row .profile_image figure{width:6rem; height:6rem; border:.3rem solid #f4f4f4;}
+	.user_profile_upper .row .edit_profile{margin-right:.5rem;}
+	.user_profile_upper .row .profile_image figure span img{width:1.5rem;}
+	.user_profile_lower{margin-bottom:0; padding:.5rem 0;}
+	.user_profile_lower h4{padding-left:7rem; font-size:0.9rem;}
+	.user_profile_lower a{font-size:.85rem; padding-right:.5rem;}
+	
+	/*********** start of sidebar_menu_main css ************/
+	.sidebar_menu_main{position:absolute; left:-22rem; top:2.3rem; opacity:0; z-index:-1; padding:0 1rem; background:#ffffff; box-shadow:0 0 1rem rgba(0,0,0,0.2); transition:ease all .5s; -webkit-transition:ease all .5s;}
+	.sidebar_menu_main.toggle_open{opacity:1; left:0; top:2.5rem; z-index:999;}
+	.userMenu{position:absolute; left:50%; background:#3b4e76; z-index:1; color:#e0e0e0; padding:.6rem 1rem; font-size:.9rem; cursor:pointer; transform:translateX(-50%); width:100%; text-align:left; text-transform:uppercase; font-weight:bolder}
+	.userMenu span{position:absolute; right:1rem; top:.3rem; font-size:1.3rem; transition:ease all .5s; -webkit-transition:ease all .5s;}
+	.userMenu.open span{transform:rotate(-90deg);}
+	.sidebar_menu_main .sidebar_menu{padding:1rem 0;}
+	.sidebar_menu_main .sidebar_menu .sidebar_heading{padding:.3rem 0; font-size:.8rem;}
+	.sidebar_menu_main .sidebar_menu .sidebar_link{font-size:.8rem; margin:.3rem 0;}
+	
+	/************* start of user_detail_main css *************/
+	.user_detail_main{border-left:0; padding:0; margin-top:4rem;}
+}

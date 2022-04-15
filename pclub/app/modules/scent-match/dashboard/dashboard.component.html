@@ -1,0 +1,249 @@
+	<div class="content"><!-- start of middle_page -->
+    	
+        <section class="container-fluid section_box section_gradient pattern_image mt-n3"><!-- start of section_box -->
+        	<div class="container"><!-- start of container -->
+            	<div class="row align-items-center"><!-- start of row -->
+                	
+                    <div class="col-12 heading_div"><!-- start of heading_div -->
+                    	<h1>
+                        	<span>Scent Matcher</span> Get the closest match of your favorite perfume
+                        </h1>
+                        <span class="heading_border"></span>
+                    </div><!-- end of heading_div -->
+                    
+                    <div class="col-12 perfume_select_div"><!-- start of gender_div -->
+                    
+                    	<h3 class="user_detail_heading"><!-- start of user_detail_heading -->
+                        	Select Gender<sup class="text-danger h5">*</sup>
+                        </h3><!-- end of user_detail_heading -->
+                        
+                        <div class="gender_div scent_match_gender">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <button type="button" class="btn" [ngClass]="{'active': (gender=='male')}" (click)="gender='male'">Men</button>
+                                </li>
+                                <li>
+                                    <button type="button" class="btn" [ngClass]="{'active': (gender=='female')}" (click)="gender='female'">Women</button>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                    </div><!-- end of gender_div -->
+                    
+                    <div *ngIf="families.length" class="col-12 perfume_select_div"><!-- start of perfume_select_div -->
+                    
+                    	<h3 class="user_detail_heading"><!-- start of user_detail_heading -->
+                        	Family <small><i>(Choose up to 3)</i></small>
+                        </h3><!-- end of user_detail_heading -->
+                        
+                        <div class="bg-white shadow-sm p-md-3 p-1 d-flex align-content-center justify-content-between flex-wrap"><!-- start of monthly_pack_div -->
+                            <div *ngFor="let item of families;" class="monthly_pack_image p-2 custom-checkbox"><!-- start of monthly_pack_image -->
+                            	<input type="checkbox" (change)="selectFamily(item, $event);" class="custom-control-input" [value]="item.id" id="customCheck{{item.id}}" [checked]="item.checked">
+                                <label class="custom-control-label" for="customCheck{{item.id}}">
+                                    <span class="d-flex">
+                                        <span class="d-block">
+                                            <img [src]="item.image" class="img-fluid mx-auto" [alt]="item.title" width="100">
+                                        </span>
+                                    </span>
+                                    <h5>{{item.title}}</h5>
+                                </label>
+                            </div><!-- end of monthly_pack_image -->
+                        
+                       
+                        </div><!-- end of monthly_pack_div -->
+                        
+                    </div><!-- end of perfume_select_div -->
+                    
+                    <div *ngIf="families.length" class="col-12 perfume_select_div"><!-- start of perfume_select_div -->
+                    
+                    	<h3 class="user_detail_heading"><!-- start of user_detail_heading -->
+                        	Select Brand:
+                        </h3><!-- end of user_detail_heading -->
+                        <div class="col-md-5 p-0 appendDiv">
+							<div class="input-group">
+								<select name="brand" class="form-control rounded-0 h-auto" (change)="getSelectedValue($event);">
+									<option *ngFor="let item of brands" [value]="item.id">{{item.title}}</option>
+								</select>
+							</div>
+						</div>
+                    	<h3 class="user_detail_heading"><!-- start of user_detail_heading -->
+                        	Favorite Perfume:
+                        </h3><!-- end of user_detail_heading -->
+                        
+                        <div class="col-md-5 p-0 appendDiv">                        
+                            <div class="input-group" [hidden]="favoriteKeywords.length == 3">
+                                <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto" class="form-control rounded-0 h-auto keyword" (keyup)="getAlgoProducts(myControl.value);" placeholder="Search your favorite perfume">
+                                <!--div class="input-group-append">
+                                    <button class="btn my-btn checkout_btn from-left add_btn" type="button" (click)="addKeywords(myControl.value);"><span class="fas fa-plus" aria-hidden="true"></span></button>
+                                </div-->
+								
+								<mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="addKeywords(myControl.value);">
+								  <mat-option *ngFor="let option of algoProducts" [value]="option.name">
+									{{option.name}}
+								  </mat-option>
+								</mat-autocomplete>
+                            </div>
+							
+							<!--div *ngFor="let item of favoriteKeywords;" class="input-group mt-3">
+								<div class="form-control rounded-0 h-auto keyword">{{item.name}}</div>
+								<div class="input-group-append">
+									<button class="btn my-btn checkout_btn from-left remove_btn" type="button" (click)="removeKeywords(item);"><span class="fas fa-minus" aria-hidden="true"></span></button>
+								</div>
+							</div-->
+
+                        </div>
+                        
+                    </div><!-- end of perfume_select_div -->
+                    
+                    <div class="col-12 perfume_select_div"><!-- start of perfume_select_div -->
+                    
+                    	<button type="submit" (click)="getScentMatch();" class="btn my-btn checkout_btn from-left">Calculate</button>
+                        
+                    </div><!-- end of perfume_select_div -->
+                    
+                    <div class="col-12 perfume_select_div"><!-- start of Results_div -->
+                    
+                    	<h3 class="user_detail_heading"><!-- start of user_detail_heading -->
+                        	Results
+                        </h3><!-- end of user_detail_heading -->
+                        
+                        <div *ngIf="productList.length; else startLoader" class="row result_listing"><!-- start of result_div -->
+                    	
+                            <div *ngFor="let item of productList;" class="col-lg-4 col-md-6 col-sm-6 list_div"><!-- start of product -->
+                                <div class="product-grid3">
+                                	<div class="percentage_match"><!-- start of percentage_match -->
+                                    	<h5>Affinity Match <span>{{ item.family.fscore }}%</span></h5>
+                                    </div><!-- end of percentage_match -->
+                                    
+                                    <div class="product-image3"><!-- start of image -->
+                                        <span *ngIf="item['isStock'] != 'in_stock'" class="image_part">
+                                            <img [src]="item.oos_image" [alt]="item.title">
+                                        </span>
+                                        <span *ngIf="item['isStock'] == 'in_stock'" class="image_part">
+                                            <img [src]="item.images[0]['large']" [alt]="item.title">
+                                        </span>
+                                        
+                                        <ul class="social">
+                                            <li><button class="btn" data-target="#productDeail" (click)="viewProduct(item);" data-toggle="modal"><i class="fas fa-eye"></i></button></li>
+											<li>
+												<button *ngIf="customerCart.indexOf(item.id) == -1" (click)="addIntoCart(item);" class="btn shopping-cart-btn"><i class="fas fa-shopping-cart"></i></button>
+												<a *ngIf="customerCart.indexOf(item.id) > -1" routerLink="/checkout/cart" class="btn" title="Goto Cart"><i class="fas fa-play"></i></a>
+											</li>
+                                        </ul>
+                                    </div><!-- end of image -->
+                                    
+                                    <div class="product-content"><!-- start of content -->
+                                        <h3 class="title"><span class="title_content" data-target="#productDeail" (click)="viewProduct(item);" data-toggle="modal">{{item.name}}</span></h3>
+                                        <div class="product_price"><!-- start of product_price -->
+                                            ₹{{item.price | number:'2.2-2'}}
+                                            <span *ngIf="item.discount.original > 0">₹{{item.discount.original | number:'2.2-2'}}</span>
+                                        </div><!-- end of product_price -->
+										<div *ngIf="item.discount.original > 0" class="product_size"><mark>{{item.discount.label}}</mark></div>
+                                    </div><!-- end of content -->
+                                </div>
+                            </div><!-- end of product -->
+                        </div><!-- end of result_div -->
+						<ng-template #startLoader>
+							<div [ngSwitch]="resultStatus" class="row result_listing">
+								<div *ngSwitchCase="'0'" class="col-lg-4 col-md-6 col-sm-6 list_div text-center">
+									<img src="assets/images/web_loader.gif" alt="Loader Image" class="img-fluid mx-auto" />
+								</div>
+								<div *ngSwitchDefault class="col-lg-4 col-md-6 col-sm-6 list_div text-center">
+									Sorry, Record not found!...
+								</div>
+							</div>
+						</ng-template>	
+                    </div><!-- end of Results_div -->
+                    
+                </div><!-- end of row -->
+            </div><!-- end of container -->
+        </section><!-- end of section_box -->
+    
+    </div><!-- end of middle_page -->
+
+<!-- The product_detail_popup -->
+<div *ngIf="productDetail['id']" class="modal fade global_popup" id="productDeail">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content border-0 rounded-0 gender_popup">
+		
+			<!-- Modal Header -->
+			<div class="modal-header border-0">
+				<button type="button" class="btn close-btn close close-modal" data-dismiss="modal" aria-label="Close">
+					<span class="icon-cross" aria-hidden="true">&nbsp;</span>
+					<span class="icon-cross" aria-hidden="true">&nbsp;</span>
+				</button>
+			</div>
+			
+			<!-- Modal body -->
+			<div class="modal-body d-md-flex d-block justify-content-center flex-wrap product_popup"><!-- start of modal-body -->
+				<div class="col-sm-5 col-12 carousel slide popupImageSlider" id="popupSlider" data-ride="carousel"><!-- start of image_div -->
+					<!-- The slideshow -->
+					<div *ngIf="productDetail['isStock'] != 'in_stock'" class="carousel-inner">
+						<div class="carousel-item image_part active">
+							<img [src]="productDetail.oos_image" [alt]="productDetail.title" class="img-fluid mx-auto" [title]="productDetail.title">
+						</div>
+					</div>
+					<!-- The slideshow -->
+					<div *ngIf="productDetail['isStock'] == 'in_stock'" class="carousel-inner">
+						<div *ngFor="let image of productDetail['images']; let i = index;" class="carousel-item image_part" [ngClass]="{'active':(sliderIndex == i)}">
+							<img [src]="image.large" [alt]="image.alt" class="img-fluid mx-auto" [title]="productDetail.title">
+						</div>
+					</div>
+					<!-- Indicators -->
+					<ul *ngIf="productDetail['isStock'] == 'in_stock'" class="carousel-indicators">
+						<li *ngFor="let image of productDetail['images']; let i = index;" data-target="#popupSlider" attr.data-slide-to="{{i}}" [ngClass]="{'active':(sliderIndex == i)}"></li>
+					</ul>
+				</div><!-- end of image_div -->
+				
+				<div class="col-sm-7 col-12"><!-- start of content_div -->
+					<h3>{{productDetail.title}}</h3>
+					<h4><!-- start of product_price -->
+						₹{{productDetail.price | number: '2.2-2'}}
+						<span *ngIf="productDetail.discount.original > 0">₹{{productDetail.discount.original | number: '2.2-2'}}</span>
+					</h4><!-- end of product_price -->
+					<div *ngIf="productDetail.discount.original > 0" class="product_size"><!-- start of product_size -->
+						<mark>{{productDetail.discount.label}}</mark>
+					</div><!-- end of product_size -->
+					<button type="button" class="btn my-btn cart_btn from-left" data-dismiss="modal" *ngIf="userId == 0" (click)="addIntoCart(productDetail);">Buy Now</button>
+					<a routerLink="/checkout/cart" data-dismiss="modal" class="btn my-btn cart_btn from-left" *ngIf="( (userId > 0) && (customerCart.indexOf(productDetail.id) > -1) )">Go to Cart</a>
+					<button type="button" class="btn my-btn cart_btn from-left" *ngIf="( (userId > 0) && (customerCart.indexOf(productDetail.id) == -1) )" (click)="addIntoCart(productDetail);">Buy Now</button>
+					
+					<!-- start of tabs -->
+					<ul id="tabs" class="nav nav-tabs" role="tablist"><!-- start of tabs_click -->
+						<li class="nav-item">
+							<a id="tab-A" href="#pane-A" class="nav-link" [ngClass]="{'active':(tabIndex == 'A')}" (click)="tabIndex = 'A';" data-toggle="tab" role="tab">Description</a>
+						</li>
+						<li class="nav-item">
+							<a id="tab-B" href="#pane-B" class="nav-link" [ngClass]="{'active':(tabIndex == 'B')}" (click)="tabIndex = 'B';"  data-toggle="tab" role="tab">Notes</a>
+						</li>
+						<li class="nav-item">
+							<a id="tab-C" href="#pane-C" class="nav-link" [ngClass]="{'active':(tabIndex == 'C')}" (click)="tabIndex = 'B';"  data-toggle="tab" role="tab">Brand</a>
+						</li>
+					</ul><!-- end of tabs_click -->
+					
+					<div id="content" class="tab-content" role="tablist"><!-- start of tabs_content -->
+						<div id="pane-A" class="card tab-pane fade" [ngClass]="{'active':(tabIndex == 'A'), 'show':(tabIndex == 'A')}" role="tabpanel" aria-labelledby="tab-A">
+							<div *ngIf="productDetail['shortDescription']" class="card-body" [innerHTML]="sanitizer.bypassSecurityTrustHtml(productDetail['shortDescription'])"></div>
+						</div>
+				
+						<div id="pane-B" class="card tab-pane fade" [ngClass]="{'active':(tabIndex == 'B'), 'show':(tabIndex == 'B')}" role="tabpanel" aria-labelledby="tab-B">
+							<div class="card-body">
+								<p *ngFor="let note of productDetail['notes']">{{note.title}} : {{note.description}}</p>
+							</div>
+						</div>
+				
+						<div id="pane-C" class="card tab-pane fade" [ngClass]="{'active':(tabIndex == 'C'),'show':(tabIndex == 'C')}" role="tabpanel" aria-labelledby="tab-C">
+							<div class="card-body">
+								<p *ngIf="productDetail['brand']" [innerHTML]="sanitizer.bypassSecurityTrustHtml(productDetail['brand']['description'])"></p>
+							</div>
+						</div>
+					</div><!-- end of tabs_content -->
+					<!-- end of tabs -->
+					
+				</div><!-- end of content_div -->
+			</div><!-- end of modal-body -->
+		
+		</div>
+	</div>
+</div>
+

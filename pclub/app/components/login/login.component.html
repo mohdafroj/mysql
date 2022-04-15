@@ -1,0 +1,48 @@
+<div class="content pattern_image">	
+	<section class="container-fluid section_box section_gradient login_register_mPadding mt-n3"><!-- start of middle_part -->
+		<div class="container">
+			<div class="row"><!-- start of row -->
+
+			<div class="col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-sm-8 offset-sm-2 col-12 form_filed login_register_div">
+				<div class="account_div"><!-- start of login_panel -->
+					<div class="avatar">
+						<img src="assets/images/login.svg" alt="Login">
+					</div>
+					<p>Enter the world of mesmerising fragrances...</p>
+				</div><!-- end of login_panel -->
+			  
+				<form [formGroup]="loginForm" (ngSubmit)="customerLogin(loginForm.value);" class="needs-validation mt-3">				
+					<div [ngClass]="{'Form_div': (isStep == 1), 'otpDivd': (isStep != 1)}">
+						<div class="form-group col-xs-12 rinput">
+							<p [ngClass]="resObj.class" [innerHTML]="resObj.message"></p>
+							<p *ngIf="isStep == 2">If not received within 3 minutes please click on <span class="resend_otp" [ngStyle]="{'text-decoration': 'underline', 'cursor':'pointer', 'color':'red'}" (click)="resendOtp();">Resend OTP</span></p>
+							<p [ngClass]="resObj.otpClass" [innerHTML]="resObj.otpMessage"></p>
+						</div><!-- end of otp_line -->
+
+						<div [hidden]="isStep != 1" class="form-group">
+							<input type="text" class="form-control" formControlName="username" placeholder="Email / Phone Number" autofocus>
+						</div>
+						  
+						<div [hidden]="isStep == 1" class="form-group">
+							<input type="password" class="form-control" formControlName="otp">
+						</div>
+							
+						<div *ngIf="(isStep == 1)" class="form-group">
+						  <button type="submit" class="btn my-btn checkout_btn from-left btn-block submt_btn">Login</button>
+						</div>
+						<div *ngIf="(isStep != 1)" class="form-group mb-4">
+							<button type="submit" class="btn my-btn cart_btn from-left btn-block">Verify</button>
+							<button type="button" class="btn my-btn btn-block back-btn" (click)="getBack();"><span><span class="fa fa-angle-left"></span> Back</span></button>
+						</div>
+					</div><!-- end of login_form_filed -->            
+					<div class="form-group an_account">
+						<p>
+							Don't have an account? <a [routerLink]="['/','registration']">Register</a>
+						</p>
+					</div>				
+				</form>
+			</div>
+		</div><!-- end of row -->
+	  </div>
+	</section><!-- end of middle_part -->
+</div>

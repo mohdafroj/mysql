@@ -1,0 +1,210 @@
+	<div class="content">
+        <section class="container-fluid section_box product_detail_mobile">
+        	<div [ngSwitch]="pageType" class="container">
+				<div *ngSwitchCase="'loading'" class="row product_detail">
+					<div class="col-xs-12 xs-no-padding">
+						<div class="col-sm-12 col-xs-12 no-padding-right xs-no-padding">
+							<h1 class="col-xs-12 text-center detail_heading">
+								<img src="assets/images/loading.gif" />
+							</h1>
+						</div>
+					</div>
+				</div>
+				
+                <div *ngSwitchCase="'product'" class="row product_detail">
+                    <div class="col-sm-5 col-12 carousel slide popupImageSlider" id="demo" data-ride="carousel">
+                        <!--h3 class="d-md-none d-block">{{result.title}}</h3-->
+						<ul *ngIf="result['isStock'] == 'in_stock'" class="carousel-indicators">
+							<li *ngFor="let image of result['images']; let i = index;" data-target="#demo" attr.data-slide-to="{{i}}" [ngClass]="{'active':(sliderIndex == i)}"></li>
+						</ul>
+						
+						<div *ngIf="result['isStock'] == 'in_stock'" class="carousel-inner">
+							<div *ngFor="let image of result['images']; let i = index;" class="carousel-item image_part" [ngClass]="{'active':(sliderIndex == i)}">
+								<img [src]="image.large" [alt]="result.name" class="img-fluid mx-auto" alt="Bombshell">
+							</div>
+						</div>
+						<div *ngIf="result['isStock'] != 'in_stock'" class="carousel-inner">
+							<div class="carousel-item image_part active">
+								<img [src]="result.oos_image" [alt]="result.name" class="img-fluid mx-auto">
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-7 col-12">
+						<h3 class="d-md-block d-none">{{result.title}}</h3>
+						<h4>
+							<dfn>₹{{result.price | number:'1.2-2'}} <del *ngIf="result.discount.original">₹{{result.discount.original | number:'1.2-2'}}</del></dfn>
+							<dfn><em>Sold</em> 
+								<span class="soldNumbr">
+									<b *ngFor="let digit of result.sold.toString().split('');">{{digit}}</b>
+								</span>
+							</dfn>
+						</h4>
+						<div class="accordion accordionMain" id="accordionExample">
+							<!-- start of product detail card -->
+							<div class="card">
+								<div class="card-header" id="tabs1">
+									<button type="button" (click)="toggleMethod(0)" class="btn btn-link" data-toggle="collapse" data-target="#productDetails" aria-expanded="true">
+										Product Details <i class="fa fa-{{toggleClass[0]}}"></i>
+									</button>
+								</div>
+								<div id="productDetails" class="collapse show" aria-labelledby="tabs1" data-parent="#accordionExample">
+									<div class="card-body">
+										<ul class="list-unstyled">
+											<li>
+												Contains: <span>{{result.size+result.unit}}</span>
+											</li>
+											<li>
+												Gender: <span>For {{result.gender}}</span>
+											</li>
+											<li>
+												Perfume Type: <span>{{result.perfumeType ? result.perfumeType : 'NA'}}</span>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!-- start description card -->
+							<div class="card">
+								<div class="card-header" id="tabs2">
+									<button type="button" (click)="toggleMethod(1)" class="btn btn-link" data-toggle="collapse" data-target="#description">
+										Description <i class="fa fa-{{toggleClass[1]}}"></i>
+									</button>
+								</div>
+								<div id="description" class="collapse" aria-labelledby="tabs2" data-parent="#accordionExample">
+									<div class="card-body justify-content-center" [innerHTML]="sanitizer.bypassSecurityTrustHtml(result.shortDescription)"></div>
+								</div>
+							</div>
+							<!-- end of description card -->
+							
+							<!-- start of notes card -->
+							<div class="card">
+								<div class="card-header" id="tabs3">
+									<button type="button" (click)="toggleMethod(2)" class="btn btn-link collapsed" data-toggle="collapse" data-target="#notes">
+										Notes <i class="fa fa-{{toggleClass[2]}}"></i>
+									</button>
+								</div>
+								<div id="notes" class="collapse" aria-labelledby="tabs3" data-parent="#accordionExample">
+									<div class="card-body">
+										<ul class="list-unstyled" *ngIf="(result.notes.length == 0) && (result.comboNotes.length == 0)">
+											<li> NA </li>
+										</ul>
+										<ul class="list-unstyled" *ngIf="result.notes.length">
+											<li *ngFor="let note of result.notes">
+												{{note.title.replace('_',' ').toUpperCase()}} : <span>{{note.description}}</span>
+											</li>
+										</ul>
+										<div class="row" *ngFor="let combo of result.comboNotes">
+											<div class="col-12">
+												<ul class="list-unstyled">
+													<li>{{combo.title}} </li>
+												</ul>
+												<p *ngFor="let note of combo.notes">
+													{{note.title.replace('_',' ').toUpperCase()}} : <span class="fs-6">{{note.description}}</span>
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- end of notes card -->
+							
+							<!-- start card -->
+							<div class="card">
+								<div class="card-header" id="tabs4">
+									<button type="button" (click)="toggleMethod(3)" class="btn btn-link collapsed" data-toggle="collapse" data-target="#offers">
+										Offers <i class="fa fa-{{toggleClass[3]}}"></i>
+									</button>
+								</div>
+								<div id="offers" class="collapse" aria-labelledby="tabs4" data-parent="#accordionExample">
+									<div class="card-body" [innerHTML]="sanitizer.bypassSecurityTrustHtml(result.offer)">
+		
+									</div>
+								</div>
+							</div>
+							<!-- end card -->
+							
+							<!-- start card -->
+							<div class="card">
+								<div class="card-header" id="tabs5">
+									<button type="button" (click)="toggleMethod(4)" class="btn btn-link collapsed" data-toggle="collapse" data-target="#pinCode">
+										Pin Code And Delivery Time <i class="fa fa-{{toggleClass[4]}}"></i>
+									</button>
+								</div>
+								<div id="pinCode" class="collapse" aria-labelledby="tabs5" data-parent="#accordionExample">
+									<div class="card-body">
+										<form [formGroup]="pincodeForm" (ngSubmit)="checkPincode(pincodeForm.value.pincode);">
+											<div class="check_pincode">
+												<div class="input-group">
+													<input type="text" class="form-control" formControlName="pincode" placeholder="Enter Pincode">
+													<div class="input-group-append">
+														<button type="submit" class="btn btn-outline-secondary">Check</button>
+													</div>
+												</div>
+												<p [ngClass]="{'pincode_error': (pincodeStep == 0), 'text-warning': (pincodeStep == 1), 'pincode_success': (pincodeStep == 2)}">{{pincodeMessage}}</p>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+							<!-- end card -->
+							
+							<!-- start card -->
+							<div class="card">
+								<div class="card-header" id="tabs6">
+									<button type="button" (click)="toggleMethod(5)" class="btn btn-link collapsed" data-toggle="collapse" data-target="#aboutBrand">
+										About The Brand <i class="fa fa-{{toggleClass[5]}}"></i>
+									</button>
+								</div>
+								<div id="aboutBrand" class="collapse" aria-labelledby="tabs6" data-parent="#accordionExample">
+									<div *ngIf="result['brand']" class="card-body" [innerHTML]="sanitizer.bypassSecurityTrustHtml(result.brand.description)">
+									</div>
+								</div>
+							</div>
+							<!-- end card -->
+							
+							<!-- start card --
+							<div class="card">
+								<div class="card-header" id="tabs7">
+									<button type="button" (click)="toggleMethod(6)" class="btn btn-link collapsed" data-toggle="collapse" data-target="#reviewPanel">
+										Review <i class="fa fa-{{toggleClass[6]}}"></i>
+									</button>
+								</div>
+								<div id="reviewPanel" class="collapse" aria-labelledby="tabs7" data-parent="#accordionExample">
+									<div class="card-body reviewSec">
+										<reviews [userId]="userId"></reviews>										
+									</div>
+								</div>
+							</div>
+							<!- end card -->
+						</div>
+						<p *ngIf="( (result.isStock == 'coming_soon') || (result.isStock == 'out_of_stock') )">Out Of Stock</p>
+                        <button *ngIf="( (result.isStock == 'in_stock') && (customerCart.indexOf(result.id) == -1) )" (click)="addCart(result);" class="btn my-btn cart_btn from-left">Buy Now</button>
+                        <a *ngIf="( (result.isStock == 'in_stock') && (customerCart.indexOf(result.id) > -1) )" routerLink="/checkout/cart" class="btn my-btn cart_btn from-left">Go to Cart</a>
+						<!--button *ngIf="( (result.isStock == 'coming_soon') || (result.isStock == 'out_of_stock') )" type="button" class="btn my-btn cart_btn from-left" (click)="notifyMePopup(result.id);" data-target="#NotifyMe" data-toggle="modal">Notify Me!</button-->
+					
+					</div>
+					
+                    
+                </div>
+				
+				<div *ngSwitchCase="'static'" class="row">
+                    <div *ngIf="saleBanner" class="col-md-12 col-sm-12 col-xs-12">
+						<img src="assets/images/banners/current/perfume.jpg" class="img-responsive center-block" />
+					</div>
+					<!--static-product></static-product-->
+					<div class="col-sm-12 col-xs-12 no-padding" [innerHTML]="sanitizer.bypassSecurityTrustHtml(result.content)"></div>
+				</div>
+				
+				<div *ngSwitchDefault class="row">
+					<div class="col-xs-12 xs-no-padding">
+						<div class="col-sm-12 col-xs-12 no-padding-right xs-no-padding">
+							<h1 class="col-xs-12 text-center detail_heading">
+								<span>{{resultMsg}}</span>
+							</h1>
+						</div>
+					</div>
+				</div>
+            </div>
+        </section>
+		<div class="parentOfAplus" *ngFor="let item of plusContent" [innerHTML]="sanitizer.bypassSecurityTrustHtml(item)"></div>   
+    </div>

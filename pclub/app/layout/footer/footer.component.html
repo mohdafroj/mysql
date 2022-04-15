@@ -1,0 +1,181 @@
+<div class="container-fluid footer_top"><!-- start of footer_top -->
+	<div class="container">
+		<div class="row">
+            <ul class="list-unstyled"><!-- start of social_media_link -->
+              <li class="list-inline-item">
+                <a href="{{company.facebook}}" target="_blank" class="fb"><i class="fab fa-facebook-f"></i></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="{{company.twitter}}" target="_blank" class="tw"><i class="fab fa-twitter"></i></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="{{company.instagram}}" target="_blank" class="inst"><i class="fab fa-instagram"></i></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="{{company.youtube}}" target="_blank" class="yt"><i class="fab fa-youtube"></i></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="{{company.pinterest}}" target="_blank" class="pi"><i class="fab fa-pinterest-p"></i></a>
+              </li>
+            </ul><!-- end of social_media_link -->
+			
+			<form [formGroup]="rForm" (ngSubmit)="newsletterSubscribe(rForm.value);">
+				<div class="input-group group_input">
+					<span class="news_text">Newsletter</span>
+					<input type="email" class="form-control" formControlName="email">
+					<span class="input-group-append">
+						<button [disabled]="!rForm.valid" class="btn my-btn checkout_btn from-left" type="submit">Subscribe</button>
+					</span>
+				</div>
+			</form>
+			
+		</div>
+	</div>
+</div><!-- end of footer_top -->
+
+<div class="container-fluid footer_bottom"><!-- start of footer_bottom -->
+	<div class="container">
+		<div class="row"><!-- start of row -->
+            <div class="col-md mobile_footer"><!-- start of col_ -->
+              <h4>Information</h4>
+              <ul class="list-unstyled"><!-- start of list -->
+                <li>
+                  <a routerLink="/about-us" routerLinkActive="active">About Us</a>
+                </li>
+                <li>
+                  <a routerLink="/privacy-policy" routerLinkActive="active">Privacy Policy</a>
+                </li>
+                <li>
+                  <a routerLink="/terms-of-use" routerLinkActive="active">Terms of Use</a>
+                </li>
+                <!--li>
+                  <a routerLink="/testimonials" routerLinkActive="active">Testimonials</a>
+                </li-->
+                <li>
+                  <a routerLink="/faq" routerLinkActive="active">FAQ</a>
+                </li>
+              </ul><!-- end of list -->
+            </div><!-- end of col_ -->
+
+            <div class="col-md mobile_footer"><!-- start of col_ -->
+              <h4>Customer Service</h4>
+              <ul class="list-unstyled"><!-- start of list -->
+                <li>
+                  <a routerLink="/contact-us" routerLinkActive="active">Contact US</a>
+                </li>
+                <li>
+                  <a routerLink="/customer/profile" routerLinkActive="active">Profile</a>
+                </li>
+                <li>
+                  <a routerLink="/customer/orders" routerLinkActive="active">Track Orders</a>
+                </li>
+				<li *ngIf="userId == 0">
+					<a routerLink="/login" routerLinkActive="active">Login</a>
+				</li>
+				<li *ngIf="userId == 0">
+					<a routerLink="/registration" routerLinkActive="active">Registration</a>
+				</li>
+              </ul><!-- end of list -->
+            </div><!-- end of col_ -->
+
+            <div class="col-md mobile_footer"><!-- start of col_ -->
+              <h4>Products</h4>
+              <ul class="list-unstyled"><!-- start of list -->
+				<li>
+					<a [routerLink]="['/', 'shopnow']" [queryParams]="{type: config.categories.category1.key}">{{config.categories.category1.title}}</a>
+				</li>
+				<li>
+					<a [routerLink]="['/', 'shopnow']" [queryParams]="{type: config.categories.category2.key}">{{config.categories.category2.title}}</a>
+				</li>
+				<li>
+					<a [routerLink]="['/', 'shopnow']" [queryParams]="{type: config.categories.category3.key}">{{config.categories.category3.title}}</a>
+				</li>
+				<li>
+					<a [routerLink]="['/', 'shopnow']" [queryParams]="{type: config.categories.category4.key}">{{config.categories.category4.title}}</a>
+				</li>
+				<li>
+					<a [routerLink]="['/', 'shopnow']" [queryParams]="{type: config.categories.category5.key}">{{config.categories.category5.title}}</a>
+				</li>
+				<li>
+					<a [routerLink]="['/', 'shopnow']" [queryParams]="{type: config.categories.category6.key}">{{config.categories.category6.title}}</a>
+				</li>
+        <li>
+					<a routerLink="/scent-match" routerLinkActive="active">Scent Match</a>
+				</li>
+				     </ul><!-- end of list -->
+            </div><!-- end of col_ -->
+			
+            <div class="col-md"><!-- start of col_ -->
+              <h4>Address</h4>
+              <ul class="list-unstyled"><!-- start of list -->
+                <li>
+                  <p><i class="fas fa-map-marker-alt"></i> {{company.add}}, {{company.city}} – {{company.pin}}</p>
+                </li>
+                <li>
+                  <p><i class="fas fa-phone-alt"></i> Ph - {{company.phone}}</p>
+                </li>
+                <li>
+                  <p><a href="mailto:{{company.email}}"><i class="fas fa-envelope"></i> {{company.email}}</a></p>
+                </li>
+                <li>
+                  <p><a href="https://wa.me/{{company.phone}}"><i class="fab fa-whatsapp"></i> WhatsApp</a></p>
+                </li>
+              </ul><!-- end of list -->
+            </div><!-- end of col_ -->
+			
+            <div class="col-12"><!-- start of cards_detail_main -->
+              <div class="cards_detail"><!-- start of cards_detail -->
+
+                <div><!-- start of credit_card_div -->
+                  <h5>We accpet all major debit and credit cards</h5>
+                  <ul class="list-unstyled"><!-- start of list -->
+                    <li>
+                      <img src="assets/images/cards_icon/cod.svg" alt="COD" class="img-fluid">
+                    </li>
+                    <li>
+                      <img src="assets/images/cards_icon/maestro.svg" alt="Maestro" class="img-fluid">
+                    </li>
+                    <li>
+                      <img src="assets/images/cards_icon/mastercard.svg" alt="Mastercard" class="img-fluid">
+                    </li>
+                    <li>
+                      <img src="assets/images/cards_icon/net_banking.svg" alt="Net Banking" class="img-fluid">
+                    </li>
+                    <li>
+                      <img src="assets/images/cards_icon/rupay.svg" alt="Rupay" class="img-fluid">
+                    </li>
+                    <li>
+                      <img src="assets/images/cards_icon/visa.svg" alt="Visa" class="img-fluid">
+                    </li>
+                  </ul><!-- end of list -->
+                </div><!-- end of credit_card_div -->
+
+                <div><!-- start of security -->
+                  <ul class="list-unstyled"><!-- start of list -->
+                    <li>
+                      <img src="assets/images/cards_icon/security/100_percentage.svg" alt="100 Percentage" class="img-fluid">
+                    </li>
+                    <li>
+                      <img src="assets/images/cards_icon/security/largest_collection.svg" alt="Largest Collection" class="img-fluid">
+                    </li>
+                    <li>
+                      <img src="assets/images/cards_icon/security/safe_secure.svg" alt="Safe Secure" class="img-fluid">
+                    </li>
+                    <li>
+                      <img src="assets/images/cards_icon/security/ssl.svg" alt="SSL" class="img-fluid">
+                    </li>
+                  </ul><!-- end of list -->
+                </div><!-- end of security -->
+
+              </div><!-- end of cards_detail -->
+            </div><!-- end of cards_detail_main -->
+
+		</div><!-- end of row -->
+	</div>
+	<div class="col-12 disclaimer_text"><!-- start of disclaimer_line -->
+	  <p>Shop 100% authentic products with confidence. All transactions on Perfumer's Club are secured by SSL and secured payment gateway.</p>
+	  <p *ngIf="company.start_year == currentYear">Perfumer's Club © {{currentYear}}, All rights reserved.</p>
+	  <p *ngIf="company.start_year != currentYear">Perfumer's Club © {{company.start_year}}-{{currentYear}}, All rights reserved.</p>
+	</div><!-- end of disclaimer_line -->
+			
+</div><!-- end of footer_bottom -->

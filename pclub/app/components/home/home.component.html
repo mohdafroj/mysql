@@ -1,0 +1,441 @@
+	<div class="content">
+        <section class="topBanner">
+        	<h1>
+				Spread Happiness <span>Perfume = Happiness</span>
+			</h1>
+			<div class="carousel slide" id="demo" data-ride="carousel">            						
+				<div class="carousel-inner">
+					<div class="carousel-item active image_part">
+						<video loop muted autoplay oncanplay="this.play()" onloadedmetadata="this.muted = true" width="100%">
+							<source src="https://storage.googleapis.com/perfumersclub/images/Dec21/Lightr.m4v" type="video/mp4">
+						</video>
+					</div>
+				</div> 
+            </div>
+        </section><!-- end of section_box -->
+        <section class="section_box section_gradient"><!-- start of section_box -->
+        	<div class="container">
+            	<div class="row">
+                    
+					<div class="col-12 heading_div">
+                    	<h1>
+                        	<span>Why Choose Us ?</span>
+                        </h1>
+                        <span class="heading_border"></span>
+                    </div>
+					
+					<div class="col-12 secBanner">
+						<img src="assets/images/home/difference_perfumes_m.png" class="img-fluid mx-auto  d-block w-100" alt="Difference Perfumes">
+					</div>
+                </div>
+            </div>
+        </section><!-- end of section_box -->
+		<!-- slider 1 -->
+		<section class="section_box section_gradient"><!-- start of section_box -->
+        	<div class="col-12 heading_div">
+				<h1>
+					<span>LIGHTR WITH 3 PERFUMES</span> RECHARGE YOUR PERFUME BEFORE IT FADES AWAY
+				</h1>
+				<span class="heading_border"></span>
+			</div>
+			<figure class="secBanner">
+				<span class="imgTagLine">Rendering Beautiful Product Shots</span>
+				<img src="assets/images/home/banner/Lightr+3X8ml.jpg" class="img-fluid d-md-block d-none" alt="Lightr+3X8ml" style="width:inherit" />
+				<img src="assets/images/home/banner/M-Lightr+3X8ml.jpg" class="img-fluid d-md-none d-block" alt="Lightr+3X8ml" style="width:inherit" />
+				<figcaption class="figure-caption">
+					Change Perfume . Get 3 Perfume . Carry in Style
+				</figcaption>
+			</figure>
+			
+			<div class="sliderSec">
+				<ul class="list-unstyled sliderLink">
+					<li [ngClass]="{'active':(gender1 == 'male')}">
+						<a href="javascript:false;" (click)="genderFilter(1, 'male')">Men</a>
+					</li>
+					<li [ngClass]="{'active':(gender1 == 'female')}">
+						<a href="javascript:false;" (click)="genderFilter(1, 'female')">Women</a>
+					</li>
+					<li [ngClass]="{'active':(gender1 == 'unisex')}">
+						<a href="javascript:false;" (click)="genderFilter(1, 'unisex')">Unisex</a>
+					</li>
+				</ul>	
+				<swiper [config]="swiperConfig" class="swiper-container mySwiper">
+				
+					<ng-template *ngFor="let item of filterProduct1;" swiperSlide class="swiper-wrapper">
+						<div class="slidesCard">
+							<div class="swiper-slide card">
+								<div class="card-body">
+									<h5 class="card-title">{{item.name}}</h5>
+									<figure (click)="viewPage(item);">
+										<img [src]="item['images'][0]['large']" [alt]="item['images'][0]['alt']" class="img-fluid mx-auto d-block" />
+										<figcaption *ngIf="item.rating" class="figure-caption">
+											{{item.rating | number: '1.1-1'}}<i class="fas fa-star"></i>
+										</figcaption>
+									</figure>
+								</div>
+								
+								<h3 class="cardPrice">
+									₹{{item.price | number: '2.2-2'}} <del *ngIf="item.discount.original > 0">₹{{item.discount.original | number: '2.2-2'}}</del>
+								</h3>
+							</div>
+						</div>
+					</ng-template>
+
+				</swiper>
+				<div *ngIf="resultStatus == 0" class="swiper mySwiper" style="margin-left:inherit;">
+					<div class="swiper-wrapper slidesCard">
+						<div class="swiper-slide">
+							<div>
+								<img src="assets/images/loading.gif" alt="Loader" class="img-fluid mx-auto d-block" />
+							</div>							
+						</div>
+					</div>
+				</div>
+				<div *ngIf="resultStatus && filterProduct1.length == 0" class="swiper mySwiper" style="margin-left:inherit;">
+					<div class="swiper-wrapper slidesCard">
+						<div class="swiper-slide">
+							<div>
+								{{productMessage}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+        </section><!-- end of section_box -->
+		<!-- slider 2 -->
+		<section class="section_box section_gradient">
+			<div class="col-12 heading_div">
+				<h1>
+					<span>GIFT SET OF 3 FULL SIZE</span> THE PERFECT GIFT FOR YOUR LOVED ONCE
+				</h1>
+				<span class="heading_border"></span>
+			</div>
+			
+			<figure class="secBanner">
+				<img src="assets/images/home/banner/Packof3X50ml.jpg" class="img-fluid d-md-block d-none" alt="Packof3X50ml" style="width:inherit" />
+				<img src="assets/images/home/banner/M-Packof3X50ml.jpg" class="img-fluid d-md-none d-block" alt="Packof3X50ml" style="width:inherit" />
+			</figure>
+			<div class="sliderSec">
+				<ul class="list-unstyled sliderLink">
+					<li [ngClass]="{'active':(gender2 == 'male')}">
+						<a href="javascript:false;" (click)="genderFilter(2, 'male')">Men</a>
+					</li>
+					<li [ngClass]="{'active':(gender2 == 'female')}">
+						<a href="javascript:false;" (click)="genderFilter(2, 'female')">Women</a>
+					</li>
+					<li [ngClass]="{'active':(gender2 == 'unisex')}">
+						<a href="javascript:false;" (click)="genderFilter(2, 'unisex')">Unisex</a>
+					</li>
+				</ul>
+				
+				<swiper [config]="swiperConfig" class="swiper-container mySwiper">
+					<ng-template *ngFor="let item of filterProduct2;" swiperSlide class="swiper-wrapper">
+						<div class="slidesCard">
+							<div class="swiper-slide card">
+								<div class="card-body">
+									<h5 class="card-title">{{item.name}}</h5>
+									<figure (click)="viewPage(item);">
+										<img [src]="item['images'][0]['large']" [alt]="item['images'][0]['alt']" class="img-fluid mx-auto d-block" />
+										<figcaption *ngIf="item.rating" class="figure-caption">
+											{{item.rating | number: '1.1-1'}}<i class="fas fa-star"></i>
+										</figcaption>
+									</figure>
+								</div>
+								
+								<h3 class="cardPrice">
+									₹{{item.price | number: '2.2-2'}} <del *ngIf="item.discount.original > 0">₹{{item.discount.original | number: '2.2-2'}}</del>
+								</h3>
+							</div>
+						</div>
+					</ng-template>
+				</swiper>
+				<div *ngIf="resultStatus == 0" class="swiper mySwiper" style="margin-left:inherit;">
+					<div class="swiper-wrapper slidesCard">
+						<div class="swiper-slide">
+							<div>
+								<img src="assets/images/loading.gif" alt="Loader" class="img-fluid mx-auto d-block" />
+							</div>							
+						</div>
+					</div>
+				</div>
+				<div *ngIf="resultStatus && filterProduct2.length == 0" class="swiper mySwiper" style="margin-left:inherit;">
+					<div class="swiper-wrapper slidesCard">
+						<div class="swiper-slide">
+							<div>
+								{{productMessage}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- slider 3 -->
+		<section class="section_box section_gradient">
+			<div class="col-12 heading_div">
+				<h1>
+					<span>COMBO SET OF 7 PERFUMES</span> 7 PERFUME FOR 7 DAYS
+				</h1>
+				<span class="heading_border"></span>
+			</div>
+			
+			<figure class="secBanner">
+				<img src="assets/images/home/banner/Packof7X8ml.jpg" class="img-fluid d-md-block d-none" alt="Packof7X8ml" style="width:inherit" />
+				<img src="assets/images/home/banner/M-Packof7X8ml.jpg" class="img-fluid d-md-none d-block" alt="Packof7X8ml" style="width:inherit" />
+			</figure>
+			<div class="sliderSec">
+				<ul class="list-unstyled sliderLink">
+					<li [ngClass]="{'active':(gender3 == 'male')}">
+						<a href="javascript:false;" (click)="genderFilter(3, 'male')">Men</a>
+					</li>
+					<li [ngClass]="{'active':(gender3 == 'female')}">
+						<a href="javascript:false;" (click)="genderFilter(3, 'female')">Women</a>
+					</li>
+					<li [ngClass]="{'active':(gender3 == 'unisex')}">
+						<a href="javascript:false;" (click)="genderFilter(3, 'unisex')">Unisex</a>
+					</li>
+				</ul>
+				
+				<swiper [config]="swiperConfig" class="swiper-container mySwiper">
+					<ng-template *ngFor="let item of filterProduct3;" swiperSlide class="swiper-wrapper">
+						<div class="slidesCard">
+							<div class="swiper-slide card">
+								<div class="card-body">
+									<h5 class="card-title">{{item.name}}</h5>
+									<figure (click)="viewPage(item);">
+										<img [src]="item['images'][0]['large']" [alt]="item['images'][0]['alt']" class="img-fluid mx-auto d-block" />
+										<figcaption *ngIf="item.rating" class="figure-caption">
+											{{item.rating | number: '1.1-1'}}<i class="fas fa-star"></i>
+										</figcaption>
+									</figure>
+								</div>
+								
+								<h3 class="cardPrice">
+									₹{{item.price | number: '2.2-2'}} <del *ngIf="item.discount.original > 0">₹{{item.discount.original | number: '2.2-2'}}</del>
+								</h3>
+							</div>
+						</div>
+					</ng-template>
+				</swiper>
+				<div *ngIf="resultStatus == 0" class="swiper mySwiper" style="margin-left:inherit;">
+					<div class="swiper-wrapper slidesCard">
+						<div class="swiper-slide">
+							<div>
+								<img src="assets/images/loading.gif" alt="Loader" class="img-fluid mx-auto d-block" />
+							</div>							
+						</div>
+					</div>
+				</div>
+				<div *ngIf="resultStatus && filterProduct3.length == 0" class="swiper mySwiper" style="margin-left:inherit;">
+					<div class="swiper-wrapper slidesCard">
+						<div class="swiper-slide">
+							<div>
+								{{productMessage}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- slider 4 -->
+		<section class="section_box section_gradient">
+			<div class="col-12 heading_div">
+				<h1>
+					<span>LIGHTR WITH 7 PERFUMES</span> CARRY YOUR PERFUME IN STYLE
+				</h1>
+				<span class="heading_border"></span>
+			</div>
+			
+			<figure class="secBanner">
+				<img src="assets/images/home/banner/Lightr+7X8ml.jpg" class="img-fluid d-md-block d-none" alt="Lightr+7X8ml" style="width:inherit" />
+				<img src="assets/images/home/banner/M-Lightr+7X8ml.jpg" class="img-fluid d-md-none d-block" alt="Lightr+7X8ml" style="width:inherit" />
+			</figure>
+			<div class="sliderSec">
+				<ul class="list-unstyled sliderLink">
+					<li [ngClass]="{'active':(gender4 == 'male')}">
+						<a href="javascript:false;" (click)="genderFilter(4, 'male')">Men</a>
+					</li>
+					<li [ngClass]="{'active':(gender4 == 'female')}">
+						<a href="javascript:false;" (click)="genderFilter(4, 'female')">Women</a>
+					</li>
+					<li [ngClass]="{'active':(gender4 == 'unisex')}">
+						<a href="javascript:false;" (click)="genderFilter(4, 'unisex')">Unisex</a>
+					</li>
+				</ul>
+				
+				<swiper [config]="swiperConfig" class="swiper-container mySwiper">
+					<ng-template *ngFor="let item of filterProduct4;" swiperSlide class="swiper-wrapper">
+						<div class="slidesCard">
+							<div class="swiper-slide card">
+								<div class="card-body">
+									<h5 class="card-title">{{item.name}}</h5>
+									<figure (click)="viewPage(item);">
+										<img [src]="item['images'][0]['large']" [alt]="item['images'][0]['alt']" class="img-fluid mx-auto d-block" />
+										<figcaption *ngIf="item.rating" class="figure-caption">
+											{{item.rating | number: '1.1-1'}}<i class="fas fa-star"></i>
+										</figcaption>
+									</figure>
+								</div>
+								
+								<h3 class="cardPrice">
+									₹{{item.price | number: '2.2-2'}} <del *ngIf="item.discount.original > 0">₹{{item.discount.original | number: '2.2-2'}}</del>
+								</h3>
+							</div>
+						</div>
+					</ng-template>
+				</swiper>
+				<div *ngIf="resultStatus == 0" class="swiper mySwiper" style="margin-left:inherit;">
+					<div class="swiper-wrapper slidesCard">
+						<div class="swiper-slide">
+							<div>
+								<img src="assets/images/loading.gif" alt="Loader" class="img-fluid mx-auto d-block" />
+							</div>							
+						</div>
+					</div>
+				</div>
+				<div *ngIf="resultStatus && filterProduct4.length == 0" class="swiper mySwiper" style="margin-left:inherit;">
+					<div class="swiper-wrapper slidesCard">
+						<div class="swiper-slide">
+							<div>
+								{{productMessage}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- slider 5 -->
+		<section class="section_box section_gradient">
+			<div class="col-12 heading_div">
+				<h1>
+					<span>SET of 3 PERFUMES</span> TRY BEFORE YOU BUY
+				</h1>
+				<span class="heading_border"></span>
+			</div>
+			
+			<figure class="secBanner">
+				<img src="assets/images/home/banner/RefillOf3X8ml.jpg" class="img-fluid d-md-block d-none" alt="RefillOf3X8ml" style="width:inherit" />
+				<img src="assets/images/home/banner/M-RefillOf3X8ml.jpg" class="img-fluid d-md-none d-block" alt="RefillOf3X8ml" style="width:inherit" />
+			</figure>
+			<div class="sliderSec">
+				<ul class="list-unstyled sliderLink">
+					<li [ngClass]="{'active':(gender5 == 'male')}">
+						<a href="javascript:false;" (click)="genderFilter(5, 'male')">Men</a>
+					</li>
+					<li [ngClass]="{'active':(gender5 == 'female')}">
+						<a href="javascript:false;" (click)="genderFilter(5, 'female')">Women</a>
+					</li>
+					<li [ngClass]="{'active':(gender5 == 'unisex')}">
+						<a href="javascript:false;" (click)="genderFilter(5, 'unisex')">Unisex</a>
+					</li>
+				</ul>
+				
+				<swiper [config]="swiperConfig" class="swiper-container mySwiper">
+					<ng-template *ngFor="let item of filterProduct5;" swiperSlide class="swiper-wrapper">
+						<div class="slidesCard">
+							<div class="swiper-slide card">
+								<div class="card-body">
+									<h5 class="card-title">{{item.name}}</h5>
+									<figure (click)="viewPage(item);">
+										<img [src]="item['images'][0]['large']" [alt]="item['images'][0]['alt']" class="img-fluid mx-auto d-block" />
+										<figcaption *ngIf="item.rating" class="figure-caption">
+											{{item.rating | number: '1.1-1'}}<i class="fas fa-star"></i>
+										</figcaption>
+									</figure>
+								</div>
+								
+								<h3 class="cardPrice">
+									₹{{item.price | number: '2.2-2'}} <del *ngIf="item.discount.original > 0">₹{{item.discount.original | number: '2.2-2'}}</del>
+								</h3>
+							</div>
+						</div>
+					</ng-template>
+				</swiper>
+				<div *ngIf="resultStatus == 0" class="swiper mySwiper" style="margin-left:inherit;">
+					<div class="swiper-wrapper slidesCard">
+						<div class="swiper-slide">
+							<div>
+								<img src="assets/images/loading.gif" alt="Loader" class="img-fluid mx-auto d-block" />
+							</div>							
+						</div>
+					</div>
+				</div>
+				<div *ngIf="resultStatus && filterProduct5.length == 0" class="swiper mySwiper" style="margin-left:inherit;">
+					<div class="swiper-wrapper slidesCard">
+						<div class="swiper-slide">
+							<div>
+								{{productMessage}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- slider 6 -->
+		<section class="section_box section_gradient">
+			<div class="col-12 heading_div">
+				<h1>
+					<span>FULL SIZE PERFUMES</span> For Everyday Affordable Use
+				</h1>
+				<span class="heading_border"></span>
+			</div>
+			
+			<figure class="secBanner">
+				<span class="imgTagLine">Rendering Beautiful Product Shots</span>
+				<img src="assets/images/home/banner/Single50ml.jpg" class="img-fluid d-md-block d-none" alt="Single50ml" style="width:inherit" />
+				<img src="assets/images/home/banner/M-Single50ml.jpg" class="img-fluid d-md-none d-block" alt="Single50ml" style="width:inherit" />
+			</figure>
+			<div class="sliderSec">
+				<ul class="list-unstyled sliderLink">
+					<li [ngClass]="{'active':(gender6 == 'male')}">
+						<a href="javascript:false;" (click)="genderFilter(6, 'male')">Men</a>
+					</li>
+					<li [ngClass]="{'active':(gender6 == 'female')}">
+						<a href="javascript:false;" (click)="genderFilter(6, 'female')">Women</a>
+					</li>
+					<li [ngClass]="{'active':(gender6 == 'unisex')}">
+						<a href="javascript:false;" (click)="genderFilter(6, 'unisex')">Unisex</a>
+					</li>
+				</ul>
+				
+				<swiper [config]="swiperConfig" class="swiper-container mySwiper">
+					<ng-template *ngFor="let item of filterProduct6;" swiperSlide class="swiper-wrapper">
+						<div class="slidesCard">
+							<div class="swiper-slide card">
+								<div class="card-body">
+									<h5 class="card-title">{{item.name}}</h5>
+									<figure (click)="viewPage(item);">
+										<img [src]="item['images'][0]['large']" [alt]="item['images'][0]['alt']" class="img-fluid mx-auto d-block" />
+										<figcaption *ngIf="item.rating" class="figure-caption">
+											{{item.rating | number: '1.1-1'}}<i class="fas fa-star"></i>
+										</figcaption>
+									</figure>
+								</div>
+								
+								<h3 class="cardPrice">
+									₹{{item.price | number: '2.2-2'}} <del *ngIf="item.discount.original > 0">₹{{item.discount.original | number: '2.2-2'}}</del>
+								</h3>
+							</div>
+						</div>
+					</ng-template>
+				</swiper>
+				<div *ngIf="resultStatus == 0" class="swiper mySwiper" style="margin-left:inherit;">
+					<div class="swiper-wrapper slidesCard">
+						<div class="swiper-slide">
+							<div>
+								<img src="assets/images/loading.gif" alt="Loader" class="img-fluid mx-auto d-block" />
+							</div>							
+						</div>
+					</div>
+				</div>
+				<div *ngIf="resultStatus && filterProduct6.length == 0" class="swiper mySwiper" style="margin-left:inherit;">
+					<div class="swiper-wrapper slidesCard">
+						<div class="swiper-slide">
+							<div>
+								{{productMessage}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+    </div><!-- end of middle_page -->

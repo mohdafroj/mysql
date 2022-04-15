@@ -1,0 +1,20 @@
+<h2 class="text-success" mat-dialog-title>Are you sure want to delete</h2>
+<mat-dialog-content [formGroup]="rForm">  
+	<b>{{ item.firstname + ' '+ item.lastname }}</b>
+	<address class="confirm_popup_div">
+		{{item.address}}, <br>
+		{{item.city}}, <br>
+		{{item.state}} {{item.pincode}} {{item.country}}. <br>
+		Mobile: {{item.mobile}},<br>
+		Email: {{item.email}}
+	</address>
+    <mat-form-field>
+		<span [class]="resObject['textClass']">{{resObject['message']}}</span>
+        <textarea matInput formControlName="item" [hidden]="true"></textarea>
+    </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button class="btn mat-raised-button mat-primary my-btn checkout_btn from-left"(click)="processAction()">Yes</button>
+    <button class="btn mat-raised-button mat-danger"(click)="closePopup()">Cancel</button>
+</mat-dialog-actions>

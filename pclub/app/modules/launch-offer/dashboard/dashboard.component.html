@@ -1,0 +1,310 @@
+	<div class="content"><!-- start of middle_page -->
+    	
+        <section class="container-fluid p-0 mainBanner"><!-- start of mainBanner -->
+        	<figure>
+				<img src="assets/images/launch-offer/{{bannerWeb}}" class="img-fluid d-none d-md-block" alt="Logo Run" />
+				<img src="assets/images/launch-offer/{{bannerPhone}}" class="img-fluid d-block d-md-none" alt="Logo Run" />
+			</figure>
+			<div class="mainBannerContent">
+				<h1 *ngIf="currentUri == 'launch-offer'">
+					Website Launch Offer <span [innerHTML]="sanitizer.bypassSecurityTrustHtml(maxDiscount)"></span>
+				</h1>
+			</div>
+        </section><!-- end of mainBanner -->
+		
+		<section class="container-fluid section_box"><!-- start of section_box -->
+        	<div class="container"><!-- start of container -->
+            	<div class="row"><!-- start of row -->
+				
+					<div class="col-12 saleEndsContent"><!-- start of saleEndsContent -->
+						<h5>
+							Sale Ends In <span>{{clockDisplay}}</span><!--span>01 days 08:11:23</span-->
+						</h5>
+					</div><!-- end of saleEndsContent -->
+                    
+					<div class="col-12 offerHeading"><!-- start of heading_div -->
+                    	<h1>
+                        	<span>Why We Are The Best</span>
+                        </h1>
+                    </div><!-- end of heading_div -->
+					
+					<div class="col-12 text-center"><!-- start of image_part -->
+						<img src="assets/images/launch-offer/we_are_the_best.jpg" class="img-fluid mx-auto" alt="Why We Are The Best">
+					</div>
+                    
+					<div class="col-12 offerHeading mt-5 pt-4"><!-- start of heading_div -->
+                    	<h1>
+                        	<span>Better Than Deos And Other Perfumes</span>
+                        </h1>
+                    </div><!-- end of heading_div -->
+					
+					<div class="col-12 text-center"><!-- start of image_part -->
+						<img src="assets/images/launch-offer/better_then_perfume.jpg" class="img-fluid mx-auto" alt="Better Than Deos And Other Perfumes">
+					</div>
+                </div><!-- end of row -->
+            </div><!-- end of container -->
+        </section><!-- end of section_box -->
+		
+		<section class="container-fluid section_box bgBlueOutline d-none"><!-- start of product_listing -->
+        	<div class="container"><!-- start of container -->
+            	<div class="row"><!-- start of row -->
+                    
+					<div class="col-12 offerHeading productHeading"><!-- start of heading_div -->
+                    	<h1>
+                        	Yay!! Your Coupon Code Is Applied <span>Choose Your Launch Offer</span>
+                        </h1>
+                    </div><!-- end of heading_div -->
+					
+					<div class="col-12 product_listing d-flex flex-wrap"><!-- start of listing -->
+                    	
+                        <div class="col-md-4 col-12 list_div"><!-- start of product -->
+                            <div class="product-grid3">
+                                <div class="product-image3"><!-- start of image -->
+                                    <span class="image_part"><!-- start of single_image -->
+                                        <img src="assets/images/launch-offer/single.png" class="img-fluid" alt="Single Perfume">
+                                    </span><!-- end of single_image -->
+                                </div><!-- end of image -->
+                                
+                                <div class="product-content"><!-- start of content -->
+                                    <h3 class="title">
+										<span>₹{{pack1OriginalPrice | number: '2.2-2'}}</span>
+									</h3>
+                                    <div class="product_price"><!-- start of product_price -->
+                                        1 <span>for</span> ₹{{pack1Price | number: '2.2-2'}}
+                                    </div><!-- end of product_price -->
+                                    <div class="product_size" (click)="productType='single';" data-target="#ChooseGender" data-toggle="modal"><!-- start of product_size -->
+                                    	<mark>Get This Offer</mark>
+                                    </div><!-- end of product_size -->
+                                    <div class="product_gifting"><!-- start of product_sold -->
+                                    	Best For Gifting
+                                    </div><!-- end of product_sold -->
+                                    <h3 class="product_off" [innerHTML]="sanitizer.bypassSecurityTrustHtml(pack1Discount)"></h3>
+                                </div><!-- end of content -->
+                            </div>
+                        </div><!-- end of product -->
+                        
+                        <div class="col-md-4 col-12 list_div"><!-- start of product -->
+                            <div class="product-grid3">
+								<span class="productTag">Most Popular</span>
+                                <div class="product-image3"><!-- start of image -->
+                                    <span class="image_part"><!-- start of single_image -->
+                                        <img src="assets/images/launch-offer/two.png" class="img-fluid" alt="Two Perfume">
+                                    </span><!-- end of single_image -->
+                                </div><!-- end of image -->
+                                
+                                <div class="product-content"><!-- start of content -->
+                                    <h3 class="title">
+										<span>₹{{pack2OriginalPrice | number: '2.2-2'}}</span>
+									</h3>
+                                    <div class="product_price"><!-- start of product_price -->
+                                        2 <span>for</span> ₹{{pack2Price | number: '2.2-2'}}
+                                    </div><!-- end of product_price -->
+                                    <div class="product_size" (click)="productType='pack-2';" data-target="#ChooseGender" data-toggle="modal"><!-- start of product_size -->
+                                    	<mark>Get This Offer</mark>
+                                    </div><!-- end of product_size -->
+                                    <div class="product_gifting d-none"><!-- start of product_sold -->
+                                    	Best For Gifting
+                                    </div><!-- end of product_sold -->
+                                    <h3 class="product_off" [innerHTML]="sanitizer.bypassSecurityTrustHtml(pack2Discount)"></h3>
+                                </div><!-- end of content -->
+                            </div>
+                        </div><!-- end of product -->
+						
+						<div class="col-md-4 col-12 list_div"><!-- start of product -->
+                            <div class="product-grid3">
+                                <div class="product-image3"><!-- start of image -->
+                                    <span class="image_part"><!-- start of single_image -->
+                                        <img src="assets/images/launch-offer/three.png" class="img-fluid" alt="Three Perfume">
+                                    </span><!-- end of single_image -->
+                                </div><!-- end of image -->
+                                
+                                <div class="product-content"><!-- start of content -->
+                                    <h3 class="title">
+										<span>₹{{pack3OriginalPrice | number: '2.2-2'}}</span>
+									</h3>
+                                    <div class="product_price"><!-- start of product_price -->
+                                        3 <span>for</span> ₹{{pack3Price | number: '2.2-2'}}
+                                    </div><!-- end of product_price -->
+                                    <div class="product_size" (click)="productType='pack-3';" data-target="#ChooseGender" data-toggle="modal"><!-- start of product_size -->
+                                    	<mark>Get This Offer</mark>
+                                    </div><!-- end of product_size -->
+                                    <div class="product_gifting"><!-- start of product_sold -->
+                                    	Best For Gifting
+                                    </div><!-- end of product_sold -->
+                                    <h3 class="product_off" [innerHTML]="sanitizer.bypassSecurityTrustHtml(pack3Discount)"></h3>
+                                </div><!-- end of content -->
+                            </div>
+                        </div><!-- end of product -->
+                        
+                    </div><!-- end of listing -->
+                    
+                </div><!-- end of row -->
+            </div><!-- end of container -->
+        </section><!-- end of product_listing -->
+		
+		<section class="container-fluid claimBtn" data-toggle="modal" data-target="#claimBtnModal"><!-- start of claimBtn -->
+        	<p>
+				Yay!! Your Coupon Code Is Applied <span>Shop Now</span>
+			</p>
+        </section><!-- end of claimBtn -->
+    
+    </div><!-- end of middle_page -->
+
+	<!-- start confirmation Modal -->
+    <div class="modal fade global_popup bd-example-modal-lg" id="claimBtnModal" tabindex="-1">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content chooseGenderPopup border-0 rounded-0">
+                <div class="modal-header">
+                    <h4 class="modal-title">Choose Your Launch Offer</h4>
+                    <button type="button" class="btn close-btn close close-modal" data-dismiss="modal" aria-label="Close">
+                    	<span class="icon-cross" aria-hidden="true">&nbsp;</span>
+                    	<span class="icon-cross" aria-hidden="true">&nbsp;</span>
+                    </button>
+                </div>
+                <div class="modal-body d-flex flex-wrap">
+                	<div class="col-12 product_listing d-flex flex-wrap"><!-- start of listing -->
+                    	
+                        <div class="col-4 list_div"><!-- start of product -->
+                            <div class="product-grid3">
+                                <div class="product-image3" data-dismiss="modal" aria-label="Close" [routerLink]="['/', basePath]" [queryParams]="{gender: 'male', type: 'single'}"><!-- start of image -->
+                                    <span class="image_part"><!-- start of single_image -->
+                                        <img src="assets/images/launch-offer/single.png" class="img-fluid" alt="Single Perfume">
+                                    </span><!-- end of single_image -->
+                                </div><!-- end of image -->
+                                
+                                <div class="product-content"><!-- start of content -->
+                                    <h3 class="title">
+										<span>₹{{pack1OriginalPrice | number: '2.2-2'}}</span>
+									</h3>
+                                    <div class="product_price"><!-- start of product_price -->
+                                        1 <span>for</span> ₹{{pack1Price | number: '2.2-2'}}
+                                    </div><!-- end of product_price -->
+									<a data-dismiss="modal" aria-label="Close" [routerLink]="['/', basePath]" [queryParams]="{gender: 'male', type: 'single'}" class="btn my-btn cart_btn from-left">
+										Buy
+									</a>									
+                                    <div class="product_size d-none" data-target="#ChooseGender" data-toggle="modal"><!-- start of product_size -->
+                                    	<mark>Get This Offer</mark>
+                                    </div><!-- end of product_size -->
+                                    <div class="product_gifting d-none"><!-- start of product_sold -->
+                                    	Best For Gifting
+                                    </div><!-- end of product_sold -->
+                                    <h3 class="product_off" [innerHTML]="sanitizer.bypassSecurityTrustHtml(pack1Discount)"></h3>
+                                </div><!-- end of content -->
+                            </div>
+                        </div><!-- end of product -->
+                        
+                        <div class="col-4 list_div"><!-- start of product -->
+                            <div class="product-grid3">
+								<span class="productTag">Most Popular</span>
+                                <div class="product-image3" data-dismiss="modal" aria-label="Close" [routerLink]="['/', basePath]" [queryParams]="{gender: 'male', type: 'pack-2'}"><!-- start of image -->
+                                    <span class="image_part"><!-- start of single_image -->
+                                        <img src="assets/images/launch-offer/two.png" class="img-fluid" alt="Two Perfume">
+                                    </span><!-- end of single_image -->
+                                </div><!-- end of image -->
+                                
+                                <div class="product-content"><!-- start of content -->
+                                    <h3 class="title">
+										<span>₹{{pack2OriginalPrice | number: '2.2-2'}}</span>
+									</h3>
+                                    <div class="product_price"><!-- start of product_price -->
+                                        2 <span>for</span> ₹{{pack2Price | number: '2.2-2'}}
+                                    </div><!-- end of product_price -->
+									<a data-dismiss="modal" aria-label="Close" [routerLink]="['/', basePath]" [queryParams]="{gender: 'male', type: 'pack-2'}" class="btn my-btn cart_btn from-left">
+										Buy
+									</a>
+                                    <div class="product_size d-none" data-target="#ChooseGender" data-toggle="modal"><!-- start of product_size -->
+                                    	<mark>Get This Offer</mark>
+                                    </div><!-- end of product_size -->
+                                    <div class="product_gifting d-none"><!-- start of product_sold -->
+                                    	Best For Gifting
+                                    </div><!-- end of product_sold -->
+                                    <h3 class="product_off" [innerHTML]="sanitizer.bypassSecurityTrustHtml(pack2Discount)"></h3>
+                                </div><!-- end of content -->
+                            </div>
+                        </div><!-- end of product -->
+						
+						<div class="col-4 list_div"><!-- start of product -->
+                            <div class="product-grid3">
+								<span class="productTag">Best For Gifting</span>
+                                <div class="product-image3" data-dismiss="modal" aria-label="Close" [routerLink]="['/', basePath]" [queryParams]="{gender: 'male', type: 'pack-3'}"><!-- start of image -->
+                                    <span class="image_part"><!-- start of single_image -->
+                                        <img src="assets/images/launch-offer/three.png" class="img-fluid" alt="Three Perfume">
+                                    </span><!-- end of single_image -->
+                                </div><!-- end of image -->
+                                
+                                <div class="product-content"><!-- start of content -->
+                                    <h3 class="title">
+										<span>₹{{pack3OriginalPrice | number: '2.2-2'}}</span>
+									</h3>
+                                    <div class="product_price"><!-- start of product_price -->
+                                        3 <span>for</span> ₹{{pack3Price | number: '2.2-2'}}
+                                    </div><!-- end of product_price -->
+									<a data-dismiss="modal" aria-label="Close" [routerLink]="['/', basePath]" [queryParams]="{gender: 'male', type: 'pack-3'}" class="btn my-btn cart_btn from-left">
+										Buy
+									</a>
+                                    <div class="product_size d-none" data-target="#ChooseGender" data-toggle="modal"><!-- start of product_size -->
+                                    	<mark>Get This Offer</mark>
+                                    </div><!-- end of product_size -->
+                                    <div class="product_gifting d-none"><!-- start of product_sold -->
+                                    	Best For Gifting
+                                    </div><!-- end of product_sold -->
+                                    <h3 class="product_off" [innerHTML]="sanitizer.bypassSecurityTrustHtml(pack3Discount)"></h3>
+                                </div><!-- end of content -->
+                            </div>
+                        </div><!-- end of product -->
+                        
+                    </div><!-- end of listing -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end confirmation Modal -->
+	
+	<!-- start confirmation Modal -->
+    <div class="modal fade global_popup" id="ChooseGender" tabindex="-1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content chooseGenderPopup border-0 rounded-0">
+                <div class="modal-header">
+                    <h4 class="modal-title">Choose your preferred gender</h4>
+                    <button type="button" class="btn close-btn close close-modal" data-dismiss="modal" aria-label="Close">
+                    	<span class="icon-cross" aria-hidden="true">&nbsp;</span>
+                    	<span class="icon-cross" aria-hidden="true">&nbsp;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+				
+                	<div class="chooseGenderDiv"><!-- start of chooseGenderDiv -->
+						<a [routerLink]="['/', basePath]" [queryParams]="{gender: 'male', type: productType}" class="clickGenderTag col-4" data-dismiss="modal"><!-- start of clickGender -->
+							<div class="clickGender">
+								<span class="iconGender">
+									<img src="assets/images/launch-offer/men.svg" class="img-fluid" alt="Men">
+								</span>
+								<span class="iconText">Men</span>
+							</div>
+						</a><!-- end of clickGender -->
+						
+						<a [routerLink]="['/', basePath]" [queryParams]="{gender: 'female', type: productType}" class="clickGenderTag col-4" data-dismiss="modal"><!-- start of clickGender -->
+							<div class="clickGender">
+								<span class="iconGender">
+									<img src="assets/images/launch-offer/women.svg" class="img-fluid" alt="Women">
+								</span>
+								<span class="iconText">Women</span>
+							</div>
+						</a><!-- end of clickGender -->
+						
+						<a [routerLink]="['/', basePath]" [queryParams]="{gender: 'unisex', type: productType}" class="clickGenderTag col-4" data-dismiss="modal"><!-- start of clickGender -->
+							<div class="clickGender">
+								<span class="iconGender">
+									<img src="assets/images/launch-offer/unisex.svg" class="img-fluid" alt="Unisex">
+								</span>
+								<span class="iconText">Unisex</span>
+							</div>
+						</a><!-- end of clickGender -->
+					</div><!-- end of chooseGenderDiv -->
+					
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end confirmation Modal -->
+    

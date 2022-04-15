@@ -1,0 +1,392 @@
+    <!-- start of page css -->
+    <section class="container-fluid content"><!-- start of middle_part -->
+        
+        <div class="container">
+            <div class="row"><!-- start of row -->
+						<ul [hidden]="1" itemscope itemtype="http://schema.org/BreadcrumbList">	
+							<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+								<a itemprop="item" routerLink="/perfume-selfie"><span itemprop="name">Perfume Selfie</span></a>
+								<meta itemprop="position" content="1" />
+                            </li>
+						</ul>
+            	
+                <div class="col-sm-12 col-xs-12 top_video_div"><!-- start of top_part -->
+                	<div class="col-sm-6 col-xs-12 no-padding-left xs-no-padding"><!-- start of video_part -->
+                    	<p>
+                            <a href="https://youtu.be/Oja4ArbKabE" target="_blank">
+                                <img src="assets/images/know_more/selfie_video.jpg" class="img-responsive center-block" alt="Selfie Video">
+                            </a>
+                        </p>
+                    </div><!-- end of video_part -->
+                    
+                    <div class="col-sm-6 col-xs-12 no-padding-right xs-no-padding"><!-- start of video_content -->
+                    	<div class="col-sm-12 col-xs-12 main_heading margin-md-top konw_more_heading xs-no-padding"><!-- start of heading_part -->
+                            <h3>
+                                <span>
+                                    Upgrade Yourself
+                                </span>
+                            </h3>
+                        </div><!-- end of heading_part -->
+                        
+                        <div class="col-sm-12 col-xs-12 selfie_content_div"><!-- start of content -->
+                            <h3>
+                                Still Using Deodrants? WAKE UP!
+                            </h3>
+                            <p>
+                                A revolutionary concept that will change the way you look and use fragrance
+                            </p>
+                        </div><!-- end of contact_detail -->
+                
+                        <div class="col-sm-12 col-xs-12 shop_more_btn"><!-- start of shop_now -->
+                            <a [routerLink]="['products']" class="btn from-left cart_btn">Shop Now</a>
+                        </div><!-- end of shop_now -->
+                    </div><!-- end of video_content -->
+                </div><!-- end of top_part -->
+                
+                <div class="col-sm-12 col-xs-12 break_line visible-xs"><!-- start of break_line -->
+                    <hr style="">
+                </div><!-- end of break_line -->
+                
+                <div class="col-sm-12 col-xs-12 main_heading margin-md-top margin-md-bottom konw_more_heading"><!-- start of heading_part -->
+                    <h3>
+                        <span>
+                            Perfume Selfie
+                        </span>
+                    </h3>
+                    <p>
+                        Try Your Perfumes Before You Buy Them
+                    </p>
+                </div><!-- end of heading_part -->
+                
+                <div class="col-sm-12 col-xs-12 selfie_content_div"><!-- start of content -->
+                	<h4>
+                    	7 Perfumes Delivered at Your Doorstep
+                    </h4>
+                    <p>
+                    	The Perfume selfie is a unique one of its kind concept in the world. Each box contains 7 Internation mini perfumes, a Perfume Selfie case and a Rs. 501 Gift Card to redeem against the larger perfume.
+                    </p>
+                </div><!-- end of contact_detail -->
+                
+                <div class="col-sm-12 col-xs-12 selfie_content_div"><!-- start of content -->
+                	<h4>
+                    	CHANGE YOUR PERFUME EVERYDAY TO SUIT THE OCCASION
+                    </h4>
+                    <p>
+                    	With 7 perfumes, you can now change your perfume everyday and have a different one for occasion instead of applying the same everyday.
+                    </p>
+                </div><!-- end of contact_detail -->
+                
+                <div class="col-sm-12 col-xs-12 selfie_content_div"><!-- start of content -->
+                	<h4>
+                    	PERFUME YOU RECEIVE ARE FROM DIFFERENT BRANDS
+                    </h4>
+                    <p>
+                    	All 7 perfumes you get will be supplied from 7 different brands. Instead of buying perfumes seperately from different brands, we enable you get it all in one single place.
+                    </p>
+                </div><!-- end of contact_detail -->
+                
+                <div id="myCarousel" class="carousel slide col-sm-12 col-xs-12 no-padding margin-lg-bottom" data-ride="carousel"><!-- start of selfie_slider -->
+                
+                	<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12"><!-- end Carousel thumbnail -->
+                    	<ul class="list-group list-unstyled list-inline col-xs-12 no-padding selfie_thumbnail">
+                            <li class="col-xs-2" [ngClass]="{active:fSlider==0}" (click)="setFirstSlide(0);">
+								<h4 class="text-pink">Lurve</h4>
+								<img src="assets/images/selfie_images/selfie_icon/icon1.jpg" alt="Selfie 1" class="img-responsive img-circle">
+								<span class="selfie_arrow_div">
+									<span class="selfie_angle bg-pink"></span>
+									<span class="selfie_circle bg-pink"></span>
+								</span>
+                            </li>
+                            <li class="col-xs-2" [ngClass]="{active:fSlider==1}" (click)="setFirstSlide(1);">
+								<h4 class="text-d-red">Teaze</h4>
+								<img src="assets/images/selfie_images/selfie_icon/icon2.jpg" alt="Selfie 2" class="img-responsive img-circle">
+								<span class="selfie_arrow_div">
+									<span class="selfie_angle bg-d-red"></span>
+									<span class="selfie_circle bg-d-red"></span>
+								</span>
+                            </li>
+                            <li class="col-xs-2" [ngClass]="{active:fSlider==2}" (click)="setFirstSlide(2);">
+								<h4 class="text-purple">Sophistique</h4>
+								<img src="assets/images/selfie_images/selfie_icon/icon3.jpg" alt="Selfie 3" class="img-responsive img-circle">
+								<span class="selfie_arrow_div">
+									<span class="selfie_angle bg-purple"></span>
+									<span class="selfie_circle bg-purple"></span>
+								</span>
+                            </li>
+                            <li class="col-xs-2" [ngClass]="{active:fSlider==3}" (click)="setFirstSlide(3);">
+								<h4 class="text-d-blue">Wyld</h4>
+								<img src="assets/images/selfie_images/selfie_icon/icon4.jpg" alt="Selfie 4" class="img-responsive img-circle">
+								<span class="selfie_arrow_div">
+									<span class="selfie_angle bg-d-blue"></span>
+									<span class="selfie_circle bg-d-blue"></span>
+								</span>
+                            </li>
+                            <li class="col-xs-2" [ngClass]="{active:fSlider==4}" (click)="setFirstSlide(4);">
+								<h4 class="text-d-brown">Muzculine</h4>
+								<img src="assets/images/selfie_images/selfie_icon/icon5.jpg" alt="Selfie 5" class="img-responsive img-circle">
+								<span class="selfie_arrow_div">
+									<span class="selfie_angle bg-d-brown"></span>
+									<span class="selfie_circle bg-d-brown"></span>
+								</span>
+                            </li>
+                            <li class="col-xs-2" [ngClass]="{active:fSlider==5}" (click)="setFirstSlide(5);">
+								<h4 class="text-l-brown">Cazanova</h4>
+								<img src="assets/images/selfie_images/selfie_icon/icon6.jpg" alt="Selfie 6" class="img-responsive img-circle">
+								<span class="selfie_arrow_div">
+									<span class="selfie_angle bg-l-brown"></span>
+									<span class="selfie_circle bg-l-brown"></span>
+								</span>
+                            </li>
+                        </ul>
+                    </div><!-- end Carousel thumbnail -->
+                	
+                    <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12"><!-- start Carousel images -->
+                        <ngu-carousel #myCarousel [inputs]="nguFirst" (onMove)="initDataFirstFn($event)" [dataSource]="nguFirstData" class="carousel-inner selfie_slider">
+                            <ngu-item NguCarouselItem *nguCarouselDef="let item; let i = index;" [ngClass]="{active:i==fSlider}"><!-- start Item -->
+                                <img [src]="item.image" [alt]="'Selfie Product'+i" class="img-responsive">
+                            </ngu-item><!-- End Item -->                        
+							<button NguCarouselPrev class="leftRs"><i class="fa fa-angle-left"></i></button>
+							<button NguCarouselNext class="rightRs"><i class="fa fa-angle-right"></i></button>
+							<!--ul class="myPoint" nguCarouselPoint>
+								<li *ngFor="let i of myCarousel.pointNumbers; let i = index" (click)="myCarousel.moveTo(i)">&nbsp;{{i+1}}&nbsp;</li>
+							</ul-->
+                        </ngu-carousel>                        
+                    </div><!-- end Carousel images -->
+                
+                </div><!-- end of selfie_slider -->
+                
+                <div class="col-sm-12 col-xs-12 selfie_content_div konw_more_heading"><!-- start of heading_part -->
+                    <h3 class="col-sm-12 col-xs-12">
+                    	Each Box Contains
+                    </h3>
+                
+                    <div class="col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0 selfie_content_div no-padding"><!-- start of images -->
+                        <p>
+                            <img src="assets/images/selfie_images/each_box.jpg" class="img-responsive center-block hidden-xs" alt="Each Box">
+                            <img class="img-responsive center-block visible-xs" src="assets/images/selfie_images/mobile_selfie.jpg" alt="Each Box">
+                        </p>
+                    </div><!-- end of images -->
+                </div><!-- end of heading_part -->
+                
+                <div class="col-sm-12 col-xs-12 shop_more_btn"><!-- start of shop_now -->
+                	<a  [routerLink]="['products']" class="btn from-left cart_btn">Shop Now</a>
+                </div><!-- end of shop_now -->
+                
+                <div class="col-sm-12 col-xs-12 break_line"><!-- start of break_line -->
+                	<hr style="">
+                </div><!-- end of break_line -->
+                
+                <div class="col-sm-12 col-xs-12 main_heading margin-md-top margin-md-bottom konw_more_heading"><!-- start of heading -->
+                	<h3>
+                    	<span>
+                    		7 International Brands
+                        </span>
+                    </h3>
+                    <p>
+                    	Perfume you receive are from the following brands.
+                    </p>
+                </div><!-- end of heading -->
+                
+                <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0"><!-- start of slider -->
+                    <!-- Carousel -->
+                    <div id="carousel-example-generic">
+                        <!-- Wrapper for slides -->
+                        <ngu-carousel [inputs]="nguSecond" [dataSource]="nguSecondData" class="carousel-inner">
+                            <ngu-item NguCarouselItem *nguCarouselDef="let item;">
+                                <h3><span>{{item.title}}</span></h3>
+                                <img [src]="item.image" class="img-responsive" [alt]="item.title">
+                                <div class="contains_logo">
+                                    <img [src]="item.logo" class="img-responsive" [alt]="item.title">
+                                    <div>
+                                        {{item.content}}
+                                    </div>
+                                </div>
+                            </ngu-item>                            
+							<button NguCarouselPrev class="leftRs"><i class="fa fa-angle-left"></i></button>
+							<button NguCarouselNext class="rightRs"><i class="fa fa-angle-right"></i></button>
+                        </ngu-carousel>
+                        <!-- Controls -->                        
+                    </div>
+                    <!-- /carousel -->
+                </div><!-- end of slider -->
+                
+                <div class="col-sm-12 col-xs-12 selfie_content_div"><!-- start of content -->
+                	<h4>
+                    	WE SELL ONLY INTERNATIONAL BRANDS
+                    </h4>
+                    <p>
+                    	Perfume Booth have an exclusive tie-up with the above mentioned brands. All perfumes have been manufactured internationally in France, UK and UAE.
+                    </p>
+                </div><!-- end of contact_detail -->
+                
+                <div class="col-sm-12 col-xs-12 selfie_content_div"><!-- start of content -->
+                	<h4>
+                    	HIGHEST QUALITY OF PERFUMES -EDT/EDP
+                    </h4>
+                    <p>
+                    	All perfumes you receive in the Perfume Selfie box are EDT/EDP, which means the concentration of perfume oil used is highly concentrated for longer lasting fragrance.
+                    </p>
+                </div><!-- end of contact_detail -->
+                
+                <div class="col-sm-12 col-xs-12 selfie_content_div"><!-- start of content -->
+                	<h4>
+                    	6 TIMES LONGER LASTING THAN DEODRANTS
+                    </h4>
+                    <p>
+                    	EDT/EDP have 12-18% perfume Oil, on the other hand, Deodrants have 2-4%. This will make our perfumes last much longer.
+                    </p>
+                </div><!-- end of contact_detail -->
+                
+                <div class="col-sm-12 col-xs-12 shop_more_btn"><!-- start of shop_now -->
+                	<a  [routerLink]="['products']" class="btn from-left cart_btn">Shop Now</a>
+                </div><!-- end of shop_now -->
+                
+                <div class="col-sm-12 col-xs-12 break_line"><!-- start of break_line -->
+                	<hr style="">
+                </div><!-- end of break_line -->
+                
+                <div class="col-sm-12 col-xs-12 main_heading margin-md-top margin-md-bottom konw_more_heading"><!-- start of heading_part -->
+                    <h3>
+                        <span>
+                            Perfume Selfie Case
+                        </span>
+                    </h3>
+                </div><!-- end of heading_part -->
+                
+                <div class="col-sm-12 col-xs-12 selfie_content_div"><!-- start of content -->
+                	<h4>
+                    	A PATENT PENDING DEVICE
+                    </h4>
+                    <p>
+                    	The Perfume Selfie Case is a "Patent Pending" carry case uniquely designed by our team to enable you to carry your mini perfumes in it.
+                    </p>
+                </div><!-- end of contact_detail -->
+                
+                <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 selfie_content_div margin-md-bottom"><!-- start of images -->
+                	<h5><span>Carry Your Perfume In Style</span></h5>
+                    <p>
+                    	<img src="assets/images/know_more/selfie_case.jpg" class="img-responsive center-block" alt="Each Box">
+                    </p>
+                </div><!-- end of images -->
+                
+                <div class="col-sm-12 col-xs-12 selfie_content_div"><!-- start of content -->
+                	<h4>
+                    	CARRY CASE FOR YOUR MINI PERFUME
+                    </h4>
+                    <p>
+                    	Fit your mini perfumes inside the Perfume Selfie Case. Once the 4ml perfume fits inside it, it will look like a bigger perfume.
+                    </p>
+                </div><!-- end of contact_detail -->
+                
+                <div class="col-sm-12 col-xs-12 selfie_content_div"><!-- start of content -->
+                	<h4>
+                    	PERFECT SIZE FOR THE PERFECT SPRAY
+                    </h4>
+                    <p>
+                    	Once you fit your mini perfume into the case, the PerfumeSelfie case is big enough to fit in your hands for the perfect spray and still small enough to fit in your pocket.
+                    </p>
+                </div><!-- end of contact_detail -->
+                
+                <div class="col-sm-12 col-xs-12 selfie_content_div"><!-- start of content -->
+                	<h4>
+                    	CARRY IN YOUR POCKET
+                    </h4>
+                    <p>
+                    	Now carry your perfume with you and use it when you need it the most, just before a meeting or a date.
+                    </p>
+                </div><!-- end of contact_detail -->
+                
+                <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 selfie_content_div"><!-- start of video -->
+                	<h5><span>How To Use It?</span></h5>
+                    <p>
+                    	<a href="https://youtu.be/PsTpsDDT-Rk" target="_blank">
+                    		<img src="assets/images/know_more/how_to_use.jpg" class="img-responsive center-block" alt="Each Box">
+                        </a>
+                    </p>
+                </div><!-- end of video -->
+                
+                <div class="col-sm-12 col-xs-12 shop_more_btn"><!-- start of shop_now -->
+                	<a [routerLink]="['/perfume-selfie-offer/products']" class="btn from-left cart_btn">Shop Now</a>
+                </div><!-- end of shop_now -->
+                
+                <div class="col-sm-12 col-xs-12 break_line"><!-- start of break_line -->
+                	<hr style="">
+                </div><!-- end of break_line -->
+                
+                <div class="col-sm-12 col-xs-12 main_heading konw_more_heading margin-md-top margin-md-bottom"><!-- start of heading_part -->
+                    <h3>
+                        <span>
+                            <i class="fa fa-rupee"></i> 501 gift voucher
+                        </span>
+                    </h3>
+                </div><!-- end of heading_part -->
+                
+                <div class="col-sm-12 col-xs-12 selfie_content_div"><!-- start of content -->
+                	<h4>
+                    	CONVERT YOUR MINI PERFUME INTO A LARGER ONE
+                    </h4>
+                    <p>
+                    	Every Perfume Selfie Box comes with 7 perfumes and a <i class="fa fa-rupee"></i>501 Gift Card. Once you use the 7 perfumes and decide your favourite one, redeem the <i class="fa fa-rupee"></i>501 Voucher to buy the larger perfume.
+                    </p>
+                </div><!-- end of contact_detail -->
+                
+                <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0 selfie_content_div margin-md-bottom"><!-- start of images -->
+                    <p>
+                    	<img src="assets/images/static_pics/gift_voucher.jpg" class="img-responsive center-block" alt="Gift Voucher">
+                    </p>
+                </div><!-- end of images -->
+                
+                <div class="col-sm-12 col-xs-12 selfie_content_div"><!-- start of content -->
+                	<h4>
+                    	GET A RS. 1200 PERFUME FOR 699
+                    </h4>
+                    <p>
+                    	All perfumes sold at PerfumeBooth.com are between the price range of 1200 - 1500. With the <i class="fa fa-rupee"></i>501 Gift Card, the <i class="fa fa-rupee"></i>1200 perfume will cost only <i class="fa fa-rupee"></i>699/-
+                    </p>
+                </div><!-- end of contact_detail -->
+                
+                <div class="col-sm-12 col-xs-12 selfie_content_div"><!-- start of content -->
+                	<h4>
+                    	PERFUMES ARE OF INTERNATIONAL QUALITY
+                    </h4>
+                    <p>
+                    	All perfumes sold are of a quality equivalent to brand name perfumes apperaing in glossy design magazines, you get the same quality on for a fraction of price.
+                    </p>
+                </div><!-- end of contact_detail -->
+                
+                <div class="col-sm-12 col-xs-12 selfie_content_div"><!-- start of content -->
+                	<h4>
+                    	STYLISH BOTTLES
+                    </h4>
+                    <p>
+                    	The bottles of perfumes sold at our website are extremely stylish and will look amazing at your vanity table.
+                    </p>
+                </div><!-- end of contact_detail -->
+                
+                <div class="col-sm-12 col-xs-12 selfie_content_div"><!-- start of content -->
+                	<h4>
+                    	THE EVERYDAY PERFUME
+                    </h4>
+                    <p>
+                    	Where brand name perfumes are expensive and we only use it for special occasion, our motto is to make perfume affordable so that you can now use it everyday.
+                    </p>
+                </div><!-- end of contact_detail -->
+                
+                <div class="col-sm-12 col-xs-12 selfie_content_div"><!-- start of content -->
+                	<h4>
+                    	CHOOSE FROM 42 PERFUMES
+                    </h4>
+                    <p>
+                    	We have shortlisted 42 best selling perfumes worldwide from these 7 brands so that you fall in love with them.
+                    </p>
+                </div><!-- end of contact_detail -->
+                
+                <div class="col-sm-12 col-xs-12 shop_more_btn"><!-- start of shop_now -->
+                	<a [routerLink]="['products']" class="btn from-left cart_btn">Shop Now</a>
+                </div><!-- end of shop_now -->
+                
+            </div><!-- end of row -->
+        </div>
+    </section><!-- end of middle_part -->
+    
+    

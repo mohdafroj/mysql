@@ -1,0 +1,64 @@
+
+/* start of section_box css */
+.section_box{padding:4rem 0; position:relative;}
+.section_gradient:before{content:""; position:absolute; top:0; left:0; width:100%; height:100%; z-index:-1;
+	background:linear-gradient(rgba(241,241,241,.8), rgba(241,241,241,.5), rgba(255,255,255,1));
+	-moz-background:linear-gradient(rgba(241,241,241,.8), rgba(241,241,241,.5), rgba(255,255,255,1));
+	-webkit-background:linear-gradient(rgba(241,241,241,.8), rgba(241,241,241,.5), rgba(255,255,255,1));
+	-o-background:linear-gradient(rgba(241,241,241,.8), rgba(241,241,241,.5), rgba(255,255,255,1));}
+.pattern_image{background-image:url(../images/home/pattern.svg); background-repeat:repeat;}
+
+/************ start of staticPage_content css ****************/
+.staticPage_content{margin:3rem 0; position:relative; border:.1rem solid rgba(0,0,0,0.1); padding:4rem;}
+.staticPage_content p{text-align:center; line-height:1.9; font-size:.9rem; color:rgba(0,0,0,0.8); margin-bottom:0;}
+.staticPage_content p:not(:last-child){margin-bottom:1.5rem;}
+
+/************** start of FAQ page css *******************/
+.staticPage_content .FAQSection_div{position:relative; width:100%; display:block;}
+.staticPage_content .FAQSection_div:not(:last-child){margin-bottom:3rem;}
+.staticPage_content .FAQSection_div h4{text-transform:capitalize; font-size:1.2rem; font-weight:bolder; margin-bottom:1.2rem; color:#3b4e76;}
+/******** start of accordingTab css **************/
+.staticPage_content .FAQSection_div .card{border-radius:0; margin-bottom:-.1rem;}
+.staticPage_content .FAQSection_div .card .card-header{border:none;}
+.staticPage_content .FAQSection_div .card .card-header h5{padding:.85rem 1.25rem; font-size:1rem; cursor:pointer; color:#ee9591; background:#3b4e76; transition:ease all .5s; -webkit-transition:ease all .5s;}
+.staticPage_content .FAQSection_div .card .card-header h5.collapsed{color:#3b4e76; background:none;}
+.staticPage_content .FAQSection_div .card .card-body p{text-align:left;}
+.staticPage_content .FAQSection_div .card .card-body ul{margin-bottom:0;}
+.staticPage_content .FAQSection_div .card .card-body ul li{padding-bottom:.5rem;}
+
+/*************** start of privacy_policy ****************/
+.staticPage_content .policySection_div{position:relative; width:100%; display:block;}
+.staticPage_content .policySection_div:not(:last-child){margin-bottom:3rem;}
+.staticPage_content .policySection_div h4{text-transform:capitalize; font-size:1.2rem; font-weight:bolder; margin-bottom:1.2rem; color:#3b4e76;}
+.staticPage_content .policySection_div p{text-align:left; margin-bottom:.8rem;}
+
+/********* start of contact page css **************/
+.staticPage_content .contact_div .card{background:none;}
+.staticPage_content .contact_div .card .card-body p{text-align:center;}
+.staticPage_content .contact_div .card .card-body i{color:#ee9591;}
+.staticPage_content .contact_div .card .card-body h6{color:#3b4e76;}
+
+/****************** start of media css *******************/
+
+@media (max-width: 767.98px) {
+	/* start of brief_subscription_box css */
+	.section_box{padding:1rem 0;}
+	.section_box:first-child{padding-top:2.5rem;}
+	.section_box:not(:last-child){padding-bottom:3rem;}
+	
+	/************ start of staticPage_content css ****************/
+	.staticPage_content{margin:2rem 0; padding:2rem 1rem; border-width:.1rem 0;}
+	.staticPage_content p{font-size:.85rem; text-align:justify;}
+	
+	/************** start of FAQ page css *******************/
+	.staticPage_content .FAQSection_div h4{font-size:1rem;}
+	.staticPage_content .FAQSection_div .card .card-header h5{font-size:.85rem; line-height:1.5;}
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+	
+}
+
+@media (max-width: 575px) {	
+	
+}

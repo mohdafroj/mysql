@@ -1,0 +1,2 @@
+.required_text{display:flex; align-items:center; justify-content:space-between; text-transform:uppercase; color:#3b4e76; padding:.5rem .8rem; margin-bottom:1.5rem; background:#f8f9fa;}
+.required_text span{color:#dc3545; font-size:.8rem; display:inline-block; text-transform:capitalize; letter-spacing:.01rem;}

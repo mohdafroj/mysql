@@ -1,0 +1,124 @@
+
+/************** tab_link css *******************/
+.tab_link{justify-content:center; border-bottom:none;}
+.tab_link .nav-link{background:#f8f9fa; color:rgba(0,0,0,0.6); border-radius:0; border:none; margin-bottom:0; text-transform:uppercase; padding:.6rem 0; font-size:.9rem; position:relative; width:10rem;}
+.tab_link .nav-link.active{background-color:#3b4e76; color:#ffffff;}
+
+/************ start of checkout Steps css ****************/
+.tab_link .nav-link .step_line{display:none;}
+.tab_link .nav-link.active .step_line{display:block; position:absolute; top:0.01rem; left:10rem; z-index:6; margin:0; width:0; height:0; background:none; border-left:1rem solid #fff; border-top:1.311rem solid transparent; border-bottom:1.2rem solid transparent;}
+.tab_link .nav-link.active .step_line.step_complete{border-left:1rem solid #3b4e76; z-index:7;}
+.tab_link .nav-link.active .step_line.backline{border-left:1.2rem solid #f7f7f7; border-top:1.5rem solid transparent; border-bottom:1.5rem solid transparent; top:-0.25rem; z-index:6; display: none;}
+
+/************* start of address_form css ********************/
+.address_form .form-check{padding:0 .9rem; margin-bottom:1rem;}
+.address_form .form-check .toggle{margin:0; cursor:pointer; position:relative; display:block; padding:.5rem 1.8rem 1rem 2.3rem; border:.01rem solid rgba(0,0,0,0.1); transition:ease all .5s; -webkit-transition:ease all .5s;}
+.address_form .form-check .toggle .add_radio{position:absolute; left:.2rem; top:.7rem; z-index:1;}
+.address_form .form-check .toggle .edit_address{position:absolute; right:.2rem; top:.3rem; z-index:1; color: #3b4e76; font-size:.85rem;}
+.address_form .form-check .toggle input[type="radio"]{position: absolute; right: 9000px;}
+.address_form .form-check .toggle input[type="radio"] + .label-text:before{content: ""; font-family: "Font Awesome 5 Free"; font-size:1.5rem; speak: none; font-style: normal; font-weight: 900; font-variant: normal; text-transform: none; line-height: 1; -webkit-font-smoothing:antialiased; width: 1.3rem; height:1.3rem; border:0.01rem solid rgba(0,0,0,0.1); border-radius:50%; display: inline-block; margin-right: 10px; position:absolute; left:0; top:0; transition:ease all .5s; -webkit-transition:ease all .5s;}
+.address_form .form-check .toggle input[type="radio"]:checked + .label-text:before{content: "\f058"; color: #3b4e76; border:none;}
+.address_form .form-check .toggle address{margin-bottom:0; position:relative; display:block;}
+.address_form .form-check .toggle address span{display:block; font-size:.8rem; padding-bottom:.3rem;}
+.address_form .form-check .toggle address .btn{margin-top:.6rem;}
+
+/********* add new address css **************/
+.address_form .form-check .toggle.add_new_address{padding:2rem;}
+.address_form .form-check .toggle.add_new_address address{text-align:center;}
+.address_form .form-check .toggle.add_new_address address span{font-size:1rem; padding:0; text-transform:uppercase;}
+.address_form .form-check .toggle.add_new_address address span:first-child{font-size:1.8rem; padding-bottom:.3rem; color: #3b4e76;}
+/* hover css */
+.address_form .form-check .toggle:hover, .address_form .form-check .toggle:hover input[type="radio"] + .label-text:before{border-color:#3b4e76;}
+
+/************** start of form css ******************/
+.checkoutBtn{display:flex; justify-content: flex-end;}
+.checkoutBtn .btn{padding:0 3rem; margin-right: .5rem;}
+.required_text{display:flex; align-items:center; justify-content:space-between; text-transform:uppercase; color:#3b4e76; padding:.5rem .8rem; margin-bottom:1.5rem; background:#f8f9fa;}
+.required_text span{color:#dc3545; font-size:.8rem; display:inline-block; text-transform:capitalize; letter-spacing:.01rem;}
+
+/************** start of review_cart css **************/
+.cartReviewDiv{display:flex; align-items:center; padding:0;}
+.cartReviewDiv:not(:last-child){border-bottom:.1rem solid rgba(0,0,0,0.1); margin-bottom:1.5rem; padding-bottom:1.5rem;}
+.cartReviewDiv .cartImage{margin-right:.8rem;}
+.cartReviewDiv .cartDetail{display:flex; align-items:center; justify-content:space-between; width:100%;}
+.cartReviewDiv .cartDetail .cartDetailHalf{width:50%; display:inline-block;}
+.productNameImages h6{color:#343a40; width:12rem; margin:0; text-overflow:ellipsis; overflow:hidden; white-space:nowrap;}
+.productNameImages .Pack_image{display:block; position:relative; padding-top:.8rem;}
+.productNameImages .Pack_image span{display:inline-block; width:2rem; position:relative; overflow:hidden;}
+.productNameImages .Pack_image span:not(:last-child){border-right:.01rem solid rgba(0,0,0,0.1);}
+.productPriceSize{text-align:right;}
+.productPriceSize span{display:inline-block; font-size:.9rem; color:rgba(0,0,0,0.5); width:20%;}
+.productPriceSize span:last-child{color:rgba(0,0,0,0.8); font-size:.95rem; width:65%;}
+
+/************* start of paymentMethodDiv css ******************/
+.paymentMethodDiv{padding:0 1rem; margin-bottom:1rem;}
+.paymentMethodDiv .form-check{margin-bottom:.5rem;}
+.lastCartReview{margin-bottom:2rem;}
+.lastCartReview address{margin:0; font-size:.8rem;}
+.lastCartReview.cashBackText{margin-top: 1rem; margin-bottom: 1rem;}
+.lastCartReview.cashBackText address strong{color: #ee9591; font-style: italic;}
+.lastCartReview.cashBackText address{font-size: .9rem;}
+
+/***************** summary css ***************/
+.summary_detail{position:relative; width:100%;}
+.summary_detail .summary_heading{background:#f8f9fa; font-size:1rem; font-weight:bold; color:rgba(0,0,0,0.75); padding:.7rem .8rem; text-transform:uppercase; position:relative; width:100%;}
+.summary_detail .price_detail{position:relative; width:100%; padding:.8rem .6rem;}
+.summary_detail .price_detail.collapse{display:block;}
+.summary_detail .price_detail p{color:rgba(0,0,0,0.5); font-size:.8rem; letter-spacing:.01rem;}
+.summary_detail .price_detail ul{margin-bottom:3rem;}
+.summary_detail .price_detail ul li{color:rgba(0,0,0,0.75); font-weight:500; font-size:.9rem;}
+.summary_detail .price_detail .full_btn{font-size:1.1rem; height:3rem; line-height:2.6rem; display:block;}
+.summary_detail .price_detail input{font-size:.85rem; height:auto;}
+.summary_detail .price_detail .input-group-append .btn{font-size:.85rem;}
+
+/********* start of errorMszShow css *******/
+.errorMszShow p{font-size: .85rem; color: red; margin-bottom: .5rem;}
+
+/**************** start of media css **************/
+@media (min-width: 992px) and (max-width: 1200px) {
+	
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+	
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+	
+}
+
+@media (max-width: 767.98px) {
+	.nav-top .navbar-collapse ul.navbar-nav li a.shopping-cart{display:none;}
+	
+	/************** tab_link css *******************/
+	.tab_link .nav-link{font-size:.8rem; width:6rem;}
+	
+	/************ start of checkout Steps css ****************/
+	.tab_link .nav-link.active .step_line{left:6rem; border-top:1.18rem solid transparent; border-bottom:1.2rem solid transparent;}
+	.tab_link .nav-link.active .step_line.step_complete{border-left:.8rem solid #3b4e76;}
+	
+	/************** start of form css ******************/
+	.checkoutBtn{justify-content:center; flex-direction: column;}
+	.checkoutBtn .btn{margin: 0 0 1rem 0;}
+	.checkoutBtn .btn:last-child{margin-bottom: 5rem;}
+	.required_text{font-size:.85rem;}
+	.required_text span{font-size:.75rem;}
+	
+	/************** start of review_cart css **************/
+	.cartReviewDiv .cartDetail .cartDetailHalf{width:auto;}
+	.productNameImages h6{font-size:.85rem; width:10rem;}
+	.productPriceSize span{display:block; font-size:.8rem; width:100%; padding-top:.5rem;}
+	.productPriceSize span:last-child{font-size:.9rem; width:100%;}
+	
+	/***************** summary css ***************/
+	.summary_detail #priceDetail{position:fixed; bottom:3rem; left:0; width:100%; z-index:999; background:#ffffff; padding-bottom:0;}
+	.summary_detail .price_detail.collapse{display:none;}
+	.summary_detail .price_detail.collapse.show{display:block;}
+	.summary_detail .price_detail.collapse.show + .price_display_div{position:fixed; top:0; left:0; width:100%; height:100vh; background:rgba(0,0,0,0.4); z-index:99;}
+	.summary_detail .price_detail ul{margin-bottom:0;}
+	
+	.summary_detail .summary_heading.order_detail_mobileBtn{position:fixed; bottom:0; left:0; width:100%; z-index:999; font-size:.8rem; padding:.2rem .8rem; background:#ee9591; color:#3b4e76; border-top:.15rem solid #ee9591; border-bottom:.15rem solid #ee9591; cursor:pointer;}
+	.summary_detail .summary_heading.order_detail_mobileBtn:before{content: "\f106"; font-family:"Font Awesome 5 Free"; speak-as:none; font-style:normal; font-weight:bolder; font-variant:normal; text-transform:none; line-height:1; -webkit-font-smoothing:antialiased; display:inline-block; font-size:1.2rem; color:#3b4e76; position:absolute; top:.8rem; right:.5rem; transition:ease all .5s; -webkit-transition:ease all .5s;}
+	.summary_detail .summary_heading.order_detail_mobileBtn.collapsed:before{transform:rotate(180deg);}
+	.summary_detail .summary_heading.order_detail_mobileBtn span{display:block;}
+}

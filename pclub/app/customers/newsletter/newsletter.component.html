@@ -1,0 +1,25 @@
+	<h3 class="user_detail_heading"><!-- start of user_detail_heading -->
+		Newsletter Subscription
+	</h3><!-- end of review_heading -->
+
+	<div class="row mt-5"><!-- start of content -->
+		<div class="col-12"><!-- start of content -->
+          <form class="form-inline" [formGroup]="newsletterForm" (ngSubmit)="updateNewsletterStatus(newsletterForm.value);">
+            <p class="col-12 text-uppercase">
+              <span class="text-primary">Email-Id: </span> <span class="text-success">{{response.email}}</span>
+            </p>
+            <p class="col-12 text-uppercase">
+              <span class="text-primary">Mobile: </span> <span class="text-success">{{response.mobile}}</span>
+            </p>
+
+            <div class="custom-control custom-checkbox mr-3 mr-sm-4"><!-- start of register_forgot -->
+				<input type="checkbox" class="custom-control-input" formControlName="newsletter" id="newsletterMailer" [value]="1">
+				<label class="custom-control-label" for="newsletterMailer">Sign up for newsletter</label>
+            </div><!-- end of register_forgot -->
+			<div class="form-group col-6">
+				<button type="submit" class="btn my-btn checkout_btn from-left">Save</button>
+			</div>
+            <p [ngClass]="resObject['textClass']">{{resObject['message']}}</p>
+          </form>
+        </div><!-- end of content -->
+    </div>  

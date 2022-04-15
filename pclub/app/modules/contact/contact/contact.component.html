@@ -1,0 +1,96 @@
+<div class="content">
+	<section class="container-fluid section_box section_gradient pattern_image mt-n3"><!-- start of middle_part -->
+        <div class="container">
+            <div class="row align-items-center"><!-- start of row -->
+
+				<div class="col-12 heading_div"><!-- start of heading_div -->
+					<h1>
+						<span>Contact Us</span> Writing a new fragrance story each day
+					</h1>
+					<span class="heading_border"></span>
+				</div><!-- end of heading_div -->
+
+                <div class="col-12 staticPage_content"><!-- start of content -->
+                    <div class="row contact_div">
+						<div class="col-md-4 col-12 mb-3"><!-- start of call_column -->
+							<div class="card border-0">
+								<div class="card-body text-center">
+									<i class="fa fa-phone fa-2x mb-3" aria-hidden="true"></i>
+									<h6 class="text-uppercase mb-3">call us</h6>
+									<p>+{{company.phone}}</p>
+								</div>
+							</div>
+						</div><!-- end of call_column -->
+						
+						<div class="col-md-4 col-12 mb-3"><!-- start of address_column -->
+							<div class="card border-0">
+								<div class="card-body text-center">
+									<i class="fa fa-map-marker fa-2x mb-3" aria-hidden="true"></i>
+									<h6 class="text-uppercase mb-3">office loaction</h6>
+									<address>{{company.add}}, {{company.city}} – {{company.pin}}</address>
+								</div>
+							</div>
+						</div><!-- end of address_column -->
+						
+						<div class="col-md-4 col-12 mb-3"><!-- start of email_column -->
+							<div class="card border-0">
+								<div class="card-body text-center">
+									<i class="fa fa-globe fa-2x mb-3" aria-hidden="true"></i>
+									<h6 class="text-uppercase mb-3">email</h6>
+									<p>{{company.email}}</p>
+								</div>
+							</div>
+						</div><!-- end of email_column -->
+						
+						<div class="col-12 mb-5">
+							<hr />
+						</div>
+					
+						<!--div class="col-md-6 col-12 mb-md-0 mb-5">
+							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.0053297383147!2d77.14575281514017!3d28.65955908240719!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d02fe4cb6354d%3A0x362372d946156aff!2sPerfumebooth%20-%20Online%20Perfume%20Store!5e0!3m2!1sen!2sin!4v1577949076909!5m2!1sen!2sin" width="100%" height="100%" frameborder="0" class="border" allowfullscreen=""></iframe>
+						</div-->
+
+                        <div class="col-md-6 col-12 form_filed"><!-- start of form_part -->
+                            <form class="col-xs-12 no-padding" [formGroup]="rForm" (ngSubmit)="contactUs(rForm.value);">
+                                <div class="form-group col-12 p-0"><!-- start of Fname -->
+									<input type="text" class="form-control" formControlName="firstname" placeholder="Enter first Name" required>
+									<div class="valid-feedback">Valid</div>
+									<div class="invalid-feedback">Please fill out this field</div>
+                                </div><!-- end of Fname -->
+
+                                <div class="form-group col-12 p-0"><!-- start of Lname -->
+									<input type="text" class="form-control" formControlName="lastname" placeholder="Enter last Name" required>
+									<div class="valid-feedback">Valid</div>
+									<div class="invalid-feedback">Please fill out this field</div>
+                                </div><!-- end of Lname -->
+
+                                <div class="form-group col-12 p-0"><!-- start of email -->
+	  							    <input type="email" class="form-control" formControlName="email" (keyup)="upperToLower($event);" placeholder="Enter Email" required>
+									<div class="valid-feedback">Valid</div>
+									<div class="invalid-feedback">Please fill out this field</div>
+                                </div><!-- end of email -->
+
+                                <div class="form-group col-12 p-0"><!-- start of mobile_number -->
+									<input type="text" class="form-control" formControlName="mobile" maxlength="10" placeholder="Enter mobile number" required>
+									<div class="valid-feedback">Valid</div>
+									<div class="invalid-feedback">Please fill out this field</div>
+                                </div><!-- end of mobile_number -->
+
+                                <div class="form-group col-12 p-0"><!-- start of address -->
+									<textarea class="form-control" formControlName="comment" rows="1" placeholder="Enter address"></textarea>
+									<div class="valid-feedback">Valid</div>
+									<div class="invalid-feedback">Please fill out this field</div>
+                                </div>
+								<span class="text-center text-danger">{{msg}}</span>
+                                <div class="form-group col-12 p-0 checkoutBtn"><!-- start of login_button -->
+                                    <button type="submit" class="btn btn-block my-btn checkout_btn from-left" [disabled]="!rForm.valid">Submit</button>
+                                </div><!-- end of login_button -->
+                            </form>
+                        </div><!-- end of form_part -->
+                    </div>
+                </div><!-- end of contact_detail -->
+
+            </div><!-- end of row -->
+        </div>
+    </section><!-- end of middle_part -->
+</div>

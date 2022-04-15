@@ -1,0 +1,29 @@
+<!--div id="searchbar" class="col-md-6 col-md-offset-1 col-sm-5 col-sm-offset-1 col-xs-12 no-padding collapse">
+  <form class="navbar-form" #searchForm="ngForm" (ngSubmit)="storeSearch(searchForm.value);">
+    <div class="input-group search_box">
+      <input type="text" name="searchkeyword" class="form-control" placeholder="Search" ngModel>
+      <div class="input-group-btn">
+        <button class="btn btn-search-outline btn-1e" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+      </div>
+    </div>
+  </form>
+</div-->
+
+<div id="searchbar" class="col-md-5 col-md-offset-1 col-sm-5 col-sm-offset-1 col-xs-12 no-padding collapse">
+	<form (ngSubmit)="submitKeyword(myControl)" class="navbar-form">
+	  <mat-form-field class="input-group search_box">
+		<div class="input-group search_box">
+			<input type="text" class="form-control" placeholder="Search perfumes here ..." matInput [formControl]="myControl" [matAutocomplete]="auto">
+			<div class="input-group-btn">
+				<button class="btn from-left cart_btn" type="submit"><i class="fa fa-search"></i></button>
+			</div>
+		</div>
+		<mat-autocomplete #auto="matAutocomplete">
+		  <mat-option *ngFor="let item of filteredOptions | async" [value]="item.title" (onSelectionChange)="onSelection(item.urlKey);">
+			<img *ngIf="item.images.url != undefined" [src]="item.images.url" [alt]="item.images.alt" width="40" height="40" />  
+			{{item.title}}
+		  </mat-option>
+		</mat-autocomplete>
+	  </mat-form-field>
+	</form>
+</div>

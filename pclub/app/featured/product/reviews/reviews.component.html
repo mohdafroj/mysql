@@ -1,0 +1,104 @@
+<div class="reviewBtn">
+	<button type="button" class="btn my-btn checkout_btn from-left" data-toggle="modal" data-target="#reviewModal">
+		Write A Review
+	</button>
+</div>
+<div class="ratngSortBy">
+	<h5>
+		Rating -
+		<span>#{{customerRating | number:'1.2-2'}} | {{customerReviews}} Reviews</span>
+	</h5>
+	<h5>
+		Sort by
+		<span>
+			<select class="form-control">
+				<option>Most Recent</option>
+				<option>Low to High</option>
+				<option>High to Low</option>
+			</select>
+		</span>
+	</h5>
+</div>
+<div class="custRevwSec">
+	<div *ngFor="let item of reviewsList" class="custRevwBox">
+		<h6>
+			{{item.title}}
+			<span>#{{item.rating | number:'1.1-1'}} by {{item.customer.name}} on {{item.created}}</span>
+		</h6>
+		<p [innerHTML]="sanitizer.bypassSecurityTrustHtml(item.description)"></p>
+	</div>
+</div>
+<!-- loadMoreSec -->
+<div *ngIf="moreReviewsFlag" class="loadMoreSec">
+	<button (click)="loadMoreReviews();" type="button" class="btn loadMoreBtn">
+		Load More
+	</button>
+	<span>{{reviewsLoader}}</span>
+</div>			
+
+<!-- start of review_popup -->
+<div id="reviewModal" class="modal fade global_popup" tabindex="-1">
+	<div class="modal-dialog" role="document">
+	
+		<!-- Modal content-->
+		<div class="modal-content border-0 rounded-0 form_filed">
+			<div class="modal-header">
+				<h4 class="modal-title">Review and Rating</h4>
+				<button type="button" class="btn close-btn close close-modal" data-dismiss="modal" aria-label="Close">
+					<span class="icon-cross" aria-hidden="true">&nbsp;</span>
+					<span class="icon-cross" aria-hidden="true">&nbsp;</span>
+				</button>
+			</div>
+			
+			<form [formGroup] = "rForm" (ngSubmit) = "addReview(rForm.value);" class="needs-validation" novalidate>
+				<div class="modal-body">
+					<div class="col-12 giveRating_div"><!-- start of rating -->
+                    	<p><span>Rate It</span></p>
+                        <ul id="emoji">
+                            <li *ngFor="let item of newReview;" (click)="selectRating(item.rate);">
+								<img *ngIf="item.selected" src="assets/images/emojis/emoji{{item.rate}}.png">
+								<img *ngIf="!(item.selected)" src="assets/images/emojis/emoji{{item.rate}}{{item.rate}}.png">
+							</li>
+                        </ul>
+                        
+                        <ul id="note"> <!--select color: rgb(238, 149, 145);--- No Sected color: rgb(59, 78, 118); -->
+                            <li *ngFor="let item of newReview;" (click)="selectRating(item.rate);" [ngStyle]="{'color':item.color}">{{item.title}}</li>
+                        </ul>
+                        
+                        <div id="line">
+                        	<div id="dot"></div>
+                        </div>
+					</div><!-- end of rating -->
+					
+					<div class="form-group select_box_1 col-xs-12 no-padding rinput"><!-- start of select_box -->
+						<select formControlName="title" class="form-control">
+							<option value="" title="Title">Select Title</option>
+							<option value="Affordable" title="Affordable">Affordable</option>
+							<option value="Average" title="Average">Average</option>
+							<option value="Awesome" title="Awesome">Awesome</option>
+							<option value="Brilliant" title="Brilliant">Brilliant</option>
+							<option value="Classy" title="Classy">Classy</option>
+							<option value="Excellent" title="Excellent">Excellent</option>
+							<option value="Exotic" title="Exotic">Exotic</option>
+							<option value="Okay" title="Okay">Okay</option>
+							<option value="Sensual" title="Sensual">Sensual</option>
+							<option value="Soothing" title="Soothing">Soothing</option>
+						</select>
+					</div><!-- end of select_box -->
+					
+					<div class="form-group col-xs-12 no-padding rinput"><!-- start of textarea -->
+						<textarea class="form-control" formControlName="description" cols="2"></textarea>
+						<span *ngIf="rForm.controls.description.invalid" class="filed_name">Write here*</span>
+						<span *ngIf="rForm.controls.description.valid" class="filed_name complete_filled">Write here*</span>
+					</div><!-- end of textarea -->
+					<div class="form-group"><p [ngClass]="{'':reviewStatus === 0,'text-danger':reviewStatus === 1,'text-success':reviewStatus === 2}" [innerHTML]="sanitizer.bypassSecurityTrustHtml(reviewMsg)"></p></div>
+				</div>
+				<div class="modal-footer m-auto border-0 p-2"><!-- start of submit_button -->
+					<button type="submit" class="btn my-btn checkout_btn from-left" [disabled]="!rForm.valid">Submit</button>
+				</div><!-- end of submit_button -->
+			</form>
+		</div>
+	
+	</div>
+</div>
+<!-- end of review_popup -->

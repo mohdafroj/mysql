@@ -1,0 +1,7 @@
+<div *ngIf="layoutController != ''" id="topHeader" class="sr-only"></div>
+<div class="wrapper">
+	<span class="marqueeSection" *ngIf="((stripBanner != '') && (showHeader == true))" [innerHTML]="sanitizer.bypassSecurityTrustHtml(stripBanner)"></span>
+    <header *ngIf="(showHeader == true)" class="header-main" [ngClass]="{'noFooter': (showFooter == false)}"></header>
+    <router-outlet></router-outlet>
+	<footer *ngIf="(showFooter == true)" class="footer"></footer>
+</div>

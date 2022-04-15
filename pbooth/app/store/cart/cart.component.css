@@ -1,0 +1,33 @@
+.price_total p span{color:#ed1b62;}
+.content{
+	padding-bottom: 30px;
+}
+.payment_div ul li label.checkboxfree{padding-left:0;}
+.resend_otp{padding:0; border:none; background:none; color:#f03f3f; cursor:pointer; font-size:13px;}
+.form-group .back-btn{background:none; box-shadow:none; height:auto; line-height:normal; text-align:center; margin-top:10px;}
+
+.prive_member_info {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #28373f;
+    border-radius: 50%;
+    padding: 0;
+}
+
+.confirm_popup_div_prive p{
+	text-align: center;
+}
+.confirm_popup_div_prive img{
+	padding-bottom: 12px;
+}
+
+.payment_div ul li .checkbox, .prive_checkbox{margin:0; display:flex; align-items:center;}
+.payment_div ul li .checkbox label.checkboxfree, .prive_checkbox label{padding:0; margin-right:5px;}
+
+@media (max-width:767px){
+	/* shopping cart icon css */
+	ul.nav_menu li button.shopping-cart{display:none;}
+	
+	/* start of scrollup css */
+	.scrollUp{left:0; bottom:0;}
+}

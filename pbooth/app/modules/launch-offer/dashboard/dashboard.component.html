@@ -1,0 +1,147 @@
+	<div class="content index_2_div pt0"><!-- start of middle_page -->
+    	
+        <section class="container-fluid p-0 mainBanner"><!-- start of mainBanner -->
+        	<figure>
+				<img src="assets/images/launch-offer/{{bannerWeb}}" class="img-responsive hidden-xs" alt="Logo Run" />
+				<img src="assets/images/launch-offer/{{bannerPhone}}" class="img-responsive visible-xs" alt="Logo Run" />
+			</figure>
+			<div class="mainBannerContent">
+				<h1 *ngIf="currentUri == 'launch-offer'">
+					Products Launch Offer <span [innerHTML]="sanitizer.bypassSecurityTrustHtml(maxDiscount)"></span>
+				</h1>
+			</div>
+        </section><!-- end of mainBanner -->
+		
+		<section class="container-fluid section_box"><!-- start of section_box -->
+        	<div class="container"><!-- start of container -->
+            	<div class="row"><!-- start of row -->
+				
+					<div class="col-12 saleEndsContent"><!-- start of saleEndsContent -->
+						<h5>
+							Sale Ends In <span>{{clockDisplay}}</span>
+						</h5>
+					</div><!-- end of saleEndsContent -->
+                    
+					<div class="col-12 offerHeading"><!-- start of heading_div -->
+                    	<h1>
+                        	<span>Why We Are The Best</span>
+                        </h1>
+                    </div><!-- end of heading_div -->
+					
+					<div class="col-12 text-center"><!-- start of image_part -->
+						<img src="assets/images/launch-offer/we_are_the_best.jpg" class="img-responsive mx-auto" alt="Why We Are The Best">
+					</div>
+                    
+					<div class="col-12 offerHeading bottomImg"><!-- start of heading_div -->
+                    	<h1>
+                        	<span>Better Than Deos And Other Perfumes</span>
+                        </h1>
+                    </div><!-- end of heading_div -->
+					
+					<div class="col-12 text-center"><!-- start of image_part -->
+						<img src="assets/images/launch-offer/better_then_perfume.jpg" class="img-responsive mx-auto" alt="Better Than Deos And Other Perfumes">
+					</div>
+                    
+                </div><!-- end of row -->
+            </div><!-- end of container -->
+        </section><!-- end of section_box -->
+		
+		<section class="container-fluid claimBtn"  data-toggle="modal" data-target="#claimBtnModal"><!-- start of claimBtn -->
+        	<p>
+				Yay!! Your Coupon Code Is Applied <span>Shop Now</span>
+			</p>
+        </section><!-- end of claimBtn -->
+		
+    </div><!-- end of middle_page -->
+
+	<!-- start confirmation Modal -->
+    <div class="modal global_popup fade" id="claimBtnModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content chooseGenderPopup">
+                <div class="modal-header no-padding no-border">
+					<h4 class="modal-title">Choose Your Launch Offer</h4>
+                    <button type="button" class="close-btn close close-modal video_close" data-dismiss="modal">
+                    	<span class="icon_cross"></span>
+                    	<span class="icon_cross"></span>
+                    </button>
+                </div>
+                <div class="modal-body col-sm-12 col-xs-12 confirm_popup_div">
+                	<div class="col-12 product_listing"><!-- start of listing -->
+                    	
+                        <div class="col-xs-4 list_div"><!-- start of product -->
+                            <div class="product-grid3">
+                                <div class="product-image3" data-dismiss="modal" aria-label="Close" (click)="getOffer(1);"><!-- start of image -->
+                                    <span class="image_part"><!-- start of single_image -->
+                                        <img src="assets/images/launch-offer/single.png" class="img-fluid" alt="Single Perfume">
+                                    </span><!-- end of single_image -->
+                                </div><!-- end of image -->
+                                
+                                <div class="product-content"><!-- start of content -->
+                                    <h3 class="title">
+										<span>₹{{pack1OriginalPrice | number: '2.2-2'}}</span>
+									</h3>
+                                    <div class="product_price"><!-- start of product_price -->
+                                        1 <span>for</span> ₹{{pack1Price | number: '2.2-2'}}
+                                    </div><!-- end of product_price -->
+									<a data-dismiss="modal" aria-label="Close" [routerLink]="basePath" [queryParams]="{price: 1}" class="btn my-btn cart_btn from-left">
+										Buy
+									</a>									
+                                    <h3 class="product_off" [innerHTML]="sanitizer.bypassSecurityTrustHtml(pack1Discount)"></h3>
+                                </div><!-- end of content -->
+                            </div>
+                        </div><!-- end of product -->
+                        
+                        <div class="col-xs-4 list_div"><!-- start of product -->
+                            <div class="product-grid3">
+								<span class="productTag">Most Popular</span>
+                                <div class="product-image3" data-dismiss="modal" aria-label="Close" (click)="getOffer(2);"><!-- start of image -->
+                                    <span class="image_part"><!-- start of single_image -->
+                                        <img src="assets/images/launch-offer/two.png" class="img-fluid" alt="Two Perfume">
+                                    </span><!-- end of single_image -->
+                                </div><!-- end of image -->
+                                
+                                <div class="product-content"><!-- start of content -->
+                                    <h3 class="title">
+										<span>₹{{pack2OriginalPrice | number: '2.2-2'}}</span>
+									</h3>
+                                    <div class="product_price"><!-- start of product_price -->
+                                        2 <span>for</span> ₹{{pack2Price | number: '2.2-2'}}
+                                    </div><!-- end of product_price -->
+									<a data-dismiss="modal" aria-label="Close" [routerLink]="basePath" [queryParams]="{price: 2}" class="btn my-btn cart_btn from-left">
+										Buy
+									</a>
+                                    <h3 class="product_off" [innerHTML]="sanitizer.bypassSecurityTrustHtml(pack2Discount)"></h3>
+                                </div><!-- end of content -->
+                            </div>
+                        </div><!-- end of product -->
+						
+						<div class="col-xs-4 list_div"><!-- start of product -->
+                            <div class="product-grid3">
+								<span class="productTag">Best For Gifting</span>
+                                <div class="product-image3" data-dismiss="modal" aria-label="Close" (click)="getOffer(999);"><!-- start of image -->
+                                    <span class="image_part"><!-- start of single_image -->
+                                        <img src="assets/images/launch-offer/three.png" class="img-fluid" alt="Three Perfume">
+                                    </span><!-- end of single_image -->
+                                </div><!-- end of image -->
+                                
+                                <div class="product-content"><!-- start of content -->
+                                    <h3 class="title">
+										<span>₹{{pack3OriginalPrice | number: '2.2-2'}}</span>
+									</h3>
+                                    <div class="product_price"><!-- start of product_price -->
+                                        3 <span>for</span> ₹{{pack3Price | number: '2.2-2'}}
+                                    </div><!-- end of product_price -->
+									<a data-dismiss="modal" aria-label="Close" [routerLink]="basePath" [queryParams]="{price: 999}" class="btn my-btn cart_btn from-left">
+										Buy
+									</a>
+                                    <h3 class="product_off" [innerHTML]="sanitizer.bypassSecurityTrustHtml(pack3Discount)"></h3>
+                                </div><!-- end of content -->
+                            </div>
+                        </div><!-- end of product -->
+                        
+                    </div><!-- end of listing -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end confirmation Modal -->

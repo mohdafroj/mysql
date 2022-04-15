@@ -1,0 +1,63 @@
+/* start of footer-top section */
+/* start of footer-top section */
+.footer_top {background: #fff; border-top: 0.2rem solid #3b4e76; padding-left: 0rem; padding-right: 0rem; padding-top: 1rem; padding-bottom: 1rem;}
+.footer_top .row {display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;}
+.footer_top .row ul {margin: 0;}
+.footer_top .row ul li a {color: #000000; transition: ease all 0.5s; -webkit-transition: ease all 0.5s; padding-left: 0.6rem; padding-right: 0.6rem; padding-top: 0.3rem; padding-bottom: 0.3rem;}
+.footer_top .row ul li a.fb:hover {color: #3b5999;}
+.footer_top .row ul li a.tw:hover {color: #55acee;}
+.footer_top .row ul li a.inst:hover {color: #e4405f;}
+.footer_top .row ul li a.yt:hover {color: #cd201f;}
+.footer_top .row ul li a.pi:hover {color: #bd081c;}
+.footer_top .row form .input-group .news_text {padding-right: 1.2rem; padding-top: 0.5rem; font-size: 0.9rem;}
+.footer_top .row form .input-group .input-group-append .my-btn{height:2.3rem; line-height:2rem;}
+
+/* start of footer-bottom section */
+.footer_bottom {background: #3b4e76; padding-left: 0rem; padding-right: 0rem; padding-top: 2rem;}
+.footer_bottom h4 {color: #ee9591; text-transform: uppercase; font-size: 1rem; margin-bottom: 1rem; font-weight: 600;}
+.footer_bottom ul {margin: 0rem;}
+.footer_bottom ul li:not(:last-child) {margin-bottom: 0.2rem;}
+.footer_bottom ul li {position: relative;}
+.footer_bottom ul li a {color: #ffffff; font-size: 0.8rem; transition: ease all 0.5s; -webkit-transition: ease all 0.5s;}
+.footer_bottom ul li a:hover {color: #ee9591;}
+.footer_bottom ul li p {color: #ffffff; font-size: 0.8rem; padding-left: 2rem; word-break: break-word;}
+.footer_bottom ul li p i {position: absolute; top: 0; left: 0; font-size: 1.2rem;}
+.footer_bottom .cards_detail {display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; padding-left: 0rem; padding-right: 0rem; padding-top: 1rem; padding-bottom: 1rem; border-width: 0.1rem 0; border-style: solid; border-color: gray; margin-top: 1.5rem; margin-bottom: 1.5rem;}
+.footer_bottom .cards_detail h5 {color: #e6e6e6; text-transform: capitalize; font-size: 0.8rem; font-weight: 600;}
+.footer_bottom .cards_detail ul li {display: inline-block; width: 3.5rem;}
+.footer_bottom .disclaimer_text {text-align: center; background:#ee9591; padding:.5rem 1rem; margin-top:2rem;}
+.footer_bottom .disclaimer_text p {font-size: 0.8rem; color: #000000; letter-spacing: 0.02rem; margin-bottom:.5rem;}
+.footer_bottom .disclaimer_text p:last-child {margin-bottom: 0;}
+
+@media (min-width: 768px) and (max-width: 991px) {
+	/* start of footer-bottom section */
+	.footer_bottom h4 {font-size: .85rem;}
+	.footer_bottom ul li a{font-size:.75rem;}
+}
+@media (max-width: 767.98px) {
+	.content {padding-bottom: 2rem;}
+    .footer {position: relative;}
+	/* start of footer-top section */
+	.footer_top .row {justify-content: center;}
+	.footer_top .row ul {margin-bottom: 0.8rem;}
+	.footer_top .row form .input-group {padding-left: 1rem; padding-right: 1rem;}
+	.footer_top .row form .input-group .news_text {padding-right:0; padding-bottom:.5rem; width:100%; text-align:center;}
+	
+	/* start of footer-bottom section */
+	.footer_bottom .row .col-md:not(:nth-child(4)) {margin-bottom: 2rem;}
+	.footer_bottom .row h4 {text-align: center; text-decoration: underline;}
+	.footer_bottom .row .mobile_footer h4 {margin-bottom: 0.8rem;}
+	.footer_bottom .row .mobile_footer ul {display: block; flex-wrap: wrap;}
+	.footer_bottom .row .mobile_footer ul li {float: left; width: 33.3333333333%; position: relative; padding-right: 0.8rem; text-align: center;}
+	.footer_bottom .row .mobile_footer ul li:not(:nth-child(3n+3))::after {content: "|"; position: absolute; right: .5rem; top: .3rem; font-size: 0.7rem; font-weight: 300;}
+	.footer_bottom .row .mobile_footer ul li:last-child::after {display: none;}
+	.footer_bottom .disclaimer_text p{font-size:0.7rem;}
+}
+
+@media (max-width: 575.98px) {
+	/* start of footer-bottom section */
+	.footer_bottom .cards_detail {justify-content: center; text-align: center;}
+	.footer_bottom .cards_detail div:not(:last-child) {margin-bottom: 1rem;}
+	.footer_bottom .cards_detail ul li {width: 3rem;} 
+	.footer_bottom .disclaimer_text p:last-child{margin-bottom:3rem;}
+}

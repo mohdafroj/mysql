@@ -1,0 +1,163 @@
+<h3 class="user_detail_heading">
+	My Orders
+</h3>
+<div class="row mt-5">
+
+    <div class="col-12 orderDetails_div"><!-- start of content -->
+
+        <ul id="tabs" class="nav nav-tabs" role="tablist"><!-- start of left_part -->
+            <li class="nav-item">
+				<a id="tab-A" href="#ordersDetails" class="nav-link active" data-toggle="tab" role="tab" (click)="getOrdersList('');">Orders</a>
+			</li>
+            <li class="nav-item">
+				<a id="tab-B" href="#cancelledDetails" class="nav-link" data-toggle="tab" role="tab" (click)="getOrdersList('cancel');">Cancelled Orders</a>
+			</li>
+        </ul><!-- end of left_part -->
+
+        <div id="content" class="tab-content" role="tablist"><!-- start of right_part -->
+
+            <div id="ordersDetails" class="card tab-pane fade show active" role="tabpanel" aria-labelledby="tab-A"><!-- start of content_1 -->
+				<div class="card-body">
+					<p *ngIf="loader == 0">{{ordersList.length}} orders found!</p>
+					<p *ngIf="loader == 1"><i class="fa fa-spinner fa-spin"></i></p>
+					<div *ngFor="let item of ordersList" class="orderRow d-block w-100"><!-- start of order_div -->
+					
+						<div class="orderRow_head"><!-- start of top_part -->
+							<div class="orderID order-1"><!-- start of orderID -->
+								Order No. <b>{{item.order_prefix+item.id}}</b>
+							</div><!-- end of orderID -->
+							
+							<div class="productDelivered order-md-2 order-5"><!-- start of productDelivered -->
+								<span>Place on {{item.created}}</span>
+							</div><!-- end of productDelivered -->
+							
+							<div class="productDelivered order-md-5 order-6"><!-- start of productDelivered -->
+								<span><b class="text-capitalize">{{item.status.replace("_", " ")}}</b></span>
+							</div><!-- end of productDelivered -->
+							
+							<div class="orderDetails_btn order-md-3 order-2"><!-- start of orderDetails_btn -->
+								<a routerLink="/customer/orders/details" [queryParams]="{'order-number':item.id}" queryParamsHandling="merge">Order Details</a>
+							</div><!-- end of orderDetails_btn -->
+							
+							<div class="orderID order-md-4 order-3"><!-- start of orderID -->
+								Total : <b><label [innerHTML]="item.price_logo"></label>{{item.payment_amount | number:'1.2-2'}}</b>
+							</div><!-- end of orderID -->
+							
+							<div class="orderDetails_btn order-md-6 order-4"><!-- start of orderDetails_btn -->
+								<a *ngIf="item.tracking_link != '' && item.tracking_link != null" [href]="item.tracking_link" target="_blank">Track Order</a>
+								<a *ngIf="!(item.tracking_link != '' && item.tracking_link != null)" title="Sorry, Tracking is not available!">Track Order</a>
+							</div><!-- end of orderDetails_btn -->
+						</div>
+						
+						<div class="orderRow_content">
+							<div *ngFor="let list of item.order_details" class="col-12 orderRow_contentRow"><!-- start of right_part -->
+								<div class="orderImage"><!-- start of orderImage -->
+									<img [src]="(list.product.image != '') ? list.product.image : 'assets/images/is-small.jpg'" [alt]="list.title" class="img-fluid" width="70">
+								</div>
+								<div class="orderDetailRow">								  									
+									<div class="orderDetailRowHalf productNameImages">
+										<h6><a target="_blank" routerLink="/{{list.product.url_key}}">{{list.title}}</a></h6>
+										<div *ngFor="let pack of list['pack'];" class="Pack_image"><!-- start of pack_of_images -->
+											<span><!-- start of image_1 -->
+												<img [src]="pack.image" [alt]="pack.title" [title]="pack.title" class="img-fluid" width="70">
+											</span><!-- end of image_1 -->
+										</div><!-- end of pack_of_images -->
+									</div>
+									<div class="orderDetailRowHalf productPriceSize"><!-- start of productPriceSize -->
+										<span>{{list.quantity}} Qty</span> <span>₹{{list.price | number: '2.2-2'}}</span>
+									</div>
+								</div>
+							</div><!-- end of right_part -->
+						</div><!-- end of top_part -->
+
+					</div><!-- end of order_div -->
+				</div>
+			</div><!-- end of detail tab -->
+			
+			<div id="cancelledDetails" class="card tab-pane fade" role="tabpanel" aria-labelledby="tab-B"><!-- start of cancelledDetails -->
+				<div class="card-body"><!-- start of card-body -->
+					<p *ngIf="loader == 0">{{ordersList.length}} orders found!</p>
+					<p *ngIf="loader == 1"><i class="fa fa-spinner fa-spin"></i></p>
+					
+					<div *ngFor="let item of ordersList" class="orderRow cancelledOrderRow d-block w-100"><!-- start of orderRow -->
+					
+						<div class="orderRow_head"><!-- start of top_part -->
+							<div class="orderID order-1"><!-- start of orderID -->
+								Order No. <b>{{item.order_prefix+item.id}}</b>
+							</div><!-- end of orderID -->
+							
+							<div class="productDelivered order-md-2 order-5"><!-- start of productDelivered -->
+								<span><b>{{item.status.replace("_", " ")}}</b> Created at {{item.created}}</span>
+							</div><!-- end of productDelivered -->
+							
+							<div class="orderDetails_btn order-md-3 order-2"><!-- start of orderDetails_btn -->
+								<a routerLink="/customer/orders/details" [queryParams]="{'order-number':item.id}" queryParamsHandling="merge">Order Details</a>
+							</div><!-- end of orderDetails_btn -->
+							
+							<div class="orderID order-md-4 order-3"><!-- start of orderID -->
+								Total : <b><label [innerHTML]="item.price_logo"></label>{{item.payment_amount | number:'1.2-2'}}</b>
+							</div><!-- end of orderID -->
+							
+							<div *ngIf="item.tracking_link != '' && item.tracking_link != null" class="orderDetails_btn order-md-5 order-4"><!-- start of orderDetails_btn -->
+								<a [href]="item.tracking_link" target="_blank">
+									Track Order
+								</a>
+							</div><!-- end of orderDetails_btn -->
+						</div>
+						
+						<div class="orderRow_content"><!-- start of orderRow_content -->
+							<div *ngFor="let list of item.order_details" class="col-12 orderRow_contentRow"><!-- start of orderRow_div-->
+								<div class="orderImage"><!-- start of orderImage -->
+									<img [src]="(list.product.image != '') ? list.product.image : 'assets/images/is-small.jpg'" [alt]="list.title" class="img-fluid" width="70">
+								</div><!-- end of orderImage -->
+								
+								<div class="orderDetailRow"><!-- start of orderDetailRow -->
+								
+									<div class="orderDetailRowHalf productNameImages"><!-- start of productNameImages -->
+										<h6><a target="_blank" routerLink="/{{list.product.url_key}}">{{list.title}}</a></h6>
+										<div *ngFor="let pack of list['pack'];" class="Pack_image"><!-- start of pack_of_images -->
+											<span><!-- start of image_1 -->
+												<img [src]="pack.image" [alt]="pack.title" [title]="pack.title" class="img-fluid" width="70">
+											</span><!-- end of image_1 -->
+										</div><!-- end of pack_of_images -->
+									</div><!-- end of productNameImages -->
+									
+									<div class="orderDetailRowHalf productPriceSize"><!-- start of productPriceSize -->
+										<span>{{list.quantity}} Qty</span> <span>₹{{list.price | number: '2.2-2'}}</span>
+									</div><!-- end of productPriceSize -->
+									
+								</div><!-- end of orderDetailRow -->
+							</div><!-- end of orderRow_div -->
+							
+						</div><!-- end of orderRow_content -->
+						
+					</div><!-- end of orderRow -->
+					
+				</div><!-- end of card-body -->
+			</div><!-- end of cancelledDetails -->
+			
+        </div><!-- end of right_part -->
+
+    </div><!-- end of content -->
+
+</div>     
+
+<div id="orderCancelPopup" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content modal-sm col-sm-offset-3">
+      <div class="modal-header no-padding no-border">
+        <button type="button" class="close video_close" #hideDeleteModal data-dismiss="modal">
+          <span class="icon_cross"></span>
+          <span class="icon_cross"></span>
+        </button>
+      </div>
+      <div class="modal-body col-sm-12 col-xs-12 confirm_popup_div">
+        <h3 class="clearfix">Confirmation</h3>
+        <p class="clearfix">{{confimMsg}}</p>
+        <button type="button" class="btn btn-div-buy btn-1b btn-block margin-md-bottom" (click)="cancelOrders();">Yes</button>
+      </div>
+    </div>
+
+  </div>
+</div>

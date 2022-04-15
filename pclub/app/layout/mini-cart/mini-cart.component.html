@@ -1,0 +1,34 @@
+<div class="mr-auto collapse navbar-collapse" id="navbarSupportedContent">
+	<ul class="navbar-nav nav_menu">
+		<li class="nav-item">
+			<a class="nav-link my-btn checkout_btn from-left" routerLink="/perfume-package">Shop Now</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link px-3" routerLink="/">Subscription Box</a>
+		</li>
+	</ul>
+</div>
+
+<ul class="navbar-nav d-flex flex-row">
+	<li class="nav-item dropdown user-menu">
+		<a class="nav-link px-2 dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user ml-2"></i></a>
+		<div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+			<div *ngIf="userId == 0" class="loginReg_text">
+				<a class="dropdown-item enter-form" routerLink="/customer/login">Login</a>
+				<a class="dropdown-item enter-form" routerLink="/customer/registration">Register</a>
+			</div>
+			<a *ngIf="userId > 0" class="dropdown-item" routerLink="/customer/profile">Profile</a>
+			<a *ngIf="userId > 0" class="dropdown-item" routerLink="/checkout/cart/">Cart</a>
+			<a *ngIf="userId > 0" class="dropdown-item" routerLink="/customer/orders">Track Orders</a>
+			<a *ngIf="userId > 0" class="dropdown-item" (click)="customerLogout();">Logout</a>
+		</div>
+	</li>						
+	<li class="nav-item dropdown cart-menu">
+		<a (click)="viewCart()" class="nav-link px-2 shopping-cart dropdown-toggle sticky-top" role="button" aria-haspopup="true" aria-expanded="false">
+			<i class="fas fa-shopping-cart ml-2"></i>
+			<sup class="badge badge-primary rounded-circle">{{cartLength}}</sup>
+		</a>
+	</li>
+
+</ul>
+<!--delete-item></delete-item-->

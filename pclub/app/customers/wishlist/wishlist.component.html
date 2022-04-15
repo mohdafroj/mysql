@@ -1,0 +1,70 @@
+<h3 class="user_detail_heading"><!-- start of user_detail_heading -->
+	Wishlist
+</h3>
+<div class="row mt-5"><!-- start of right_part -->
+	<div class="table-responsive responsive-mobile-table col-12"><!-- start of content -->
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col" class="border-0 bg-light text-uppercase">
+						Product
+					</th>
+					<th scope="col" class="border-0 bg-light text-uppercase">
+						Price
+					</th>
+					<th scope="col" class="border-0 bg-light text-uppercase text-center">
+						Status
+					</th>
+					<th scope="col" class="border-0 bg-light text-uppercase">
+						Remove
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngIf="wishlist.length == 0"><td colspan="4" data-title="Price" class="align-middle text-center">Sorry, Item not added into your wishlist!</td></tr>
+				<tr *ngFor="let item of wishlist; let i = index;"><!-- start of product_cart -->
+					<td scope="row">
+						<span class="product_img">
+							<img [src]="(item.product.product_images.img_base != undefined ) ? item.product.product_images.img_base : 'assets/images/is-base.jpg'" [alt]="item.title" width="70" class="img-fluid">
+						</span>
+						<h5><!-- start of image_detail -->
+							<a routerLink="/{{item.product.url_key}}" class="text-dark d-inline-block align-middle">{{item.title}}</a>
+						</h5><!-- end of image_detail -->
+					</td>
+					<td data-title="Price" class="align-middle">₹{{item.price | number:'2.2-2'}}</td>
+					<td data-title="Status" class="align-middle status_btn">
+						<span *ngIf="item.product.is_stock != 'in_stock'">Out Of Stock</span>
+						<button *ngIf="item.product.is_stock == 'in_stock'" (click)="addCart(item);" class="btn my-btn checkout_btn from-left">Add To Cart</button>
+					</td>
+					<td data-title="Remove" class="align-middle text-center">
+						<button type="button" class="btn btn-link p-0 text-muted" (click)="productId = item.product.id; productIndex = i;" data-toggle="modal" data-target="#confirmModal"><i class="fas fa-trash"></i></button>
+					</td>
+				</tr><!-- end of product_cart -->
+			</tbody>
+		</table>
+	</div><!-- end of content -->
+</div><!-- end of right_part -->
+
+<!-- start confirmation Modal -->
+    <div class="modal fade global_popup" id="confirmModal" tabindex="-1">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content border-0 rounded-0">
+                <div class="modal-header">
+                    <h4 class="modal-title">Confirmation</h4>
+                    <button type="button" class="btn close-btn close close-modal" data-dismiss="modal" aria-label="Close">
+                    	<span class="icon-cross" aria-hidden="true">&nbsp;</span>
+                    	<span class="icon-cross" aria-hidden="true">&nbsp;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                	<p class="text-center">Are you sure, you want to delete this product from wishlist</p>
+                </div>
+                <div class="modal-footer multiple_btn m-auto border-0 p-2">
+                	<button type="button" (click)="updateWishlist();" class="btn my-btn cart_btn from-left" data-dismiss="modal">Yes</button>
+                	<button type="button" (click)="productId = 0; productIndex = -1;" data-dismiss="modal" aria-label="Close" class="btn my-btn cart_btn btn_outline from-left">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- end confirmation Modal -->
+

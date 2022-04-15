@@ -1,0 +1,50 @@
+        <h3 class="user_detail_heading"><!-- start of user_detail_heading -->
+			Edit Profile
+		</h3><!-- end of review_heading -->
+
+        <div class="row mt-5 form_filed"><!-- start of content -->
+          <form class="needs-validation w-100 d-flex flex-wrap" [formGroup]="rForm" (ngSubmit)="customerDetail(rForm.value);" novalidate>
+            <div class="form-group col-12">
+            <p class="col-xs-12 account_line text-uppercase">
+              General Information
+            </p>
+			</div>
+            <div class="form-group col-sm-6 col-12"><!-- start of Fname -->
+              <input type="text" class="form-control" formControlName="firstname" placeholder="Please enter first name">
+            </div><!-- end of Fname -->
+
+            <div class="form-group col-sm-6 col-12"><!-- start of Lname -->
+              <input type="text" class="form-control" formControlName="lastname" placeholder="Please enter last name">
+            </div><!-- end of Lname -->
+
+            <div class="form-group col-sm-6 col-12">
+              <input type="text" class="form-control" formControlName="mobile">
+            </div>
+
+            <div class="form-group col-sm-6 col-12"><!-- start of DOB -->
+              <input type="text" class="form-control" formControlName="dob" placeholder="Please enter dob">
+            </div><!-- end of DOB -->
+
+            <div class="form-group col-12"><!-- start of Gender -->
+			
+				<div class="radio_div profile_radio_div"><!-- start of options -->
+					<p>Gender : </p>
+					<div class="form-check"><!-- start of radio_button -->
+						<label class="toggle">
+							<input type="radio" formControlName="gender" [value]="'male'" id="Male"> <span class="label-text">Man</span>
+						</label>
+					</div><!-- end of radio_button -->
+					
+					<div class="form-check"><!-- start of radio_button -->
+						<label class="toggle">
+							<input type="radio" formControlName="gender" [value]="'female'" id="Female"> <span class="label-text">Woman</span>
+						</label>
+					</div><!-- end of radio_button -->
+				</div><!-- end of options -->
+            </div><!-- end of Gender -->
+            <div class="form-group col-12"><p class="text-center text-danger">{{msg}}</p></div>
+            <div class="form-group col-12 checkoutBtn text-center"><!-- start of login_button -->
+              <button type="submit" class="btn my-btn checkout_btn from-left px-5" [disabled]="!rForm.valid">Submit</button>
+            </div><!-- end of login_button -->
+          </form>
+        </div><!-- end of content -->

@@ -1,0 +1,40 @@
+@import './../node_modules/slick-carousel/slick/slick.css';
+@import './../node_modules/slick-carousel/slick/slick-theme.css';
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import './../node_modules/ngx-toastr/toastr.css';
+@import './assets/css/bootstrap.min.css';
+@import './assets/css/fontawesome.min.css';
+@import 'https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700';
+@import './assets/css/swiper.css';
+@import './assets/css/custom.css';
+
+.rupees {
+	content: "\20B9";
+}
+
+.gender_popup .modal-footer{border:none; margin:0 auto; justify-content: center;}
+.gender_popup .modal-footer .btn{font-size:1.3rem; text-transform:uppercase; height:auto; letter-spacing:.05rem; padding:0 2rem;}
+.gender_popup .modal-body{align-items:center; justify-content:center; padding:2rem 1rem;}
+.gender_popup .modal-body .form-check .toggle{margin:0; cursor:pointer; position:relative;}
+
+.gender_popup .modal-body .form-check .toggle input[type="radio"]{position: absolute; right: 9000px;}
+
+.gender_popup .modal-body .form-check .toggle input[type="radio"] + .label-text:before{content: ""; font-family: "Font Awesome 5 Free"; font-size:2rem; font-style: normal; font-weight: 900; font-variant: normal; text-transform: none; line-height: 1; -webkit-font-smoothing:antialiased; width: 1.5rem; height:1.5rem; border:0.01rem solid rgba(0,0,0,0.1); border-radius:50%; display: inline-block; margin-right: 10px; position:absolute; left:0; top:0;}
+
+.gender_popup .modal-body .form-check .toggle input[type="radio"]:checked + .label-text:before{content: "\f058"; color: #ed1b62; animation: effect 250ms ease-in; border:none;}
+
+@keyframes effect{
+	0%{transform: scale(0);}
+	25%{transform: scale(1.3);}
+	75%{transform: scale(1.4);}
+	100%{transform: scale(1);}
+}
+.gender_popup .modal-body .form-check .toggle span{border:0.01rem solid rgba(0,0,0,0.1); border-radius:50%; display:inline-block; transition:ease all .5s; -webkit-transition:ease all .5s;}
+.gender_popup .modal-body .form-check .toggle span img{width:10rem;}
+.gender_popup .modal-body .form-check:not(:last-child){padding:0 1.2rem 0 0; border-right:0.01rem solid rgba(0,0,0,0.1);}
+.gender_popup .modal-body .form-check .toggle:hover span, .gender_popup .modal-body .form-check .toggle:hover input[type="radio"] + .label-text:before{border-color:#ed1b62;}
+
+@media (max-width: 767.98px) {
+	.gender_popup .modal-header h4{font-size:1.3rem;}
+	.gender_popup .modal-footer .btn{font-size:1.2rem;}
+}

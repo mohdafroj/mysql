@@ -1,0 +1,173 @@
+	<div class="content index_2_div pt0" #mainScreen>
+		<section class="container-fluid xs-no-padding"><!-- start of middle_section -->
+        	<div class="container">
+                <div class="row"><!-- start of row -->                	
+                	
+                    <div #filterContainer class="col-xs-12 breadcrumb_div"><!-- start of breadcrumb list -->
+                        <ul class="breadcrumb">
+                            <li>
+                                &nbsp;
+                            </li>
+                        </ul>
+                    </div><!-- end of breadcrumb list -->
+                    
+                    <div class="col-md-2 col-sm-12 col-xs-12 no-padding-right xs-no-padding"><!-- start of filter_div -->
+						<div id="FilterBtn" class="sidebar_filter sidebar_filter_pattern collapse" [ngClass]="{'in':winWidth > 676}">                            
+                            <div class="filter_tab col-xs-12"><!-- start of accordion -->
+								<div class="panel panel_open"><!-- start of brand_filter -->
+                                    <div class="panel-heading"><!-- start of heading -->
+                                        <h4 class="panel-title">
+                                        	<a data-toggle="collapse" data-parent="#accordion" href="#brandsPrice">
+                                                <span class="filter_heading">Price for</span> <span class="fa fa-angle-down"></span> Products
+                                            </a>
+                                        </h4>
+                                    </div><!-- end of heading -->
+                                    
+                                    <div id="brandsPrice" class="panel-collapse collapse"><!-- start of content -->
+                                        <div class="panel-body">
+                                            <div class="radio_btn">
+                                                <input type="radio" id="price-0" name="selectorPrice" [value]="0" (change)="changePrice(0);" [checked]="selectedPrice==0">
+                                            	<label for="price-0">All</label>
+                                                <div class="check"></div>
+                                            </div>
+                                            <div *ngFor="let item of priceMenu;" class="radio_btn">
+                                                <input type="radio" id="price-{{item.price}}" name="selectorPrice" [value]="item.price" (change)="changePrice(item.price);" [checked]="selectedPrice==item.price">
+                                            	<label for="price-{{item.price}}"><i class="fa fa-rupee"></i>{{item.title}}</label>
+                                                <div class="check"></div>
+                                            </div>                                            
+                                        </div>
+                                    </div><!-- end of content -->
+                                </div><!-- end of brand_filter -->
+
+                            </div><!-- end of accordion -->
+                        </div>
+                    </div><!-- end of filter_div -->
+                    <div *ngIf="saleOn" class="col-md-10 col-sm-12 col-xs-12 xs-no-padding product_listing_div">
+						<img src="assets/images/banners/current/perfume.jpg" class="img-responsive center-block" />
+					</div>                    
+                    <div class="col-md-10 col-sm-12 col-xs-12 xs-no-padding product_listing_div"><!-- start of right_part -->
+                            
+                        <div class="col-xs-12 filter_btn" [ngClass]="topScrollClass" data-spy="affix" data-offset-top="400"><!-- start of top_part -->
+                        	<div class="filter_left"><!-- start of filter_left -->
+                                <div class="col-sm-6 col-xs-4 gender_div"><!-- start of gender_button -->
+                                	<h3>Gender <span>Sort products</span></h3>
+                                    <ul class="list-unstyled list-inline no-margin">
+                                        <li [ngClass]="{active:gender=='male'}" (click)="selectGender('male');">
+                                            <a class="btn">Male</a>
+                                        </li>
+                                        <li [ngClass]="{active:gender=='female'}" (click)="selectGender('female');">
+                                            <a class="btn">Female</a>
+                                        </li>
+                                    </ul>
+                                </div><!-- end of gender_button -->
+								<div class="col-xs-4 visible-xs filter_btnn">
+									<button class="btn collapsed" (click)="scrollToTop();" data-target="#FilterBtn" data-toggle="collapse">
+										<i class="fa fa-filter"></i> Filter
+									</button>
+								</div>
+
+                                <div *ngIf="comboSection > 0" class="col-sm-6 col-xs-4 gender_div combo_div"><!-- start of gender_button -->
+                                	<h3 class="col-md-pull-2 col-sm-pull-3 col-xs-pull-0">Combo <span>Save up to 30%</span></h3>
+                                    <ul class="list-unstyled list-inline no-margin col-md-push-3 col-sm-push-4 col-xs-push-0">
+                                        <li [ngClass]="{active:comboStatus==1}">
+                                            <a (click)="comboSelection(1);" class="btn">On</a>
+                                        </li>
+                                        <li [ngClass]="{active:comboStatus==0}">
+                                            <a (click)="comboSelection(0);" class="btn">Off</a>
+                                        </li>
+                                    </ul>
+                                </div><!-- end of gender_button -->
+                                
+                                
+                            </div><!-- end of filter_left -->
+                        </div><!-- end of top_part -->
+                        
+                        <div class="col-sm-12 col-xs-12 product_number"><!-- start of number of products -->
+                            <p>{{totalProduct}} Products found!</p>
+                        </div><!-- end of number of products -->
+                            
+                        <div *ngIf="productList.length > 0" class="col-sm-12 col-xs-12 brand_slider"><!-- start of product_slider -->
+                            <div class="col-sm-12 col-xs-12 no-padding"><!-- start of product_slider div -->
+                            
+                                <div class="ca-menu touch_slider row-flex row-flex-wrap"><!-- start of slider -->
+                        
+                                    <div *ngFor="let item of productList" class="item col-sm-4 col-xs-12"><!-- start of Lurve -->
+                                        <div class="thumb_div">
+                                        	<div *ngIf="item.tagLine != '';" class="corner_label"><!-- start of corner_label -->
+                                            	<img [src] = "( item.tagClass == '' ) ? 'assets/images/product_label/best_seller.svg' : 'assets/images/product_label/' + item.tagClass + '.svg'" />
+                                            </div><!-- end of corner_label -->
+                                            
+                                            <p class="product_image"><!-- start of product_image -->
+                                            	<a routerLink="/{{item.urlKey}}">
+													<img [src]="((item.images.url !== undefined) && (item.images.url !== '')) ? item.images.url:'assets/images/product/default/is-base.jpg'" [alt]="item.name" class="img-responsive center-block" />
+													<span *ngIf="item.isStock == 'coming_soon'" class="out_stock"><span>Coming Soon</span></span>
+													<span *ngIf="item.isStock == 'out_of_stock'" class="out_stock"><span>Out of Stock</span></span>
+                                                </a>
+                                            </p><!-- end of product_image -->
+                                            
+                                            
+                                            <div class="product_content"><!-- start of product_content -->
+                                                <h2 class="product_name"><!-- start of product_name -->
+                                                    <a routerLink="/{{item.urlKey}}">{{item.name}}</a>
+                                                </h2><!-- end of product_name -->
+                                                
+                                                <h2 class="product_name"><!-- start of product_size -->
+                                                    <span>{{ item.size+' '+item.sizeUnit | uppercase }}</span>
+                                                </h2><!-- end of product_size -->
+                                                
+                                                <div class="btn_price"><!-- start of btn_price -->
+													<div *ngIf="item.isStock == 'in_stock'" class="btn from-right add-to-cart">
+														<span *ngIf="!item.isCart" (click)="addCart(item.id);" class="product_cart_text">Add</span>
+														<span *ngIf="!item.isCart" (click)="addCart(item.id);" class="product_price">
+															<i class="fa fa-rupee"></i>{{item.price | number:'1.2-2'}}<sup *ngIf="item.discount.coupon">*</sup>&nbsp;
+															<del *ngIf="item.discount.original"><i class="fa fa-rupee"></i>{{item.discount.original | number:'1.2-2'}}</del>
+														</span>
+														<span *ngIf="item.isCart" (click)="goToCart();" class="product_cart_text">Go to Cart</span>
+														<span *ngIf="item.isCart" (click)="goToCart();" class="product_price">
+															<i class="fa fa-rupee"></i>{{item.price | number:'1.2-2'}}<sup *ngIf="item.discount.coupon">*</sup>&nbsp;
+															<del *ngIf="item.discount.original"><i class="fa fa-rupee"></i>{{item.discount.original | number:'1.2-2'}}</del>
+														</span>
+														
+													</div>
+													<button *ngIf="item.isStock == 'coming_soon' || item.isStock == 'out_of_stock'" type="button" class="btn from-right add-to-cart" (click)="notifyMePopup(item.id);" data-target="#NotifyMe" data-toggle="modal">
+														<span class="product_cart_text">Notify Me!</span>
+														<span class="product_price">
+															<i class="fa fa-rupee"></i>{{item.price | number:'1.2-2'}}<sup *ngIf="item.discount.coupon">*</sup>&nbsp;
+															<del *ngIf="item.discount.original"><i class="fa fa-rupee"></i>{{item.discount.original | number:'1.2-2'}}</del>
+														</span>
+													</button>
+                                                </div><!-- start of btn_price -->
+                                                
+                                                <div class="sold_product">
+													<label *ngIf="item.discount.label">{{item.discount.label}}</label>
+                                                	<span *ngIf="item.sold > 0"><b>{{item.sold}}</b> Sold</span>
+                                                </div>
+												<div class="coupon_product" *ngIf="item.discount.coupon">
+                                                	<sup>&lowast;</sup>Apply <span>{{item.discount.coupon}}</span> on checkout page
+                                                </div>
+                                            </div><!-- end of product_content -->
+                                        </div>
+                                    </div><!-- end of Lurve -->                                    
+                                    
+                                </div><!-- end of slider -->
+                            
+                            </div><!-- end of product_slider div -->
+                        </div><!-- end of product_slider -->
+                    
+                        <div *ngIf="resultStatus == 0" class="col-sm-12 col-xs-12 product_number"><!-- start of number of products -->
+                            <div class="col-sm-12 col-xs-12 no-padding-right xs-no-padding"><!-- start of image_detail -->
+								<h1 class="col-xs-12 text-center detail_heading"><!-- start of heading -->
+									<img src="assets/images/gif-main2.gif">
+								</h1><!-- end of heading -->
+							</div><!-- end of image_part -->
+                        </div><!-- end of number of products -->
+                            
+                    </div><!-- end of right_part -->
+                    
+                </div><!-- end of row -->
+            </div>
+        </section><!-- end of middle_section -->
+    
+    </div>
+        
+ <notifyme></notifyme>

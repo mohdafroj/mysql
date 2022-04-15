@@ -1,0 +1,180 @@
+<section class="container-fluid content static_banner"><!-- start of middle_part -->
+	<div class="container">
+		<div class="row"><!-- start of row -->
+		
+			<div class="col-sm-12 col-xs-12 filter_btn {{topScrollClass}}"><!-- start of top_part -->
+				<div class="filter_left"><!-- start of filter_left -->
+					<div class="col-sm-12 col-xs-12 gender_div"><!-- start of gender_button -->
+						<h3>Select Your Gender <span>Sort products</span></h3>
+						<ul class="list-unstyled list-inline no-margin">
+							<li [ngClass]="{'active':gender == 'male'}">
+								<a [routerLink]="[]" [queryParams]="{gender:'male'}" class="btn">Male</a>
+							</li>
+							<li [ngClass]="{'active':gender == 'female'}">
+								<a [routerLink]="[]" [queryParams]="{gender:'female'}" class="btn">Female</a>
+							</li>
+						</ul>
+					</div><!-- end of gender_button -->
+				</div><!-- end of filter_left -->
+			</div><!-- end of top_part -->
+                        
+			<div class="col-sm-12 col-xs-12 brand_slider"><!-- start of brand_slider -->
+				<p>
+					<span>Perfume Selfie</span>
+				</p>
+				
+				<div *ngIf="resultMsg !=''" class="col-xs-12 xs-no-padding">
+					<div class="col-sm-12 col-xs-12 no-padding-right xs-no-padding">
+						<h1 class="col-xs-12 text-center detail_heading">
+							<img src="assets/images/gif-main2.gif">
+						</h1>
+					</div>
+				</div>
+				<ul [hidden]="1" itemscope itemtype="http://schema.org/BreadcrumbList">	
+					<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+						<a itemprop="item" routerLink="/perfume-selfie/products"><span itemprop="name">Perfume Selfie Products</span></a>
+						<meta itemprop="position" content="2" />
+					</li>
+				</ul>
+		                
+				<div class="col-sm-12 col-xs-12" *ngIf="resultSlide.length">
+				
+					<div class="content-slider touch_slider row-flex row-flex-wrap"><!-- start of slider -->
+			
+						<ngu-carousel [inputs]="nguFirst" [dataSource]="resultSlide" class="col-xs-12 no-padding generic_main_img">
+							<ngu-item NguCarouselItem *nguCarouselDef="let item; let i = index;" class="item col-xs-12">
+							<div class="thumb_div"  [ngClass]="{'active':activeSlide==i}" (click)="resultSlides(i);" style="cursor:pointer;">
+								<span class="ca-icon"><!-- start of image -->
+									<a>
+										<img *ngFor="let image of item.images;" class="img-responsive center-block" [src]="image.imgLarge" [alt]="item.name" />
+									</a>
+								</span><!-- end of image -->
+								<div class="ca-content"><!-- start of content -->
+									<h2 class="ca-main">
+										{{item.name}}
+									</h2>
+								</div><!-- end of content -->
+							</div>
+							</ngu-item>
+							  <button NguCarouselPrev class="leftRs hide"><i class="fa fa-angle-left"></i></button>
+							  <button NguCarouselNext class="rightRs hide"><i class="fa fa-angle-right"></i></button>
+						</ngu-carousel>
+					</div><!-- end of slider -->
+				
+				</div>
+			</div><!-- end of brand_slider -->
+
+
+			<div *ngFor="let item of result; let i = index;" class="col-xs-12 selfie_generic_div"><!-- start of image_section -->
+
+				<div class="col-sm-5 col-xs-12 no-padding-left xs-no-padding"><!-- start of image_part -->
+					<h1 class="col-xs-12 detail_heading visible-xs"><!-- start of heading -->
+						<span class="product_name">
+							{{item.name}}
+							<span class="detail_rating starrr">
+								<i *ngFor="let itemactive of getFinalRating(item.custReviews.rating);" class="fa fa-star color-star"></i>
+								<i *ngFor="let itemnonactive of getRemainingRating(item.custReviews.rating);"  class="fa fa-star"></i>
+							</span>
+						</span>
+						<span class="brand_name">
+							<span *ngIf="item.isStock == 'out_of_stock'">Out Of Stock</span>
+						</span>
+					</h1><!-- end of heading -->
+					<!-- Carousel -->
+					<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+						<!-- Wrapper for slides -->
+						<div class="carousel-inner">
+							<ngu-carousel [inputs]="nguSecond" [dataSource]="item.images" class="col-xs-12 no-padding generic_main_img">
+								<ngu-item NguCarouselItem *nguCarouselDef="let image;" class="item contains_slider">
+									<img class="img-responsive center-block" [src]="image.imgLarge" [alt]="item.name" />
+								</ngu-item>
+								<button NguCarouselPrev class="leftRs hidden-xs"><i class="fa fa-angle-left"></i></button>
+								<button NguCarouselNext class="rightRs hidden-xs"><i class="fa fa-angle-right"></i></button>
+							</ngu-carousel>
+						</div>
+						<div class="out_stock" *ngIf="item.isStock == 'out_of_stock'"><span>Out Of Stock</span></div>
+					</div>
+					<!-- /carousel -->
+					<span class="male_female_div">
+						<img [src]="(item.gender == 'female') ? 'assets/images/female.svg':'assets/images/male.svg'" class="img-responsive">
+					</span>
+				</div><!-- end of image_part -->
+
+				<div class="col-sm-7 col-xs-12 no-padding-right xs-no-padding"><!-- start of image_detail -->
+
+					<h1 class="col-xs-12 detail_heading left-column hidden-xs"><!-- start of heading -->
+						<span class="product_name">
+							{{item.title}}
+							<span class="detail_rating">
+								<div class="starrr">
+									<i *ngFor="let itemactive of getFinalRating(item.custReviews.rating);" class="fa fa-star gradient_use color-star"></i>
+									<i *ngFor="let itemnonactive of getRemainingRating(item.custReviews.rating);"  class="fa fa-star gradient_use"></i>
+								</div>
+							</span>
+						</span>
+					</h1><!-- end of heading -->
+
+					<h3 class="col-xs-12 detail_price xs_detail_price"><!-- start of price -->
+						<span *ngIf="item.offerPrice > item.price then price1 else price2"></span>
+						<ng-template #price1>
+						<p class="col-xs-12 detail_mrp no-margin"><!-- start of size -->
+							Price :
+							<span class="detail_main_price"><i class="fa fa-rupee"></i>{{item.price}}</span> 
+							<del><i class="fa fa-rupee"></i>{{item.offerPrice}}</del>
+						</p>
+						</ng-template>
+						<ng-template #price2>
+						<p class="col-xs-12 detail_mrp no-margin"><!-- start of size -->
+							Price :
+							<span class="detail_main_price"><i class="fa fa-rupee"></i>{{item.price}}</span>
+						</p><!-- end of size -->
+						</ng-template>
+					</h3><!-- end of price -->
+					
+					<h3 class="col-xs-12 detail_price"><!-- start of enlarge_content -->
+                        	<p class="col-xs-12 detail_mrp no-margin"><!-- start of mrp -->
+                                Contains 7 International Perfumes x 4ml + <i class="fa fa-rupee"></i>501 voucher + Perfume Selfie Case
+                            </p><!-- end of mrp -->
+                        </h3><!-- end of enlarge_content -->
+
+					
+					<h3 class="col-xs-12 detail_price xs_price_padding"><!-- start of selfie_content -->
+						<p class="col-xs-12 no-margin selfie_content" [innerHTML]="sanitizer.bypassSecurityTrustHtml(item.shortDescription)"><!-- start of size -->
+						</p><!-- end of size -->
+					</h3><!-- end of selfie_content -->
+
+					<h3 class="col-xs-12 detail_price"><!-- start of enlarge_content -->
+						<p class="col-xs-12 detail_mrp no-margin"><!-- start of mrp -->
+							Contains Mini Perfume Of The Following <small>(Click to enlarge)</small>
+						</p><!-- end of mrp -->
+
+						<ul class="col-xs-12 list-unstyled list-inline no-padding enlarge_popup"><!-- start of enlarge_image -->
+							<li *ngFor="let r of item.related; let rIndex = index;">
+								<button (click)="productPopup(rIndex, i);" type="button" class="btn" data-toggle="modal" data-target="#Enlarge_images">
+									<div *ngIf="(r.images.url !== undefined) && (r.images.url !== ''); then imageIf else imageElse"></div>
+									<ng-template #imageIf><img src="{{r.images.url}}" alt="{{r.images.alt}}" class="img-responsive center-block" /></ng-template>
+									<ng-template #imageElse><img src="assets/images/product/default/is-base.jpg" alt="{{r.images.name}}" class="img-responsive center-block" /></ng-template>
+								</button>
+							</li>
+						</ul><!-- end of enlarge_image -->
+					</h3><!-- end of enlarge_content -->
+					<div class="col-md-10 col-sm-9 col-xs-12 no-padding margin-bottom detail_button">
+						<div *ngIf="item.isStock == 'in_stock'">
+							<span *ngIf="!item.isCart" (click)="addCart(item.id);" class="btn from-left cart_btn">Add to Cart</span>
+							<a *ngIf="item.isCart" routerLink="/checkout/cart/" class="btn from-right cart_btn add-to-cart">Go to Cart</a>
+						</div>
+						<span *ngIf="item.isStock == 'coming_soon'">Coming Soon</span>
+						<button *ngIf="item.isStock == 'out_of_stock' || item.isStock == 'coming_soon'" class="btn from-left cart_btn"  (click)="notifyMePopup(item.id);" data-target="#NotifyMe" data-toggle="modal">
+							Notify Me
+						</button>
+                    </div>
+				</div><!-- end of image_detail -->
+			</div><!-- end of image_section -->
+		
+			<reviews [userId]="userId"></reviews>
+		
+		</div><!-- end of row -->
+	</div>
+</section><!-- end of middle_part -->
+<notifyme></notifyme>
+<popup-product></popup-product>

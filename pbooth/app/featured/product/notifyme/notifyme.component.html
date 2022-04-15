@@ -1,0 +1,39 @@
+<!--button class="btn from-left cart_btn"  data-target="#NotifyMe" data-toggle="modal">Notify Me</button-->
+<div id="NotifyMe" class="modal fade in" role="dialog">
+	<div class="modal-dialog">	
+		<!-- Modal content-->
+		<div class="modal-content modal-sm col-sm-offset-3">
+			<div class="modal-header no-padding no-border">
+				<button type="button" class="close video_close" data-dismiss="modal" id="NotifyMeClose">
+					<span class="icon_cross"></span>
+					<span class="icon_cross"></span>
+				</button>
+			</div>
+			<div class="modal-body col-sm-12 col-xs-12 login_popup_div">
+				<h3 class="clearfix">Item out of stock - Notify Me!</h3>
+				<div class="col-xs-12 login_form"><!-- start of form_part -->
+					<form class="col-xs-12 no-padding" (submit)="notifyMeSubmit();">
+						<p class="col-xs-12 account_line" [ngClass]="notifymeClass">
+							{{notifymeMsg}}
+						</p>
+						
+						<p class="col-xs-12 account_line">
+							Enter your email address below to be notifed when this item is back in stock
+						</p>
+						
+						<div class="form-group col-xs-12 no-padding"><!-- start of email -->
+							<input type="email" class="form-control" id="notifyemail" (focus)="notifymeMsg=''; notifymeClass='';" placeholder="">
+							<i class="fa fa-user"></i>
+							<span class="filed_name">Email*</span>
+						</div><!-- end of email -->
+						
+						<div class="form-group col-xs-12 no-padding lg_re_btn"><!-- start of login_button -->
+							<button type="submit" class="btn from-left cart_btn btn-block margin-bottom">Notify Me!</button>
+						</div><!-- end of login_button -->
+					</form>
+				</div><!-- end of form_part -->
+			</div>
+		</div>
+	
+	</div>
+</div>

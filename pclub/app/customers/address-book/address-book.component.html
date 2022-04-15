@@ -1,0 +1,107 @@
+<h3 class="user_detail_heading">Address Book</h3>
+		
+		<div class="row mt-5"><!-- start of content -->
+            <button (click)="newAddress();" type="button" class="btn my-btn checkout_btn from-left add_address_btn" data-target="#addressFormPopup" data-toggle="modal">
+				<i class="fas fa-plus"></i> Add New Address
+			</button>
+			
+			<div *ngFor="let item of response['address']" class="col-sm-6 col-12"><!-- start of add_content -->
+				<div class="address_detail" [ngClass]="{'active': item.set_default == '1'}"><!-- start of main_div -->
+					<b>{{ item.firstname + ' '+ item.lastname }}</b>
+					<address>
+						{{item.address}}, <br>
+						{{item.city}}, <br>
+						{{item.state}} {{item.pincode}} {{item.country}}. <br>
+						Mobile: {{item.mobile}},<br>
+						Email: {{item.email}}
+					</address>
+					<button *ngIf="item.set_default == '0'" (click)="setDefaultAddress(item.id);" type="button" class="btn default_btn">Set As Default</button>
+					<button *ngIf="item.set_default == '1'" type="button" class="btn default_btn">Default</button>
+					<div *ngIf="setDefaultId == item.id" class="spinner-border text-danger" role="status" aria-hidden="true"></div>
+					<ul class="list-unstyled address_btn">
+						<li><button class="btn" data-target="#addressFormPopup" data-toggle="modal" (click)="editAddress(item);">Edit</button></li>
+						<li><button class="btn" data-target="#addressDeletePopup" data-toggle="modal" (click)="openDeleteDialog(item);">Delete</button></li>
+					</ul>
+				</div>
+			</div>
+			
+			<div *ngIf="response['address'].length == 0" class="col-sm-6 col-12"><!-- start of add_content -->
+				<div class="address_detail text-center active"><!-- start of main_div -->
+					Sorry Dear, your address book is empty!
+				</div>
+			</div>
+			
+        </div><!-- end of content -->
+        <div class="modal fade global_popup" id="addressFormPopup">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content border-0 rounded-0 gender_popup form_filed">
+                
+                    <!-- Modal Header -->
+                    <div class="modal-header border-0">
+						<span [ngClass]="resObject['textClass']" [innerHTML]="resObject['message']"></span>
+                        <button type="button" class="btn close-btn close close-modal" (click)="initAddressForm();" data-dismiss="modal" aria-label="Close">
+                            <span class="icon-cross" aria-hidden="true">&nbsp;</span>
+                            <span class="icon-cross" aria-hidden="true">&nbsp;</span>
+                        </button>
+                    </div>
+                    
+                    <form class="needs-validation" [formGroup]="addressForm" (ngSubmit)="addAddress(addressForm.value);" novalidate><!-- start of form -->
+                        <!-- Modal body -->
+                        <div class="modal-body"><!-- start of modal-body -->
+                        
+                            <p class="required_text">New Address <span>All Fields Required</span></p>
+                            
+                            <div class="row"><!-- start of form_field -->
+                                                
+                                <div class="form-group col-sm-6 col-12"><!-- start of Fname -->
+									<input type="hidden" class="form-control" formControlName="id">
+									<input type="text" class="form-control" formControlName="firstname" placeholder="Enter enter first Name" required>
+                                </div><!-- end of Fname -->
+                            
+                                <div class="form-group col-sm-6 col-12"><!-- start of Lname -->
+									<input type="text" class="form-control" formControlName="lastname" placeholder="Enter enter last Name" required>
+                                </div><!-- end of Lname -->
+                            
+                                <div class="form-group col-sm-6 col-12"><!-- start of emailField -->
+									<input type="text" class="form-control" formControlName="email" placeholder="Enter enter your email id" (keyup)="upperToLower($event,'email');" required>
+                                </div><!-- end of emailField -->
+                            
+                                <div class="form-group col-sm-6 col-12"><!-- start of mobileNumber -->
+									<input type="text" class="form-control" formControlName="mobile" placeholder="Enter enter 10 digits mobile number" required>
+                                </div><!-- end of mobileNumber -->
+                            
+                                <div class="form-group col-12"><!-- start of addressField -->
+                                    <textarea class="form-control" formControlName="address" placeholder="Enter enter address" required></textarea>
+                                </div><!-- end of addressField -->
+                            
+                                <div class="form-group col-sm-6 col-12"><!-- start of zipCode -->
+									<input type="text" class="form-control" formControlName="pincode" placeholder="Enter enter pin code" required>
+                                </div><!-- end of zipCode -->
+                            
+                                <div class="form-group col-sm-6 col-12"><!-- start of cityField -->
+									<input type="text" class="form-control" formControlName="city" placeholder="Enter enter city name" required>
+                                </div><!-- end of cityField -->
+                            
+                                <div class="form-group col-sm-6 col-12"><!-- start of stateField -->
+                                    <select class="custom-select form-control" formControlName="state">
+										<option *ngFor="let item of response['states']" [value]="item.title">{{item.title}}</option>
+                                    </select>
+                                </div><!-- end of City -->
+                            
+                                <div class="form-group col-sm-6 col-12"><!-- start of countryField -->
+									<input type="text" class="form-control" formControlName="country" readonly>
+                                </div><!-- end of countryField -->
+                            
+                            </div><!-- end of form_field -->
+                            
+                        </div><!-- end of modal-body -->
+                        
+                        <div class="modal-footer">
+                            <button type="submit" [disabled]="!addressForm.valid" class="btn my-btn checkout_btn from-left">Save &amp; Continue</button>
+                        </div>
+                    </form><!-- end of form -->
+                
+                </div>
+            </div>
+        </div>
+

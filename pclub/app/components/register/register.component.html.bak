@@ -1,0 +1,54 @@
+<div class="content pattern_image">	
+	<section class="container-fluid section_box section_gradient login_register_mPadding mt-n3"><!-- start of middle_part -->
+		<div class="container">
+			<div class="row"><!-- start of row -->
+				<div class="col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-sm-8 offset-sm-2 col-12 form_filed login_register_div">
+					<div class="account_div">
+						<div class="avatar">
+							<img src="assets/images/register.svg" alt="Register">
+						</div>
+						<div [innerHTML]="sanitizer.bypassSecurityTrustHtml(referMessage)"></div>
+						<p>The world of fine fragrances, just a click away</p>
+                    </div>
+						
+					<form class="needs-validation mt-5" [formGroup]="registerForm" (ngSubmit)="customerRegister(registerForm.value);">
+						<div class="Form_div">
+							<div class="form-group">
+								<p [ngClass]="resObj['textClass']" [innerHTML]="resObj['message']"></p>
+								<p *ngIf="isStep == 2" class="text-success">If not received within 3 minutes please click on <span [ngStyle]="{'text-decoration': 'underline', 'cursor': 'pointer'}" (click)="resendOtpRegister();">Resend OTP</span></p>
+								<p [ngClass]="resObj['otpClass']" [innerHTML]="resObj['otpMessage']"></p>
+							</div>
+
+							<div [hidden]="isStep != 1" class="form-group">
+								<input type="text" class="form-control" formControlName="username" placeholder="Enter your name">
+							</div><!-- end of username -->
+
+							<div [hidden]="isStep != 1" class="form-group">
+								<input type="email" class="form-control" formControlName="email" placeholder="Enter your email">
+							</div><!-- end of email -->
+
+							<div [hidden]="isStep != 1" class="form-group">
+								<input type="text" class="form-control" formControlName="mobile" placeholder="Enter your mobile number" max-length="10">
+							</div>					
+							
+							<div [hidden]="isStep == 1" class="form-group">
+								<input type="text" class="form-control" formControlName="otp" placeholder="Enter OTP">
+							</div>					
+							
+							<div class="form-group">
+								<button type="submit" class="btn my-btn checkout_btn from-left btn-block submt_btn">{{ (isStep == 1) ? 'Register':'Verify' }}</button>
+								<button *ngIf="isStep == 2" (click)="getBack();" type="button" class="btn my-btn btn-block back-btn"><span><span class="fa fa-angle-left"></span> Back</span></button>
+							</div>
+						</div>						
+						<div class="form-group an_account">
+							<p>
+								You have an account? <a routerLink="/login">Login</a>
+							</p>
+						</div>
+						
+					</form>			
+				</div>
+			</div><!-- end of row -->
+		</div>
+	</section><!-- end of middle_part -->
+</div>

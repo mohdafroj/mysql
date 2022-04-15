@@ -1,0 +1,26 @@
+ul.nav_menu li button{color:rgba(0,0,0,0.7); font-size:14px; padding:14px 15px; background:none; font-weight:300; width:auto; min-width:auto; box-shadow:none; border:none; font-family: 'Heebo', sans-serif; -webkit-transition:all .5s ease-in-out; -moz-transition:all .5s ease-in-out; transition:all .5s ease-in-out;}
+ul.nav_menu li button:hover{color:#ed1b62;}
+ul.nav_menu li.dropdown button span.text-cgreen{position: relative;top: -7px;left: -5px;font-size: 9px;width: 15px;height: 15px;background: #ed1b62;border-radius: 50%;display: inline-block;text-align: center;line-height: 15px; color:#fff;}
+
+/* start of cart_icon fixed css after scroll */
+ul.nav_menu li button.affix{position:fixed; top:0; right:0; left:auto; width:auto; z-index:9; background:#28373f; box-shadow:none; color:#fff; padding:18px 8px 18px 15px;}
+ul.nav_menu li.dropdown + li.dropdown.affix:before{opacity:0;}
+
+li button.affix + div.dropdown-menu_1{position:fixed; top:0; transform:translateY(95px);}
+li.open button.affix + div.dropdown-menu_1{transform:translateY(55px); opacity:1; z-index:100;}
+
+a {
+	cursor: pointer;
+}
+@media (max-width:767px){
+	/* cart icon css */
+	ul.nav_menu li button.shopping-cart{position:fixed; bottom:0; right:0; top:auto; background:#c8f7fa; color:#28373f; z-index:101; padding:12px 5px 8px 15px; font-size:18px; clip-path:polygon(25% 0%, 100% 0, 100% 100%, 0 100%, 0 33%); -webkit-clip-path:polygon(25% 0%, 100% 0, 100% 100%, 0 100%, 0 33%);}
+	/*ul.nav_menu li button.shopping-cart:before{content:""; position:absolute; border-bottom:10px solid transparent; border-left:10px solid #fff; top:0; left:0;}*/
+	ul.nav_menu li.dropdown button.shopping-cart span{top:-10px; left:-8px; background:#38b8bf;}
+	ul.nav_menu li button.shopping-cart:hover, ul.nav_menu li button.shopping-cart:focus, ul.nav_menu_1 li button.shopping-cart:hover, ul.nav_menu_1 li button.shopping-cart:focus, ul.nav_menu li.dropdown_1.open button.shopping-cart, ul.nav_menu li.dropdown_1.open button.shopping-cart:hover, ul.nav_menu li.dropdown_1.open button.shopping-cart:focus{color:#28373f; background:#c8f7fa;}
+	ul.nav_menu li.open button.shopping-cart{opacity:0;}
+	
+	/* start of cart_dropdown effect */
+	li button.affix + div.dropdown-menu_1{transform:translateY(100vh); padding:10px 0;}
+	li.open button.affix + div.dropdown-menu_1{transform:translateY(0);}
+}

@@ -1,0 +1,55 @@
+<div id="Enlarge_images" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+	
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header no-padding no-border">
+				<button type="button" class="close video_close" data-dismiss="modal">
+					<span class="icon_cross"></span>
+					<span class="icon_cross"></span>
+				</button>
+			</div>
+			<div class="modal-body col-sm-12 col-xs-12 enlarge_popup_slider">
+				<div class="col-xs-12 no-padding"><!-- start of form_part -->
+					<!-- Carousel -->
+					<div id="carousel-example-generic1" class="carousel slide" data-ride="carousel">
+						<!-- Wrapper for slides -->
+						<div class="carousel-inner">
+						<div>
+							<div *ngFor="let item of result;" class="item">
+								<h1 class="col-xs-12 detail_heading text-center"><!-- start of heading -->                                
+									<span class="product_name">
+										{{item.title}}
+										<span class="brand_flag">
+											<img src="{{item.brand.image}}" alt="{{item.brand.countryName}}" data-toggle="tooltip" data-placement="bottom" title="{{item.brand.countryName}}">
+										</span>
+									</span>
+							
+									<span class="detail_rating">
+										<div class="starrr">
+											<i *ngFor="let itemactive of getFinalRating(item.custReviews.rating);" class="fa fa-star gradient_use color-star"></i>
+											<i *ngFor="let itemnonactive of getRemainingRating(item.custReviews.rating);"  class="fa fa-star gradient_use"></i>
+										</div>
+									</span>	
+								</h1>
+						
+								<p class="col-xs-12 no-padding">
+									<img [src]="((item.images.url !== undefined) && (item.images.url !== '')) ? item.images.url:'assets/images/is-base.jpg'" [alt]="item.name | titlecase" [title]="item.name | titlecase" class="img-responsive center-block" />
+									<span class="male_female_div male_female_1">
+										<img [src]="(item.gender == 'female')? 'assets/images/female.svg':'assets/images/male.svg'" class="img-responsive" />
+									</span>
+								</p>
+							</div>
+							<button *ngIf="result.length > 1" class="leftRs"><i class="fa fa-angle-left"></i></button>
+							<button *ngIf="result.length > 1" class="rightRs"><i class="fa fa-angle-right"></i></button>
+						<div>
+						</div>
+					</div>
+					<!-- /carousel -->
+				</div><!-- end of form_part -->
+			</div>
+		</div>
+	
+	</div>
+</div>
+    

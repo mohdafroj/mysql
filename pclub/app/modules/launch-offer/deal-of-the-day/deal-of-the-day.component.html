@@ -1,0 +1,215 @@
+<div class="content noFooter"><!-- start of middle_page -->
+
+	<section class="container-fluid px-0 mt-n3"><!-- start of banner_section -->
+		<figure>
+			<img src="assets/images/launch-offer/deal-of-the-day/deal_web.jpg" class="img-fluid d-md-block d-none" alt="Deal Of The Day">
+			<img src="assets/images/launch-offer/deal-of-the-day/deal_mobile.jpg" class="img-fluid d-md-none d-block" alt="Deal Of The Day">
+		</figure>
+	</section><!-- end of banner_section -->
+
+	<section class="container-fluid px-0 timeSection sticky-top"><!-- start of time_section -->
+		<p class="timeSectionText">
+			Deals end in
+		</p>
+		
+		<ul class="list-unstyled timeSectionList">
+			<li>
+				<span>{{hours}}</span>
+			</li>
+			<li>
+				<span>{{minutes}}</span>
+			</li>
+			<li>
+				<span>{{seconds}}</span>
+			</li>
+		</ul>
+	</section><!-- end of time_section -->
+	
+	<section class="container-fluid section_box section_gradient pattern_image"><!-- start of section_box -->
+		<div class="container"><!-- start of container -->
+			<div class="row"><!-- start of row -->
+			
+				<div class="d-flex align-items-center justify-content-center gender_div"><!-- start of gender_div -->
+					<h6>Select Gender :</h6>
+					<ul class="list-unstyled">
+						<li>
+							<a [routerLink]="basePath" [queryParams]="{gender: 'male', type: productType}" class="btn" [ngClass]="{'active':(gender == 'male')}">Men's</a>
+						</li>
+						<li>
+							<a [routerLink]="basePath" [queryParams]="{gender: 'female', type: productType}" class="btn" [ngClass]="{'active':(gender == 'female')}">Women's</a>
+						</li>
+						<li>
+							<a [routerLink]="basePath" [queryParams]="{gender: 'unisex', type: productType}" class="btn" [ngClass]="{'active': (gender == 'unisex')}">Unisex</a>
+						</li>
+					</ul>
+				</div><!-- start of gender_div -->
+				
+				<div class="col-12 product_listing d-flex flex-wrap"><!-- start of listing -->
+					
+					<div *ngFor="let item of filterProducts;" class="col-md-4 col-sm-6 col-12 list_div"><!-- start of product -->
+						<div class="product-grid3">
+							<div *ngIf="item.tagLine != ''" class="productTags"><!-- start of productTags -->
+								<span>{{item.tagLine}}</span>
+							</div><!-- end of productTags -->
+							
+							<div class="genderIcon">
+								<span *ngIf="item.gender == 'male'" class="iconGender">
+									<img src="assets/images/gender_icon/men.svg" class="img-fluid" alt="Men">
+								</span>
+								<span *ngIf="item.gender == 'male'" class="iconText">Men</span>
+								
+								<span *ngIf="item.gender == 'female'" class="iconGender">
+									<img src="assets/images/gender_icon/women.svg" class="img-fluid" alt="Women`s">
+								</span>
+								<span *ngIf="item.gender == 'female'" class="iconText">Women`s</span>
+								
+								<span *ngIf="item.gender == 'unisex'" class="iconGender">
+									<img src="assets/images/gender_icon/unisex.svg" class="img-fluid" alt="Unisex">
+								</span>
+								<span *ngIf="item.gender == 'unisex'" class="iconText">Unisex</span>									
+							</div>
+							
+							<div class="product-image3"><!-- start of image -->
+								<span class="image_part" (click)="viewProduct(item);" data-target="#productDeail" data-toggle="modal"><!-- start of single_image -->
+									<img *ngIf="item['isStock'] == 'in_stock'" [src]="item['images'][0]['large']" [alt]="item['images'][0]['alt']" class="img-fluid">
+									<img *ngIf="item['isStock'] != 'in_stock'" [src]="item['oos_image']" [alt]="item['images'][0]['alt']" class="img-fluid">
+								</span><!-- end of single_image -->
+								
+								<ul class="social">
+									<li><button class="btn" (click)="viewProduct(item);" data-target="#productDeail" data-toggle="modal"><i class="fas fa-eye"></i></button></li>
+									<li *ngIf="userId == 0">
+										<button (click)="addIntoCart(item);" class="btn shopping-cart-btn"><i class="fas fa-shopping-cart"></i></button>
+									</li>
+									<li *ngIf="userId > 0">
+										<button *ngIf="customerCart.indexOf(item.id) == -1" (click)="addIntoCart(item);" class="btn shopping-cart-btn"><i class="fas fa-shopping-cart"></i></button>
+										<!--button *ngIf="customerCart.indexOf(item.id) > -1" (click)="removeItemFromCart(item.id);" class="btn shopping-cart-btn"><i class="fa fa-cancel">X</i></button-->
+										<a *ngIf="customerCart.indexOf(item.id) > -1" routerLink="/checkout/cart" class="btn go-cart-btn"><i class="fas fa-play"></i></a>
+									</li>
+								</ul>									
+								<!--span class="product-new-label">New</span-->
+							</div><!-- end of image -->
+							<div class="product-content"><!-- start of content -->
+								<h3 class="title"><span class="title_content" (click)="viewProduct(item);" data-target="#productDeail" data-toggle="modal">{{item.name}}</span></h3>
+								<div class="product_price"><!-- start of product_price -->
+									<span *ngIf="item.discount.original > 0">₹{{item.discount.original | number: '2.2-2'}}</span>
+									₹{{item.price | number: '2.2-2'}} 
+								</div><!-- end of product_price -->
+							</div><!-- end of content -->								
+							
+						</div>
+					</div><!-- end of product -->
+					
+				</div><!-- end of listing -->
+				<div *ngIf="filterProducts.length == 0" class="col-12 product_listing d-flex flex-wrap"><!-- start of listing -->
+						
+					<div class="col-12 text-center"><!-- start of product -->
+						<div *ngIf="(resultStatus == 0); else startLoader" class="product-image3"><!-- start of image -->
+							<span class="image_part"><!-- start of single_image -->
+								<img src="assets/images/web_loader.gif" alt="Loader Image" class="img-fluid mx-auto" />
+							</span><!-- end of single_image -->
+						</div>
+						<ng-template #startLoader>
+							<div class="product-image3"><!-- start of image -->
+								<span class="image_part"><!-- start of single_image -->
+								 Sorry, Products not found!
+								</span><!-- end of single_image -->
+							</div>
+						</ng-template>	
+					</div><!-- end of product -->			
+				</div><!-- end of listing -->
+				
+			</div><!-- end of row -->
+		</div><!-- end of container -->
+	</section><!-- end of section_box -->
+
+</div><!-- end of middle_page -->
+
+<!-- start of product_detail_popup -->
+	<div class="modal fade global_popup" id="productDeail" *ngIf="productDetail['id']">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content border-0 rounded-0 gender_popup">
+			
+				<!-- Modal Header -->
+				<div class="modal-header border-0">
+					<button #deleteAddProductModal type="button" class="btn close-btn close close-modal" data-dismiss="modal" aria-label="Close">
+						<span class="icon-cross" aria-hidden="true">&nbsp;</span>
+						<span class="icon-cross" aria-hidden="true">&nbsp;</span>
+					</button>
+				</div>
+				
+				<!-- Modal body -->
+				<div class="modal-body d-md-flex d-block justify-content-center flex-wrap product_popup"><!-- start of modal-body -->
+					<div class="col-sm-5 col-12 carousel slide popupImageSlider" id="popupSlider" data-ride="carousel"><!-- start of image_div -->
+						<!-- Indicators -->
+						<ul *ngIf="productDetail['isStock'] == 'in_stock'" class="carousel-indicators">
+							<li *ngFor="let image of productDetail['images']; let i = index;" data-target="#popupSlider" attr.data-slide-to="{{i}}" [ngClass]="{'active':(sliderIndex == i)}"></li>
+						</ul>
+						
+						<!-- The slideshow -->
+						<div *ngIf="productDetail['isStock'] != 'in_stock'" class="carousel-inner">
+							<div class="carousel-item image_part active">
+								<img [src]="productDetail.oos_image" [alt]="productDetail.title" class="img-fluid mx-auto" [title]="productDetail.title">
+							</div>
+						</div>
+						<div *ngIf="productDetail['isStock'] == 'in_stock'" class="carousel-inner">
+							<div *ngFor="let image of productDetail['images']; let i = index;" class="carousel-item image_part" [ngClass]="{'active':(sliderIndex == i)}">
+								<img [src]="image.large" [alt]="image.alt" class="img-fluid mx-auto" [title]="productDetail.title">
+							</div>
+						</div>
+					</div><!-- end of image_div -->
+					
+					<div class="col-sm-7 col-12"><!-- start of content_div -->
+						<h3>{{productDetail.title}}</h3>
+						<h4>₹{{productDetail.price | number: '2.2-2'}} 
+							<span *ngIf="productDetail.discount.original > 0">₹{{productDetail.discount.original | number: '2.2-2'}}</span>
+						</h4>
+						<div [ngSwitch]="productDetail.isStock">
+							<div *ngSwitchDefault>
+								<button type="button" class="btn my-btn cart_btn from-left">Out of Stock</button>
+							</div>
+							<div *ngSwitchCase="'in_stock'">
+								<button type="button" class="btn my-btn cart_btn from-left" data-dismiss="modal" *ngIf="userId == 0" (click)="addIntoCart(productDetail);">Add to Cart</button>
+								<a routerLink="/checkout/cart" data-dismiss="modal" class="btn my-btn cart_btn from-left" *ngIf="( (userId > 0) && (customerCart.indexOf(productDetail.id) > -1) )">Go to Cart</a>
+								<button type="button" class="btn my-btn cart_btn from-left" *ngIf="( (userId > 0) && (customerCart.indexOf(productDetail.id) == -1) )" (click)="addIntoCart(productDetail);">Add to Cart</button>
+							</div>
+						</div>                            
+						
+						<!-- start of tabs -->
+						<ul id="tabs" class="nav nav-tabs" role="tablist"><!-- start of tabs_click -->
+							<li class="nav-item">
+								<a id="tab-A" href="#pane-A" class="nav-link" [ngClass]="{'active': selectedTab == 'A'}" (click)="selectedTab = 'A';" data-toggle="tab" role="tab">Description</a>
+							</li>
+							<li class="nav-item">
+								<a id="tab-B" href="#pane-B" class="nav-link" [ngClass]="{'active': selectedTab == 'B'}" (click)="selectedTab = 'B';" data-toggle="tab" role="tab">Notes</a>
+							</li>
+							<li class="nav-item">
+								<a id="tab-C" href="#pane-C" class="nav-link" [ngClass]="{'active': selectedTab == 'C'}" (click)="selectedTab = 'C';" data-toggle="tab" role="tab">Brand</a>
+							</li>
+						</ul><!-- end of tabs_click -->
+						
+						<div id="content" class="tab-content" role="tablist"><!-- start of tabs_content -->
+							<div id="pane-A" class="card tab-pane fade" [ngClass]="{'show': selectedTab == 'A', 'active': selectedTab == 'A'}" role="tabpanel" aria-labelledby="tab-A">
+								<div class="card-body" [innerHTML]="sanitizer.bypassSecurityTrustHtml(productDetail['shortDescription'])"></div>
+							</div>
+					
+							<div id="pane-B" class="card tab-pane fade" [ngClass]="{'show': selectedTab == 'B', 'active': selectedTab == 'B'}" role="tabpanel" aria-labelledby="tab-B">
+								<div class="card-body">
+									<p *ngFor="let note of productDetail['notes']">{{note.title}} : {{note.description}}</p>
+								</div>
+							</div>
+					
+							<div id="pane-C" class="card tab-pane fade" [ngClass]="{'show': selectedTab == 'C', 'active': selectedTab == 'C'}" role="tabpanel" aria-labelledby="tab-C">
+								<div class="card-body">
+									<p *ngIf="productDetail['brand']" [innerHTML]="sanitizer.bypassSecurityTrustHtml(productDetail['brand']['description'])"></p>
+								</div>
+							</div>
+						</div><!-- end of tabs_content -->						
+						<!-- end of tabs -->
+						
+					</div><!-- end of content_div -->
+				</div><!-- end of modal-body -->
+			
+			</div>
+		</div>
+	</div>
+<!-- end of product_detail_popup -->

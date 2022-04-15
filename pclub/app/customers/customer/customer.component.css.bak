@@ -1,0 +1,345 @@
+
+/************* staro of user_profile_main ************************/
+.user_profile_upper{padding:0; margin-top:-1rem; background:#ee9591; height:10rem;}
+.user_profile_upper .row{min-height:9rem; position:relative;}
+.user_profile_upper .row .profile_image{position:absolute; bottom:-9rem; left:0; z-index:1;}
+.user_profile_upper .row .profile_image figure{display:flex; align-items:center; justify-content:center; background:#ffffff; width:12rem; height:12rem; border:.5rem solid #f4f4f4; border-radius:50%; overflow:hidden;}
+.user_profile_upper .row .profile_image figure span{position:absolute; bottom:1.8rem; left:50%; transform:translateX(-50%); z-index:1; cursor:pointer;}
+.user_profile_upper .row .profile_image figure span img{filter:contrast(30%);}
+.user_profile_upper .row .edit_profile .btn:hover{border-color:#3b4e76;}
+.user_profile_lower{position:relative; margin-bottom:5rem; padding:1rem 0; background:#f4f4f4;}
+.user_profile_lower .row{justify-content:space-between;}
+.user_profile_lower h4{font-size:1.2rem; color:rgba(0,0,0,0.7); text-transform:capitalize; font-weight:bold; padding-left:13rem;}
+.user_profile_lower a{font-size:1rem; color:#3b4e76; text-transform:capitalize; text-decoration:underline; transition:ease all .3s; -webkit-transition:ease all .3s;}
+.user_profile_lower a:hover{text-decoration:none; color:#ee9591;}
+
+/************** start of profileUpload_div css ******************/
+.profileUpload_div{position:absolute; top:90%; max-height:4.5rem; height:auto;}
+.profileUpload_div ul{margin:0; border:.1rem solid rgba(0,0,0,0.1); padding:.6rem .8rem; background:#ffffff; position:relative; text-align:center;}
+.profileUpload_div ul:before{content:"\f0d8"; font-family:"Font Awesome 5 Free"; font-style:normal; font-weight:bolder; font-variant:normal; font-size:2rem; color:#ffffff; line-height:.5rem; text-shadow:0 0 0rem rgb(0, 0, 0); position:absolute; top:-0.57rem; left:50%; transform:translateX(-50%); display:inline-block;}
+.profileUpload_div ul li{padding:0; line-height:1;}
+.profileUpload_div ul li .uploadText{font-size:.8rem; color:rgba(0,0,0,0.6); margin:0; cursor:pointer; transition:ease all .3s; -webkit-transition:ease all .3s;}
+.profileUpload_div ul li:not(:last-child) .uploadText{padding:.5rem 0; margin-bottom:.3rem; border-width:0 0 .1rem 0; border-style:solid; border-color:rgba(0,0,0,0.1);}
+.profileUpload_div ul li:first-child .uploadText{padding-top:0;}
+.profileUpload_div ul li .uploadText:hover{color:#3b4e76;}
+
+/*********** start of sidebar_menu_main css ************/
+.sidebar_menu_main{padding:0;}
+.sidebar_menu_main .sidebar_menu{position:relative; display:block; width:100%; padding:1.5rem 0;}
+.sidebar_menu_main .sidebar_menu:not(:last-child){border-bottom:.1rem solid rgba(0,0,0,0.1);}
+.sidebar_menu_main .sidebar_menu .sidebar_heading{padding:.6rem 0; font-size:.85rem; color:rgba(0,0,0,0.5); text-transform:capitalize; display:block; letter-spacing:.03rem;}
+.sidebar_menu_main .sidebar_menu .sidebar_link{padding:0; font-size:.85rem; color:rgba(0,0,0,0.8); text-transform:capitalize; display:block; margin:.5rem 0; letter-spacing:.03rem; transition:ease all .3s; -webkit-transition:ease all .3s;}
+.sidebar_menu_main .sidebar_menu .sidebar_link:hover{color:#ee9591;}
+.sidebar_menu_main .sidebar_menu .sidebar_link.active{color:#ee9591; font-weight:bolder;}
+
+/************* start of user_detail_main css *************/
+.user_detail_main{border-left:.1rem solid rgba(0,0,0,0.1); padding-left:2rem;}
+
+/*********** start of overview page css ************/
+.user_detail_box{display:block; border:.1rem solid rgba(0,0,0,0.1); width:100%; padding:3.5rem 0.5rem; height:100%; position:relative; text-align:center; cursor:pointer; transition:ease all .3s; -webkit-transition:ease all .3s;}
+.user_detail_box figure{margin-bottom:1.5rem;}
+.user_detail_box figure img{filter:contrast(40%); transition:ease all .3s; -webkit-transition:ease all .3s;}
+.user_detail_box p{font-size:1rem; color:rgba(0,0,0,0.8); text-transform:capitalize; display:block; font-weight:bolder; margin-bottom:.2rem; transition:ease all .3s; -webkit-transition:ease all .3s;}
+.user_detail_box span{display:block; font-size:.8rem; color:rgba(0,0,0,0.5);}
+/******* hover css ********/
+.user_detail_box:hover{border-color:#3b4e76;}
+.user_detail_box:hover figure img{filter:contrast(100%);}
+.user_detail_box:hover p{color:#3b4e76;}
+
+/************** start of profile_detail page css ************/
+.profile_table .table{margin:0; width:50%;}
+.profile_table .table tr td{font-size:.9rem; color:rgba(0,0,0,0.7); border:none; font-weight:700; padding:0 0 1.5rem .5rem;}
+.profile_table .table tr td:not(:last-child){font-weight:500; padding:0;}
+
+/*********** start of edit_profile page css ***************/
+.changePassword_text{position:absolute; right:1rem; top:-1.5rem; font-size:.85rem; color:#ee9591; font-weight:bolder; text-transform:capitalize; display:inline-block; cursor:pointer; transition:ease all .3s; -webkit-transition:ease all .3s;}
+.changePassword_text:hover{color:#3b4e76;}
+.generalInfo_content p{font-size:1rem; color:rgba(0,0,0,0.7); text-transform:uppercase; margin-bottom:0; padding:2.5rem 0 0; border-top:.1rem solid rgba(0,0,0,0.1);}
+.radio_div.profile_radio_div{display:flex;}
+.radio_div.profile_radio_div .form-check{padding:0 1rem;}
+
+/******* start of address_detail page css ************/
+.add_address_btn{position:absolute; top:0; right:1rem;}
+.address_detail{font-size:.85rem; padding:.6rem 1rem 3rem; color:rgba(0,0,0,.7); border:.1rem solid rgba(0,0,0,0.1); position:relative; display:block; width:100%; margin-bottom:2rem;}
+.address_detail b{margin-bottom:.4rem; display:block;}
+.address_detail address{margin-bottom:.5rem; line-height:1.7; font-size:.8rem;}
+.address_detail .btn{border:none; box-shadow:none; font-size:.85rem; color:rgba(0,0,0,0.7); display:block; width:100%; text-transform:uppercase; transition:ease all .3s; -webkit-transition:ease all .3s;}
+.address_detail .btn.default_btn{font-style:italic; padding:.5rem 0; font-weight:bolder; text-align:left;}
+.address_detail .address_btn{position:absolute; bottom:0; left:0; margin:0; display:flex; align-items:center; width:100%; border-top:.1rem solid rgba(0,0,0,0.1);}
+.address_detail .address_btn li{width:50%; text-align:center;}
+.address_detail .address_btn li:not(:last-child){border-right:.1rem solid rgba(0,0,0,0.1);}
+.address_detail .address_btn li .btn{color:#3b4e76; padding:.5rem 1rem; transition:ease all .3s; -webkit-transition:ease all .3s;}
+.address_detail .btn:hover, .address_detail .address_btn li .btn:hover{color:#ee9591;}
+/*********** active_class pass ********/
+.address_detail.active{border-color:#ee9591;}
+.address_detail.active .btn.default_btn{color:#ee9591;}
+
+/************* start of wishlist page css *************/
+/************* staro of table ************************/
+.responsive-mobile-table .table thead th,
+.responsive-mobile-table .table tbody td h5 a,
+.responsive-mobile-table .table tbody td{color:rgba(0,0,0,0.7); font-size:.85rem;}
+.responsive-mobile-table .table tbody td .product_img{display:inline-block; vertical-align:top;}
+.responsive-mobile-table .table tbody td h5{display:inline-block; margin-left:1rem; margin-bottom:0;}
+.responsive-mobile-table .table tbody td h5 a{padding-bottom:1rem; width:12rem; text-overflow:ellipsis; overflow:hidden; white-space:nowrap;}
+.responsive-mobile-table .table tbody td h5 .Pack_image{display:block; position:relative;}
+.responsive-mobile-table .table tbody td h5 .Pack_image span{display:inline-block; width:2rem; position:relative; overflow:hidden;}
+.responsive-mobile-table .table tbody td h5 .Pack_image span:not(:last-child){border-right:.01rem solid rgba(0,0,0,0.1);}
+.responsive-mobile-table .table thead th, .responsive-mobile-table .table tbody td{border:none;}
+.responsive-mobile-table .table tbody tr:not(:last-child) td{border-bottom:1px solid #dee2e6;}
+.responsive-mobile-table .table tbody td.status_btn{text-align:center;}
+.responsive-mobile-table .table tbody td.status_btn a{font-size:.85rem; height:2.2rem; line-height:1.8rem;}
+.responsive-mobile-table .table tbody td.status_btn span{font-size:.9rem; color:rgba(0,0,0,0.6); display:inline-block; text-transform:uppercase; padding:.5rem; background:rgba(0,0,0,0.07);}
+
+/************ start of Reviews page css **************/
+.review_rating_div .card{background-color:#fff; padding:0 0 1rem; border:none;}
+.review_rating_div:not(:last-child) .card{border-bottom:.1rem solid rgba(0,0,0,0.1); padding-bottom:2rem; margin-bottom:2rem;}
+.review_rating_div .card .star-active{color:#ee9591; margin-top:.8rem; margin-bottom:.8rem}
+.review_rating_div .card .star-inactive{color:#CFD8DC; margin-top:.8rem; margin-bottom:.8rem;}
+.review_rating_div .profile-pic{width:5rem; height:5rem; border-radius:100%; margin-right:1rem; overflow:hidden; border:.1rem solid rgba(0,0,0,0.1); display:flex; align-items:center; justify-content:center;}
+.review_rating_div .review_content{width:calc(100% - 6rem);}
+.review_rating_div .review_content .profile_name a{font-size:.9rem; padding-bottom:.5rem; padding-top:.5rem; margin:0; color:rgba(0,0,0,0.7); text-decoration:none; display:inline-block; font-weight:bolder;}
+.review_rating_div .review_content .profile_name p{font-size:.8rem; color:rgba(0,0,0,0.6); margin-bottom:0;}
+
+/*********** start of orders_returns page css ********************/
+/************ start of tabs css ************/
+.orderDetails_div .nav-tabs{border-width:0 0 .1rem; border-style:solid; border-color:#ccc; display:table; margin:0 auto; padding:0 3rem;}
+.orderDetails_div .nav-tabs li{position:relative; display:inline-block; padding:0 .1rem;}
+/*.orderDetails_div .nav-tabs li + li:before{content:"|"; position:absolute; left:-.2rem; top:.45rem; font-size:.9rem; color:#bbb; z-index:-1;}*/
+.orderDetails_div .nav-tabs li .nav-link{font-size:.9rem; padding:.5rem 1.8rem; text-decoration:none; display:block; border-width:.1rem .1rem 0 .1rem; border-style:solid; border-color:rgba(0,0,0,0.1); color:rgba(0,0,0,0.7);  border-radius:0; transition:ease all .5s; -webkit-transition:ease all .5s;}
+.orderDetails_div .nav-tabs li .nav-link.active, .orderDetails_div .nav-tabs li .nav-link:hover{background:#3b4e76; color:#ee9591; border-color:#ee9591;}
+.orderDetails_div .nav-tabs li .nav-link.active:before{content:"\f0d7"; font-family:"Font Awesome 5 Free"; font-weight:bold; position:absolute; bottom:-1.2rem; top:auto; left:50%; transform:translateX(-50%); font-size:1.5rem; color:#3b4e76; z-index:9;}
+.orderDetails_div .tab-content .card{border:none;}
+.orderDetails_div .tab-content .card .card-body{padding:1.2rem 0;}
+.orderDetails_div .tab-content .card .card-body p{font-size:.85rem;}
+/************** start of orderRow css *******************/
+.orderRow{position:relative; border:.1rem solid #ee9591;}
+.orderRow:not(:last-child){margin-bottom:1.5rem;}
+.orderRow .orderRow_head{display:flex; align-items:center; justify-content:space-between; background:#ee9591; padding:.6rem .8rem; width:100%; flex-wrap:wrap;}
+.orderRow .orderRow_head div[class*="order-"]{width:33.33%;}
+.orderRow .orderRow_head .orderID{font-size:.8rem; color:rgba(0,0,0,0.7); display:inline-block; text-transform:uppercase;}
+.orderRow .orderRow_head .orderDetails_btn a{font-size:.9rem; color:#3b4e76; display:block; font-weight:bolder; text-align:right; text-decoration:underline; transition:ease all .3s; -webkit-transition:ease all .3s;}
+.orderRow .orderRow_head .orderDetails_btn a:hover{text-decoration:none; color:rgba(0,0,0,0.7);}
+/************** start of orderRow_content css **************/
+.orderRow_content{padding:1.5rem .8rem; position:relative; display:block; width:100%;}
+.orderRow_content .orderRow_contentRow{display:flex; align-items:center; padding:0;}
+.orderRow_content .orderRow_contentRow:not(:last-child){border-bottom:.1rem solid rgba(0,0,0,0.1); margin-bottom:1.5rem; padding-bottom:1.5rem;}
+.orderRow_content .orderRow_contentRow .orderImage{margin-right:.8rem;}
+.orderRow_content .orderRow_contentRow .orderDetailRow{display:flex; align-items:center; justify-content:space-between; width:100%;}
+.orderRow_content .orderRow_contentRow .orderDetailRow .orderDetailRowHalf{width:50%; display:inline-block;}
+.productNameImages h6{width:12rem; margin:0; text-overflow:ellipsis; overflow:hidden; white-space:nowrap; font-size:.9rem;}
+.productNameImages h6 a{color:#343a40; text-decoration:none;}
+.productNameImages .Pack_image{display:block; position:relative; padding-top:.8rem;}
+.productNameImages .Pack_image span{display:inline-block; width:2rem; position:relative; overflow:hidden;}
+.productNameImages .Pack_image span:not(:last-child){border-right:.01rem solid rgba(0,0,0,0.1);}
+.productPriceSize{text-align:right;}
+.productPriceSize span{display:inline-block; font-size:.9rem; color:rgba(0,0,0,0.5); width:20%;}
+.productPriceSize span:last-child{color:rgba(0,0,0,0.8); font-size:.95rem; width:65%; font-weight:bolder;}
+.productDelivered{text-align:center;}
+.productDelivered span{display:inline-block; font-size:.9rem; color:rgba(0,0,0,0.8);}
+.cancelledOrderRow{border-color:rgba(0,0,0,0.2);}
+.cancelledOrderRow .orderRow_head{background:rgba(0,0,0,0.2);}
+
+/**************** start of order_detail page css ******************/
+.orderDescription{border:.1rem solid rgba(0,0,0,0.1); padding:.8rem 0;}
+.orderDescription div[class*="col-"] p{display:flex; justify-content:space-between; font-size:.85rem; color:rgba(0,0,0,0.7); margin-bottom:.5rem;}
+.orderDescription div[class*="col-"] p:first-child{font-size:.9rem; color:rgba(0,0,0,0.8);}
+.orderDescription div[class*="col-"] p:last-child span b{color:rgba(0,0,0,0.8);}
+.orderDescription div[class*="col-"] address{font-size:.85rem; color:rgba(0,0,0,0.7); margin:0;}
+.orderDetail_upperLink{position:absolute; right:0; top:0; z-index:1; display:flex; align-items:center; border:.1rem solid #3b4e76;}
+.orderDetail_upperLink a{font-size:.9rem; color:#3b4e76; text-decoration:none; padding:.5rem .8rem; display:inline-block; position:relative; transition:ease all .3s; -webkit-transition:ease all .3s;}
+.orderDetail_upperLink a + a:before{content:"|"; position:absolute; left:-.2rem; top:.45rem; font-size:.9rem; color:#3b4e76; z-index:-1;}
+.orderDetail_upperLink a:hover{color:#ee9591;}
+.orderDetail_status p{font-size:.9rem; color:rgba(0,0,0,0.8);}
+
+	/*************** start of refer & link page css *********************/
+.refer_link_div h6{font-size:1rem; color:rgba(0,0,0,0.7); font-weight:bolder; line-height:1.5;}
+.refer_link_div p{font-size:.8rem; color:rgba(0,0,0,0.7); letter-spacing:.01rem; line-height:1.7;}
+.refer_link_div form{margin-top:2.5rem;}
+.refer_link_div form .form-group{margin-bottom:1.5rem;}
+.refer_link_div form .form-group label{font-size:.85rem; font-weight:bolder; text-transform:capitalize; color:rgba(0,0,0,0.7);}
+.refer_link_div form .form-group .copy_btn{color:#3b4e76; font-size:.9rem; font-weight:bolder; transition:ease all .3s; -webkit-transition:ease all .3s;}
+.refer_link_div form .form-group .copy_btn:hover{color:#ee9591;}
+.refer_wallet_div{padding:.8rem 1rem; width:100%; position:relative; display:block; background:rgba(0,0,0,0.05);}
+.refer_wallet_div h4{font-size:1rem; font-weight:bolder; text-transform:capitalize; margin-bottom:1.6rem; text-decoration:underline;}
+.refer_wallet_div ul{margin-bottom:1.5rem;}
+.refer_wallet_div ul li:not(:last-child){padding-bottom:.6rem;}
+.refer_wallet_div ul li span{font-size:.9rem; color:rgba(0,0,0,0.8); display:inline-block;}
+.refer_wallet_div ul li span:first-child{cursor:pointer;}
+.refer_wallet_div ul li .info_btn{padding:0; font-size:.85rem; background:none; border:none; text-transform:capitalize; font-style:italic; text-decoration:underline; color:#3b4e76; height:auto; line-height:normal; font-weight:bolder; transition:ease all .5s; -webkit-transition:ease all .5s;}
+.refer_wallet_div ul li .info_btn:hover{color:#ee9591; text-decoration:none;}
+.refer_wallet_div ul li span small{font-size:.7rem; font-style:italic; padding-left:.3rem;}
+/************ how does it work css ***************/
+.howWork_heading{font-size:1.2rem; color:rgba(0,0,0,0.7); font-weight:bolder; margin-bottom:2.8rem; text-transform:uppercase; text-decoration:underline;}
+.howWork_option{width:100%; position:relative;}
+.howWork_option div[class*="col-"]{text-align:center; padding:1.5rem .8rem;}
+.howWork_option div[class*="col-"]:nth-child(odd){border-right:.1rem solid rgba(0,0,0,0.1);}
+.howWork_option div[class*="col-"]:nth-child(1), .howWork_option div[class*="col-"]:nth-child(2){border-bottom:.1rem solid rgba(0,0,0,0.1);}
+.howWork_option div[class*="col-"] .optionNumber{position:absolute; left:1rem; top:1rem; display:flex; justify-content:center; align-items:center; width:2.8rem; height:2.5rem; background:#3b4e76; transform:rotate(-10deg); box-shadow:-.1rem .1rem .1rem .1rem #ee9591; font-size:1.5rem; font-weight:bolder; color:#ee9591;}
+.howWork_option div[class*="col-"] h6{font-size:1rem; color:rgba(0,0,0,0.7); font-weight:bolder; margin-top:2rem; line-height:1.5;}
+.howWork_option div[class*="col-"] p{font-size:.8rem; color:rgba(0,0,0,0.7); letter-spacing:.01rem; line-height:1.7; margin:0;}
+.networkInfo p{font-size:.9rem; line-height:1.7; color:#3b4e76;}
+/************ start of redeem_now css *******************/
+.user_detail_sub_heading{position:absolute; right:0; font-size:.85rem; color:rgba(0,0,0,0.7); font-style:italic; text-transform:capitalize;}
+/* start of product_detail css */
+.redeem_product_listing{padding:0 .8rem 0;}
+.redeem_product_listing .list_div{margin-bottom: 2rem;}
+.redeem_product_listing .list_div .product-grid3 {text-align: center; position: relative; height: 100%; background:#ffffff; box-shadow:0 0 1.5rem rgba(0,0,0,0.1); border:.1rem solid transparent; transition: all 0.3s ease 0s; -webkit-transition: all 0.3s ease 0s;}
+.redeem_product_listing .list_div .product-grid3 .product-image3 {position: relative; padding:3rem 0 2rem;}
+.redeem_product_listing .list_div .product-grid3 .product-image3 .image_part {display: block; width:100%; background:none; border:none; padding:0; opacity:1; transform:scale(1); transition: all 0.3s ease 0s; -webkit-transition: all 0.3s ease 0s;}
+.redeem_product_listing .list_div .product-grid3 .product-image3 .image_part img {width: 15rem; height: auto; transition: all 0.3s ease 0s; -webkit-transition: all 0.3s ease 0s;}
+.redeem_product_listing .list_div .product-grid3 .product-image3 .social {width: 12rem; padding: 0; margin: 0 auto; list-style: none; position: absolute; right: 0; left: 0; bottom: -3.2rem; transition: all 0.3s ease 0s; -webkit-transition: all 0.3s ease 0s;}
+.redeem_product_listing .list_div .product-grid3 .product-image3 .social li {display: inline-block;}
+.redeem_product_listing .list_div .product-grid3 .product-image3 .social li .btn {color: #3b4e76; background: #ee9591; font-size: 1rem; text-transform:uppercase; line-height: 3rem; width: 3.5rem; height: 3.5rem; border: 0.1rem solid #3b4e76; padding:0 .2rem; border-radius: 50%; display: flex; align-items:center; justify-content:center; margin-left: 0.2rem; margin-right: 0.2rem; margin-top: 0; margin-bottom: 0; transform:scale(1); transition: all 0.3s ease 0s; -webkit-transition: all 0.3s ease 0s;}
+.redeem_product_listing .list_div .product-grid3 .product-image3 .social li .btn:hover {background: #3b4e76; color: #ee9591;}
+.redeem_product_listing .list_div .product-grid3 .product-image3 .social li .qtyNum span{font-size:2rem; padding:0; cursor:pointer; text-align:center; display:inline-block; height:2.5rem; width:2.5rem; line-height:2rem; border:.1rem solid #3b4e76; border-radius:100%; background:#ffffff; color:#3b4e76; position:absolute; left:-2.7rem; top:50%; transform:translateY(-50%);}
+.redeem_product_listing .list_div .product-grid3 .product-image3 .social li .qtyNum span.plus{right:-2.7rem; left:auto;}
+.redeem_product_listing .list_div .product-grid3 .product-image3 .social li .qtyNum .count{-webkit-appearance:textfield; width:100%; text-align:center; background:none; border:none; color:#ffffff;}
+/**************** for images label use css *************************/
+.redeem_product_listing .list_div .product-grid3 .product-content {z-index: -1; padding: 1.5rem 1rem; text-align: center;}
+.redeem_product_listing .list_div .product-grid3 .product-content .title {font-size: 1rem; text-transform: uppercase; margin: 0 0 0.6rem; border-top: 0.1rem solid #3b4e76; padding-top:3rem; transition: all 0.3s ease 0s; -webkit-transition: all 0.3s ease 0s;}
+.redeem_product_listing .list_div .product-grid3 .product-content .title .title_content {color: rgba(0, 0, 0, 0.7); display:block;}
+.redeem_product_listing .list_div .product-grid3 .product-content .product_size {display: block; color: rgba(0, 0, 0, 0.6); font-size: 0.85rem; font-weight: 300; position: relative; top: .2rem;}
+.redeem_product_listing .list_div .product-grid3 .product-content .product_size span{content:""; position:absolute; left:0; top:0; width:100%; height:100%; background:rgba(255,255,255,.5); z-index:1;}
+/************ start of hover ****************/
+.redeem_product_listing .list_div .product-grid3:hover{box-shadow:0 0 2.5rem rgba(0,0,0,0.2);}
+.redeem_product_listing .list_div .product-grid3:hover .product-content .title .title_content,
+.redeem_product_listing .list_div .product-grid3:focus .product-content .title .title_content,
+.redeem_product_listing .list_div .product-grid3:active .product-content .title .title_content {color: #3b4e76;}
+/************ start of add or remove class **************/
+.redeem_product_listing .list_div .product-grid3 .product-image3 .social li .btn.remove{display:none;}
+.redeem_product_listing .list_div .product-grid3 .product-image3 .social li .btn.go-cart-btn{display:none;}
+.redeem_product_listing .list_div .product-grid3 .product-image3 .social li .btn.go-cart-btn.active{display:flex; background: #3b4e76; color: #ee9591;}
+.redeem_product_listing .list_div .product-grid3.active{border-color:#ee9591;}
+.redeem_product_listing .list_div .product-grid3.active .product-content .title .title_content{color:#3b4e76;}
+.redeem_product_listing .list_div .product-grid3.active .product-content .product_size span{background:none; z-index:-1;}
+/************ end of add or remove class **************/
+
+/************* start of Form Filed **************/
+.form_filed form .form-group{position:relative; margin-bottom:1.5rem;}
+.form_filed form .form-group:last-child{margin-bottom:0;}
+.form_filed form .form-group .form-control{border:.01rem solid #D5D6D9; padding:.8rem; height:auto; border-radius:0; box-shadow:none; font-size:.85rem; color:#28373f;}
+.form_filed form .form-group .form-control:focus{border-color:#3b4e76;}
+.form_filed form .form-group textarea{resize:none;}
+.form_filed form .form-group.an_account{margin-top:1rem; padding-bottom:2rem;}
+.form_filed form .form-group.an_account p{font-size:.9rem; font-weight:500; color:rgba(0,0,0,0.5); margin:0; padding-top:.7rem;}
+.form_filed form .form-group.an_account p span,
+.form_filed form .form-group.an_account p a{color:#3b4e76; font-weight:500; font-size:.95rem; cursor:pointer; transition:all ease 0.5s; -moz-transition:all ease 0.5s; -ms-transition:all ease 0.5s; -o-transition:all ease 0.5s; -webkit-transition:all ease 0.5s;}
+.form_filed form .form-group.an_account p span:hover,
+.form_filed form .form-group.an_account p a:hover{color:#28373f;}
+.form_filed form .form-group .btn{height:2.8rem; line-height:2.5rem; font-size:1rem;}
+.form_filed form .form-group .btn.back-btn{background:none; color:rgba(0,0,0,0.7); font-size:1rem; font-weight:500;}
+.form_filed .required_text{display:flex; align-items:center; justify-content:space-between; text-transform:uppercase; color:#3b4e76; padding:.5rem .8rem; margin-bottom:1.5rem; background:#f8f9fa;}
+.form_filed .required_text span{color:#dc3545; font-size:.8rem; display:inline-block; text-transform:capitalize; letter-spacing:.01rem;}
+
+/********** start of form_validate css ************/
+.form_filed form.was-validated .form-group .form-control:valid{border-color:#28a745;}
+.form_filed form.was-validated .form-group .form-control:invalid{border-color:#dc3545;}
+
+/**************** start of media css **************/
+@media (min-width: 992px) and (max-width: 1200px) {
+	/************* staro of user_profile_main ************************/
+	.user_profile_upper .row .profile_image figure{width:10rem; height:10rem;}
+	.user_profile_lower h4{padding-left:11rem;}
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+	/************* staro of user_profile_main ************************/
+	.user_profile_upper .row .profile_image figure{width:10rem; height:10rem;}
+	.user_profile_lower h4{padding-left:11rem;}
+	
+	/************* start of user_detail_main css *************/
+	.user_detail_main{padding-left:1rem;}	
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+	
+}
+
+@media (max-width: 767.98px) {
+	/************* staro of user_profile_main ************************/
+	.user_profile_upper{height:8rem;}
+	.user_profile_upper .row{min-height:7rem;}
+	.user_profile_upper .row .profile_image{bottom:-4.5rem; left:0.5rem; z-index:9;}
+	.user_profile_upper .row .profile_image figure{width:6rem; height:6rem; border:.3rem solid #f4f4f4;}
+	.user_profile_upper .row .edit_profile{margin-right:.5rem;}
+	.user_profile_upper .row .profile_image figure span img{width:1.5rem;}
+	.user_profile_lower{margin-bottom:0; padding:.5rem 0;}
+	.user_profile_lower h4{padding-left:7rem; font-size:0.9rem;}
+	.user_profile_lower a{font-size:.85rem; padding-right:.5rem;}
+	
+	/*********** start of sidebar_menu_main css ************/
+	.sidebar_menu_main{position:absolute; left:-22rem; top:2.3rem; opacity:0; z-index:-1; padding:0 1rem; background:#ffffff; box-shadow:0 0 1rem rgba(0,0,0,0.2); transition:ease all .5s; -webkit-transition:ease all .5s;}
+	.sidebar_menu_main.toggle_open{opacity:1; left:0; top:2.5rem; z-index:999;}
+	.userMenu{position:absolute; left:50%; background:#3b4e76; z-index:1; color:#e0e0e0; padding:.6rem 1rem; font-size:.9rem; cursor:pointer; transform:translateX(-50%); width:100%; text-align:left; text-transform:uppercase; font-weight:bolder}
+	.userMenu span{position:absolute; right:1rem; top:.3rem; font-size:1.3rem; transition:ease all .5s; -webkit-transition:ease all .5s;}
+	.userMenu.open span{transform:rotate(-90deg);}
+	.sidebar_menu_main .sidebar_menu{padding:1rem 0;}
+	.sidebar_menu_main .sidebar_menu .sidebar_heading{padding:.3rem 0; font-size:.8rem;}
+	.sidebar_menu_main .sidebar_menu .sidebar_link{font-size:.8rem; margin:.3rem 0;}
+	
+	/************* start of user_detail_main css *************/
+	.user_detail_main{border-left:0; padding:0; margin-top:4rem;}
+	
+	/************** start of profile_detail page css ************/
+	.profile_table .table{width:100%;}
+	
+	/******* start of address_detail page css ************/
+	.add_address_btn{position:fixed; top:auto; right:auto; left:0; bottom:0; width:100%; z-index:1; height:2.9rem; line-height:2.6rem;}
+	
+	/************* start of wishlist page css *************/
+	/************* staro of table ************************/
+	.responsive-mobile-table table, 
+	.responsive-mobile-table thead, 
+	.responsive-mobile-table tbody, 
+	.responsive-mobile-table th, 
+	.responsive-mobile-table td, 
+	.responsive-mobile-table tr {display: block;}
+	.responsive-mobile-table .table tbody tr td:first-child{min-height:5.5rem; display:flex; align-items:center;}
+	.responsive-mobile-table .table tbody tr:not(:last-child) td{border-bottom:none;}
+	.responsive-mobile-table .table tbody tr td:not(:last-child){border-bottom:1px solid #dee2e6;}
+ 	.responsive-mobile-table .table tbody td .product_img{position:absolute; left:1rem; top:.5rem;}
+	.responsive-mobile-table .table tbody td h5{margin-left:0;}
+	.responsive-mobile-table thead tr {position: absolute; top: -9999rem; left: -9999rem;} 
+	.responsive-mobile-table tr {border: .01rem solid rgba(0,0,0,0.08); margin-bottom:1rem;}
+ 	.responsive-mobile-table td {border: none; border-bottom: .01rem solid #eee; position: relative; padding-left: 40%; white-space: normal; text-align:left;}
+ 	.responsive-mobile-table td:before {position: absolute; left: 1rem; width: 32%; padding-right: 10px; white-space: nowrap; text-align:left; font-weight: bold;}
+	.responsive-mobile-table td:before {content: attr(data-title); top:50%; transform:translateY(-50%); font-weight:500; font-size:.8rem; color:rgba(0,0,0,0.7);}
+	.responsive-mobile-table .table tbody td.status_btn{text-align:left;}
+	.responsive-mobile-table .table tbody td.status_btn span{font-size:.85rem;}
+	
+	/*********** start of orders_returns page css ********************/
+	/************ start of tabs css ************/
+	.orderDetails_div .nav-tabs{padding:0 .5rem;}
+	.orderDetails_div .nav-tabs li .nav-link{padding:.5rem 1.8rem;}
+	/************** start of orderRow css *******************/
+	.orderRow .orderRow_head div[class*="order-"]{width:50%; padding:.2rem 0;}
+	.orderRow .orderRow_head div[class*="order-"].productDelivered{text-align:left;}
+	.orderRow .orderRow_head div[class*="order-"].productDelivered:nth-child(3){text-align:right;}
+	
+	/************** start of review_cart css **************/
+	.orderRow_content .orderRow_contentRow .orderDetailRow .orderDetailRowHalf{width:auto;}
+	.productNameImages h6{font-size:.85rem; width:10rem;}
+	.productPriceSize span{display:block; font-size:.8rem; width:100%; padding-top:.5rem;}
+	.productPriceSize span:last-child{font-size:.9rem; width:100%;}
+	
+	/**************** start of order_detail page css ******************/
+	.orderDescription div[class*="col-"]:not(:last-child){margin-bottom:1rem;}
+	.orderDetail_upperLink{position:relative; right:auto; top:-1.5rem; left:1rem; width:calc(100% - 2rem); justify-content:space-between;}
+	.orderDetail_upperLink a{width:50%; text-align:center;}
+	.orderDetail_upperLink a:not(:last-child){border-right:.1rem solid #3b4e76;}
+	.orderDetail_upperLink a + a:before{display:none;}
+	.orderDetail_status p:first-child{display:block; width:100%; margin-bottom:.5rem;}
+	
+	/*************** start of refer & link page css *********************/
+	/************ how does it work css ***************/
+	.howWork_option div[class*="col-"]{border-left:.1rem dashed #ee9591;}
+	.howWork_option div[class*="col-"]:nth-child(odd){border-right:none;}
+	.howWork_option div[class*="col-"]:nth-child(1), .howWork_option div[class*="col-"]:nth-child(2){border-bottom:none;}
+	.howWork_option div[class*="col-"] .optionNumber{top:0; left:-0.3rem;}
+	.responsive-mobile-table .table.referralTable tbody tr td:first-child{display:block; width:100%; min-height:auto;}
+	
+	/************ start of redeem_now css *******************/
+	.user_detail_sub_heading{right:auto; left:0; bottom:-1.2rem;}
+	.redeem_product_listing .list_div{padding:0;}
+}

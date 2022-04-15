@@ -1,0 +1,89 @@
+<h3 class="user_detail_heading"><!-- start of review_heading -->
+  Wallet
+</h3><!-- end of review_heading -->
+
+<div class="row mt-5"><!-- start of total_balance -->
+
+	<div class="col-12">
+		<div class="card walletCashSection"><!-- start of walletCashSection -->
+			
+			<div class="card-body"><!-- start of price display -->
+				<h5 class="card-title">
+					₹{{walletTotal}}
+					<span>Your Available Balance</span>
+				</h5>
+			</div><!-- end of price display -->
+			
+			<ul class="list-group list-group-horizontal summaryDivide"><!-- start of price summary -->
+				<!--li class="list-group-item">
+					<div>
+						<h6>
+							Voucher <span>₹100.00 <span aria-hidden="true">&times;</span> 2</span>
+						</h6>
+						<h4>₹200.00</h4>
+					</div>
+				</li--->
+				
+				<li class="list-group-item">
+					<div>
+						<h6>
+							Wallet Cash
+						</h6>
+						<h4>₹{{cash}}</h4>
+					</div>
+				</li>
+			 </ul><!-- end of price summary -->
+			
+		</div><!-- end of walletCashSection -->
+	</div>
+
+</div>
+
+<div class="row mt-5">
+	<div class="col-12 walletSubHeading">
+		<h6>Your Transactions</h6>
+	</div>         
+    <div class="table-responsive responsive-mobile-table col-12">
+        <table class="table">
+			<thead>
+				<tr>
+					<th scope="col" class="border-0 bg-light text-uppercase">
+						Description
+					</th>
+					<th scope="col" class="border-0 bg-light text-uppercase text-center">
+						Type
+					</th>
+					<th scope="col" class="border-0 bg-light text-uppercase text-center">
+						Wallet Cash
+					</th>
+					<!--th scope="col" class="border-0 bg-light text-uppercase text-center">
+						Voucher
+					</th-->
+					<th scope="col" class="border-0 bg-light text-uppercase text-center">
+						Date
+					</th>
+				</tr>
+			</thead>
+            <tbody>
+				<tr *ngFor="let item of dataList;"><!-- start of product_cart -->
+				  <td scope="row" data-title="Description" class="text-md-left text-center">
+					{{item.comments}}
+				  </td>
+				  <td data-title="Type" class="align-middle text-center">
+					{{item.transaction_type}}
+				  </td>
+				  <td data-title="Wallet Cash" class="align-middle text-center">
+					{{item.cash}}
+				  </td>
+				  <!--td data-title="Voucher" class="align-middle text-center">
+					{{item.voucher}}
+				  </td-->
+				  <td data-title="Date" class="align-middle text-center">
+					{{item.transaction_date}}
+				  </td>
+				</tr>
+
+            </tbody>
+        </table>
+    </div><!-- end of transactions -->
+</div>      

@@ -1,0 +1,8 @@
+{
+  "ignore": {
+    "@angular/animations": {
+      "versions": "12.2.3",
+      "reason": ""
+    }
+  }
+}

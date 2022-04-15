@@ -1,0 +1,547 @@
+	<div class="content"><!-- start of middle_page -->
+    	
+        <section class="container-fluid mt-4"><!-- start of product_listing -->
+        	<div class="container"><!-- start of container -->
+            	<div class="row"><!-- start of row -->
+                     
+                    <!-- Shopping cart table -->
+                    <div class="table-responsive responsive-mobile-table col-lg-8 col-12 order-md-1 order-2"><!-- start of table_div -->
+						<a [routerLink]="['/','buynow']" class="btn my-btn checkout_btn from-left continueShoppingBtn d-none">Continue Shopping</a>
+                        <table class="table"><!-- start of table -->
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="border-0 bg-light text-uppercase">
+                                        Product
+                                    </th>
+                                    <th scope="col" class="border-0 bg-light text-uppercase">
+                                        Price
+                                    </th>
+                                    <th scope="col" class="border-0 bg-light text-uppercase">
+                                        Quantity
+                                    </th>
+                                    <th scope="col" class="border-0 bg-light text-uppercase">
+                                        Remove
+                                    </th>
+                                </tr>
+                            </thead>
+                            
+                            <tbody>
+								<tr *ngIf="(loaderStatus == 0)"><td colspan="4" class="text-center" style="padding-left:inherit;"><img src="assets/images/loading.gif" alt="Loader Image" class="img-fluid mx-auto" /></td></tr>
+								<tr *ngIf="(shoppingCart.length == 0 && shoppingPack.length == 0 && loaderStatus)"><td colspan="4" class="text-center">Sorry, your cart is empty!</td></tr>
+                                <tr *ngFor="let item of shoppingCart; let i = index;"><!-- start of tr -->
+                                    <td scope="row">
+                                        <span class="product_img"><!-- start of image -->
+                                            <img [src]="item.images[0].url" [alt]="item.name" [title]="item.name" width="70" class="img-fluid">
+                                        </span><!-- end of image -->
+                                        <h5><!-- start of image_detail -->
+                                        	<a [routerLink]="['/', item.url_key]" class="text-dark d-inline-block align-middle">{{item.title}}</a>
+                                        </h5><!-- end of image_detail -->
+                                    </td>
+                                    <td data-title="Price" class="align-middle tableProductPrice"><label [innerHTML]="sanitizer.bypassSecurityTrustHtml(cartCurrency)"></label>{{item.price * item.cart_quantity | number:'2.2-2'}} <del *ngIf="( (item['discount']['original'] != undefined) && (item['discount']['original'] > item.price) )">₹{{item.discount.original * item.cart_quantity | number:'2.2-2'}}</del></td>
+                                    <td *ngIf="item.price > 0" data-title="Quantity" class="align-middle qtyNum">
+                                    	<span class="minus bg-light" (click)="updateQuantityInCart({id: item.id, shopping: 'cart', index: i, quantity: item.cart_quantity, counter: 0});">-</span>
+                                        <input type="number" class="count" min="1" [(ngModel)]="item.cart_quantity" readonly>
+                                        <span class="plus bg-light" (click)="updateQuantityInCart({id: item.id, shopping: 'cart', index: i, quantity: item.cart_quantity, counter: 1});">+</span>
+                                    </td>
+                                    <td *ngIf="item.price == 0" data-title="Quantity" class="align-middle qtyNum">
+                                        {{item.cart_quantity}}
+                                    </td>
+                                    <td data-title="" class="align-middle cartProductRemoveBtn">
+                                    	<button type="button" (click)="removeItemFromCartPopup(item);" class="btn btn-link p-0 text-muted" data-toggle="modal" data-target="#confirmModal"><i class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr><!-- end of tr -->
+                                
+                                <tr *ngFor="let item of shoppingPack; let i = index;"><!-- start of tr -->
+                                    <td scope="row">
+                                        <span class="product_img"><!-- start of image -->
+                                            <img [src]="item.image" [alt]="item.title" width="70" class="img-fluid">
+                                        </span><!-- end of image -->
+                                        
+                                        <h5><!-- start of image_detail -->
+											<a [routerLink]="['/', item.title]" class="text-dark d-inline-block align-middle">{{item.title}}</a>
+                                            
+                                            <div class="Pack_image"><!-- start of pack_of_images -->
+                                                <span *ngFor="let prod of item.products"><!-- start of image_1 -->
+                                                    <img [src]="prod.image" [alt]="prod.title" width="70" [title]="prod.title" class="img-fluid" />
+                                                </span><!-- end of image_1 -->
+                                            </div><!-- end of pack_of_images -->
+                                            
+                                        </h5><!-- end of image_detail -->
+                                    </td>
+                                    <td data-title="Price" class="align-middle"><label [innerHTML]="sanitizer.bypassSecurityTrustHtml(cartCurrency)"></label>{{item.price * item.cart_quantity | number:'2.2-2'}}</td>
+                                    <td data-title="Quantity" class="align-middle qtyNum">
+                                    	<span class="minus bg-light" (click)="updateQuantityInCart({shopping: 'pack', index: i, quantity: item.cart_quantity, counter: -1});">-</span>
+                                        <input type="number" class="count" min="1" [(ngModel)]="item.cart_quantity" readonly />
+                                        <span class="plus bg-light" (click)="updateQuantityInCart({shopping: 'pack', index: i, quantity: item.cart_quantity, counter: 1});">+</span>
+                                    </td>
+                                    <td data-title="Remove" class="align-middle cartProductRemoveBtn">
+                                    	<button type="button" (click)="removeItemFromCartPopup(item);" class="btn btn-link p-0 text-muted" data-toggle="modal" data-target="#confirmModal"><i class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr><!-- end of tr -->
+                            </tbody>
+                        </table><!-- end of table -->
+						<div *ngIf="shoppingCart.length > 0">
+						<div [hidden]="userId != 0" class="sectionDiv form_filed">
+							<p class="required_text">Customer Details <span>All Fields Required</span></p>
+							<form class="needs-validation" [formGroup]="userTypeForm" novalidate>
+								<div class="row">
+									<div class="form-group col-6 text-center">
+										<input type="radio" (change)="loginStatusType='olduser';" [value]="'olduser'" formControlName="loginStatusType"> Login 
+									</div>
+									<div class="form-group col-6 text-center">
+										<input type="radio" (change)="loginStatusType='newuser';" [value]="'newuser'" formControlName="loginStatusType"> Buy as a Guest 
+									</div>									
+								</div>
+							</form>
+							<form [hidden]="loginStatusType == 'newuser'" class="needs-validation" [formGroup]="loginForm" (submit)="customerLogin(loginForm.value);" novalidate>
+								<div class="row">
+									<div class="col-12 form-group">
+										<p [ngClass]="resObj.textClass" [innerHTML]="resObj.message"></p>
+										<p *ngIf="isStep == 2">If not received within 3 minutes please click on <span class="resend_otp" [ngStyle]="{'text-decoration': 'underline', 'cursor':'pointer', 'color':'red'}" (click)="resendLoginOtp();">Resend OTP</span></p>
+										<p [ngClass]="resObj.otpClass" [innerHTML]="resObj.otpMessage"></p>
+									</div>
+									<div class="col-12 form-group" [hidden]="isStep != 1">
+										<input type="text" class="form-control" formControlName="username" placeholder="Email / Phone Number" autofocus>
+									</div>
+									<div class="col-12 form-group" [hidden]="isStep == 1">
+										<input type="password" class="form-control" formControlName="otp">
+									</div>
+									<div class="col-12 form-group">
+										<button type="submit" class="btn my-btn checkout_btn from-left btn-block submt_btn">{{ (isStep == 1) ? 'Login':'Verify' }}</button>
+										<button *ngIf="isStep == 2" type="button" class="btn my-btn btn-block back-btn" (click)="getBack();"><span><span class="fa fa-angle-left"></span> Back</span></button>
+									</div>
+								</div>	
+							</form>
+							
+							<form [hidden]="loginStatusType != 'newuser'" class="needs-validation mt-3" [formGroup]="registerForm" (submit)="customerRegister(registerForm.value);">
+								<div class="row">
+									<div class="col-12 form-group">
+										<p [ngClass]="resObj['textClass']" [innerHTML]="resObj['message']"></p>
+										<p *ngIf="isStep == 2" class="text-success">If not received within 3 minutes please click on <span [ngStyle]="{'text-decoration': 'underline', 'cursor': 'pointer'}" (click)="resendOtpRegister();">Resend OTP</span></p>
+										<p [ngClass]="resObj['otpClass']" [innerHTML]="resObj['otpMessage']"></p>
+									</div>
+
+									<div [hidden]="isStep != 1" class="col-12 form-group">
+										<input type="text" class="form-control" formControlName="username" placeholder="Enter your name">
+									</div><!-- end of username -->
+
+									<div [hidden]="isStep != 1" class="col-12 form-group">
+										<input type="email" class="form-control" formControlName="email" placeholder="Enter your email">
+									</div><!-- end of email -->
+
+									<div [hidden]="isStep != 1" class="col-12 form-group">
+										<input type="text" class="form-control" formControlName="mobile" placeholder="Enter your mobile number" max-length="10">
+									</div>					
+									
+									<div [hidden]="isStep == 1" class="col-12 form-group">
+										<input type="text" class="form-control" formControlName="otp" placeholder="Enter OTP">
+									</div>					
+									
+									<div class="col-12 form-group">
+										<button type="submit" class="btn my-btn checkout_btn from-left btn-block submt_btn">{{ (isStep == 1) ? 'Continue':'Verify' }}</button>
+										<button *ngIf="isStep == 2" (click)="getBack();" type="button" class="btn my-btn btn-block back-btn"><span><span class="fa fa-angle-left"></span> Back</span></button>
+									</div>
+								</div>
+							</form>			
+						</div>
+						<div [hidden]="userId == 0" class="sectionDiv form_filed">
+							<p class="required_text">Shipping Address <span class="d-none">All Fields Required</span></p>
+                            	
+							<form class="needs-validation" [formGroup]="addressForm" (submit)="saveAddress(addressForm.value);" novalidate><!-- start of form -->
+                            	
+								<div *ngIf="addresses['address'] && addresses['address'].length" class="row address_form"><!-- start of address_form -->
+									
+									<div *ngFor="let item of addresses['address'];" class="form-check col-md-6 col-12"><!-- start of product_div -->
+										<label class="toggle"><!-- start of label -->
+											
+											<div class="add_radio">
+												<input *ngIf="item.set_default == '1'" type="radio" name="toggle" checked="checked">
+												<input *ngIf="item.set_default == '0'" type="radio" name="toggle">
+												<span class="label-text"></span>
+											</div>
+											
+											<address>
+												<span><strong>{{item.firstname+' '+item.lastname+', '+item.mobile}}</strong></span>
+												<span>{{item.address+' '+item.city+', '+item.state+ ', '+item.pincode}}</span>
+												<button type="button" (click)="saveAddress(item);" class="btn my-btn checkout_btn from-left">
+													Deliver Here
+												</button>
+											</address>
+											
+											<div class="edit_address" (click)="editAddress(item);" data-target="#formFieldPopup" data-toggle="modal"><!-- start of edit_address -->
+												<i class="far fa-edit"></i>
+											</div><!-- end of edit_address -->
+												
+										</label><!-- end of label -->
+									</div><!-- end of product_div -->
+									
+									<div [hidden]="addressId != -1" class="form-check col-md-6 col-12"><!-- start of product_div -->
+										<label class="toggle add_new_address" (click)="addNewAddress();"><!-- start of label -->
+											
+											<address><!-- start of address_row -->
+												<span><strong><i class="fas fa-plus"></i></strong></span>
+												<span>Add a new address</span>
+											</address><!-- end of address_row -->
+												
+										</label><!-- end of label -->
+									</div><!-- end of product_div -->
+									<div [hidden]="addressId != -1" class="col-md-12 col-12"><!-- start of product_div -->
+										<p [ngClass]="addressResponse.textClass"  [innerHTML]="addressResponse.message"></p>
+									</div><!-- end of product_div -->
+								</div><!-- end of address_form -->
+								
+								<div [hidden]="addressId == -1" class="row"><!-- start of form_field -->
+								
+										<div class="form-group col-sm-6 col-12"><!-- start of emailField -->
+											<input type="email" class="form-control" formControlName="email" placeholder="Enter Email" required>
+											<div class="valid-feedback">Valid</div>
+											<div class="invalid-feedback">Please fill out this field</div>
+										</div><!-- end of emailField -->
+									
+										<div class="form-group col-sm-6 col-12"><!-- start of mobileNumber -->
+											<input type="text" class="form-control" formControlName="mobile" placeholder="Enter mobile number" required>
+										</div><!-- end of mobileNumber -->
+									
+										<div class="form-group col-sm-6 col-12"><!-- start of Fname -->
+											<input type="hidden" class="form-control" formControlName="id" [value]="addressId">
+											<input type="text" class="form-control" formControlName="firstname" placeholder="Enter first Name" required>
+											<div class="valid-feedback">Valid</div>
+											<div class="invalid-feedback">Please fill out this field</div>
+										</div><!-- end of Fname -->
+									
+										<div class="form-group col-sm-6 col-12"><!-- start of Lname -->
+											<input type="text" class="form-control" formControlName="lastname" placeholder="Enter last Name" required>
+											<div class="valid-feedback">Valid</div>
+											<div class="invalid-feedback">Please fill out this field</div>
+										</div><!-- end of Lname -->
+									
+										<div class="form-group col-sm-6 col-12"><!-- start of addressField -->
+											<textarea class="form-control" formControlName="address" placeholder="Enter address" required></textarea>
+										</div><!-- end of addressField -->
+									
+										<div class="form-group col-sm-6 col-12"><!-- start of zipCode -->
+											<input type="text" class="form-control" formControlName="pincode" placeholder="Enter zip code" required>
+										</div><!-- end of zipCode -->
+									
+										<div class="form-group col-sm-6 col-12"><!-- start of cityField -->
+											<input type="text" class="form-control" formControlName="city" placeholder="Enter city" required>
+										</div><!-- end of cityField -->
+									
+										<div class="form-group col-sm-6 col-12"><!-- start of stateField -->
+											<select *ngIf="addresses['states']" class="custom-select form-control" formControlName="state" required>
+												<option *ngFor="let item of addresses.states" [value]="item.title">{{item.title}}</option>
+											</select>
+										</div><!-- end of City -->
+									
+										<div class="form-group col-sm-6 col-12"><!-- start of countryField -->
+											<input type="text" class="form-control" formControlName="country" [value]="'India'" readonly>
+										</div><!-- end of countryField -->
+										
+										<div *ngIf="addressResponse['message']" class="form-group col-sm-6 col-12 errorMszShow"><!-- start of countryField -->
+											<p [ngClass]="addressResponse.textClass"  [innerHTML]="addressResponse.message"></p>
+										</div><!-- end of countryField -->
+										
+										<div class="form-group col-12 checkoutBtn"><!-- start of button -->
+											<button type="submit" class="btn my-btn checkout_btn from-left">Save</button>
+											<button type="button" (click)="cancelAddress();" class="btn my-btn btn_outline from-left">Cancel</button>
+										</div><!-- end of button -->
+								</div><!-- end of form_field -->
+							</form><!-- end of form -->
+						</div>
+						<div [hidden]="userId == 0" class="sectionDiv form_filed">
+							<p class="required_text">Payment Method</p>
+                                
+							<form class="d-block" [formGroup]="methodForm"><!-- start of form -->
+								
+								<div class="radio_div row paymentMethodDiv">
+									<div *ngFor="let item of paymentMethodData" class="form-check col-sm-6 col-12">
+										<label class="toggle">
+											<input type="radio" id="pg-{{item.id}}" (change)="onSelectionChange(item.id);" [value]="item.id" formControlName="paymentMethod"> <span class="label-text">{{item.title}}</span><span [innerHTML]="sanitizer.bypassSecurityTrustHtml(item.message)"></span>
+										</label>
+									</div>
+								</div>
+								
+								<div class="d-flex p-2 bg-light">
+									<address *ngIf="selectedAddress['email']">
+										<strong>{{selectedAddress.email}}</strong><br />
+										<strong>{{selectedAddress.firstname+' '+selectedAddress.lastname}}</strong>, {{selectedAddress.address+', '+selectedAddress.city+', '+selectedAddress.state+', '+selectedAddress.country}}, <strong>{{selectedAddress.pincode}}</strong>
+									</address>
+								</div>
+								<div class="d-flex">
+									<a class="text-right" id="getOtpPopup" href="#otpPopup" data-toggle="modal"></a>&nbsp;
+									<span [ngClass]="{'text-success': (finalStatus == true), 'text-danger': (finalStatus == false)}">{{finalMessage}}</span>
+								</div>
+								<div class="col-12 cartReviewDiv checkoutBtn">
+									<button type="submit" (click)="checkData();" class="btn my-btn checkout_btn from-left">
+										Place Order
+									</button>
+								</div>
+								
+							</form><!-- end of form -->
+						</div>
+						</div>
+                    </div><!-- end of table_div -->
+                    <!-- End -->
+                    
+                    <div *ngIf="shoppingCart.length > 0" class="col-lg-4 col-12 pr-0 pl-lg-3 pl-0 order-md-2 order-1"><!-- start of summary_section -->
+                    
+                    	<div class="summary_detail"><!-- start of coupon_summary -->
+                            <div class="summary_heading">Coupon / Referral code</div>
+                            
+                            <div class="price_detail"><!-- start of price_detail -->
+                                <p *ngIf="couponCode == ''" class="font-italic mb-3">If you have a coupon / referral code, please enter it in the box below</p>
+								<form *ngIf="couponCode == ''" [formGroup]="couponForm" (ngSubmit)="addCoupon(couponForm.value.inCouponCode);" class="col-xs-12 no-padding">                                
+									<div class="input-group mb-4 border">
+										<input type="text" formControlName="inCouponCode" (blur)="couponMsg='';" placeholder="Enter code" class="form-control border-0">
+										<div class="input-group-append border-0">
+											<button id="button-addon3" type="submit" class="btn my-btn checkout_btn from-left"><i class="fa fa-gift mr-2"></i>Apply</button>
+										</div>
+									</div>
+									<div class="col-sm-12 col-xs-12 add_voucher">
+										<span class="text-danger">{{couponMsg}}</span>
+									</div>
+								</form>
+								<div *ngIf="couponCode != ''" class="col-sm-12 col-xs-12 add_voucher">
+									<p class="text-success">"{{couponCode}}"<sup style="color:red;cursor:pointer;" (click)="removeCoupon();">Remove</sup> coupon applied!</p>
+								</div>
+								<div *ngIf="((couponCode == '') && ( cartCouponList.length
+ > 0))" class="col-sm-12 col-xs-12 add_voucher">
+								<form [formGroup]="couponForm" class="col-xs-12 no-padding">
+									<ul class="list-unstyled">
+										<li *ngFor="let item of cartCouponList;" (click)="addCoupon(item.code);" class="custom-control custom-radio radioSection d-flex justify-content-between">
+											<input type="radio" formControlName="inCouponCode" class="custom-control-input">
+											<label class="custom-control-label" [innerHTML]="sanitizer.bypassSecurityTrustHtml(item.message)"></label>
+										</li>
+									</ul>
+								</form>
+								</div>
+
+								<!--div *ngIf="( (buster['products'].length > 0) && ( shoppingCart.length == 1 ) )" class="priceBusterScheme d-md-none d-flex">
+									<p>
+										Price Buster Scheme
+									</p>
+									<p [innerHTML]="sanitizer.bypassSecurityTrustHtml(buster.label)"></p>
+									<button type="button" data-target="#claimProduct" data-toggle="modal" class="btn my-btn checkout_btn from-left">
+										Claim Offer
+									</button>
+								</div-->
+								
+                                <p *ngIf="credits['cash']" class="font-italic mb-3 cashBackText d-md-none d-block">
+									<b>CashBack Offer : </b><span [innerHTML]="sanitizer.bypassSecurityTrustHtml(credits['message'])"></span>
+								</p>
+                            </div><!-- end of price_detail -->
+                        </div><!-- end of coupon_summary -->
+                    
+                    	<div class="summary_detail"><!-- start of order_summary -->
+                            <div class="summary_heading d-md-block d-none">Order summary</div>
+                            
+                            <!-- start of Order summary button -->
+                            <div class="summary_heading order_detail_mobileBtn collapsed d-md-none d-block" data-toggle="collapse" data-target="#priceDetail">
+                            	Order summary <span><label [innerHTML]="sanitizer.bypassSecurityTrustHtml(cartCurrency)"></label>{{grandTotal | number:'2.2-2'}}</span>
+                            </div>
+                            <!-- end of Order summary button -->
+                                                        
+                            <div class="price_detail collapse" id="priceDetail"><!-- start of price_detail -->
+                                <p class="font-italic mb-3">Shipping and additional costs are calculated based on values you have entered.</p>
+                                
+                                <ul class="list-unstyled"><!-- start of price_break -->
+                                    <li class="d-flex justify-content-between py-3 border-bottom">
+                                        <span>Order Subtotal <small class="font-italic pl-1">(Including tax)</small></span><strong><label [innerHTML]="sanitizer.bypassSecurityTrustHtml(cartCurrency)"></label>{{cartTotal | number:'2.2-2'}}</strong>
+                                    </li>
+									<li class="d-flex flex-column justify-content-between py-3 border-bottom">
+                                        <h5 class="mb-3">
+											Your Wallet Summary
+										</h5>
+
+										<div class="custom-control custom-radio radioSection d-flex justify-content-between">
+											<input type="checkbox" (change)="wallet($event, 1);" [(ngModel)]="inputData.cash" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios">
+											<label class="custom-control-label" for="defaultChecked">
+												Wallet Cash <small class="font-italic pl-1">(Available : ₹{{customerInfo.cash | number:'2.2-2'}})</small>
+											</label>
+											<strong><small>(-)</small> ₹{{discounts.cash | number:'2.2-2'}}</strong>
+										</div>
+										
+										<!--div class="custom-control custom-radio radioSection d-flex justify-content-between">
+											<input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+											<label class="custom-control-label" for="defaultUnchecked">
+												PB Points <small class="font-italic pl-1">(Available : 962.1)</small>
+											</label>
+											<strong><small>(-)</small> ₹962.1</strong>
+										</div-->
+                                    </li>
+                                    <li *ngIf="discounts.coupon > 0" class="d-flex justify-content-between py-3 border-bottom">
+                                        <span>Coupon Discount: </span><strong><span>(<i class="fa fa-minus"></i>)</span> <label [innerHTML]="sanitizer.bypassSecurityTrustHtml(cartCurrency)"></label>{{discounts.coupon | number:'2.2-2'}}</strong>
+                                    </li>
+                                    <li *ngIf="codAmount > 0" class="d-flex justify-content-between py-3 border-bottom">
+                                        <span>Cash On Delivery</span><strong><label [innerHTML]="sanitizer.bypassSecurityTrustHtml(cartCurrency)"></label><small>(+)</small>{{codAmount | number:'2.2-2'}}</strong>
+                                    </li>
+                                    <li class="d-flex justify-content-between py-3 border-bottom">
+                                        <span>Shipping and handling</span><strong><label [innerHTML]="sanitizer.bypassSecurityTrustHtml(cartCurrency)"></label><small>(+)</small>{{shippingAmount | number:'2.2-2'}}</strong>
+                                    </li>
+                                    <li class="d-flex justify-content-between py-3 border-bottom">
+                                        <span>Total Discounts</span><strong><label [innerHTML]="sanitizer.bypassSecurityTrustHtml(cartCurrency)"></label><small>(-)</small>{{discounts.amount | number:'2.2-2'}}</strong>
+                                    </li>
+                                    <li class="d-flex justify-content-between py-3 border-bottom">
+                                        <h6 class="font-weight-bold text-uppercase m-0">Total</h6>
+                                        <h5 class="font-weight-bold m-0"><label [innerHTML]="sanitizer.bypassSecurityTrustHtml(cartCurrency)"></label>{{grandFinalTotal | number:'2.2-2'}}</h5>
+                                    </li>
+                                    <li class="d-flex justify-content-between py-3 text-success">
+                                        <span [innerHTML]="sanitizer.bypassSecurityTrustHtml(deliveryMessage)"></span>
+                                    </li>
+                                </ul><!-- end of price_break -->
+                                <!--div *ngIf="( (buster['products'].length > 0) && ( shoppingCart.length == 1 ) )" class="priceBusterScheme d-md-flex d-none">
+									<p>
+										Price Buster Scheme
+									</p>
+									<p [innerHTML]="sanitizer.bypassSecurityTrustHtml(buster.label)"></p>
+									<button type="button" data-target="#claimProduct" data-toggle="modal" class="btn my-btn checkout_btn from-left">
+										Claim Offer
+									</button>
+								</div-->
+								
+								<p *ngIf="credits['cash']" class="cashBackText d-md-block d-none">
+									<b>CashBack Offer : </b><span [innerHTML]="sanitizer.bypassSecurityTrustHtml(credits['message'])"></span>
+								</p>
+                                <!--a *ngIf="grandTotal > 0" routerLink="/checkout/onepage" class="btn my-btn checkout_btn from-left full_btn d-md-block d-none">Procceed to checkout</a-->
+                            </div><!-- end of price_detail -->
+                            <!-- start of highlight_div -->
+                            <div class="price_display_div"></div>
+                            <!-- end of highlight_div -->
+                            
+                        </div><!-- end of order_summary -->
+                        
+                    </div><!-- start of summary_section -->
+                    
+                </div><!-- end of row -->
+            </div><!-- end of container -->
+        </section><!-- end of product_listing -->
+    
+    </div><!-- end of middle_page -->
+
+<div class="modal fade global_popup" id="otpPopup">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content border-0 rounded-0 gender_popup form_filed">
+		
+			<!-- Modal Header -->
+			<div class="modal-header border-0">
+				<span [ngClass]="otpResponse['textClass']" [innerHTML]="otpResponse['message']"></span>
+				<button type="button" id="closeOtpPopup" class="btn close-btn close-modal" data-dismiss="modal" aria-label="Close">
+					<span class="icon-cross" aria-hidden="true">&nbsp;</span>
+					<span class="icon-cross" aria-hidden="true">&nbsp;</span>
+				</button>
+			</div>
+			
+			<form class="needs-validation" #otpForm="ngForm" (ngSubmit)="verifyOtp();" novalidate><!-- start of form -->
+				<!-- Modal body -->
+				<div class="modal-body"><!-- start of modal-body -->
+				
+					<p>Please enter OTP</p>
+					
+					<div class="row"><!-- start of form_field -->
+										
+						<div class="form-group col-12"><!-- start of Fname -->
+							<input type="text" class="form-control" name="otpResponse['otp']" [(ngModel)]="otpResponse['otp']" placeholder="Enter OTP" required>
+						</div><!-- end of Fname -->
+					
+					</div><!-- end of form_field -->
+					
+				</div><!-- end of modal-body -->
+				
+				<div class="modal-footer">
+					<button type="submit" class="btn my-btn checkout_btn from-left">Submit</button>
+				</div>
+				
+			</form><!-- end of form -->
+		
+		</div>
+	</div>
+</div>
+<form id="paymentForm" [action]="paymentGatewayUrl" [hidden]="true" method="post">
+	<input type="hidden" name="order_id" value="{{orderId}}">
+	<input type="hidden" name="customer_id" value="{{userId}}">
+	<input type="hidden" name="customer_auth" value="{{customerAuth}}">  
+</form>
+	  
+<!-- start of confirmationPopup -->
+<div id="confirmModal" class="modal fade global_popup" tabindex="-1">
+	<div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content border-0 rounded-0">
+			<div class="modal-header">
+				<h4 class="modal-title">Confirmation</h4>
+				<button #hideDeleteModal type="button" class="btn close-btn close close-modal" data-dismiss="modal" aria-label="Close">
+					<span class="icon-cross" aria-hidden="true">&nbsp;</span>
+					<span class="icon-cross" aria-hidden="true">&nbsp;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<p class="text-center">{{confimMsg}}</p>
+			</div>
+			<div class="modal-footer multiple_btn m-auto border-0 p-2">
+				<button type="button" class="btn my-btn cart_btn from-left" (click)="removeItemFromCart();">Yes</button>
+				<button type="button" class="btn my-btn cart_btn btn_outline from-left" data-dismiss="modal">No</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- end of confirmationPopup -->
+
+<!-- start of claimProduct -->
+<div class="modal fade global_popup bd-example-modal-lg" id="claimProduct" tabindex="-1">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content border-0 rounded-0 claimProductMainDiv helpDiv">
+		
+			<!-- Modal Header -->
+			<div class="modal-header">
+				<h4 class="modal-title">Choose Perfume ₹{{buster.price}}</h4>
+				<button type="button" class="btn close-btn close close-modal" data-dismiss="modal" aria-label="Close">
+					<span class="icon-cross" aria-hidden="true">&nbsp;</span>
+					<span class="icon-cross" aria-hidden="true">&nbsp;</span>
+				</button>
+			</div>
+			
+			<!-- Modal body -->
+			<div class="modal-body d-flex flex-wrap claimProductBody"><!-- start of modal-body -->
+			
+				<div class="col-12 filterSection"><!-- start of filterSection -->
+					<ul>
+						<li (click)="busterBuster('male');" [ngClass]="{'active':(busterGender == 'male')}">Men's</li>
+						<li (click)="busterBuster('female');" [ngClass]="{'active':(busterGender == 'female')}">Women's</li>
+						<li (click)="busterBuster('unisex');" [ngClass]="{'active':(busterGender == 'unisex')}">Unisex</li>
+					</ul>
+				</div><!-- end of filterSection -->
+				
+				<div class="col-12 product_listing d-flex flex-wrap"><!-- start of listing -->
+					
+					<div *ngFor="let item of busterProducts;" class="col-4 list_div"><!-- start of product -->
+						<div class="product-grid3">
+							<div class="product-image3"><!-- start of image -->
+								<span class="image_part"><!-- start of single_image -->
+									<img [src]="item.images.url" [alt]="item.name" [title]="item.name" class="img-fluid">
+								</span><!-- end of single_image -->
+							</div><!-- end of image -->
+							
+							<div class="product-content"><!-- start of content -->
+								<h3 class="title"><span class="title_content">{{item.name}}</span></h3>
+								<button type="button" (click)="addBoosterProduct(item.id);" class="btn my-btn cart_btn from-left" data-dismiss="modal" aria-label="Close">
+									Claim
+								</button>
+							</div><!-- end of content -->
+						</div>
+					</div><!-- end of product -->
+										
+					<div *ngIf="busterProducts.length == 0" class="col-12 list_div"><!-- start of product -->
+						<div class="product-grid3">
+							<div class="product-content">
+								<h3 class="title"><span class="title_content">Sorry, products not found!</span></h3>
+							</div>
+						</div>
+					</div><!-- end of product -->
+										
+				</div><!-- end of listing -->
+					
+			</div><!-- end of modal-body -->
+		
+		</div>
+	</div>
+</div>
+<!-- end of claimProduct -->

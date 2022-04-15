@@ -1,0 +1,47 @@
+      
+        <h3 class="user_detail_heading"><!-- start of user_detail_heading -->
+			Profile Details
+		</h3><!-- end of review_heading -->
+<div class="row mt-5">
+	<div class="col-12 table-responsive profile_table mb-4">
+        <table class="table"><!-- start of content -->
+			<tbody>
+				<tr><!-- start of first_name -->
+					<td>First Name</td>
+					<td>{{response.firstname}}</td>
+				</tr><!-- end of first_name -->
+
+          <tr><!-- start of last_name -->
+            <td>Last Name</td>
+            <td>{{response.lastname}}</td>
+          </tr><!-- end of last_name -->
+
+          <tr><!-- start of gender -->
+            <td>Gender</td>
+            <td>{{response.gender.substring(0, 1).toUpperCase() + response.gender.substring(1)}}</td>
+          </tr><!-- end of gender -->
+
+          <tr><!-- start of dob -->
+            <td>Date Of Birth</td>
+            <td>{{response.dob.substring(0,10)}}</td>
+          </tr><!-- end of dob -->
+
+          <tr><!-- start of mobile_no -->
+            <td>Mobile Number</td>
+            <td>{{response.mobile}}</td>
+          </tr><!-- end of mobile_no -->
+
+          <tr><!-- start of email -->
+            <td>E-Mail</td>
+            <td>{{response.email}}</td>
+          </tr><!-- end of email -->
+
+			</tbody>
+        </table><!-- end of content -->
+		<div class="w-100 d-block text-center mt-3">
+			<a routerLink="/customer/account-detail" class="btn my-btn checkout_btn from-left px-5">Edit Profile</a>
+		</div>
+    </div><!-- end of content -->
+</div><!-- end of content -->
+
+    

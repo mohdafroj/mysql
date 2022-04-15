@@ -1,0 +1,81 @@
+<h3 class="user_detail_heading">
+	Order Detail
+</h3>
+                    
+<div #getInvoicePdf class="row mt-5"><!-- start of content -->
+	<div class="orderDetail_upperLink"><!-- start of orderDetail_upperLink -->
+		<a routerLink="/customer/orders" class="backBtnLink">Back</a>
+		<a *ngIf="orderDetails.tracking_link != '' && orderDetails.tracking_link != null" [href]="orderDetails.tracking_link" target="_blank" class="trackOrderLink">Track Order</a>
+		<a *ngIf="!(orderDetails.tracking_link != '' && orderDetails.tracking_link != null)" title="Sorry, Tracking is not available!" class="trackOrderLink">Track Order</a>
+	</div><!-- end of orderDetail_upperLink -->
+	
+	<div class="col-12 d-flex align-items-center justify-content-between flex-wrap orderDetail_status"><!-- start of orderPlaced_Number -->
+		<p>Placed On : <b>{{orderDetails.created}}</b></p>
+		<p>Status : <b class="text-capitalize">{{orderDetails.status}}</b></p>
+		<p>Order No. : <b>{{orderDetails.order_prefix+orderDetails.id}}</b></p>
+	</div><!-- end of orderPlaced_Number -->
+                        
+	<div class="col-12"><!-- start of orderDescription -->
+		<div class="orderDescription d-flex flex-wrap"><!-- start of orderDescription_main_div -->
+		
+			<div class="col-md-4 col-sm-6 col-12"><!-- start of col_div -->
+				<p><b>Shipping Address</b></p>
+				<p>{{orderDetails.shipping_firstname + ' ' +orderDetails.shipping_lastname}}</p>
+				<address>
+					{{orderDetails.shipping_address}}, <br>
+					{{orderDetails.shipping_city}}, {{orderDetails.shipping_state}} {{orderDetails.shipping_pincode}} {{orderDetails.shipping_country}}. <br>
+					Phone number: {{orderDetails.shipping_phone}}
+				</address>
+			</div><!-- end of col_div -->
+		
+			<div class="col-md-4 col-sm-6 col-12"><!-- start of col_div -->
+				<p><b>Payment Method</b></p>
+				<p>{{ (orderDetails.payment_method) ? orderDetails.payment_method : 'N/A'}}</p>
+			</div><!-- end of col_div -->
+		
+			<div class="col-md-4 col-12"><!-- start of col_div -->
+				<p><b>Price Details</b></p>
+				<p><span>Item(s) Subtotal</span> <span><span [innerHTML]="orderDetails.price_logo"></span>{{(orderDetails.product_total + orderDetails.mode_amount) | number:'3.2-2'}}</span></p>
+				<p><span>Shipping</span> <span><span [innerHTML]="orderDetails.price_logo"></span>{{orderDetails.ship_amount | number:'3.2-2'}}</span></p>
+				<p *ngIf="orderDetails.modeAmount > 0"><span>Mode Amount</span> <span><span [innerHTML]="orderDetails.price_logo"></span>{{orderDetails.mode_amount | number:'3.2-2'}}</span></p>
+				<p><span>Total</span> <span><span [innerHTML]="orderDetails.price_logo"></span>{{(orderDetails.product_total + orderDetails.ship_amount + orderDetails.mode_amount) | number:'3.2-2'}}</span></p>
+				<p><span>Discount</span> <span>(-) <span [innerHTML]="orderDetails.price_logo"></span>{{orderDetails.discount | number:'3.2-2'}}</span></p>
+				<p><span><b>Grand Total</b></span> <span><b><span [innerHTML]="orderDetails.price_logo"></span>{{orderDetails.payment_amount | number:'3.2-2'}}</b></span></p>
+			</div><!-- end of col_div -->
+		
+		</div><!-- end of orderDescription_main_div -->
+	</div><!-- end of orderDescription -->
+	<div class="col-12 mt-4"><!-- start of orderDisplay row -->
+		<div class="orderRow d-block w-100">
+		
+			<div class="orderRow_content"><!-- start of orderRow_content -->
+				<div *ngFor="let list of orderDetails.order_details" class="col-12 orderRow_contentRow"><!-- start of orderRow_div-->
+					<div class="orderImage"><!-- start of orderImage -->
+						<img [src]="(list.product.image !='') ? list.product.image : 'assets/images/is-small.jpg'" [alt]="list.title" class="img-fluid" width="70">
+					</div><!-- end of orderImage -->
+					
+					<div class="orderDetailRow"><!-- start of orderDetailRow -->
+					
+						<div class="orderDetailRowHalf productNameImages"><!-- start of productNameImages -->
+							<h6><a target="_blank" routerLink="/{{list.product.url_key}}">{{list.title}}</a></h6>
+							
+							<div *ngFor="let pack of list['pack'];" class="Pack_image">
+								<span>
+									<img [src]="pack.image" [alt]="pack.title" [title]="pack.title" class="img-fluid" width="70">
+								</span>
+							</div>
+						</div>
+						
+						<div class="orderDetailRowHalf productPriceSize"><!-- start of productPriceSize -->
+							<span>{{list.quantity}} Qty</span> <span><span [innerHTML]="orderDetails.price_logo"></span>{{list.price | number: '2.2-2'}}</span>
+						</div><!-- end of productPriceSize -->
+						
+					</div><!-- end of orderDetailRow -->
+				</div><!-- end of orderRow_div -->
+
+			</div><!-- end of orderRow_content -->			
+		</div>
+	</div><!-- end of orderDisplay row -->                                                                            
+</div><!-- end of content -->
+                
+    

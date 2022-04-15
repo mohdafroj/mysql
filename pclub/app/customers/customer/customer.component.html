@@ -1,0 +1,78 @@
+<div class="content">
+	<section class="container-fluid p-0"><!-- start of middle_part -->
+		<div class="w-100 d-block user_profile_upper">
+			<div class="container"><!-- start of middle_part -->
+				<div class="row flex-row-reverse align-items-end"><!-- start of row -->
+					<div class="profile_image"><!-- start of left_part -->
+						<!-- start of picture section-->
+						<figure>
+							<img [src]="picUrl" class="img-fluid" alt="User Profile">
+							<span data-target="#profileUpload" data-toggle="collapse">
+								<img src="assets/images/user_profile/photo_camera.svg" class="img-fluid" alt="Change Profile" width="30">
+							</span>
+							<div class="collapse profileUpload_div" id="profileUpload"><!-- start of profileUpload_div -->
+								<ul class="list-unstyled">
+									<li *ngIf="serverRequest">
+										<label class="uploadText"><i class="fa fa-spinner fa-spin"></i></label>
+									</li>
+									<li>
+										<input type="file" class="d-none" id="inputGroupFile01" name="selectFile" (change)="choosePicture($event);">
+										<label class="uploadText" for="inputGroupFile01">Change</label>
+									</li>
+									<li *ngIf="(picUrl != 'assets/images/user_profile/user_profile.png')">
+										<label class="uploadText" (click)="removePicture();">Remove</label>
+									</li>
+								</ul>
+							</div><!-- end of profileUpload_div -->							  
+						</figure>
+					</div>
+					<div class="edit_profile">
+                        <a routerLink="account-detail" class="btn my-btn checkout_btn from-left">Edit Profile</a>
+                    </div>
+				</div>
+			</div>	
+		</div>
+		<div class="w-100 d-block user_profile_lower"><!-- start of user_profile_lower part -->
+			<div class="container">
+				<div class="row">
+					<h4>{{name}}</h4>
+					<a (click)="customerLogout();" [ngStyle]="{'cursor': 'pointer', 'text-decoration': 'underline'}">Logout</a>
+				</div>
+			</div>
+		</div><!-- end of user_profile_lower part -->
+	</section>
+	<section class="container-fluid position-relative">
+		<div class="container">
+			<div class="row">
+				<span (click)="menuOpen = !menuOpen;" class="userMenu d-md-none d-block" [ngClass]="{'open': menuOpen}">User Menu <span><i class="fas fa-chevron-left"></i></span></span>
+				<div (click)="menuOpen = false;" class="col-lg-2 col-md-3 col-12 sidebar_menu_main" [ngClass]="{'toggle_open': menuOpen}">
+                    	
+					<div class="sidebar_menu"><!-- start of sidebar_menu -->
+						<a routerLink="/customer" routerLinkActive="active" class="sidebar_link">Overview</a>
+					</div><!-- end of sidebar_menu -->
+					
+					<div class="sidebar_menu"><!-- start of sidebar_menu -->
+						<div class="sidebar_heading">Orders</div>
+						<a routerLink="orders" routerLinkActive="active" class="sidebar_link">Orders &amp; Returns</a>
+					</div><!-- end of sidebar_menu -->
+					
+					<div class="sidebar_menu"><!-- start of sidebar_menu -->
+						<div class="sidebar_heading">Account</div>
+						<a routerLink="profile" routerLinkActive="active" class="sidebar_link">Profile</a>
+						<a routerLink="address-book" routerLinkActive="active" class="sidebar_link">Addresses</a>
+						<a routerLink="refer-and-earn" routerLinkActive="active" class="sidebar_link">Refer & Earn</a>
+						<a routerLink="wishlist" routerLinkActive="active" class="sidebar_link">Wishlist</a>
+						<a routerLink="wallet" routerLinkActive="active" class="sidebar_link">Wallet</a>
+						<a routerLink="reviews" routerLinkActive="active" class="sidebar_link">Reviews</a>
+						<a routerLink="newsletter" routerLinkActive="active" class="sidebar_link">Newsletter</a>
+					</div><!-- end of sidebar_menu -->
+
+				</div><!-- end of left_part -->
+		  
+				<div class="col-lg-10 col-md-9 col-12 user_detail_main"><!-- start of right_part -->
+					<router-outlet></router-outlet>
+				</div>	
+			</div><!-- end of row -->
+		</div>
+	</section><!-- end of middle_part -->
+</div>

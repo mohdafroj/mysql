@@ -1,0 +1,243 @@
+<h3 class="user_detail_heading"><!-- start of user_detail_heading -->
+	Refer &amp; Earn
+</h3><!-- end of user_detail_heading -->
+
+<div class="row mt-5"><!-- start of detail_row -->
+	
+	<div class="col-md-12 col-sm-12 col-12 refer_link_div"><!-- start of refer_link_div -->
+		
+		<h6>GET A FREE PERFUME FOR INVITING YOUR FRIENDS</h6>
+		<p>
+			Invite your friends to buy from Perfumer’s Club. You get Rs. 200 and your friend gets Rs. 100 off.
+		</p>
+		
+			<div class="form-group"><!-- start of form-group -->
+				<label>Share your invite link</label>
+				
+				<div class="input-group group_input border">
+					<input type="text" class="form-control border-0" #inputTarget [value]="copyLink" readonly>
+					<span class="input-group-append">
+						<button [ngxClipboard]="inputTarget" class="btn copy_btn" type="button">Copy Link</button>
+					</span>
+				</div>
+			</div><!-- end of form-group -->
+			
+		<form [formGroup]="referForm" (submit)="sendReferEmail(referForm.value);"><!-- start of form -->
+			
+			<div class="form-group"><!-- start of form-group -->
+				<label>Invite via email</label>
+				<div class="input-group group_input">
+					<input type="text" class="form-control" formControlName="email" placeholder="Enter email address">
+					<span class="input-group-append">
+						<button class="btn btn-dark rounded-0" type="submit">Send Invites</button>
+					</span>
+				</div>
+			</div><!-- end of form-group -->			
+		</form><!-- end of form -->
+		
+	</div><!-- end of refer_link_div -->
+	
+	<!--div class="col-md-5 col-sm-6 col-12">
+		<div class="refer_wallet_div">
+			<figure>
+				<img src="assets/images/user_profile/reffer_earn.svg" width="100" class="img-fluid ml-4">
+			</figure>
+			
+			<h4>Your referral credits</h4>
+			
+			<ul class="list-unstyled">
+				<li class="d-flex justify-content-between align-items-center">
+					<span data-target="#earnedModal" data-toggle="modal">Earned <small>(perfumes)</small></span>
+					<a routerLink="redeem-now" class="info_btn">Redeem Now</a>
+					<span>{{refersData.earned.length | number:'2.0-0'}}</span>
+				</li>
+				<li class="d-flex justify-content-between align-items-center">
+					<span>Redeemed <small>(perfumes)</small></span>
+					<span>{{refersData['redeemed'].length | number:'2.0-0'}}</span>
+				</li>
+				<li *ngIf="refersData['holding'].length > 0" class="d-flex justify-content-between align-items-center">
+					<span>On Hold <small>(perfumes)</small></span>
+					<span>{{refersData['holding'].length | number:'2.0-0'}}</span>
+				</li>
+				<li class="d-flex justify-content-between align-items-center">
+					<span data-target="#pendingModal" data-toggle="modal">Pending <small>(perfumes)</small></span>
+					<button type="button" data-target="#pendingInfoModal" data-toggle="modal" class="info_btn">(info)</button>
+					<span>{{refersData['pending'].length | number:'2.0-0'}}</span>
+				</li>
+				<li class="d-flex justify-content-between align-items-center">
+					<span data-target="#expiredModal" data-toggle="modal">Expired <small>(perfumes)</small></span>
+					<button type="button" data-target="#expiredInfoModal" data-toggle="modal" class="info_btn">(info)</button>
+					<span>{{refersData['expired'].length | number:'2.0-0'}}</span>
+				</li>				
+			</ul>
+			
+			<button type="button" data-target="#referralNetworkModal" data-toggle="modal" class="btn my-btn checkout_btn from-left btn-block">
+				Referral Network
+			</button>
+		</div>
+	</div-->
+	
+	<div class="col-12 mt-5"><!-- start of how_does_work -->
+		<h6 class="howWork_heading">How does it work?</h6>
+		
+		<div class="d-flex flex-wrap howWork_option"><!-- start of work_option -->
+			<div class="col-sm-6 col-12"><!-- start of work_option_1 -->
+				<span class="optionNumber">1</span>
+				
+				<figure>
+					<img src="assets/images/user_profile/refer_earn/refer_register.jpg" width="100" alt="Refer Register" class="img-fluid">
+				</figure>
+				
+				<h6>Register on www.perfumer's club</h6>
+			</div><!-- end of work_option_1 -->
+			
+			<div class="col-sm-6 col-12"><!-- start of work_option_1 -->
+				<span class="optionNumber">2</span>
+				
+				<figure>
+					<img src="assets/images/user_profile/refer_earn/refer_code.jpg" alt="Refer Code" width="100" class="img-fluid">
+				</figure>
+				
+				<h6>Get Unique Link/Code</h6>
+			</div><!-- end of work_option_1 -->
+			
+			<div class="col-sm-6 col-12"><!-- start of work_option_1 -->
+				<span class="optionNumber">3</span>
+				
+				<figure>
+					<img src="assets/images/user_profile/refer_earn/refer_off.jpg" alt="Refer Off" width="100" class="img-fluid">
+				</figure>
+				
+				<h6>Your Friend Gets ₹100 Off on using the code</h6>
+			</div><!-- end of work_option_1 -->
+			
+			<div class="col-sm-6 col-12"><!-- start of work_option_1 -->
+				<span class="optionNumber">4</span>
+				
+				<figure>
+					<img src="assets/images/user_profile/refer_earn/refer_get_perfumeBottle.jpg" alt="Refer Get Perfume Bottle" width="100" class="img-fluid">
+				</figure>
+				
+				<h6>Your Get ₹200 on successful delivery</h6>
+			</div><!-- end of work_option_1 -->
+		</div><!-- end of work_option -->
+		
+	</div><!-- end of how_does_work -->
+	
+</div><!-- end of detail_row -->
+
+    <!------------- start of popup ------------------>
+    <!-- start pendingInfoModal Modal -->
+    <div class="modal fade global_popup" id="pendingInfoModal" tabindex="-1">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content border-0 rounded-0">
+                <div class="modal-header">
+                    <h4 class="modal-title">Pending <small class="font-italic">Description</small></h4>
+                    <button type="button" class="btn close-btn close close-modal" data-dismiss="modal" aria-label="Close">
+                    	<span class="icon-cross" aria-hidden="true">&nbsp;</span>
+                    	<span class="icon-cross" aria-hidden="true">&nbsp;</span>
+                    </button>
+                </div>
+                <div class="modal-body networkInfo">
+                	<p class="text-center">
+                    	Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                    </p>
+                </div>
+                <div class="modal-footer multiple_btn m-auto border-0 p-2">
+                	
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end pendingInfoModal Modal -->
+
+    <!-- start expiredInfoModal Modal -->
+    <div class="modal fade global_popup" id="expiredInfoModal" tabindex="-1">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content border-0 rounded-0">
+                <div class="modal-header">
+                    <h4 class="modal-title">Expired <small class="font-italic">Description</small></h4>
+                    <button type="button" class="btn close-btn close close-modal" data-dismiss="modal" aria-label="Close">
+                    	<span class="icon-cross" aria-hidden="true">&nbsp;</span>
+                    	<span class="icon-cross" aria-hidden="true">&nbsp;</span>
+                    </button>
+                </div>
+                <div class="modal-body networkInfo">
+                	<p class="text-center">
+                    	Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                    </p>
+                </div>
+                <div class="modal-footer multiple_btn m-auto border-0 p-2">
+                	
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end expiredInfoModal Modal -->
+
+    <!-- start of referralNetworkModal -->
+    <div class="modal fade global_popup" id="referralNetworkModal" tabindex="-1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content border-0 rounded-0">
+                <div class="modal-header">
+                    <h4 class="modal-title">My Referral Network</h4>
+                    <button type="button" class="btn close-btn close close-modal" data-dismiss="modal" aria-label="Close">
+                        <span class="icon-cross" aria-hidden="true">&nbsp;</span>
+                        <span class="icon-cross" aria-hidden="true">&nbsp;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                
+                    <!-- start of referralNetwor table -->
+                    <div class="table-responsive responsive-mobile-table col-12"><!-- start of table_div -->
+                        <table class="table referralTable"><!-- start of table -->
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="border bg-light text-uppercase text-center">
+                                        Date
+                                    </th>
+                                    <th scope="col" class="border bg-light text-uppercase text-center">
+                                        Referral Name
+                                    </th>
+                                    <th scope="col" class="border bg-light text-uppercase text-center">
+                                        Referral Status
+                                    </th>
+                                </tr>
+                            </thead>
+                            
+                            <tbody>
+                                <tr *ngFor="let item of refersData['redeemed']"><!-- start of tr -->
+                                    <td class="border text-center" data-title="Date">
+                                        <p class="m-0">{{item.created}}</p>
+                                    </td>
+                                    <td class="border text-center" data-title="Referral Name">
+                                        <p class="m-0">{{item.name}}</p>
+                                    </td>
+                                    <td class="border text-center" data-title="Referral Status">
+                                        <p class="m-0 text-success">Successfully Earned</p>
+                                    </td>
+                                </tr><!-- end of tr -->
+                                
+                                <tr *ngFor="let item of refersData['pending']"><!-- start of tr -->
+                                    <td class="border text-center" data-title="Date">
+                                        <p class="m-0">{{item.created}}</p>
+                                    </td>
+                                    <td class="border text-center" data-title="Referral Name">
+                                        <p class="m-0">{{item.name}}</p>
+                                    </td>
+                                    <td class="border text-center" data-title="Referral Status">
+                                        <p class="m-0 text-danger">Pending</p>
+                                    </td>
+                                </tr><!-- end of tr -->
+                            </tbody>
+                        </table><!-- end of table -->
+                    </div><!-- end of table_div -->
+                    <!-- end of referralNetwor table -->
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end of referralNetworkModal -->
+
+    <!------------- stop of popup ------------------>

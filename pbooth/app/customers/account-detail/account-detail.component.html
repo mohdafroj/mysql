@@ -1,0 +1,105 @@
+<section class="container-fluid content"><!-- start of middle_part -->
+  <div class="container">
+    <div class="row"><!-- start of row -->
+      <app-left-menu></app-left-menu>
+      <div class="col-md-9 col-sm-8 col-xs-12"><!-- start of right_part -->
+        <div class="col-xs-12 no-padding review_heading"><!-- start of review_heading -->
+          <h3>Account Detail <span></span></h3>
+        </div><!-- end of review_heading -->
+
+        <div class="col-sm-12 col-xs-12 no-padding login_form account_form"><!-- start of content -->
+          <form class="col-xs-12 no-padding" [formGroup]="rForm" (ngSubmit)="customerDetail(rForm.value);">
+            
+            <p class="col-xs-12 account_line text-uppercase">
+              General Information
+            </p>
+
+            <div class="form-group col-md-6 col-sm-6 col-xs-12 rinput"><!-- start of Fname -->
+              <input type="text" class="form-control" formControlName="firstname">
+              <span *ngIf="rForm.controls.firstname.invalid && !rForm.controls.firstname.dirty" class="filed_name">First Name*</span>
+              <span *ngIf="rForm.controls.firstname.invalid && rForm.controls.firstname.dirty" class="filed_name error_span">Please enter a to z and space char only!</span>
+              <span *ngIf="rForm.controls.firstname.valid" class="filed_name complete_filed">First Name*</span>
+            </div><!-- end of Fname -->
+
+            <div class="form-group col-md-6 col-sm-6 col-xs-12 rinput"><!-- start of Lname -->
+              <input type="text" class="form-control" formControlName="lastname">
+              <span *ngIf="rForm.controls.lastname.invalid && !rForm.controls.lastname.dirty" class="filed_name">Last Name*</span>
+              <span *ngIf="rForm.controls.lastname.invalid && rForm.controls.lastname.dirty" class="filed_name error_span">Please enter a to z and space char only!</span>
+              <span *ngIf="rForm.controls.lastname.valid" class="filed_name complete_filed">Last Name*</span>
+            </div><!-- end of Lname -->
+
+            <div class="form-group col-md-6 col-sm-6 col-xs-12 rinput"><!-- start of Fname -->
+              <input type="text" class="form-control" formControlName="address">
+              <span *ngIf="rForm.controls.address.invalid && !rForm.controls.address.dirty" class="filed_name">Address*</span>
+              <span *ngIf="rForm.controls.address.invalid && rForm.controls.address.dirty" class="filed_name error_span">Please enter address!</span>
+              <span *ngIf="rForm.controls.address.valid" class="filed_name complete_filed">Address*</span>
+            </div><!-- end of Fname -->
+
+            <div class="form-group col-md-6 col-sm-6 col-xs-12 rinput"><!-- start of Lname -->
+              <input type="text" class="form-control" formControlName="city">
+              <span *ngIf="rForm.controls.city.invalid && !rForm.controls.city.dirty" class="filed_name">City*</span>
+              <span *ngIf="rForm.controls.city.invalid && rForm.controls.city.dirty" class="filed_name error_span">Please enter city!</span>
+              <span *ngIf="rForm.controls.city.valid" class="filed_name complete_filed">City*</span>
+            </div><!-- end of Lname -->
+
+            <div class="form-group col-md-6 col-sm-6 col-xs-12 rinput"><!-- start of Lname -->
+                <select class="form-control" formControlName="location_id">
+                    <option *ngFor="let item of response.locations" [value]="item.id">{{item.title}}</option>
+                </select>
+            </div><!-- end of Lname -->
+
+            <div class="form-group col-md-6 col-sm-6 col-xs-12 rinput"><!-- start of Lname -->
+              <input type="text" class="form-control" formControlName="pincode">
+              <span *ngIf="rForm.controls.pincode.invalid && !rForm.controls.pincode.dirty" class="filed_name">Pincode*</span>
+              <span *ngIf="rForm.controls.pincode.invalid && rForm.controls.pincode.dirty" class="filed_name error_span">Please enter 6 digit number!</span>
+              <span *ngIf="rForm.controls.pincode.valid" class="filed_name complete_filed">Pincode*</span>
+            </div><!-- end of Lname -->
+
+            <div class="form-group col-md-6 col-sm-6 col-xs-12 rinput"><!-- start of DOB -->
+              <input type="email" class="form-control" formControlName="dob">
+              <span *ngIf="rForm.controls.dob.invalid && !rForm.controls.dob.dirty" class="filed_name">DD-MM-YYYY</span>
+              <span *ngIf="rForm.controls.dob.invalid && rForm.controls.dob.dirty" class="filed_name error_span">DD-MM-YYYY format!</span>
+              <span *ngIf="rForm.controls.dob.valid" class="filed_name complete_filed">DD-MM-YYYY</span>
+            </div><!-- end of DOB -->
+
+            <div class="form-group col-md-6 col-sm-6 col-xs-12 rinput"><!-- start of DOB -->
+              <input type="email" class="form-control" formControlName="profession">
+              <span *ngIf="rForm.controls.profession.invalid" class="filed_name error_span">Please enter a to z char!</span>
+              <span *ngIf="rForm.controls.profession.valid" class="filed_name complete_filed">Profession</span>
+            </div><!-- end of DOB -->
+
+            <div class="form-group col-md-6 col-sm-6 col-xs-12 rinput col-md-push-6"><!-- start of uplaod_image -->
+            </div><!-- end of uplaod_image -->
+
+            <div class="form-group col-md-6 col-sm-12 col-xs-12 rinput payment_div col-md-pull-6"><!-- start of Gender -->
+              <div class="account_radio">
+                <ul class="col-sm-12 col-xs-12">
+                  <li class="col-sm-4 col-xs-12">
+                    Gender
+                  </li>
+
+                  <li class="col-sm-4 col-xs-6">
+                    <input type="radio" formControlName="gender" id="Male" value="male">
+                    <label for="Male">Male</label>
+                    <div class="check"></div>
+                  </li>
+
+                  <li class="col-sm-4 col-xs-6">
+                    <input type="radio" id="Female" formControlName="gender" value="female">
+                    <label for="Female">Female</label>
+                    <div class="check"><div class="inside"></div></div>
+                  </li>
+                </ul>
+              </div>
+            </div><!-- end of Gender -->
+            <p class="text-center text-danger">{{msg}}</p>
+            <div class="form-group col-sm-12 col-xs-12 text-right xs-no-padding"><!-- start of login_button -->
+              <button type="submit" class="btn from-left cart_btn" [disabled]="!rForm.valid">Submit</button>
+            </div><!-- end of login_button -->
+          </form>
+        </div><!-- end of content -->
+      </div><!-- end of right_part -->
+
+    </div><!-- end of row -->
+  </div>
+</section><!-- end of middle_part -->

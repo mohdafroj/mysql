@@ -1,0 +1,183 @@
+<div class="content mt-n3">
+	<section class="section_box">
+		<div class="container">
+			<div class="row">
+				<h3 class="col-12 categoryTitle">
+					<span>Product Categories</span>
+				</h3>
+				<div class="col-12 categorySec">
+					<swiper [config]="swiperConfig" class="swiper-container shopSwiper">
+						<ng-template swiperSlide>
+							<div [ngClass]="{'active':(productType == config.categories.category1.key)}" (click)="categoryChange(config.categories.category1.key);">
+								<figure>
+									<img src="assets/images/products/shopnow/Lightr+3Perfumes.jpg" alt="bombshell" class="img-fluid mx-auto d-block" />
+								</figure>
+								<h5 class="card-title">{{config.categories.category1.title}}</h5>
+							</div>
+						</ng-template>
+						<ng-template swiperSlide>
+							<div [ngClass]="{'active':(productType == config.categories.category2.key)}" (click)="categoryChange(config.categories.category2.key);">
+								<figure>
+									<img src="assets/images/products/shopnow/Setof3X8mlPerfumes.jpg" alt="bombshell" class="img-fluid mx-auto d-block" />
+								</figure>
+								<h5 class="card-title">{{config.categories.category2.title}}</h5>
+							</div>
+						</ng-template>
+						<ng-template swiperSlide>
+							<div [ngClass]="{'active':(productType == config.categories.category3.key)}" (click)="categoryChange(config.categories.category3.key);">
+								<figure>
+									<img src="assets/images/products/shopnow/Lightr7X8mlPerfumes.jpg" alt="bombshell" class="img-fluid mx-auto d-block" />
+								</figure>
+								<h5 class="card-title">{{config.categories.category3.title}}</h5>
+							</div>
+						</ng-template>
+						<ng-template swiperSlide>
+							<div [ngClass]="{'active':(productType == config.categories.category4.key)}" (click)="categoryChange(config.categories.category4.key);">
+								<figure>
+									<img src="assets/images/products/shopnow/Lightr+7Perfumes.jpg" alt="bombshell" class="img-fluid mx-auto d-block" />
+								</figure>
+								<h5 class="card-title">{{config.categories.category4.title}}</h5>
+							</div>
+						</ng-template>
+						<ng-template swiperSlide>
+							<div [ngClass]="{'active':(productType == config.categories.category5.key)}" (click)="categoryChange(config.categories.category5.key);">
+								<figure>
+									<img src="assets/images/products/shopnow/Setof3X50mlPerfumes.jpg" alt="bombshell" class="img-fluid mx-auto d-block" />
+								</figure>
+								<h5 class="card-title">{{config.categories.category5.title}}</h5>
+							</div>
+						</ng-template>
+						<ng-template swiperSlide>
+							<div [ngClass]="{'active':(productType == config.categories.category6.key)}" (click)="categoryChange(config.categories.category6.key);">
+								<figure>
+									<img src="assets/images/products/shopnow/FullSize50mlPerfume.jpg" alt="bombshell" class="img-fluid mx-auto d-block" />
+								</figure>
+								<h5 class="card-title">{{config.categories.category6.title}}</h5>
+							</div>
+						</ng-template>	
+					</swiper>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<ul class="list-unstyled filterLinks">
+						<li [ngClass]="{'active':(gender == 'male')}"><a [routerLink]="['/', basePath]"   [queryParams]="{type: this.productType, gender: 'male'}">Men</a></li>
+						<li [ngClass]="{'active':(gender == 'female')}"><a [routerLink]="['/', basePath]" [queryParams]="{type: this.productType, gender: 'female'}">Women</a></li>
+						<li [ngClass]="{'active':(gender == 'unisex')}"><a [routerLink]="['/', basePath]" [queryParams]="{type: this.productType, gender: 'unisex'}">Unisex</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="row productItems" *ngIf="(resultStatus == 1); else startLoader" >
+				<div *ngFor="let item of filterProducts;" class="col-12 col-md-4">
+					<h3>{{item.name}}</h3>
+					<figure (click)="viewPage(item);">
+						<img [src]="item['images'][0]['large']" [alt]="item['images'][0]['alt']" class="img-fluid mx-auto d-block" />
+						<figcaption *ngIf="item.rating" class="figure-caption">
+							<i class="fas fa-star"></i>{{item.rating | number: '1.1-1'}}
+						</figcaption>
+					</figure>
+					<h4>
+						<dfn>₹{{item.price | number: '2.2-2'}} <del *ngIf="item.discount.original > 0">₹{{item.discount.original | number: '2.2-2'}}</del></dfn>
+						<dfn>
+							<em>Sold</em> 
+							<span class="soldNumbr">
+								<b *ngFor="let digit of item.sold.toString().split('');">{{digit}}</b>
+							</span>
+						</dfn>
+					</h4>
+				</div>
+				<div *ngIf="filterProducts.length == 0" class="col-12 col-md-4">
+					<h3>Sorry, record not found</h3>
+				</div>
+			</div>
+			<ng-template #startLoader>
+				<div class="col-12 col-md-4 text-center">
+					<figure>
+						<img src="assets/images/web_loader.gif" alt="Loader Image" class="img-fluid mx-auto d-block" />
+					</figure>
+				</div>
+			</ng-template>	
+		</div>
+	</section>
+</div>
+
+<!--div class="modal fade global_popup" id="productDeail" *ngIf="productDetail['id']">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content border-0 rounded-0 gender_popup">
+		
+			<div class="modal-header border-0">
+				<button type="button" class="btn close-btn close close-modal" data-dismiss="modal" aria-label="Close">
+					<span class="icon-cross" aria-hidden="true">&nbsp;</span>
+					<span class="icon-cross" aria-hidden="true">&nbsp;</span>
+				</button>
+			</div>
+			
+			<div class="modal-body d-md-flex d-block justify-content-center flex-wrap product_popup">
+				<div class="col-sm-5 col-12 carousel slide popupImageSlider" id="popupSlider" data-ride="carousel">
+					<ul *ngIf="productDetail['isStock'] == 'in_stock'" class="carousel-indicators">
+						<li *ngFor="let image of productDetail['images']; let i = index;" data-target="#popupSlider" attr.data-slide-to="{{i}}" [ngClass]="{'active':(sliderIndex == i)}"></li>
+					</ul>
+					
+					<div *ngIf="productDetail['isStock'] != 'in_stock'" class="carousel-inner">
+						<div class="carousel-item image_part active">
+							<img [src]="productDetail.oos_image" [alt]="productDetail.title" class="img-fluid mx-auto" [title]="productDetail.title">
+						</div>
+					</div>
+					<div *ngIf="productDetail['isStock'] == 'in_stock'" class="carousel-inner">
+						<div *ngFor="let image of productDetail['images']; let i = index;" class="carousel-item image_part" [ngClass]="{'active':(sliderIndex == i)}">
+							<img [src]="image.large" [alt]="image.alt" class="img-fluid mx-auto" [title]="productDetail.title">
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-sm-7 col-12">
+					<h3>{{productDetail.title}}</h3>
+					<h4>₹{{productDetail.price | number: '2.2-2'}} 
+						<span *ngIf="productDetail.discount.original > 0">₹{{productDetail.discount.original | number: '2.2-2'}}</span>
+					</h4>
+					<div [ngSwitch]="productDetail.isStock">
+						<div *ngSwitchDefault>
+							<button type="button" class="btn my-btn cart_btn from-left">Out of Stock</button>
+						</div>
+						<div *ngSwitchCase="'in_stock'">
+							<a routerLink="/checkout/cart" data-dismiss="modal" class="btn my-btn cart_btn from-left" *ngIf="(customerCart.indexOf(productDetail.id) > -1)">Go to Cart</a>
+							<button type="button" class="btn my-btn cart_btn from-left" data-dismiss="modal" *ngIf="(customerCart.indexOf(productDetail.id) == -1)" (click)="addIntoCart(productDetail);">Buy Now</button>
+						</div>
+					</div>                            
+					
+					<ul id="tabs" class="nav nav-tabs" role="tablist">
+						<li class="nav-item">
+							<a id="tab-A" href="#pane-A" class="nav-link" [ngClass]="{'active': selectedTab == 'A'}" (click)="selectedTab = 'A';" data-toggle="tab" role="tab">Description</a>
+						</li>
+						<li class="nav-item">
+							<a id="tab-B" href="#pane-B" class="nav-link" [ngClass]="{'active': selectedTab == 'B'}" (click)="selectedTab = 'B';" data-toggle="tab" role="tab">Notes</a>
+						</li>
+						<li class="nav-item">
+							<a id="tab-C" href="#pane-C" class="nav-link" [ngClass]="{'active': selectedTab == 'C'}" (click)="selectedTab = 'C';" data-toggle="tab" role="tab">Brand</a>
+						</li>
+					</ul>
+					
+					<div id="content" class="tab-content" role="tablist">
+						<div id="pane-A" class="card tab-pane fade" [ngClass]="{'show': selectedTab == 'A', 'active': selectedTab == 'A'}" role="tabpanel" aria-labelledby="tab-A">
+							<div class="card-body" [innerHTML]="sanitizer.bypassSecurityTrustHtml(productDetail['shortDescription'])"></div>
+						</div>
+				
+						<div id="pane-B" class="card tab-pane fade" [ngClass]="{'show': selectedTab == 'B', 'active': selectedTab == 'B'}" role="tabpanel" aria-labelledby="tab-B">
+							<div class="card-body">
+								<p *ngFor="let note of productDetail['notes']">{{note.title}} : {{note.description}}</p>
+							</div>
+						</div>
+				
+						<div id="pane-C" class="card tab-pane fade" [ngClass]="{'show': selectedTab == 'C', 'active': selectedTab == 'C'}" role="tabpanel" aria-labelledby="tab-C">
+							<div class="card-body">
+								<p *ngIf="productDetail['brand']" [innerHTML]="sanitizer.bypassSecurityTrustHtml(productDetail['brand']['description'])"></p>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		
+		</div>
+	</div>
+</div-->

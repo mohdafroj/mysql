@@ -1,0 +1,26 @@
+.mat-option.mat-active{
+	background: rgba(4,3,6,.2);
+}
+
+.mat-input-flex .mat-form-field-flex{
+	border:1px solid;
+}
+
+.navbar-form .mat-form-field-infix{width:100%; border:0; padding:0;}
+.navbar-form .mat-form-field-infix .input-group input{border:1px solid #ccc; caret-color : rgba(0,0,0,0.6); font:initial; margin:0; padding:0px 20px; height:33px;}
+.navbar-form .mat-form-field-infix .input-group .input-group-btn{display:block;}
+.navbar-form .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label{opacity:0;}
+.navbar-form .mat-form-field-infix .mat-form-field-label-wrapper{top:0; padding:0;}
+.navbar-form .mat-form-field-infix .mat-form-field-label{left:15px; top:50%; transform:translateY(-60%); color:rgba(0,0,0,0.4);}
+.navbar-form .mat-form-field-underline{height:0px !important;}
+.navbar-form .mat-focused .mat-form-field-underline .mat-form-field-ripple{opacity:0;}
+.navbar-form .mat-input-wrapper{padding:0;}
+
+
+@media (max-width:767px){
+	.navbar-form .mat-form-field-infix .input-group .input-group-btn{display:table-cell;}
+	.mat-autocomplete-panel:not([class*=mat-elevation-z]){border-top-right-radius:20px;}
+	.search_box .input-group-btn .btn, .search_box input{
+		height:35px;
+	}
+}

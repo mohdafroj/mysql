@@ -1,0 +1,22 @@
+/************** start of review_cart css **************/
+.cartReviewDiv{display:flex; align-items:center;}
+.cartReviewDiv:not(:last-child){border-bottom:.1rem solid rgba(0,0,0,0.1); margin-bottom:0.5rem; padding-bottom:0.5rem;}
+.cartReviewDiv .cartDetail{display:flex; align-items:center; justify-content:space-between; width:100%;}
+.cartReviewDiv .cartDetail .cartDetailHalf{width:50%; display:inline-block;}
+.productNameImages h6{color:#343a40; width:12rem; margin:0; text-overflow:ellipsis; overflow:hidden; white-space:nowrap;}
+.productNameImages .Pack_image{display:block; position:relative; padding-top:.8rem;}
+.productNameImages .Pack_image span{display:inline-block; width:2rem; position:relative; overflow:hidden;}
+.productNameImages .Pack_image span:not(:last-child){border-right:.01rem solid rgba(0,0,0,0.1);}
+.productPriceSize{text-align:right;}
+.productPriceSize span{display:inline-block; font-size:.9rem; color:rgba(0,0,0,0.5); width:20%;}
+.productPriceSize span:last-child{color:rgba(0,0,0,0.8); font-size:.95rem; width:65%;}
+
+.minus { cursor:pointer; }
+@media (max-width: 767.98px) {
+	/************** start of review_cart css **************/
+	.cartReviewDiv .cartDetail .cartDetailHalf{width:auto;}
+	.productNameImages h6{font-size:.85rem; width:10rem;}
+	.productPriceSize span{display:block; font-size:.8rem; width:100%; padding-top:.5rem;}
+	.productPriceSize span:last-child{font-size:.9rem; width:100%;}
+
+}

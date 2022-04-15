@@ -1,0 +1,325 @@
+<section class="saleEndsContent" *ngIf="(stripBanner == '') && (minutes != '')"><!-- start of saleEndsContent -->
+	<h5>
+		Sale Ends In <span>{{days}}<b>day</b> {{hours}}<b>hrs</b> {{minutes}}<b>min</b> {{seconds}}<b>sec</b></span>
+	</h5>
+</section><!-- end of saleEndsContent -->
+
+<section class="container-fluid px-0 bg-white"><!-- start of header_section -->
+	<span class="marqueeSection" *ngIf="stripBanner != ''" [innerHTML]="sanitizer.bypassSecurityTrustHtml(stripBanner)"></span>
+	<div class="d-flex flex-wrap align-items-center headerSection"><!-- start of header_row -->
+		
+		<div class="col-md-3 col-2 rowSectionDiv d-md-block">
+			<a class="logoLink" routerLink="/">
+				<span><img src="assets/images/logo.svg" alt="Logo" class="img-fluid"></span>
+			</a>
+		</div>
+		
+		<div class="col-md-3 col-3 rowSectionDiv">
+			<a [routerLink]="['/', basePath]" [queryParams]="{gender: 'male', type: productType}" [ngClass]="{'active':(gender == 'male')}">Men's</a>
+		</div>
+		
+		<div class="col-md-3 col-4 rowSectionDiv">
+			<a [routerLink]="['/', basePath]" [queryParams]="{gender: 'female', type: productType}" [ngClass]="{'active':(gender == 'female')}">Women's</a>
+		</div>
+		
+		<div class="col-md-3 col-3 rowSectionDiv">
+			<a [routerLink]="['/', basePath]" [queryParams]="{gender: 'unisex', type: productType}" [ngClass]="{'active': (gender == 'unisex')}">Unisex</a>
+		</div>
+		
+		<!-- User_panel -->
+		<button class="btn dropdown-toggle userAccountBtn" (click)="userMenu = !userMenu" type="button" data-toggle="dropdown" aria-haspopup="true" [attr.aria-expanded]="userMenu">
+			<i class="fas fa-user"></i>
+		</button>
+
+		<div class="dropdown-menu userAccountContent" [ngClass]="{'show': userMenu}">
+			<div class="loginReg_text" *ngIf="userId == 0">
+				<a class="dropdown-item enter-form" routerLink="/login">Login</a>
+				<a class="dropdown-item enter-form" routerLink="/registration">Register</a>
+			</div>
+			<a class="dropdown-item" *ngIf="userId > 0" routerLink="/customer/profile">Profile</a>
+			<a class="dropdown-item" *ngIf="userId > 0" routerLink="/checkout/cart/">Cart</a>
+			<a class="dropdown-item" *ngIf="userId > 0" routerLink="/customer/orders">Track Order</a>
+			<a class="dropdown-item" *ngIf="userId > 0" (click)="customerLogout();" [ngStyle]="{'cursor': 'pointer'}">Logout</a>
+		</div>
+		<!-- User_panel -->
+		
+	</div><!-- end of header_row -->
+	
+</section><!-- end of header_section -->
+
+<section class="container-fluid py-5 mt-4 pattern_image"><!-- start of middle_section -->
+	<div class="row"><!-- start of row -->
+		
+		<div *ngIf="filterProducts.length > 0" class="col-12 product_listing d-flex flex-wrap"><!-- start of listing -->
+				
+			<div *ngFor="let item of filterProducts;" class="col-lg-3 col-md-4 col-sm-6 list_div"><!-- start of product -->
+				<div class="product-grid3">
+					<div *ngIf="item.tagLine != ''" class="productTags"><!-- start of productTags -->
+						<span>{{item.tagLine}}</span>
+					</div><!-- end of productTags -->
+					
+					<div class="genderIcon">
+						<span *ngIf="item.gender == 'male'" class="iconGender">
+							<img src="assets/images/gender_icon/men.svg" class="img-fluid" alt="Men">
+						</span>
+						<span *ngIf="item.gender == 'male'" class="iconText">Men</span>
+						
+						<span *ngIf="item.gender == 'female'" class="iconGender">
+							<img src="assets/images/gender_icon/women.svg" class="img-fluid" alt="Women`s">
+						</span>
+						<span *ngIf="item.gender == 'female'" class="iconText">Women`s</span>
+						
+						<span *ngIf="item.gender == 'unisex'" class="iconGender">
+							<img src="assets/images/gender_icon/unisex.svg" class="img-fluid" alt="Unisex">
+						</span>
+						<span *ngIf="item.gender == 'unisex'" class="iconText">Unisex</span>
+						
+					</div>
+					<div class="product-image3"><!-- start of image -->
+						<span class="image_part" (click)="viewProduct(item);" data-target="#productDeail" data-toggle="modal"><!-- start of single_image -->
+							<img *ngIf="item['isStock'] == 'in_stock'" [src]="item['images'][0]['large']" [alt]="item['images'][0]['alt']" class="img-fluid">
+							<img *ngIf="item['isStock'] != 'in_stock'" [src]="item['oos_image']" [alt]="item['images'][0]['alt']" class="img-fluid">
+						</span><!-- end of single_image -->
+						
+						<ul class="social">
+							<li><button class="btn" (click)="viewProduct(item);" data-target="#productDeail" data-toggle="modal"><i class="fas fa-eye"></i></button></li>
+							<li>
+								<button *ngIf="customerCart.indexOf(item.id) == -1" (click)="addIntoCart(item);" class="btn shopping-cart-btn"><i class="fas fa-shopping-cart"></i></button>
+								<a *ngIf="customerCart.indexOf(item.id) > -1" routerLink="/checkout/cart" class="btn go-cart-btn"><i class="fas fa-play"></i></a>
+							</li>
+						</ul>
+						<!--span class="product-new-label">New</span-->
+					</div><!-- end of image -->
+					
+					<div class="product-content"><!-- start of content -->
+						<h3 class="title"><span class="title_content" (click)="viewProduct(item);" data-target="#productDeail" data-toggle="modal">{{item.name}}</span></h3>
+						<div class="product_price"><!-- start of product_price -->
+							<span *ngIf="item.discount.original > 0">₹{{item.discount.original | number: '2.2-2'}}</span>
+							₹{{item.price | number: '2.2-2'}} 
+						</div><!-- end of product_price -->
+					</div><!-- end of content -->
+				</div>
+			</div><!-- end of product -->			
+			
+		</div><!-- end of listing -->
+	
+		<div *ngIf="filterProducts.length == 0" class="col-12 product_listing d-flex flex-wrap"><!-- start of listing -->
+				
+			<div class="col-12 text-center"><!-- start of product -->
+				<div *ngIf="(resultStatus == 0); else startLoader" class="product-image3"><!-- start of image -->
+					<span class="image_part"><!-- start of single_image -->
+						<img src="assets/images/web_loader.gif" alt="Loader Image" class="img-fluid mx-auto" />
+					</span><!-- end of single_image -->
+				</div>
+				<ng-template #startLoader>
+					<div class="product-image3"><!-- start of image -->
+						<span class="image_part"><!-- start of single_image -->
+						 Sorry, Products not found!
+						</span><!-- end of single_image -->
+					</div>
+				</ng-template>	
+			</div><!-- end of product -->			
+		</div><!-- end of listing -->
+		
+	</div><!-- end of row -->
+</section><!-- end of middle_section -->
+
+<section class="container-fluid px-0 footerDiv"><!-- start of footer_section -->
+
+	<div class="d-flex flex-wrap align-items-center justify-content-between"><!-- start of footer_row -->
+		
+		<div class="addCartButton">
+			<span class="addCartButtonIcon" data-target="#productCartdetail" data-toggle="modal">
+				<i class="fas fa-caret-down"></i> <i class="fas fa-shopping-cart"></i><sup class="badge badge-primary rounded-circle">{{cartLength}}</sup>
+			</span>
+		</div>
+		
+		<div class="col-4 rowSectionDiv singleMobileWidth">
+			<a [routerLink]="['/', basePath]" [queryParams]="{gender: gender, type: 'single'}" class="packageLink cartPriceSpace categoryDiv" [ngClass]="{'active': ( productType == 'single' )}">
+				<span>Singles</span>
+			</a>
+		</div>
+		
+		<div class="col-4 rowSectionDiv singleMobileWidth">
+			<a [routerLink]="['/', basePath]" [queryParams]="{gender: gender, type: 'pack-2'}" class="packageLink cartPriceSpace categoryDiv" [ngClass]="{'active': ( productType == 'pack-2' )}">
+				<span>Pack of 2</span>
+			</a>
+		</div>
+		
+		<div class="col-4 rowSectionDiv packageMobileWidth">
+			<a [routerLink]="['/', basePath]" [queryParams]="{gender: gender, type: 'pack-3'}" class="packageLink categoryDiv" [ngClass]="{'active': ( productType == 'pack-3' )}">
+				<span>Gift set of 3</span>
+			</a>
+		</div>
+		
+	</div><!-- end of footer_row -->
+	
+</section><!-- end of footer_section -->
+
+<!-- start of product_detail_popup -->
+<div class="modal fade global_popup" id="productCartdetail">
+	<div class="modal-dialog modal-md">
+		<div class="modal-content border-0 rounded-0 gender_popup">
+			
+			<!-- start of modal-header -->
+			<div class="modal-header">
+				<h4 class="modal-title">
+					<span class="mr-auto text-secondary">{{cartLength}} <small>Items</small>,</span>
+					<span class="text-right font-weight-light">
+						<small>Total</small>: <span class="text-black font-weight-bold">₹{{cartTotal | number:'2.2-2'}}</span>
+					</span>
+				</h4>
+				<button type="button" class="btn close-btn close close-modal" data-dismiss="modal" aria-label="Close">
+					<span class="icon-cross" aria-hidden="true">&nbsp;</span>
+					<span class="icon-cross" aria-hidden="true">&nbsp;</span>
+				</button>
+			</div>
+			<!-- end of modal-header -->
+			
+			<!-- Modal body -->
+			<div class="modal-body">
+				
+				<div *ngFor="let item of shoppingCart;" class="d-flex border-top py-3 position-relative"><!-- start of cart_row -->
+					<div class="pr-2" style="width:23%;"><!-- start of image_section -->
+						<a [routerLink]="['/', item.url_key]" target="_blank">
+							<img [src]="item.images[0].url" [alt]="item.name" [title]="item.name" class="img-fluid" />
+						</a>
+					</div><!-- end of image_section -->
+
+					<div class="flex-grow-1 cartContent"><!-- start of content_section -->
+						<a [routerLink]="['/', item.url_key]" target="_blank" class="item-name d-block">{{item.name}}</a>
+						<span class="item-price"><label [innerHTML]="sanitizer.bypassSecurityTrustHtml(cartCurrency)"></label>{{item.price | number:'2.2-2'}} <del *ngIf="item['discount']['original'] != undefined">₹{{item.discount.original * item.cart_quantity | number:'2.2-2'}}</del></span>
+						<span class="item-quantity">Quantity: {{item.cart_quantity}}</span>
+						<button type="button" class="btn close-btn" (click)="removeItem = item;" data-toggle="modal" data-target="#deleteConfirmModal">
+							<span class="icon-cross">&nbsp;</span>
+							<span class="icon-cross">&nbsp;</span>
+						</button>
+					</div><!-- end of content_section -->
+				</div><!-- end of cart_row -->
+
+			</div>
+			<!-- end of modal-body -->
+			
+			<div class="modal-footer multiple_btn m-auto border-0 p-2">
+				<a routerLink="/checkout/cart" class="btn my-btn cart_btn from-left" data-dismiss="modal">
+					Checkout
+				</a>
+			</div>
+		
+		</div>
+	</div>
+</div>
+<!-- end of product_detail_popup -->
+
+<!-- start confirmation Modal -->
+<div class="modal fade global_popup" id="deleteConfirmModal" tabindex="-1">
+	<div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content border-0 rounded-0 gender_popup">
+			<div class="modal-header">
+				<h4 class="modal-title">Confirmation</h4>
+				<button #deleteConfirmModal type="button" class="btn close-btn close close-modal" data-dismiss="modal" aria-label="Close">
+					<span class="icon-cross" aria-hidden="true">&nbsp;</span>
+					<span class="icon-cross" aria-hidden="true">&nbsp;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<p class="text-center" *ngIf="removeItem['name']">Are you sure, you want to delete {{removeItem.name}} product</p>
+				<p *ngIf="removeAction" class="text-center text-danger"><span class="spinner-grow spinner-grow-sm"></span> Loading..</p>
+			</div>
+			<div class="modal-footer multiple_btn m-auto border-0 p-2">
+				<button type="button" class="btn my-btn cart_btn from-left" (click)="removeItemFromCart()">Yes</button>
+				<button type="button" class="btn my-btn cart_btn btn_outline from-left" (click)="removeAction=0;" data-dismiss="modal">No</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- end confirmation Modal -->
+
+<!-- start of product_detail_popup -->
+<div class="modal fade global_popup" id="productDeail" *ngIf="productDetail['id']">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content border-0 rounded-0 gender_popup">
+		
+			<!-- Modal Header -->
+			<div class="modal-header border-0">
+				<button type="button" class="btn close-btn close close-modal" data-dismiss="modal" aria-label="Close">
+					<span class="icon-cross" aria-hidden="true">&nbsp;</span>
+					<span class="icon-cross" aria-hidden="true">&nbsp;</span>
+				</button>
+			</div>
+			
+			<!-- Modal body -->
+			<div class="modal-body d-md-flex d-block justify-content-center flex-wrap product_popup"><!-- start of modal-body -->
+				<div class="col-sm-5 col-12 carousel slide popupImageSlider" id="popupSlider" data-ride="carousel"><!-- start of image_div -->
+					<!-- Indicators -->
+					<ul *ngIf="productDetail['isStock'] == 'in_stock'" class="carousel-indicators">
+						<li *ngFor="let image of productDetail['images']; let i = index;" data-target="#popupSlider" attr.data-slide-to="{{i}}" [ngClass]="{'active':(sliderIndex == i)}"></li>
+					</ul>
+					
+					<!-- The slideshow -->
+					<div *ngIf="productDetail['isStock'] != 'in_stock'" class="carousel-inner">
+						<div class="carousel-item image_part active">
+							<img [src]="productDetail.oos_image" [alt]="productDetail.title" class="img-fluid mx-auto" [title]="productDetail.title">
+						</div>
+					</div>
+					<div *ngIf="productDetail['isStock'] == 'in_stock'" class="carousel-inner">
+						<div *ngFor="let image of productDetail['images']; let i = index;" class="carousel-item image_part" [ngClass]="{'active':(sliderIndex == i)}">
+							<img [src]="image.large" [alt]="image.alt" class="img-fluid mx-auto" [title]="productDetail.title">
+						</div>
+					</div>
+				</div><!-- end of image_div -->
+				
+				<div class="col-sm-7 col-12"><!-- start of content_div -->
+					<h3>{{productDetail.title}}</h3>
+					<h4>₹{{productDetail.price | number: '2.2-2'}} 
+						<span *ngIf="productDetail.discount.original > 0">₹{{productDetail.discount.original | number: '2.2-2'}}</span>
+					</h4>
+					<div [ngSwitch]="productDetail.isStock">
+						<div *ngSwitchDefault>
+							<button type="button" class="btn my-btn cart_btn from-left">Out of Stock</button>
+						</div>
+						<div *ngSwitchCase="'in_stock'">
+							<a routerLink="/checkout/cart" data-dismiss="modal" class="btn my-btn cart_btn from-left" *ngIf="(customerCart.indexOf(productDetail.id) > -1)">Go to Cart</a>
+							<button type="button" class="btn my-btn cart_btn from-left" data-dismiss="modal" *ngIf="(customerCart.indexOf(productDetail.id) == -1)" (click)="addIntoCart(productDetail);">Buy Now</button>
+						</div>
+					</div>                            
+					
+					<!-- start of tabs -->
+					<ul id="tabs" class="nav nav-tabs" role="tablist"><!-- start of tabs_click -->
+						<li class="nav-item">
+							<a id="tab-A" href="#pane-A" class="nav-link" [ngClass]="{'active': selectedTab == 'A'}" (click)="selectedTab = 'A';" data-toggle="tab" role="tab">Description</a>
+						</li>
+						<li class="nav-item">
+							<a id="tab-B" href="#pane-B" class="nav-link" [ngClass]="{'active': selectedTab == 'B'}" (click)="selectedTab = 'B';" data-toggle="tab" role="tab">Notes</a>
+						</li>
+						<li class="nav-item">
+							<a id="tab-C" href="#pane-C" class="nav-link" [ngClass]="{'active': selectedTab == 'C'}" (click)="selectedTab = 'C';" data-toggle="tab" role="tab">Brand</a>
+						</li>
+					</ul><!-- end of tabs_click -->
+					
+					<div id="content" class="tab-content" role="tablist"><!-- start of tabs_content -->
+						<div id="pane-A" class="card tab-pane fade" [ngClass]="{'show': selectedTab == 'A', 'active': selectedTab == 'A'}" role="tabpanel" aria-labelledby="tab-A">
+							<div class="card-body" [innerHTML]="sanitizer.bypassSecurityTrustHtml(productDetail['shortDescription'])"></div>
+						</div>
+				
+						<div id="pane-B" class="card tab-pane fade" [ngClass]="{'show': selectedTab == 'B', 'active': selectedTab == 'B'}" role="tabpanel" aria-labelledby="tab-B">
+							<div class="card-body">
+								<p *ngFor="let note of productDetail['notes']">{{note.title}} : {{note.description}}</p>
+							</div>
+						</div>
+				
+						<div id="pane-C" class="card tab-pane fade" [ngClass]="{'show': selectedTab == 'C', 'active': selectedTab == 'C'}" role="tabpanel" aria-labelledby="tab-C">
+							<div class="card-body">
+								<p *ngIf="productDetail['brand']" [innerHTML]="sanitizer.bypassSecurityTrustHtml(productDetail['brand']['description'])"></p>
+							</div>
+						</div>
+					</div><!-- end of tabs_content -->
+					<!-- end of tabs -->
+					
+				</div><!-- end of content_div -->
+			</div><!-- end of modal-body -->
+		
+		</div>
+	</div>
+</div>
+<!-- end of product_detail_popup -->

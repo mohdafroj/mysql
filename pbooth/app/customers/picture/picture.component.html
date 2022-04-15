@@ -1,0 +1,17 @@
+<div class="col-sm-12 col-xs-12 no-padding">
+  <form>
+    <h3 class="profile_image">
+      <input type="file" id="selectFile" name="selectFile" (change)="choosePicture($event);" class="uploadfile">
+      <div class="input-group col-xs-12 profile_pics">
+        <span class="input-group-btn">
+          <button class="browse btn input-lg" type="button" (click)="openBrowse();"><i class="fa fa-camera-retro"></i></button>
+        </span>
+      </div>
+      <img [src]="picUrl" alt="Picture" class="img-responsive"> {{name}}
+      <div style="margin-top: 8px;" *ngIf="saveAction">
+          <img src="assets/images/loading.gif" />
+          <span class="glyphicon glyphicon-remove-circle" (click)="cancelPicture();" style="cursor: pointer;"></span>
+      </div>
+    </h3>
+  </form>
+</div>
