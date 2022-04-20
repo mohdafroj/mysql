@@ -32,7 +32,7 @@ export class ReviewsComponent implements OnInit, OnDestroy {
   constructor (
     private router: Router,
 	private sanitize: DomSanitizer,
-	private products: ProductsService,
+	private product: ProductsService,
 	private customer: CustomerService,
 	private dataService: DataService
   ) {
@@ -102,7 +102,8 @@ export class ReviewsComponent implements OnInit, OnDestroy {
 	
 	getReviews(page) {
 		this.reviewsLoader = 'Loading...';
-		this.products.getProductReviews(this.result.id, page).subscribe(
+		let param = {productId: this.result.id, page:page, order: 0 };
+		this.product.getProductReviews(param).subscribe(
             res => {
 				if(res.data.total > 0){
 					for( let i=0; i<res.data.total; i++ ){

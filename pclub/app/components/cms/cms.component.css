@@ -156,3 +156,63 @@ div[class*="col-"].popupImageSlider ul li.active{background-color: #ee9591;}
 	.check_pincode .input-group{width:100%;}
 	.check_pincode p{padding:.5rem 0; margin:0 auto;}
 }
+
+
+.average_rating_div .card{border-radius:0; background-color:#fff; padding:1rem; margin-top:2rem;}
+.average_rating_div .card .rating-box{width:100%; height:auto; margin-right:auto; margin-left:auto; background-color:#3b4e76; color:#fff; padding:2rem 0;}
+.average_rating_div .card .rating-label{font-weight:bold; font-size:.85rem; color:rgba(0,0,0,0.6);}
+.average_rating_div .card .rating-bar{width:100%; padding:.5rem;}
+.average_rating_div .card .bar-container{width:100%; background-color:#f1f1f1; text-align:center; color:white; border-radius:2rem; cursor:pointer; margin-bottom:.5rem;}
+.average_rating_div .card .bar-5{width:70%; height:.8rem; background-color:#ee9591; border-radius:2rem;}
+.average_rating_div .card .bar-4{width:30%; height:.8rem; background-color:#ee9591; border-radius:2rem;}
+.average_rating_div .card .bar-3{width:20%; height:.8rem; background-color:#ee9591; border-radius:2rem;}
+.average_rating_div .card .bar-2{width:10%; height:.8rem; background-color:#ee9591; border-radius:2rem;}
+.average_rating_div .card .bar-1{width:0%; height:.8rem; background-color:#ee9591; border-radius:2rem;}
+.average_rating_div .card td{padding-bottom:.6rem;}
+.average_rating_div .card .star-active, .review_rating_div .card .star-active{color:#ee9591; margin-top:.8rem; margin-bottom:.8rem}
+.average_rating_div .card .star-active:hover, .review_rating_div .card .star-active:hover{color:#3b4e76; cursor:pointer;}
+.average_rating_div .card .star-inactive, .review_rating_div .card .star-inactive{color:#CFD8DC; margin-top:.8rem; margin-bottom:.8rem;}
+
+.review_rating_div{margin-top:2rem;}
+.review_rating_div .card{background-color:#fff; padding:1rem 0; margin-top:2rem; border:none;}
+.review_rating_div:not(:last-child) .card{border-bottom:.1rem solid rgba(0,0,0,0.1); padding-bottom:5rem;}
+.review_rating_div .profile-pic{width:5rem; height:5rem; border-radius:100%; margin-right:1rem; overflow:hidden; border:.1rem solid rgba(0,0,0,0.1);}
+.review_rating_div .review_content{width:calc(100% - 6rem);}
+.review_rating_div .review_content .profile_name h3{font-size:1.1rem; padding-bottom:.5rem; padding-top:.5rem; margin:0; color:rgba(0,0,0,0.7); display:inline-block; font-weight:bolder;}
+.review_rating_div .review_content .profile_name p{font-size:.8rem; color:rgba(0,0,0,0.6); margin-bottom:0;}
+.review_rating_div .review_description{position:relative; margin-top:.5rem;}
+.review_rating_div .review_description h4{color:#3b4e76; font-size:1.1rem; text-transform:capitalize; margin:0; padding-bottom:.5rem;}
+.review_rating_div .review_description p{font-size:.85rem; color:rgba(0,0,0,0.7); margin-bottom:0;}
+
+/*************** start of giveRating css ************/
+.giveRating_div{min-height:6rem; position:relative; margin-bottom:2rem;}
+.giveRating_div p{text-align:center; margin:0;}
+.giveRating_div p span{font-size:.9rem; text-transform:uppercase; color:#3b4e76; display:inline-block; text-decoration:underline;}
+.giveRating_div #line{height:.1rem; width:15rem; background-color:#3b4e76; position:absolute; top:50%; left:50%; transform:translate(-50%, -50%);}
+.giveRating_div #emoji{list-style:none; position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); margin:0; padding:0; z-index:99; display:flex; justify-content:space-between;}
+.giveRating_div #note{list-style:none; position:absolute; bottom:-.5rem; left:50%; transform:translate(-50%, -50%); margin:0; padding:0; z-index:99; display:flex; justify-content:space-between;}
+.giveRating_div #emoji li{display:inline-block; margin-left:.8rem; margin-right:.8rem; cursor:pointer;}
+.giveRating_div #note li{width:2.7rem; font-size:.85rem; color:#3b4e76; display:inline-block; margin-left:.5rem; margin-right:.5rem; transition:all .3s; cursor:pointer; text-transform:capitalize; letter-spacing:.05rem; text-align:center;}
+.giveRating_div #dot{height:.3rem; width:.3rem; background-color:#ee9591; transition:all .3s; -webkit-transition:all .3s;}
+
+/****************** start of media css *******************/
+
+@media (min-width: 768px) and (max-width: 991px) {
+	.average_rating_div .card div span,
+	.average_rating_div .card .rating-label,
+	.average_rating_div .card td{font-size:.8rem;}
+}
+
+@media (max-width: 767.98px) {
+	.average_rating_div{margin-bottom:2rem;}
+	.purchased_review_div{padding-bottom:4rem; margin-bottom:2rem; border-bottom:.1rem solid rgba(0,0,0,0.1);}
+	
+	.review_rating_div{margin-top:0;}
+	.review_rating_div:not(:last-child) .card{padding-bottom:3rem;}
+	.review_rating_div .review_description h4{font-size:1rem;}
+	.review_rating_div .review_description p{font-size:.8rem;}
+}
+
+@media (max-width: 575px) {
+	
+}

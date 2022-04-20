@@ -40,6 +40,20 @@ export class CmsComponent implements OnInit {
 	toggleIndex = 0;
 	toggleActive = 'minus';
 	toggleClass = ['minus','plus','plus','plus','plus','plus','plus','plus','plus','plus','plus'];
+	
+	newReview = [];
+	reviewSelected = 0;
+	reviewMsg	= '';
+	reviewStatus = 0;
+	reviewForm: FormGroup;
+	customerReviews = 0;
+	customerRating = 0;
+	reviewsList = [];
+	reviewsPage = 1;
+	reviewsLoader = '';
+	reviewOrder = 0;
+	moreReviewsFlag: number  = 1;
+	
 	sanitizer:any;
 	constructor(
 		private toastr:ToastrService, 
@@ -58,6 +72,38 @@ export class CmsComponent implements OnInit {
 		private sanitize:DomSanitizer
 	) {
 		this.sanitizer = sanitize;
+		this.newReview = [
+			{
+				rate: 1,
+				title: 'Sick',
+				color:'rgb(59, 78, 118)',
+				selected: 0
+			},
+			{
+				rate: 2,
+				title: 'Bad',
+				color:'rgb(59, 78, 118)',
+				selected: 0
+			},
+			{
+				rate: 3,
+				title: 'Okay',
+				color:'rgb(59, 78, 118)',
+				selected: 0
+			},
+			{
+				rate: 4,
+				title: 'Good',
+				color:'rgb(59, 78, 118)',
+				selected: 0
+			},
+			{
+				rate: 5,
+				title: 'Great',
+				color:'rgb(59, 78, 118)',
+				selected: 0
+			}
+		];
 	}
 
     ngOnInit() {
@@ -72,7 +118,10 @@ export class CmsComponent implements OnInit {
 		this.pincodeForm = new FormGroup ({
 			pincode: new FormControl(savePincode, Validators.compose([Validators.required]) )
 		});
-		
+		this.reviewForm = new FormGroup ({
+			title: new FormControl('', Validators.compose([Validators.required]) ),
+			description: new FormControl('', Validators.compose([Validators.required]) )
+		});
 		this.route.paramMap.subscribe(res => {
 			this.urlKey = res.get('key');  
 			this.title.setTitle(this.urlKey);
@@ -153,6 +202,9 @@ export class CmsComponent implements OnInit {
 				this.plusContent = this.result.plusContent;
 				this.productOffer = this.result.offer;
 				//this.data.sendReviews(this.result);
+				this.reviewsList = (this.result['reviews'] == undefined) ? [] : this.result.reviews;
+				this.customerReviews = this.result['custReviews']['customers'];
+				this.customerRating = this.result['custReviews']['rating'];
 				//this.data.sendRelatedProduct({userId: this.userId, items: this.result.related});
 				this.title.setTitle(this.result.title);
 				this.resultMsg = '';
@@ -287,4 +339,81 @@ export class CmsComponent implements OnInit {
 			this.toastr.success("One item added into cart!");			
 		}
 	}
+	
+	getReviews(page) {
+		this.reviewsLoader = 'Loading...';
+		let param = {productId: this.result.id, page:page, order: this.reviewOrder };
+		this.product.getProductReviews(param).subscribe(
+            res => {
+				if(res.data.total > 0){
+					if ( this.reviewsPage == 1 ) {
+						this.reviewsList = [];
+					}
+					for( let i=0; i<res.data.total; i++ ){
+						this.reviewsList.push(res.data.reviews[i]);
+					}					
+				}
+				this.moreReviewsFlag = res.data.viewMore;
+				this.reviewsLoader   = '';
+            },
+            (err: HttpErrorResponse) => {
+                if(err.error instanceof Error){
+                    console.log('Client Error: '+err.error.message);
+                }else{
+                    console.log(`Server Error: ${err.status}, body was: ${JSON.stringify(err.error)}`);
+                }
+            }
+        );
+	}
+	
+	loadMoreReviews(){
+		this.reviewsPage = this.reviewsPage + 1;
+		this.getReviews(this.reviewsPage);
+	}
+	
+	reviewSorting(e) {
+		this.reviewOrder = e.target.value;
+		this.reviewsPage = 1;
+		this.getReviews(this.reviewsPage);
+	}
+	
+	selectRating(review) {
+		this.reviewSelected = review;
+		this.newReview.forEach(function(item){
+			if ( item.rate == review ) { 
+				item.selected = 1;
+				item.color = 'rgb(238, 149, 145)';
+			} else {
+				item.selected = 0;
+				item.color = 'rgb(59, 78, 118)';
+			}
+		}, review);
+	}
+	
+	addReview(formData){
+		this.reviewStatus = 1;
+		this.reviewMsg = 'Wait...'
+		formData.itemId = this.result.id;
+		formData.rating = this.reviewSelected;
+		if( this.userId > 0 ){
+			this.customer.addReviews(formData).subscribe(
+				res => {
+					if(res.status){
+						this.reviewStatus = 2;
+						this.reviewForm = new FormGroup ({
+							title: new FormControl('', Validators.compose([Validators.required]) ),
+							description: new FormControl('', Validators.compose([Validators.required]) )
+						});
+						this.reviewSelected = 0;
+					}
+					this.reviewMsg = res.message;
+				},
+				(err: HttpErrorResponse) => {
+					this.reviewMsg = "Sorry, there are some app issue!";
+				}
+			);
+		}else{
+			this.router.navigate(['/customer/login'], {queryParams:{}});
+		}
+	} 
 }

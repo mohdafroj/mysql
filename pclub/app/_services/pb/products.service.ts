@@ -96,10 +96,11 @@ export class ProductsService {
       return this.http.get<ProductResponse>(this.pbApi+'products/get-details', {params:prms});
     }
 
-    getProductReviews(productId, page){
+    getProductReviews(input){
 		let prms = new HttpParams();
-		prms = prms.append('productId', productId);
-		prms = prms.append('page', page);
+		prms = prms.append('productId', input.productId);
+		prms = prms.append('page', input.page);
+		prms = prms.append('order', input.order);
 		return this.http.get<ProductResponse>(this.pbApi+'products/get-reviews', {params:prms});
     }
 

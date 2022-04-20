@@ -162,7 +162,7 @@
 							</div>
 							<!-- end card -->
 							
-							<!-- start card --
+							<!-- start card -->
 							<div class="card">
 								<div class="card-header" id="tabs7">
 									<button type="button" (click)="toggleMethod(6)" class="btn btn-link collapsed" data-toggle="collapse" data-target="#reviewPanel">
@@ -171,11 +171,51 @@
 								</div>
 								<div id="reviewPanel" class="collapse" aria-labelledby="tabs7" data-parent="#accordionExample">
 									<div class="card-body reviewSec">
-										<reviews [userId]="userId"></reviews>										
+										<!-- reviewBtn -->
+										<div class="reviewBtn">
+											<button type="button" class="btn my-btn checkout_btn from-left" data-toggle="modal" data-target="#reviewModal">
+												Write A Review
+											</button>
+										</div>
+										<!-- ratngSortBy -->
+										<div class="ratngSortBy">
+											<h5>
+												Rating -
+												<span>#{{customerRating | number:'1.1-1'}} | {{customerReviews}} Reviews</span>
+											</h5>
+											<h5>
+												Sort by
+												<span>
+													<select (change)="reviewSorting($event);" class="form-control">
+														<option value="0">Most Recent</option>
+														<option value="1">Low to High</option>
+														<option value="2">High to Low</option>
+													</select>
+												</span>
+											</h5>
+										</div>
+										<!-- custRevwSec -->
+										<div class="custRevwSec">
+											<!-- custRevwBox -->
+											<div *ngFor="let item of reviewsList" class="custRevwBox">
+												<h6>
+													{{item.title}}
+													<span>#{{item.rating | number:'1.1-1'}} by {{item.customer.name}} on {{item.created}}</span>
+												</h6>
+												<p [innerHTML]="sanitizer.bypassSecurityTrustHtml(item.description)"></p>
+											</div>
+										</div>
+										<!-- loadMoreSec -->
+										<div *ngIf="moreReviewsFlag && reviewsList.length > 4" class="loadMoreSec">
+											<button (click)="loadMoreReviews();" type="button" class="btn loadMoreBtn">
+												Load More
+											</button>
+											<span>{{reviewsLoader}}</span>
+										</div>
 									</div>
 								</div>
 							</div>
-							<!- end card -->
+							<!-- end card -->
 						</div>
 						<p *ngIf="( (result.isStock == 'coming_soon') || (result.isStock == 'out_of_stock') )">Out Of Stock</p>
                         <button *ngIf="( (result.isStock == 'in_stock') && (customerCart.indexOf(result.id) == -1) )" (click)="addCart(result);" class="btn my-btn cart_btn from-left">Buy Now</button>
@@ -208,3 +248,69 @@
         </section>
 		<div class="parentOfAplus" *ngFor="let item of plusContent" [innerHTML]="sanitizer.bypassSecurityTrustHtml(item)"></div>   
     </div>
+
+
+    <!-- start review_rating Modal -->
+    <div class="modal fade global_popup" id="reviewModal" tabindex="-1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content border-0 rounded-0 form_filed">
+                <div class="modal-header">
+                    <h4 class="modal-title">Review and Rating</h4>
+                    <button type="button" class="btn close-btn close close-modal" data-dismiss="modal" aria-label="Close">
+                    	<span class="icon-cross" aria-hidden="true">&nbsp;</span>
+                    	<span class="icon-cross" aria-hidden="true">&nbsp;</span>
+                    </button>
+                </div>
+                <form [formGroup] = "reviewForm" (ngSubmit) = "addReview(reviewForm.value);" class="needs-validation" novalidate><!-- start of form -->
+                
+                <div class="modal-body">
+                	<div class="col-12 giveRating_div"><!-- start of giveRating_div -->
+                    	<p><span>Rate It</span></p>
+                        <ul id="emoji">
+                            <li *ngFor="let item of newReview;" (click)="selectRating(item.rate);">
+								<img *ngIf="item.selected" src="assets/images/emojis/emoji{{item.rate}}.png">
+								<img *ngIf="!(item.selected)" src="assets/images/emojis/emoji{{item.rate}}{{item.rate}}.png">
+							</li>
+                        </ul>
+                        
+                        <ul id="note">
+                            <li *ngFor="let item of newReview;" (click)="selectRating(item.rate);" [ngStyle]="{'color':item.color}">{{item.title}}</li>
+                        </ul>
+                        
+                        <div id="line">
+                        	<div id="dot"></div>
+                        </div>
+                    </div><!-- end of giveRating_div -->
+                    
+                	<div class="form-group select_box_1 col-xs-12 no-padding rinput"><!-- start of select_box -->
+						<select formControlName="title" class="form-control">
+							<option value="" title="Title">Select Title</option>
+							<option value="Affordable" title="Affordable">Affordable</option>
+							<option value="Average" title="Average">Average</option>
+							<option value="Awesome" title="Awesome">Awesome</option>
+							<option value="Brilliant" title="Brilliant">Brilliant</option>
+							<option value="Classy" title="Classy">Classy</option>
+							<option value="Excellent" title="Excellent">Excellent</option>
+							<option value="Exotic" title="Exotic">Exotic</option>
+							<option value="Okay" title="Okay">Okay</option>
+							<option value="Sensual" title="Sensual">Sensual</option>
+							<option value="Soothing" title="Soothing">Soothing</option>
+						</select>
+					</div><!-- end of select_box -->
+                
+					<div class="form-group col-xs-12 no-padding rinput"><!-- start of textarea -->
+						<textarea class="form-control" formControlName="description" cols="2"></textarea>
+						<span *ngIf="reviewForm.controls.description.invalid" class="filed_name">Write here*</span>
+						<span *ngIf="reviewForm.controls.description.valid" class="filed_name complete_filled">Write here*</span>
+					</div><!-- end of textarea -->
+					<div class="form-group"><p [ngClass]="{'':reviewStatus === 0,'text-danger':reviewStatus === 1,'text-success':reviewStatus === 2}" [innerHTML]="sanitizer.bypassSecurityTrustHtml(reviewMsg)"></p></div>
+                </div>
+                <div class="modal-footer m-auto border-0 p-2">
+					<button type="submit" class="btn my-btn checkout_btn from-left" [disabled]="!reviewForm.valid">Submit</button>
+                </div>
+                
+                </form><!-- end of form -->
+            </div>
+        </div>
+    </div>
+    <!-- end confirmation Modal -->

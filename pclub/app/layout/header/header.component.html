@@ -3,7 +3,7 @@
 			<a class="navbar-brand" routerLink="/">
 				<img src="assets/images/logo.svg" alt="Logo" class="img-fluid">
 			</a>
-			<button id="menuToggle" (click)= "actveMenu = !actveMenu;" class="cta navbar-toggler" [ngClass]="{'active': actveMenu, 'collapsed': !actveMenu}" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" [attr.aria-expanded]="actveMenu" aria-label="Toggle navigation">
+			<button id="menuToggle" (click)="actveMenu = !actveMenu;" class="cta navbar-toggler" [ngClass]="{'active': actveMenu, 'collapsed': !actveMenu}" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" [attr.aria-expanded]="actveMenu" aria-label="Toggle navigation">
                 <span class="toggle-btn type1"></span>
             </button>
             <div class="navbar-collapse">

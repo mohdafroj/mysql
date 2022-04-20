@@ -105,7 +105,6 @@ export class StoreService {
 		if ( offerCoupon && (offerCoupon != 'undefined') ) {
 			inputData['couponCode'] = offerCoupon;
 		}
-		console.log(inputData, offerCoupon);
 		return inputData;
 	}
 
