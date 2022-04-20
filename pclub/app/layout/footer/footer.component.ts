@@ -47,7 +47,7 @@ export class FooterComponent implements OnInit, DoCheck {
 		//this.showDevice = ($(window).width() <= 767) ? true:false;
 		var d = new Date();
 		this.currentYear = d.getFullYear();
-		let infoData = this.pages.getCompanyData(); console.log(infoData);
+		let infoData = this.pages.getCompanyData();
 		this.company = ( (infoData != undefined) && (infoData['company'] != undefined) ) ? infoData['company'] : this.company;
 		this.router.events.subscribe(event => {
 			if(event instanceof NavigationEnd) {
