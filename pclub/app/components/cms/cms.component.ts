@@ -52,7 +52,7 @@ export class CmsComponent implements OnInit {
 	reviewsPage = 1;
 	reviewsLoader = '';
 	reviewOrder = 0;
-	moreReviewsFlag: number  = 1;
+	moreReviewsFlag = 1;
 	
 	sanitizer:any;
 	constructor(

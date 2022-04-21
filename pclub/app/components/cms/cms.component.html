@@ -39,6 +39,10 @@
 								</span>
 							</dfn>
 						</h4>
+						<p *ngIf="( (result.isStock == 'coming_soon') || (result.isStock == 'out_of_stock') )">Out Of Stock</p>
+                        <button *ngIf="( (result.isStock == 'in_stock') && (customerCart.indexOf(result.id) == -1) )" (click)="addCart(result);" class="btn my-btn cart_btn from-left">Buy Now</button>
+                        <a *ngIf="( (result.isStock == 'in_stock') && (customerCart.indexOf(result.id) > -1) )" routerLink="/checkout/cart" class="btn my-btn cart_btn from-left">Go to Cart</a>
+						<!--button *ngIf="( (result.isStock == 'coming_soon') || (result.isStock == 'out_of_stock') )" type="button" class="btn my-btn cart_btn from-left" (click)="notifyMePopup(result.id);" data-target="#NotifyMe" data-toggle="modal">Notify Me!</button-->
 						<div class="accordion accordionMain" id="accordionExample">
 							<!-- start of product detail card -->
 							<div class="card">
@@ -206,7 +210,7 @@
 											</div>
 										</div>
 										<!-- loadMoreSec -->
-										<div *ngIf="moreReviewsFlag && reviewsList.length > 4" class="loadMoreSec">
+										<div *ngIf="moreReviewsFlag && reviewsList.length > 2" class="loadMoreSec">
 											<button (click)="loadMoreReviews();" type="button" class="btn loadMoreBtn">
 												Load More
 											</button>
@@ -217,10 +221,6 @@
 							</div>
 							<!-- end card -->
 						</div>
-						<p *ngIf="( (result.isStock == 'coming_soon') || (result.isStock == 'out_of_stock') )">Out Of Stock</p>
-                        <button *ngIf="( (result.isStock == 'in_stock') && (customerCart.indexOf(result.id) == -1) )" (click)="addCart(result);" class="btn my-btn cart_btn from-left">Buy Now</button>
-                        <a *ngIf="( (result.isStock == 'in_stock') && (customerCart.indexOf(result.id) > -1) )" routerLink="/checkout/cart" class="btn my-btn cart_btn from-left">Go to Cart</a>
-						<!--button *ngIf="( (result.isStock == 'coming_soon') || (result.isStock == 'out_of_stock') )" type="button" class="btn my-btn cart_btn from-left" (click)="notifyMePopup(result.id);" data-target="#NotifyMe" data-toggle="modal">Notify Me!</button-->
 					
 					</div>
 					
