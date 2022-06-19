@@ -20,7 +20,7 @@ export class ContactComponent implements OnInit {
   }
 
   ngOnInit() {
-	this.company = {'name':'','add':'','city':'','state':'','country':'','pin':'','phone':'','email':'','website':'','start_year':''};
+	this.company = {'name':'','add':'','city':'','state':'','country':'','pin':'','code':'','phone':'','email':'','website':'','start_year':''};
 	this.config.scrollToTop();
     this.rForm = new FormGroup ({
       firstname: new FormControl("", Validators.compose([Validators.required,Validators.pattern(this.config.ALPHA_SPACE_REGEXP),Validators.minLength(3)]) ),

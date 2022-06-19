@@ -88,7 +88,7 @@ export class AppComponent {
 	whatsAppChat () {
 		let infoData = this.pages.getCompanyData();
 		let company = ( (infoData != undefined) && (infoData['company'] != undefined) ) ? infoData['company'] : {phone:''};
-		window.location.href = 'https://api.whatsapp.com/send/?phone='+company.phone+'&text=Hi, I need some Help';
+		window.location.href = 'https://api.whatsapp.com/send/?phone='+company.code+company.phone+'&text=Hi, I need some Help';
 	}
 	ngOnChanges() {
 		if ( this.checkStart ) {

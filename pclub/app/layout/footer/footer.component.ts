@@ -37,7 +37,7 @@ export class FooterComponent implements OnInit, DoCheck {
 	}
 
 	ngOnInit() {
-		this.company = {'name':'','add':'','city':'','state':'','country':'','pin':'','phone':'','email':'','website':'','start_year':'','facebook':'','youtube':'','twitter':'','pinterest':'','instagram':''};
+		this.company = {'name':'','add':'','city':'','state':'','country':'','pin':'','code':'','phone':'','email':'','website':'','start_year':'','facebook':'','youtube':'','twitter':'','pinterest':'','instagram':''};
 		this.userId = this.customer.getId();
 		this.rForm = new FormGroup ({
 			email: new FormControl("", Validators.compose([Validators.required, Validators.pattern(this.config.EMAIL_REGEXP)]) )

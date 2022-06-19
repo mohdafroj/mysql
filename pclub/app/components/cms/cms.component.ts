@@ -195,16 +195,14 @@ export class CmsComponent implements OnInit {
 		prms = prms.append('key', this.urlKey);
 		prms = prms.append('userId', `${this.userId}`);
 		this.product.getPages(prms).subscribe(
-		  res => {
+		  res => { 
 			if( res.status ){
 				this.pageType  = res.data.pageType;
-				this.result = res.data; //console.log(this.result.metaTitle);
+				this.result = res.data;
 				this.plusContent = this.result.plusContent;
 				this.productOffer = this.result.offer;
 				//this.data.sendReviews(this.result);
 				this.reviewsList = (this.result['reviews'] == undefined) ? [] : this.result.reviews;
-				this.customerReviews = this.result['custReviews']['customers'];
-				this.customerRating = this.result['custReviews']['rating'];
 				//this.data.sendRelatedProduct({userId: this.userId, items: this.result.related});
 				this.title.setTitle(this.result.title);
 				this.resultMsg = '';
@@ -221,6 +219,8 @@ export class CmsComponent implements OnInit {
 				}
 				switch( this.pageType ){
 					case 'product':
+						this.customerReviews = this.result['custReviews']['customers'];
+						this.customerRating = this.result['custReviews']['rating'];
 						this.seo.ogMetaTag(this.result.metaTitle, this.result.metaDescription, this.result.images[0].large);
 						this.track.clickProduct(this.result);
 						this.seo.removeAMPPageLink();
