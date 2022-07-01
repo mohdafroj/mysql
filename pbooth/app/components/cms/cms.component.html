@@ -45,7 +45,7 @@
                                 <span class="product_name">
                                     {{result.title}}
                                     <span class="brand_flag">
-                                        <img [src]="result.brand.image" [alt]="result.brand.countryName" data-toggle="tooltip" data-placement="bottom" [title]="result.brand.countryName">
+                                        <img [src]="result.brand.image" [alt]="result.brand.country_name" data-toggle="tooltip" data-placement="bottom" [title]="result.brand.country_name">
                                     </span>
                                 </span>
                                 <ul [hidden]="1" itemscope itemtype="http://schema.org/BreadcrumbList">
@@ -106,19 +106,19 @@
                                 </div><!-- end of cart_btn -->
                             </div><!-- end of add-on or button -->
 							
-                            <h3 *ngIf="result.isContain" class="col-xs-12 detail_price"><!-- start of enlarge_content -->
-                                <p class="col-xs-12 detail_mrp no-margin"><!-- start of mrp -->
+                            <!--h3 *ngIf="result.isContain" class="col-xs-12 detail_price">
+                                <p class="col-xs-12 detail_mrp no-margin">
                                     Contains Mini Perfume Of The Following <small>(Click to enlarge)</small>
-                                </p><!-- end of mrp -->
+                                </p>
                                 
-                                <ul class="col-xs-12 list-unstyled no-padding enlarge_popup"><!-- start of enlarge_image -->
+                                <ul class="col-xs-12 list-unstyled no-padding enlarge_popup">
                                     <li *ngFor="let item of result.related; let i = index">
                                         <button type="button" class="btn" (click)="productPopup(i);" data-toggle="modal" data-target="#Enlarge_images">
 											<img [src]="(item.images.url != '') ? item.images.url:'assets/images/product/default/is-base.jpg'" [alt]="item.name | titlecase" [title]="item.name | titlecase" class="img-responsive center-block" />
                                         </button>
                                     </li>
-                                </ul><!-- end of enlarge_image -->
-                            </h3><!-- end of enlarge_content -->
+                                </ul>
+                            </h3-->
 							
 							<div class="col-sm-12 col-xs-12 no-padding nav_tabs"><!-- start of nav-tab -->
                             
@@ -138,7 +138,13 @@
 										</p>
                                     </div><!-- end of content_1 -->                                    
                                     <div id="tabDetail" class="tab-pane fade" [innerHTML]="sanitizer.bypassSecurityTrustHtml(result.description)"></div>                                    
-                                    <div id="tabBrand" class="tab-pane fade" [innerHTML]="sanitizer.bypassSecurityTrustHtml(result.brand.description)"></div>
+                                    <div id="tabBrand" class="tab-pane fade">
+										<p><b>Name: </b>{{result.brand.title}}</p>
+										<p><b>Country Of Origin: </b>{{result.brand.country_name}}</p>
+										<p><b>Manufacturer By: </b>{{result.brand.manufacturer_name}}</p>
+										<p><b>Manufacturer Address: </b>{{result.brand.manufacturer_address}}</p>
+										<p><b>Description: </b><span [innerHTML]="sanitizer.bypassSecurityTrustHtml(result.brand.description)"></span></p>
+									</div>
                                     
                                 </div><!-- end of nav-content -->
                                 
