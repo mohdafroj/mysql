@@ -121,13 +121,13 @@
 							<p class="col-xs-12 detail_mrp no-margin"><!-- start of size -->
 								Price :
 								<span class="detail_main_price"><i class="fa fa-rupee"></i>{{item.price | number: '2.2-2' }}</span> 
-								<del><i class="fa fa-rupee"></i>{{item.offerPrice | number: '2.2-2' }}</del>
+								M.R.P.- <del><i class="fa fa-rupee"></i>{{item.offerPrice | number: '2.2-2' }}</del>
 							</p>
 							</ng-template>
 							<ng-template #price2>
 							<p class="col-xs-12 detail_mrp no-margin"><!-- start of size -->
-								Price :
-								<span class="detail_main_price"><i class="fa fa-rupee"></i>{{item.price}}</span> 
+								M.R.P.-
+								<span class="detail_main_price"><i class="fa fa-rupee"></i>{{item.price | number: '2.2-2'}}</span> 
 							</p><!-- end of size -->
 							</ng-template>
                         </h3><!-- end of price -->

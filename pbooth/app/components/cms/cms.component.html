@@ -64,14 +64,20 @@
 								
                             </h1><!-- end of heading -->
                             
-                            <h3 class="col-xs-12 detail_price"><!-- start of price -->
-								<p class="col-xs-12 detail_mrp no-margin"><!-- start of size -->
-									<span class="detail_main_price"><i class="fa fa-rupee"></i>{{result.price | number: '1.2-2' }}</span> 
-									<del *ngIf="result.offerPrice > result.price"><i class="fa fa-rupee"></i>{{result.offerPrice | number: '1.2-2' }}</del>
+                            <h3 class="col-xs-12 detail_price">
+								<p *ngIf="result.offerPrice > result.price; else elsePrice" class="col-xs-12 detail_mrp no-margin">
+									M.R.P.- <del><i class="fa fa-rupee"></i>{{result.offerPrice | number: '1.2-2' }}</del><br>
+									<span class="detail_main_price"><i class="fa fa-rupee"></i>{{result.price | number: '1.2-2' }}</span>
 									<span *ngIf="result.sold" class="sold_text">{{result.sold}} Sold</span>
 								</p>
-				
-                            </h3><!-- end of price -->
+								<ng-template #elsePrice>
+									<p class="col-xs-12 detail_mrp no-margin">
+										M.R.P.- <span class="detail_main_price"><i class="fa fa-rupee"></i>{{result.price | number: '1.2-2' }}</span> 
+										<span *ngIf="result.sold" class="sold_text">{{result.sold}} Sold</span>
+									</p>
+								</ng-template>
+								<p class="col-xs-12 detail_mrp no-margin">Inclusive of all taxes</p>
+                            </h3>
                             
                             <div class="col-sm-12 col-xs-10 detail_pincode"><!-- start of pincode -->                                
                                 <div class="col-md-5 col-sm-6 no-padding col-xs-12"><!-- start of check -->
@@ -139,11 +145,11 @@
                                     </div><!-- end of content_1 -->                                    
                                     <div id="tabDetail" class="tab-pane fade" [innerHTML]="sanitizer.bypassSecurityTrustHtml(result.description)"></div>                                    
                                     <div id="tabBrand" class="tab-pane fade">
-										<p><b>Name: </b>{{result.brand.title}}</p>
+										<p><b>Description: </b><span [innerHTML]="sanitizer.bypassSecurityTrustHtml(result.brand.description)"></span></p>
+										<p><b>Brand Name: </b>{{result.brand.title}}</p>
 										<p><b>Country Of Origin: </b>{{result.brand.country_name}}</p>
 										<p><b>Manufacturer By: </b>{{result.brand.manufacturer_name}}</p>
 										<p><b>Manufacturer Address: </b>{{result.brand.manufacturer_address}}</p>
-										<p><b>Description: </b><span [innerHTML]="sanitizer.bypassSecurityTrustHtml(result.brand.description)"></span></p>
 									</div>
                                     
                                 </div><!-- end of nav-content -->

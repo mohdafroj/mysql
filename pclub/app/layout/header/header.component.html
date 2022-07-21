@@ -11,7 +11,7 @@
 				<div class="mr-auto collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav nav_menu">
 						<li class="nav-item" (click)="menuToggle()">
-							<a class="nav-link my-btn checkout_btn from-left sticky-top" routerLink="/shopnow">Shop Now</a>
+							<a class="nav-link my-btn checkout_btn from-left sticky-top" [routerLink]="['/','shopnow']">Shop Now</a>
 						</li>
 						<li *ngIf="windowWidth <= 766" class="nav-item" (click)="menuToggle()">
 							<a class="nav-link" [routerLink]="['/', 'shopnow']" [queryParams]="{type: config.categories.category1.key}">{{config.categories.category1.title}}</a>

@@ -1,7 +1,15 @@
 <div class="content mt-n3">
+	<section class="shopNowBanner">
+		<figure>
+			<img src="assets/images/shop-banner.png" alt="Carry your scent, whetever you go" class="img-fluid w-100 d-block" />
+			<figcaption class="figure-caption">
+				Lighter <span>Carry your scent, whetever you go</span>
+			</figcaption>
+		</figure>
+	</section>
 	<section class="section_box">
 		<div class="container">
-			<div class="row">
+			<!--div class="row">
 				<h3 class="col-12 categoryTitle">
 					<span>Product Categories</span>
 				</h3>
@@ -57,7 +65,7 @@
 						</ng-template>	
 					</swiper>
 				</div>
-			</div>
+			</div-->
 			<div class="row">
 				<div class="col-12">
 					<ul class="list-unstyled filterLinks">
@@ -68,33 +76,48 @@
 				</div>
 			</div>
 			<div class="row productItems" *ngIf="(resultStatus == 1); else startLoader" >
-				<div *ngFor="let item of filterProducts;" class="col-12 col-md-4">
-					<h3>{{item.name}}</h3>
-					<figure (click)="viewPage(item);">
-						<img [src]="item['images'][0]['large']" [alt]="item['images'][0]['alt']" class="img-fluid mx-auto d-block" />
-						<figcaption *ngIf="item.rating" class="figure-caption">
-							<i class="fas fa-star"></i>{{item.rating | number: '1.1-1'}}
-						</figcaption>
-					</figure>
-					<h4>
-						<dfn>₹{{item.price | number: '2.2-2'}} <del *ngIf="item.discount.original > 0">₹{{item.discount.original | number: '2.2-2'}}</del></dfn>
-						<dfn>
-							<em>Sold</em> 
-							<span class="soldNumbr">
-								<b *ngFor="let digit of item.sold.toString().split('');">{{digit}}</b>
-							</span>
-						</dfn>
-					</h4>
+				<div *ngFor="let item of filterProducts;" class="col-md-6 col-12">
+					<a [routerLink]="['/', item.urlKey]">
+						<div class="card">
+							<figure>
+								<img [src]="item['images'][0]['large']" [alt]="item['images'][0]['alt']" class="img-fluid mx-auto d-block" />
+								<figcaption class="figure-caption" *ngIf="item.rating" >
+									<i class="fas fa-star"></i>{{item.rating | number: '1.1-1'}}
+								</figcaption>
+							</figure>
+							<div class="card-body">
+								<h5 class="card-title">
+									{{item.name}} <span *ngIf="item.categories[0]">{{item.categories[0]['name']}}</span>
+								</h5>
+								<h4 *ngIf="item.discount.original > 0; else elsePrice" class="card-text">
+									₹{{item.price | number: '2.2-2'}} <del>₹{{item.discount.original | number: '2.2-2'}}</del>
+								</h4>
+								<ng-template #elsePrice>
+									<h4 class="card-text">
+										₹{{item.price | number: '2.2-2'}}
+									</h4>
+								</ng-template>
+								<!--dfn>
+									<em>Sold</em> 
+									<span class="soldNumbr">
+										<b *ngFor="let digit of item.sold.toString().split('');">{{digit}}</b>
+									</span>
+								</dfn-->
+							</div>
+						</div>
+					</a>
 				</div>
-				<div *ngIf="filterProducts.length == 0" class="col-12 col-md-4">
+				<div *ngIf="filterProducts.length == 0" class="col-md-6 col-12">
 					<h3>Sorry, record not found</h3>
 				</div>
 			</div>
 			<ng-template #startLoader>
-				<div class="col-12 col-md-4 text-center">
-					<figure>
-						<img src="assets/images/web_loader.gif" alt="Loader Image" class="img-fluid mx-auto d-block" />
-					</figure>
+				<div class="row productItems">
+					<div class="col-md-6 col-12 text-center">
+						<figure>
+							<img src="assets/images/web_loader.gif" alt="Loader Image" class="img-fluid mx-auto d-block" />
+						</figure>
+					</div>
 				</div>
 			</ng-template>	
 		</div>

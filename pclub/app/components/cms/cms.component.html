@@ -30,15 +30,31 @@
 						</div>
 					</div>
 					<div class="col-sm-7 col-12">
-						<h3 class="d-md-block d-none">{{result.title}}</h3>
-						<h4>
-							<dfn>₹{{result.price | number:'1.2-2'}} <del *ngIf="result.discount.original">₹{{result.discount.original | number:'1.2-2'}}</del></dfn>
-							<dfn><em>Sold</em> 
+						<h3 class=""><span *ngIf="result.categories[0]">{{result.categories[0]['name']}}</span> {{result.title}}</h3>
+						<h4 *ngIf="result.discount.original; else elsePrice">
+							<dfn>
+								₹{{result.price | number:'1.2-2'}}<br>
+								<span style="color:#3b4e76;">M.R.P.-</span> 
+								<del>₹{{result.discount.original | number:'1.2-2'}}</del>&nbsp;
+								<span>{{result.discount.label}}</span>
+							</dfn>
+							<!--dfn><em>Sold</em> 
 								<span class="soldNumbr">
 									<b *ngFor="let digit of result.sold.toString().split('');">{{digit}}</b>
 								</span>
-							</dfn>
+							</dfn-->
 						</h4>
+						<ng-template #elsePrice>
+							<h4>
+								<dfn>M.R.P.- ₹{{result.price | number:'1.2-2'}}</dfn>
+								<!--dfn><em>Sold</em> 
+									<span class="soldNumbr">
+										<b *ngFor="let digit of result.sold.toString().split('');">{{digit}}</b>
+									</span>
+								</dfn-->
+							</h4>
+						</ng-template>
+						<p class="col-xs-12">Inclusive of all taxes</p>
 						<p *ngIf="( (result.isStock == 'coming_soon') || (result.isStock == 'out_of_stock') )">Out Of Stock</p>
                         <button *ngIf="( (result.isStock == 'in_stock') && (customerCart.indexOf(result.id) == -1) )" (click)="addCart(result);" class="btn my-btn cart_btn from-left">Buy Now</button>
                         <a *ngIf="( (result.isStock == 'in_stock') && (customerCart.indexOf(result.id) > -1) )" routerLink="/checkout/cart" class="btn my-btn cart_btn from-left">Go to Cart</a>
@@ -187,7 +203,7 @@
 												Rating -
 												<span>#{{customerRating | number:'1.1-1'}} | {{customerReviews}} Reviews</span>
 											</h5>
-											<h5>
+											<h5 *ngIf="reviewsList.length > 0">
 												Sort by
 												<span>
 													<select (change)="reviewSorting($event);" class="form-control">
@@ -246,7 +262,23 @@
 				</div>
             </div>
         </section>
-		<div class="parentOfAplus" *ngFor="let item of plusContent" [innerHTML]="sanitizer.bypassSecurityTrustHtml(item)"></div>   
+		<div class="parentOfAplus">
+			<section class="container-fluid aPlusRowMain">
+				<div class="container">
+					<div class="row">
+						<div *ngFor="let item of plusContent" class="col-md-6 col-12 itemCatDes">
+							<figure>
+								<img src="{{item.image}}" class="img-fluid d-block w-100" alt="Bombshell">
+								<figcaption class="figure-caption">
+									<span>{{item.caption}}</span> {{item.title}}
+								</figcaption>
+							</figure>
+							<p [innerHTML]="sanitizer.bypassSecurityTrustHtml(item.content)"></p>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
     </div>
 
 
