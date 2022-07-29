@@ -1,6 +1,6 @@
 
 /* start of section_box css */
-.section_box{padding:3rem 0; position:relative; z-index:2; margin-top: -3rem;}
+.section_box{padding:3rem 0; position:relative; z-index:2;}
 .section_gradient:before{content:""; position:absolute; top:0; left:0; width:100%; height:100%; z-index:-1;
 	background:linear-gradient(#fcfcfc, #fbfbfb, #ffffff);
 	-moz-background:linear-gradient(#fcfcfc, #fbfbfb, #ffffff);
@@ -13,14 +13,22 @@
 .topBanner h1{font-size: 1.6rem; color: #3b4e76; text-transform: capitalize; margin: 0; line-height: 1; text-align: center; position: absolute; top: 1.5rem; left: 0; width: 100%; display: none;}
 .topBanner h1 span{display: block; text-transform: uppercase; padding-top: .5rem;}
 .topBanner .carousel-inner video{height: 30rem; background: #000000;}
+.topBanner .carousel-inner .bannerContent{position: absolute; left: 0; bottom: 5rem; z-index: 1; width: 100%;}
+.topBanner .carousel-inner .bannerContent .container{display: flex; flex-direction: column; align-items: center;}
+.topBanner .carousel-inner .bannerContent .container > *{margin: 0;}
+.topBanner .carousel-inner .bannerContent .container > *:not(:last-child){margin-bottom: 1.8rem;}
+.topBanner .carousel-inner .bannerContent .container h4{display: flex; flex-direction: column; align-items: center; font-size: 1.4rem; color: #ffffff; font-weight: normal; text-align: center;}
+.topBanner .carousel-inner .bannerContent .container h4 span{font-size: .87rem; color: #92B4EC; margin-bottom: .6rem; text-transform: uppercase;}
+.topBanner .carousel-inner .bannerContent .container a{font-size: .87rem; padding: 0 1.5rem; color: #ffffff; font-weight: normal;}
 
-/******** secBanner ******/
-.secBanner{margin: 2rem 0 0 0; position: relative; width: 100%;}
-.secBanner .figure-caption{position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%); padding: 0 .8rem; font-size: 1.2rem; color: #3b4e76; letter-spacing: .1rem; display: none;}
-.secBanner .imgTagLine{position: absolute; top: 1.5rem; left: 0; padding: 1.1rem 1rem; background: rgba(0,0,0,0.5); color: #ffffff; text-transform: uppercase; font-weight: bold; width: 40%; line-height: 1; font-size: 2rem; display: none;}
+/******** sceBannerStuff ******/
+.sceBannerStuff{margin: 2rem 0 0 0; position: relative; width: 100%;}
+.sceBannerStuff .figure-caption{position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); padding: 0 .8rem; font-size: 1.2rem; color: #ffffff; text-align: center;}
+.sceBannerStuff .figure-caption span{display: block; margin-bottom: .2rem; text-align: center; color: #FF5151; font-size: .87rem; text-transform: uppercase;}
+.sceBannerStuff .imgTagLine{position: absolute; top: 1.5rem; left: 0; padding: 1.1rem 1rem; background: rgba(0,0,0,0.5); color: #ffffff; text-transform: uppercase; font-weight: bold; width: 40%; line-height: 1; font-size: 2rem; display: none;}
 
 /***** sliderSec ******/
-.sliderSec{position: relative; width: 100%; display: flex; align-items: center; overflow: hidden; padding: 24px 0; background: rgba(0,0,0,0.03);}
+.sliderSec{position: relative; width: 100%; display: flex; align-items: center; overflow: hidden; padding: 24px 0;}
 .sliderSec .sliderLink{display: none; align-items: center; margin-bottom: 0; flex-direction: column-reverse; -webkit-box-direction: reverse; -webkit-box-orient: vertical;}
 .sliderSec .sliderLink li{position: relative; transform: rotate(-90deg);}
 .sliderSec .sliderLink li:not(:last-child){margin-top: 3.5rem;}
@@ -32,19 +40,24 @@
 .slidesCard .card{border: none; box-shadow: none; background: transparent; padding: 8px;}
 .slidesCard .card figure{margin: 0; position: relative;}
 .slidesCard .card figure img{width: 100%;}
-.slidesCard .card figure .figure-caption{position: absolute; top: 0; left: 0; font-size: .8rem; background: transparent; padding: 0.3rem 0.3rem .4rem; color: #3b4e76; line-height: 1;}
+.slidesCard .card figure .figure-caption{position: absolute; top: 0; left: 0; font-size: .8rem; background: transparent; padding: 0.3rem 0.3rem .4rem; color: #3b4e76; line-height: 1; display: none;}
 .slidesCard .card figure .figure-caption i{font-size: .7rem; margin-left: .3rem;}
-.slidesCard .card .card-body{border-radius: .5rem; background: transparent; padding: 0; overflow: hidden;}
-.slidesCard .card .card-body .card-title{font-size: 1rem; color: #3b4e76; text-align: center; margin: 0 0 .3rem 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; min-height: 2.5rem;}
-.slidesCard .card .cardPrice{font-size: 1.2rem; color: #3b4e76; text-align: center; font-weight: bold; margin: 1rem 0 0 0;}
-.slidesCard .card .cardPrice del{font-size: .9rem; font-weight: normal; margin-left: .3rem;}
-.slidesCard .card .cardPrice span{font-size: .9rem; font-weight: normal; margin-left: .3rem; color: #ee9591;}
+.slidesCard .card .card-body{border-radius: .5rem; background: transparent; padding: 0; margin-bottom: .8rem; overflow: hidden;}
+.slidesCard .card .card-title{font-size: 1rem; color: #000000; text-align: center; margin: 0 0 .3rem 0; font-weight: 600;}
+.slidesCard .card .cardPrice{font-size: .95rem; color: #1E2D4D; text-align: center; margin: 0;}
+.slidesCard .card .cardPrice del{font-size: .95rem; margin-left: .3rem; color: #92B4EC;}
+.slidesCard .card .cardPrice span{font-size: .9rem; font-weight: normal; margin-left: .3rem; color: #ee9591; display: none;}
 /*.slidesCard .card.bottle1 .card-body{background: gray;}
 .slidesCard .card.bottle2 .card-body{background: gray;}
 .slidesCard .card.bottle3 .card-body{background: gray;}
 .slidesCard .card.bottle4 .card-body{background: gray;}
 .slidesCard .card.bottle5 .card-body{background: gray;}
 .slidesCard .card.bottle6 .card-body{background: gray;}*/
+
+.btnRow{display: flex; align-items: center; justify-content: center;}
+.btnRow > *{margin: 0; font-size: .8rem; padding: 0 1.5rem;}
+.btnRow > *:not(:last-child){margin-right: 1rem;}
+.btnRow > *:last-child{color: #ffffff;}
 
 
 /****************** start of media css *******************/
@@ -58,6 +71,7 @@
 	/************ start of topBanner css ****************/
 	.topBanner h1{font-size: 1.3rem; top: 2.8rem;}
 	.topBanner .carousel-inner video{height: auto;}
+	.topBanner .carousel-inner .bannerContent .container h4 span{font-size: 1rem;}
 	
 	/******** secBanner ******/
 	.secBanner .imgTagLine{padding: .8rem 1rem; font-size: 1.3rem; line-height: 1.1; width: 80%;}
@@ -70,12 +84,12 @@
 	.sliderSec .sliderLink li a{position: relative;}
 	.sliderSec .slidesCard{position: relative;}
 	/*.slidesCard .card .card-body{padding: 5.5rem 0.8rem 1.2rem; margin-top: -5rem;}*/
-	.slidesCard .card .card-body .card-title{font-size: 1.1rem;}
-	.slidesCard .card .cardPrice{font-size: 1.1rem; margin: 1rem 0 0 0;}
-	.slidesCard .card .cardPrice del,
-	.slidesCard .card .cardPrice span{font-size: .8rem; margin-left: .1rem;}
 	.slidesCard .card figure .figure-caption{font-size: .85rem; border-radius: .4rem; padding: 0.2rem 0.4rem .2rem;}
 	.slidesCard .card figure .figure-caption i{font-size: .8rem;}
+	
+	/******** sceBannerStuff ******/
+	.sceBannerStuff .figure-caption{width: 100%; left: 0; transform: translateX(0);}
+	.sceBannerStuff .figure-caption span{font-size: 1rem; font-weight: 600;}
 }
 
 @media (min-width: 576px) and (max-width: 767.98px) {

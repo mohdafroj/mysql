@@ -9,17 +9,27 @@
 						<video loop muted autoplay oncanplay="this.play()" onloadedmetadata="this.muted = true" width="100%">
 							<source src="https://storage.googleapis.com/perfumersclub/images/Dec21/Lightr.m4v" type="video/mp4">
 						</video>
+						<div class="bannerContent">
+							<div class="container">
+								<h4>
+									<span>Lightr</span>
+									Carry your scent wherever you go
+								</h4>
+								<a class="btn my-btn cart_btn from-left" [routerLink]="['/', 'shopnow']">
+									Shop Now
+								</a>
+							</div>
+						</div>						
 					</div>
 				</div> 
             </div>
         </section><!-- end of section_box -->
-        <section class="section_box section_gradient"><!-- start of section_box -->
+        <section class="section_box"><!-- start of section_box -->
         	<div class="container">
-            	<div class="row">
-                    
+            	<div class="row">                    
 					<div class="col-12 heading_div">
                     	<h1>
-                        	<span>Why Choose Us ?</span>
+                        	Why Choose Us ?
                         </h1>
                         <span class="heading_border"></span>
                     </div>
@@ -31,14 +41,8 @@
             </div>
         </section><!-- end of section_box -->
 		<!-- slider 1 -->
-		<section class="section_box section_gradient"><!-- start of section_box -->
-        	<div class="col-12 heading_div">
-				<h1>
-					<span>LIGHTR WITH 3 PERFUMES</span> RECHARGE YOUR PERFUME BEFORE IT FADES AWAY
-				</h1>
-				<span class="heading_border"></span>
-			</div>
-			<figure class="secBanner">
+		<section class="section_box"><!-- start of section_box -->
+			<figure class="sceBannerStuff">
 				<span class="imgTagLine">Rendering Beautiful Product Shots</span>
 				<img src="assets/images/home/banner/Lightr+3X8ml.jpg" class="img-fluid d-md-block d-none" alt="Lightr+3X8ml" style="width:inherit" />
 				<img src="assets/images/home/banner/M-Lightr+3X8ml.jpg" class="img-fluid d-md-none d-block" alt="Lightr+3X8ml" style="width:inherit" />
@@ -101,19 +105,23 @@
 					</div>
 				</div>
 			</div>
+			<div class="btnRow" *ngIf="filterProduct1.length">
+				<a class="btn my-btn cart_btn from-left" [routerLink]="['/', 'shopnow']">
+					Shop Now
+				</a>
+				<a class="btn my-btn cart_btn from-left" [routerLink]="['/', 'shopnow']" [queryParams]="{type: config.categories.category1.key}">
+					View More
+				</a>
+			</div>			
         </section><!-- end of section_box -->
 		<!-- slider 2 -->
-		<section class="section_box section_gradient">
-			<div class="col-12 heading_div">
-				<h1>
-					<span>GIFT SET OF 3 FULL SIZE</span> THE PERFECT GIFT FOR YOUR LOVED ONCE
-				</h1>
-				<span class="heading_border"></span>
-			</div>
-			
-			<figure class="secBanner">
+		<section class="section_box">
+			<figure class="sceBannerStuff">
 				<img src="assets/images/home/banner/Packof3X50ml.jpg" class="img-fluid d-md-block d-none" alt="Packof3X50ml" style="width:inherit" />
 				<img src="assets/images/home/banner/M-Packof3X50ml.jpg" class="img-fluid d-md-none d-block" alt="Packof3X50ml" style="width:inherit" />
+				<figcaption class="figure-caption">
+					GIFT SET OF 3 FULL SIZE
+				</figcaption>
 			</figure>
 			<div class="sliderSec">
 				<ul class="list-unstyled sliderLink">
@@ -168,19 +176,23 @@
 					</div>
 				</div>
 			</div>
+			<div class="btnRow" *ngIf="filterProduct2.length">
+				<a class="btn my-btn cart_btn from-left" [routerLink]="['/', 'shopnow']">
+					Shop Now
+				</a>
+				<a class="btn my-btn cart_btn from-left" [routerLink]="['/', 'shopnow']" [queryParams]="{type: config.categories.category2.key}">
+					View More
+				</a>
+			</div>			
 		</section>
 		<!-- slider 3 -->
-		<section class="section_box section_gradient">
-			<div class="col-12 heading_div">
-				<h1>
-					<span>COMBO SET OF 7 PERFUMES</span> 7 PERFUME FOR 7 DAYS
-				</h1>
-				<span class="heading_border"></span>
-			</div>
-			
-			<figure class="secBanner">
+		<section class="section_box">
+			<figure class="sceBannerStuff">
 				<img src="assets/images/home/banner/Packof7X8ml.jpg" class="img-fluid d-md-block d-none" alt="Packof7X8ml" style="width:inherit" />
 				<img src="assets/images/home/banner/M-Packof7X8ml.jpg" class="img-fluid d-md-none d-block" alt="Packof7X8ml" style="width:inherit" />
+				<figcaption class="figure-caption">
+					<span>COMBO SET OF 7 PERFUMES</span> 7 PERFUME FOR 7 DAYS
+				</figcaption>
 			</figure>
 			<div class="sliderSec">
 				<ul class="list-unstyled sliderLink">
@@ -235,19 +247,23 @@
 					</div>
 				</div>
 			</div>
+			<div class="btnRow" *ngIf="filterProduct3.length">
+				<a class="btn my-btn cart_btn from-left" [routerLink]="['/', 'shopnow']">
+					Shop Now
+				</a>
+				<a class="btn my-btn cart_btn from-left" [routerLink]="['/', 'shopnow']" [queryParams]="{type: config.categories.category3.key}">
+					View More
+				</a>
+			</div>			
 		</section>
 		<!-- slider 4 -->
-		<section class="section_box section_gradient">
-			<div class="col-12 heading_div">
-				<h1>
-					<span>LIGHTR WITH 7 PERFUMES</span> CARRY YOUR PERFUME IN STYLE
-				</h1>
-				<span class="heading_border"></span>
-			</div>
-			
-			<figure class="secBanner">
+		<section class="section_box">
+			<figure class="sceBannerStuff">
 				<img src="assets/images/home/banner/Lightr+7X8ml.jpg" class="img-fluid d-md-block d-none" alt="Lightr+7X8ml" style="width:inherit" />
 				<img src="assets/images/home/banner/M-Lightr+7X8ml.jpg" class="img-fluid d-md-none d-block" alt="Lightr+7X8ml" style="width:inherit" />
+				<figcaption class="figure-caption">
+					<span>LIGHTR WITH 7 PERFUMES</span> CARRY YOUR PERFUME IN STYLE
+				</figcaption>
 			</figure>
 			<div class="sliderSec">
 				<ul class="list-unstyled sliderLink">
@@ -302,20 +318,24 @@
 					</div>
 				</div>
 			</div>
+			<div class="btnRow" *ngIf="filterProduct4.length">
+				<a class="btn my-btn cart_btn from-left" [routerLink]="['/', 'shopnow']">
+					Shop Now
+				</a>
+				<a class="btn my-btn cart_btn from-left" [routerLink]="['/', 'shopnow']" [queryParams]="{type: config.categories.category4.key}">
+					View More
+				</a>
+			</div>			
 		</section>
 		<!-- slider 5 -->
-		<section class="section_box section_gradient">
-			<div class="col-12 heading_div">
-				<h1>
-					<span>SET of 3 PERFUMES</span> TRY BEFORE YOU BUY
-				</h1>
-				<span class="heading_border"></span>
-			</div>
-			
-			<figure class="secBanner">
+		<section class="section_box">
+			<figure class="sceBannerStuff">
 				<img src="assets/images/home/banner/RefillOf3X8ml.jpg" class="img-fluid d-md-block d-none" alt="RefillOf3X8ml" style="width:inherit" />
 				<img src="assets/images/home/banner/M-RefillOf3X8ml.jpg" class="img-fluid d-md-none d-block" alt="RefillOf3X8ml" style="width:inherit" />
-			</figure>
+				<figcaption class="figure-caption">
+					<span>SET of 3 PERFUMES</span> TRY BEFORE YOU BUY
+				</figcaption>
+				</figure>
 			<div class="sliderSec">
 				<ul class="list-unstyled sliderLink">
 					<li [ngClass]="{'active':(gender5 == 'male')}">
@@ -369,20 +389,25 @@
 					</div>
 				</div>
 			</div>
+			<div class="btnRow" *ngIf="filterProduct5.length">
+				<a class="btn my-btn cart_btn from-left" [routerLink]="['/', 'shopnow']">
+					Shop Now
+				</a>
+				<a class="btn my-btn cart_btn from-left" [routerLink]="['/', 'shopnow']" [queryParams]="{type: config.categories.category5.key}">
+					View More
+				</a>
+			</div>			
+			
 		</section>
 		<!-- slider 6 -->
-		<section class="section_box section_gradient">
-			<div class="col-12 heading_div">
-				<h1>
-					<span>FULL SIZE PERFUMES</span> For Everyday Affordable Use
-				</h1>
-				<span class="heading_border"></span>
-			</div>
-			
-			<figure class="secBanner">
+		<section class="section_box">
+			<figure class="sceBannerStuff">
 				<span class="imgTagLine">Rendering Beautiful Product Shots</span>
 				<img src="assets/images/home/banner/Single50ml.jpg" class="img-fluid d-md-block d-none" alt="Single50ml" style="width:inherit" />
 				<img src="assets/images/home/banner/M-Single50ml.jpg" class="img-fluid d-md-none d-block" alt="Single50ml" style="width:inherit" />
+				<figcaption class="figure-caption">
+					<span>FULL SIZE PERFUMES</span> For Everyday Affordable Use
+				</figcaption>
 			</figure>
 			<div class="sliderSec">
 				<ul class="list-unstyled sliderLink">
@@ -437,5 +462,13 @@
 					</div>
 				</div>
 			</div>
+			<div class="btnRow" *ngIf="filterProduct6.length">
+				<a class="btn my-btn cart_btn from-left" [routerLink]="['/', 'shopnow']">
+					Shop Now
+				</a>
+				<a class="btn my-btn cart_btn from-left" [routerLink]="['/', 'shopnow']" [queryParams]="{type: config.categories.category6.key}">
+					View More
+				</a>
+			</div>			
 		</section>
     </div><!-- end of middle_page -->

@@ -134,6 +134,7 @@ a:hover{text-decoration: none;}
 .nav-top ul.nav_menu li + li:nth-child(2)::before{display:none;}
 .nav-top ul.nav_menu li a.nav-link.my-btn{padding:0 1rem; color:#FF5151;}
 .nav-top ul.nav_menu li a.nav-link.my-btn:hover{color:#3b4e76;}
+.nav-top ul.nav_menu li.profilePicSec{display: none;}
 /* end of nav_menu part */
 
 /* start of footer-top section */
@@ -174,9 +175,9 @@ a:hover{text-decoration: none;}
 
 /* start of heading css */
 .heading_div{position:relative; padding:1rem .8rem;}
-.heading_div h1, .heading_div h3{text-align:center; font-size:1rem; font-weight:normal; text-transform:uppercase; margin:0; letter-spacing:.3rem; color:rgba(0,0,0,0.6);}
-.heading_div h1 span, .heading_div h3 span{display:block; font-size:2.1rem; margin-bottom:.5rem; font-weight:bolder; letter-spacing:normal; line-height:1.3; color:rgba(0,0,0,0.8);}
-.heading_div .heading_border{content:""; position:relative; width:5rem; height:0.3rem; background:#FF5151; display:block; left:50%; transform:translateX(-50%); bottom:-.8rem;}
+.heading_div h1, .heading_div h3{text-align:center; font-size: 1.2rem; font-weight:600; text-transform:capitalize; margin:0; color: #000000;}
+.heading_div h1 span, .heading_div h3 span{display:block; font-size: .85rem; margin-bottom:.5rem; letter-spacing:normal; line-height: 1.3; color: #FF5151; text-transform: uppercase;}
+.heading_div .heading_border{content:""; position:relative; width:5rem; height:0.3rem; background:#FF5151; display:block; left:50%; transform:translateX(-50%); bottom:-.8rem; display: none;}
 
 /******** start of sub heading *************/
 .user_detail_heading{font-size:1.2rem; color:#3b4e76; padding:0.5rem 0.5rem .7rem .8rem; text-transform:uppercase; font-weight:bolder; border-left:.1rem solid rgba(0,0,0,0.1); position:relative; width:100%; display:block;}
@@ -345,39 +346,45 @@ a:hover{text-decoration: none;}
     .footer {position: relative;}
 	
 	/* start of header-top part */
-	.nav-top {padding-left: 0.8rem; padding-right: 0.8rem; padding-top: 0.1rem; padding-bottom: 0.5rem; min-height:3rem;}
-	.nav-top a.navbar-brand {padding: .5rem; top:0; border-radius:50%; z-index:9;}
+	.nav-top {padding-left: 0.8rem; padding-right: 0.8rem; padding-top: 0.1rem; padding-bottom: 0.5rem; min-height:3rem; position: fixed; top: 0; left: 0; width: 100%; z-index: 999;}
+	.nav-top a.navbar-brand {padding: .5rem; top:0; border-radius:50%; z-index:12;}
 	.nav-top a.navbar-brand img{width:5rem;}
-	.nav-top.navbar-light .navbar-toggler{color:rgba(0,0,0,.5); position:relative; top:.2rem; padding:0 0 1rem; border-color:transparent;}
+	.nav-top.navbar-light .navbar-toggler{color:rgba(0,0,0,.5); position:relative; top:.25rem; padding:0 0 1rem; border-color:transparent;}
 	.nav-top.navbar-light .navbar-toggler.active{z-index:12;}
-	.nav-top .navbar-collapse ul.navbar-nav {position: absolute; right: .5rem; top: .4rem; z-index: 10;}
+	.nav-top .navbar-collapse ul.navbar-nav {position: absolute; right: .5rem; top: .4rem; z-index: 13;}
 	/*.nav-top .navbar-collapse ul.navbar-nav li + li:nth-child(2)::before {display: none;}
 	.nav-top .navbar-collapse ul.navbar-nav li a.shopping-cart {position: fixed; bottom: 8rem; right: 0; background: #FF5151; color: #000; z-index: 101; top: auto; padding-left: 0.5rem; padding-right: 0.5rem; padding-top: 0.9rem; padding-bottom: 0.8rem; font-size: 0.8rem; border-top-left-radius: .5rem; border-bottom-left-radius: .5rem; /*clip-path: polygon(25% 0%, 100% 0, 100% 100%, 0 100%, 0 33%); -webkit-clip-path: polygon(25% 0%, 100% 0, 100% 100%, 0 100%, 0 33%);}
 	.nav-top .navbar-collapse ul.navbar-nav li a.shopping-cart .badge-primary {background-color: #3b4e76;}*/
-	.nav-top .navbar-collapse ul.navbar-nav li.cart-menu .dropdown-menu {position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: 101; margin: 0; }
+	.nav-top .navbar-collapse ul.navbar-nav li.cart-menu .dropdown-menu {position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: 9999; margin: 0; }
 	.nav-top .navbar-collapse ul.navbar-nav li.cart-menu .dropdown-menu .cart_close {position: fixed; bottom: 0; right: 0; font-size: 1.5rem; color: #fff; letter-spacing: 0.01rem; line-height: 1rem; background: #000000; cursor: pointer; padding-left: 0.8rem; padding-right: 0.8rem; padding-top: 0.6rem; padding-bottom: 0.6rem;}
 	.nav-top .navbar-collapse ul.navbar-nav li.cart-menu .dropdown-menu::before {display: none;}
 	.nav-top .navbar-collapse ul.navbar-nav li a.nav-link.sticky-top-affix + .dropdown-menu {top: 0;}
 	.nav-top .navbar-collapse ul.navbar-nav .dropdown-menu {position: absolute;}
 	.nav-top ul.navbar-nav li.user-menu .dropdown-menu a.dropdown-item{font-size:0.8rem;}
-	.overflowBg{position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: block; transition: ease all .3s; -webkit-transition: ease all .3s;}
+	.overflowBg{position: fixed; top: 2.8rem; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: none; transition: ease all .3s; -webkit-transition: ease all .3s;}
 	.overflowBg[aria-expanded="false"]{opacity: 0; z-index: -1;}
 	.overflowBg[aria-expanded="true"]{opacity: 1; z-index: 5;}
+	.nav-top ul.navbar-nav li a.nav-link.sticky-top-affix{position: sticky; background: transparent; padding: .5rem 1rem;}
 	/* end of header-top part */
 	
 	/* start of nav_menu part */
 	.nav-top ul.nav_menu{flex-direction:row; justify-content:left;}
-	.nav-top .navbar-collapse .navbar-collapse{position: absolute; width: 100%; left: 0px; top: 0; background:rgb(255, 255, 255) none repeat scroll 0% 0%; z-index: 11; box-shadow:0 0 .5rem rgba(0,0,0,0.1);}
-	.nav-top .navbar-collapse ul.nav_menu{position:relative; top:auto; right:auto; padding:3rem 1rem .5rem; flex-direction:column;}
-	.nav-top ul.nav_menu li{text-align:center;}
-	.nav-top ul.nav_menu li a.nav-link{padding:0 0 0.8rem 0; font-size:.95rem; color:#3b4e76;}
-	.nav-top ul.nav_menu li a.nav-link.my-btn{margin-bottom:1rem;}
-	.nav-top ul.nav_menu li + li::before{top:.45rem;}
+	.nav-top .navbar-collapse .navbar-collapse{position: fixed; width: calc(100% - 8rem); height: calc(100% - 3rem); left: -100%; top: 3rem; background: #1E2D4D; z-index: 11; box-shadow: 0 0 .5rem rgba(0,0,0,0.1); transition: all 0.3s ease-in-out; -webkit-transition: all 0.3s ease-in-out;}
+	.nav-top .navbar-collapse .navbar-collapse.show{left: 0;}
+	.nav-top .navbar-collapse ul.nav_menu{position:relative; top:auto; right:auto; height: 100%; padding: 2.5rem 0 6rem; flex-direction:column; border-top: 1px solid #92B4EC;}
+	.nav-top ul.nav_menu li{padding: 0 1.9rem; position: relative;}
+	.nav-top ul.nav_menu li:not(:last-child){border-bottom: 1px solid #92B4EC;}
+	.nav-top ul.nav_menu li a.nav-link{padding: 1.6rem 0; font-size: 1.1rem; font-weight: 300; text-transform: uppercase; color:#ffffff;}
+	.nav-top ul.nav_menu li.shopNwBtn{position: absolute; bottom: 0; left: 0; width: 100%; padding: 0; border-bottom: none;}
+	.nav-top ul.nav_menu li.shopNwBtn a.nav-link.my-btn{background: #FF5151; text-align: center; font-weight: 600; color: #ffffff; padding: 1.1rem 0; height: auto;}
+	.nav-top ul.nav_menu li.profilePicSec{display: block; border: 0;}
+	.nav-top ul.nav_menu li.profilePicSec a{display: flex; flex-direction: column; padding: 0 0 2rem 0; color: #92B4EC;}
+	.nav-top ul.nav_menu li + li::before{top:.45rem; display: none;}
 	
 	/******************** start of menu_toggle button ******************/
-	.toggle-btn {height: 2px; width: 25px; background-color:#FF5151; position: relative; top: 50%; left: 0; margin: auto; display:inline-block; transition: all 0.3s ease-in-out; -webkit-transition: all 0.3s ease-in-out;}
-	.toggle-btn:before {content: ""; height: 2px; width: 25px; box-shadow: 0 -10px 0 0 #FF5151; position: absolute; top: 0; left: 0; transition: all 0.3s ease-in-out; -webkit-transition: all 0.3s ease-in-out;}
-	.toggle-btn:after {content: ""; height: 2px; width: 25px; box-shadow: 0 10px 0 0 #FF5151; position: absolute; top: 0; left: 0; transition: all 0.3s ease-in-out; -webkit-transition: all 0.3s ease-in-out;}
+	.toggle-btn {height: 2px; width: 25px; background-color:#ffffff; position: relative; top: 50%; left: 0; margin: auto; display:inline-block; transition: all 0.3s ease-in-out; -webkit-transition: all 0.3s ease-in-out;}
+	.toggle-btn:before {content: ""; height: 2px; width: 25px; box-shadow: 0 -10px 0 0 #ffffff; position: absolute; top: 0; left: 0; transition: all 0.3s ease-in-out; -webkit-transition: all 0.3s ease-in-out;}
+	.toggle-btn:after {content: ""; height: 2px; width: 25px; box-shadow: 0 10px 0 0 #ffffff; position: absolute; top: 0; left: 0; transition: all 0.3s ease-in-out; -webkit-transition: all 0.3s ease-in-out;}
 	.active .toggle-btn {background-color: transparent; transition: all 0.2s ease-in-out; -webkit-transition: all 0.2s ease-in-out;}
 	.active .toggle-btn:before {top: 0; transition: all 0.3s ease-in-out; -webkit-transition: all 0.3s ease-in-out;}
 	.active .toggle-btn:after {top: 0; transition: all 0.3s ease-in-out; -webkit-transition: all 0.3s ease-in-out;}

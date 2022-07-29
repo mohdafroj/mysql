@@ -1,8 +1,6 @@
 	<nav class="navbar navbar-expand-md navbar-light nav-top">		
-        <div class="container p-0" id="wrapper">
-			<a class="navbar-brand" routerLink="/">
-				<img src="assets/images/logo.svg" alt="Logo" class="img-fluid">
-			</a>
+        <div class="container p-0">
+			<a class="navbar-brand" routerLink="/"><img src="assets/images/logo.svg" alt="Logo" class="img-fluid"></a>
 			<button id="menuToggle" (click)="actveMenu = !actveMenu;" class="cta navbar-toggler" [ngClass]="{'active': actveMenu, 'collapsed': !actveMenu}" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" [attr.aria-expanded]="actveMenu" aria-label="Toggle navigation">
                 <span class="toggle-btn type1"></span>
             </button>
@@ -10,7 +8,7 @@
 			
 				<div class="mr-auto collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav nav_menu">
-						<li class="nav-item" (click)="menuToggle()">
+						<!--li class="nav-item" (click)="menuToggle()">
 							<a class="nav-link my-btn checkout_btn from-left sticky-top" [routerLink]="['/','shopnow']">Shop Now</a>
 						</li>
 						<li *ngIf="windowWidth <= 766" class="nav-item" (click)="menuToggle()">
@@ -36,7 +34,26 @@
 						</li>
 						<li class="nav-item" *ngIf="userId > 0" (click)="menuToggle()">
 							<a class="nav-link" routerLink="/customer/refer-and-earn">Refer &amp; Earn</a>
+						</li-->
+						<li class="nav-item profilePicSec">
+							<a class="nav-link">
+								<span>
+									<img src="assets/images/profilePic.svg" class="img-fluid" />
+								</span>
+								Rohit Agrawal
+							</a>
 						</li>
+						<li class="nav-item shopNwBtn">
+							<a class="nav-link my-btn checkout_btn from-left d-block" [routerLink]="['/', 'shopnow']">
+								Shop Now
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" routerLink="/scent-match">Scent Match</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" routerLink="/customer/refer-and-earn">Refer &amp; Earn</a>
+						</li>						
 					</ul>
 				</div>
 				<!--a class="nav-link my-btn checkout_btn from-left mobileShopNowBtn sticky-top d-md-none d-block" routerLink="/shopnow">
