@@ -39,7 +39,7 @@ export class CustomerComponent implements OnInit {
 			let fileExt = ['JPG','GIF','PNG'];
 			let ext = file.name.toUpperCase().split('.').pop() || file.name;
 			if ( !fileExt.includes(ext) ) {
-				this.toastr.error("Please choose jpg,gif or png file!");
+				this.toastr.error("Please choose jpg, gif or png file!");
 				return true;
 			}
 			let fileSizeinMB = file.size / (1024 * 1000);

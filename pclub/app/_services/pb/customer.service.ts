@@ -22,6 +22,10 @@ export class CustomerService {
     this.pbApi = config.apiEndPoint;
   }
 
+  otpSelector() {
+    return this.http.get<ItemsResponse>(this.pbApi+'customers/otp-selector', {});
+  }
+  
   signUp(user) {
     return this.http.post<ItemsResponse>(this.pbApi+'customers/account', JSON.stringify(user));
   }

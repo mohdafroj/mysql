@@ -35,23 +35,31 @@
 						<li class="nav-item" *ngIf="userId > 0" (click)="menuToggle()">
 							<a class="nav-link" routerLink="/customer/refer-and-earn">Refer &amp; Earn</a>
 						</li-->
-						<li class="nav-item profilePicSec">
-							<a class="nav-link">
+						<li *ngIf="userId > 0" class="nav-item profilePicSec" (click)="menuToggle()">
+							<a class="nav-link" [routerLink]="['/', 'customer', 'profile']">
 								<span>
-									<img src="assets/images/profilePic.svg" class="img-fluid" />
+									<img src="{{ picUrl }}" class="profile_pic" />
 								</span>
-								Rohit Agrawal
+								{{ name }}
 							</a>
 						</li>
-						<li class="nav-item shopNwBtn">
+						<li *ngIf="userId == 0" class="nav-item profilePicSec" (click)="menuToggle()">
+							<a class="nav-link" [routerLink]="['/', 'customer', 'profile']">
+								<span>
+									<img src="{{ picUrl }}" class="img-fluid" />
+								</span>
+								{{ name }}
+							</a>
+						</li>
+						<li class="nav-item shopNwBtn" (click)="menuToggle()">
 							<a class="nav-link my-btn checkout_btn from-left d-block" [routerLink]="['/', 'shopnow']">
 								Shop Now
 							</a>
 						</li>
-						<li class="nav-item">
+						<li class="nav-item" (click)="menuToggle()">
 							<a class="nav-link" routerLink="/scent-match">Scent Match</a>
 						</li>
-						<li class="nav-item">
+						<li class="nav-item" *ngIf="userId > 0" (click)="menuToggle()">
 							<a class="nav-link" routerLink="/customer/refer-and-earn">Refer &amp; Earn</a>
 						</li>						
 					</ul>

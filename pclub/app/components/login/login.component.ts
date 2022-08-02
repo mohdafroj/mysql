@@ -25,6 +25,8 @@ export class LoginComponent implements OnInit,DoCheck {
 	isStep:number 	= 1;
 	resObj:any 		= {};
 	serverRequest: boolean = true;
+	otpSelectorMessage = '';
+	otpSelectorStatus:number = 0;
 	constructor( 
 		private toastr: ToastrService,
 		private sanitizer: DomSanitizer, 
@@ -38,34 +40,76 @@ export class LoginComponent implements OnInit,DoCheck {
 
 	ngOnInit() { 
 		this.config.scrollToTop();
+		this.otpSelectorMessage = this.config.otpSelectorMessage;
+		this.otpSelectorStatus = this.config.otpSelectorStatus;
+		this.otpSelector();
 		this.loginForm = new FormGroup ({
-			username: new FormControl("", this.usernameValidator),
+			username: new FormControl(""),
 			otp: new FormControl("")
 		});
 	}
 
-	usernameValidator (control) {
-		let EMAIL_REGEXP = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
-		let MOBILE_REGEXP = /^[1-9]{1}[0-9]{9}$/;
-		if( !EMAIL_REGEXP.test(control.value) ) {
-			if (!MOBILE_REGEXP.test(control.value)) {
-				return {'username': true};
+	otpSelector() {
+		this.customer.otpSelector().subscribe(
+			(res)=> {
+				this.otpSelectorMessage = res.message;
+				this.otpSelectorStatus = res.data.otpSelectorStatus;
+			},
+			(err: HttpErrorResponse) => {
+				
 			}
-		}
+		);
 	}
 		
 	customerLogin(formData){
 		this.myFormData		= formData;
 		let formAction= 1;
+		let emailReg = this.config.EMAIL_REGEXP;
+		let mobileReg = this.config.MOBILE_REGEXP;
 		if ( this.loginForm.controls.username.invalid || (formData.username == '') ){
 			this.loginForm.controls.username.markAsDirty();
-			if ( this.isEmail == 1 ) {
-				this.resObj.message = 'Please enter valid email id!';
-			} else {
-				this.resObj.message = 'Please enter valid mobile number!';
+			switch (this.otpSelectorStatus) {
+				case 1:
+					if( !emailReg.test(formData.username) ) {
+						this.resObj.message = 'Please enter valid email id!';
+					}
+					break;
+				case 2:
+					if( !mobileReg.test(formData.username) ) {
+						this.resObj.message = 'Please enter valid mobile number!';
+					}
+					break;
+				default:
+					if ( this.isEmail == 1 ) {
+						this.resObj.message = 'Please enter valid email id!';
+					} else {
+						this.resObj.message = 'Please enter valid mobile number!';
+					}
 			}
 			formAction = 0;
 		}
+		if ( formAction ) {
+			switch (this.otpSelectorStatus) {
+				case 1:
+					if( !emailReg.test(formData.username) ) {
+						this.resObj.message = 'Please enter valid email id!';
+						formAction = 0;
+					}
+					break;
+				case 2:
+					if( !mobileReg.test(formData.username) ) {
+						this.resObj.message = 'Please enter valid mobile number!';
+						formAction = 0;
+					}
+					break;
+				default:
+					if ( this.isEmail == 1 ) {
+						this.resObj.message = 'Please enter valid email id!';
+					} else {
+						this.resObj.message = 'Please enter valid mobile number!';
+					}
+			}
+		}		
 		if( (this.isStep == 2) && (formData.username != "") ){
 			if( formData.otp == '' ){
 				formAction	= 0;
@@ -176,12 +220,12 @@ export class LoginComponent implements OnInit,DoCheck {
 	ngDoCheck() {
 		let newUsername = this.loginForm.controls.username.value;
 		let newPassword = this.loginForm.controls.otp.value;
-		let EMAIL_REGEXP = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
-		let MOBILE_REGEXP = /^[1-9]{1}[0-9]{9}$/;
-		if( EMAIL_REGEXP.test(newUsername) ) {
+		let emailReg = this.config.EMAIL_REGEXP;
+		let mobileReg = this.config.MOBILE_REGEXP;
+		if( emailReg.test(newUsername) ) {
 			this.isEmail = 1;
 		}
-		if( MOBILE_REGEXP.test(newUsername) ) {
+		if( mobileReg.test(newUsername) ) {
 			this.isEmail = 2;
 		}
 		this.loginForm.controls.username.setValue(newUsername.toLowerCase(), {});
@@ -198,7 +242,5 @@ export class LoginComponent implements OnInit,DoCheck {
 			this.resObj.otpMessage = '';
 			this.resObj.otpClass = '';
 		}
-		
-		//console.log(newUsername, newPassword);
 	}
 }

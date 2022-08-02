@@ -22,6 +22,8 @@ export class HeaderComponent implements OnInit {
 	showCartMenu = true;
 	cartCurrency;
 	userId = 0;
+	name = '';
+	picUrl = '';
 	cartTotal = 0;
 	cartLength = 0;
 	shoppingCart = [];
@@ -62,6 +64,12 @@ export class HeaderComponent implements OnInit {
 	getMiniCart () {
 		this.cartTotal = 0;
 		this.userId = this.customer.getId();
+		this.name = this.customer.getName();
+		this.picUrl = this.customer.getImage();
+		if ( this.userId == 0 || this.picUrl == '' || this.picUrl == null || this.picUrl == undefined ) {
+			this.picUrl = 'assets/images/profilePic.svg';
+			this.name = '';
+		}
 		let cart = this.customer.getFromCart(); 
 		cart['shopping'] = cart['shopping'] ? cart['shopping'] : {};
 		this.shoppingCart = cart['shopping']['cart'] ? cart['shopping']['cart'] : [];

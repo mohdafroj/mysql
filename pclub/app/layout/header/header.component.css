@@ -1,0 +1,10 @@
+.profile_pic {
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	background:#ffffff;
+	border-radius:50% !important;
+	overflow:hidden;
+	width:150px !important;
+	height:150px;
+}

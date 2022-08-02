@@ -27,6 +27,8 @@ export class Myconfig {
 	public SUBDIR:string;
 	public homeUrl = '';
 	public baseUrl = '';
+	public otpSelectorMessage = 'Please enter email or phone number';
+	public otpSelectorStatus = 0;
 	public metaInfo = {};
 	public categories;
     constructor(

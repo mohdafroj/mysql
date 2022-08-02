@@ -20,7 +20,7 @@
 						</div><!-- end of otp_line -->
 
 						<div [hidden]="isStep != 1" class="form-group">
-							<input type="text" class="form-control" formControlName="username" placeholder="Email / Phone Number" autofocus>
+							<input type="text" class="form-control" formControlName="username" placeholder="{{ otpSelectorMessage }}" autofocus>
 						</div>
 						  
 						<div [hidden]="isStep == 1" class="form-group">
