@@ -14,20 +14,20 @@
                 <div *ngSwitchCase="'product'" class="row product_detail">
                     <div class="col-sm-5 col-12 carousel slide popupImageSlider" id="demo" data-ride="carousel">
                         <!--h3 class="d-md-none d-block">{{result.title}}</h3-->
-						<ul *ngIf="result['isStock'] == 'in_stock'" class="carousel-indicators">
+						<ul *ngIf="result['images'].length > 1" class="carousel-indicators">
 							<li *ngFor="let image of result['images']; let i = index;" data-target="#demo" attr.data-slide-to="{{i}}" [ngClass]="{'active':(sliderIndex == i)}"></li>
 						</ul>
 						
-						<div *ngIf="result['isStock'] == 'in_stock'" class="carousel-inner">
+						<div class="carousel-inner">
 							<div *ngFor="let image of result['images']; let i = index;" class="carousel-item image_part" [ngClass]="{'active':(sliderIndex == i)}">
 								<img [src]="image.large" [alt]="result.name" class="img-fluid mx-auto" alt="Bombshell">
 							</div>
 						</div>
-						<div *ngIf="result['isStock'] != 'in_stock'" class="carousel-inner">
+						<!--div *ngIf="result['isStock'] != 'in_stock'" class="carousel-inner">
 							<div class="carousel-item image_part active">
 								<img [src]="result.oos_image" [alt]="result.name" class="img-fluid mx-auto">
 							</div>
-						</div>
+						</div-->
 					</div>
 					<div class="col-sm-7 col-12">
 						<h3 class=""><span *ngIf="result.categories[0]">{{result.categories[0]['name']}}</span> {{result.title}}</h3>
@@ -55,7 +55,7 @@
 							</h4>
 						</ng-template>
 						<p class="col-xs-12">Inclusive of all taxes</p>
-						<p *ngIf="( (result.isStock == 'coming_soon') || (result.isStock == 'out_of_stock') )">Out Of Stock</p>
+						<button class="btn my-btn cart_btn from-left" *ngIf="( (result.isStock == 'coming_soon') || (result.isStock == 'out_of_stock') )">Out Of Stock</button>
                         <button *ngIf="( (result.isStock == 'in_stock') && (customerCart.indexOf(result.id) == -1) )" (click)="addCart(result);" class="btn my-btn cart_btn from-left">Buy Now</button>
                         <a *ngIf="( (result.isStock == 'in_stock') && (customerCart.indexOf(result.id) > -1) )" routerLink="/checkout/cart" class="btn my-btn cart_btn from-left">Go to Cart</a>
 						<!--button *ngIf="( (result.isStock == 'coming_soon') || (result.isStock == 'out_of_stock') )" type="button" class="btn my-btn cart_btn from-left" (click)="notifyMePopup(result.id);" data-target="#NotifyMe" data-toggle="modal">Notify Me!</button-->
