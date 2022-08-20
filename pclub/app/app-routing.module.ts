@@ -9,6 +9,7 @@ import { LoginGuard } from './_services/guards/login-guard.service';
 const routes: Routes = [
 
 	{ path: 'buynow', 				redirectTo: '/shopnow'},
+	{ path: 'launch-offer', 		redirectTo: '/shopnow'},
 	{ path: 'shopnow', 				loadChildren: () => import('./modules/shopnow/shopnow.module').then(m => m.ShopnowModule)},
 	{ path: 'about-us', 			loadChildren: () => import('./modules/about-us/about-us.module').then(m => m.AboutUsModule)},
 	{ path: 'scent-match', 			loadChildren: () => import('./modules/scent-match/scent-match.module').then(m => m.ScentMatchModule)},

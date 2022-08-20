@@ -91,7 +91,7 @@
 							  </div><!-- end of address -->
 
 							  <div class="form-group col-sm-4 col-xs-12 rinput spincode"><!-- start of Zipcode -->
-								<input type="text" class="form-control" formControlName="pincode" (keyup)="upperToLower($event,'pincode');">
+								<input type="text" class="form-control" formControlName="pincode" maxlength="6" (blur)="fetchAddressByPincode(rForm.value.pincode)" required>
 								<span *ngIf="rForm.controls.pincode.invalid && !rForm.controls.pincode.dirty" class="filed_name">Pincode*</span>
 								<span *ngIf="rForm.controls.pincode.invalid && rForm.controls.pincode.dirty" class="filed_name error_span">Please enter 6 digit number!</span>
 								<span *ngIf="rForm.controls.pincode.valid" class="filed_name complete_filed">Pincode*</span>
@@ -105,9 +105,10 @@
 							  </div><!-- end of City -->
 
 							  <div class="form-group col-sm-4 col-xs-12 rinput"><!-- start of State -->
-								<select class="form-control" formControlName="state">
-								  <option *ngFor="let item of addresses.locations" [value]="item.title">{{item.title}}</option>
-								</select>
+								<input type="text" class="form-control" list="stateList" formControlName="state" placeholder="Please enter state!">
+								<datalist id="stateList">
+								  <option *ngFor="let item of addresses.locations" [value]="item.title">
+								</datalist>
 							  </div><!-- end of State -->
 
 							  <div class="form-group col-sm-6 col-xs-12 rinput semail"><!-- start of emailAddress -->
@@ -118,7 +119,7 @@
 							  </div><!-- end of emailAddress -->
 
 							  <div class="form-group col-sm-6 col-xs-12 rinput smobile"><!-- start of Mobilenumber -->
-								<input type="text" class="form-control" formControlName="mobile" (keyup)="upperToLower($event,'mobile');">
+								<input type="text" class="form-control" formControlName="mobile" (keyup)="upperToLower($event,'mobile');" maxlength="10" required>
 								<span *ngIf="rForm.controls.mobile.invalid && !rForm.controls.mobile.dirty" class="filed_name">Mobile Number*</span>
 								<span *ngIf="rForm.controls.mobile.invalid && rForm.controls.mobile.dirty" class="filed_name error_span">Please enter a 10 digit mobile number!</span>
 								<span *ngIf="rForm.controls.mobile.valid" class="filed_name complete_filed">Mobile Number*</span>
@@ -175,7 +176,7 @@
 							  </div><!-- end of address -->
 
 							  <div class="form-group col-sm-4 col-xs-12 rinput spincode"><!-- start of Zipcode -->
-								<input type="text" class="form-control" formControlName="pincode" (keyup)="upperToLower($event,'pincode');">
+								<input type="text" class="form-control" formControlName="pincode" maxlength="6" (blur)="fetchAddressByPincode(rForm.value.pincode)" required>
 								<span *ngIf="rForm.controls.pincode.invalid && !rForm.controls.pincode.dirty" class="filed_name">Pincode*</span>
 								<span *ngIf="rForm.controls.pincode.invalid && rForm.controls.pincode.dirty" class="filed_name error_span">Please enter 6 digit number!</span>
 								<span *ngIf="rForm.controls.pincode.valid" class="filed_name complete_filed">Pincode*</span>
@@ -189,9 +190,10 @@
 							  </div><!-- end of City -->
 
 							  <div class="form-group col-sm-4 col-xs-12 rinput"><!-- start of State -->
-								<select class="form-control" formControlName="state">
-								  <option *ngFor="let item of addresses.locations" [value]="item.title">{{item.title}}</option>
-								</select>
+								<input type="text" class="form-control" list="newStateList" formControlName="state">
+								<datalist id="newStateList">
+								  <option *ngFor="let item of addresses.locations" [value]="item.title">
+								</datalist>
 							  </div><!-- end of State -->
 
 							  <div class="form-group col-sm-6 col-xs-12 rinput semail"><!-- start of emailAddress -->
@@ -202,7 +204,7 @@
 							  </div><!-- end of emailAddress -->
 
 							  <div class="form-group col-sm-6 col-xs-12 rinput smobile"><!-- start of Mobilenumber -->
-								<input type="text" class="form-control" formControlName="mobile" (keyup)="upperToLower($event,'mobile');">
+								<input type="text" class="form-control" formControlName="mobile" maxlength="10" required>
 								<span *ngIf="rForm.controls.mobile.invalid && !rForm.controls.mobile.dirty" class="filed_name">Mobile Number*</span>
 								<span *ngIf="rForm.controls.mobile.invalid && rForm.controls.mobile.dirty" class="filed_name error_span">Please enter a 10 digit mobile number!</span>
 								<span *ngIf="rForm.controls.mobile.valid" class="filed_name complete_filed">Mobile Number*</span>

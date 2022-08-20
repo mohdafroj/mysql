@@ -530,6 +530,23 @@ export class CartComponent implements OnInit, DoCheck {
 		this.addressResponse['message'] = '';
 		this.initAddressForm(this.initAddress);
 	}
+	
+	fetchAddressByPincode(pincode) {
+		this.store.checkPincode(pincode, 1).subscribe(
+			res => {
+				if ( res.status ) {
+					if ( res.data.state != '' ) {
+						this.addressForm.patchValue({state:res.data.state});
+					}
+					if ( res.data.district != '' ) {
+						this.addressForm.patchValue({city:res.data.district});
+					}
+				}
+			},
+			(err: HttpErrorResponse) => {
+			}
+		);
+	}
 
 	saveAddress(formData){ //console.log(formData, this.serverRequest);
 		let checkForm = true;

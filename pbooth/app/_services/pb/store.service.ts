@@ -50,9 +50,12 @@ export class StoreService {
     return this.http.delete<ItemsResponse>(this.pbApi+'stores/customer-cart?userId='+this.auth.getId(), {params:prms});
   }
 
-  checkPincode(pincode){
+  checkPincode(pincode,address?){
     let prms = new HttpParams();
     prms = prms.set('pincode', pincode);
+	if ( address != '' ) {
+		prms = prms.set('address', address);
+	}
     return this.http.get<PincodeResponse>(this.pbApi+'stores/get-pincode', {params:prms});
   }
 

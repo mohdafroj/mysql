@@ -170,6 +170,23 @@ export class CheckoutComponent implements OnInit {
         this.editedAddressId = 0;
         this.initAddressForm(this.initAddress);
     }
+	
+	fetchAddressByPincode(pincode) {
+		this.store.checkPincode(pincode, 1).subscribe(
+			res => {
+				if ( res.status ) {
+					if ( res.data.state != '' ) {
+						this.rForm.patchValue({state:res.data.state});
+					}
+					if ( res.data.district != '' ) {
+						this.rForm.patchValue({city:res.data.district});
+					}
+				}
+			},
+			(err: HttpErrorResponse) => {
+			}
+		);
+	}	
 
     saveAddress(formData, addressIndex) {
         this.addressIndex 		= addressIndex;
