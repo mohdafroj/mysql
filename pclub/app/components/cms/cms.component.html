@@ -28,6 +28,7 @@
 								<img [src]="result.oos_image" [alt]="result.name" class="img-fluid mx-auto">
 							</div>
 						</div-->
+						<div *ngIf="result['isStock'] == 'out_of_stock'" class="out_of_stock"><span>Out Of Stock</span></div>
 					</div>
 					<div class="col-sm-7 col-12">
 						<h3 class=""><span *ngIf="result.categories[0]">{{result.categories[0]['name']}}</span> {{result.title}}</h3>

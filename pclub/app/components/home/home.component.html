@@ -44,8 +44,8 @@
 		<section class="section_box"><!-- start of section_box -->
 			<figure class="sceBannerStuff">
 				<span class="imgTagLine">Rendering Beautiful Product Shots</span>
-				<img src="assets/images/home/banner/Lightr+3X8ml.jpg" class="img-fluid d-md-block d-none" alt="Lightr+3X8ml" style="width:inherit" />
-				<img src="assets/images/home/banner/M-Lightr+3X8ml.jpg" class="img-fluid d-md-none d-block" alt="Lightr+3X8ml" style="width:inherit" />
+				<img src="assets/images/home/banner/Lightr+3X8ml.webp" class="img-fluid d-md-block d-none" alt="Lightr+3X8ml" style="width:inherit" />
+				<img src="assets/images/home/banner/M-Lightr+3X8ml.webp" class="img-fluid d-md-none d-block" alt="Lightr+3X8ml" style="width:inherit" />
 				<figcaption class="figure-caption">
 					Change Perfume . Get 3 Perfume . Carry in Style
 				</figcaption>
@@ -75,6 +75,7 @@
 										<figcaption *ngIf="item.rating" class="figure-caption">
 											{{item.rating | number: '1.1-1'}}<i class="fas fa-star"></i>
 										</figcaption>
+										<div *ngIf="item.isStock == 'out_of_stock'" class="out_of_stock"><span>Out Of Stock</span></div>
 									</figure>
 								</div>
 								
@@ -117,8 +118,8 @@
 		<!-- slider 2 -->
 		<section class="section_box">
 			<figure class="sceBannerStuff">
-				<img src="assets/images/home/banner/Packof3X50ml.jpg" class="img-fluid d-md-block d-none" alt="Packof3X50ml" style="width:inherit" />
-				<img src="assets/images/home/banner/M-Packof3X50ml.jpg" class="img-fluid d-md-none d-block" alt="Packof3X50ml" style="width:inherit" />
+				<img src="assets/images/home/banner/Packof3X50ml.webp" class="img-fluid d-md-block d-none" alt="Packof3X50ml" style="width:inherit" />
+				<img src="assets/images/home/banner/M-Packof3X50ml.webp" class="img-fluid d-md-none d-block" alt="Packof3X50ml" style="width:inherit" />
 				<figcaption class="figure-caption">
 					GIFT SET OF 3 FULL SIZE
 				</figcaption>
@@ -147,6 +148,7 @@
 										<figcaption *ngIf="item.rating" class="figure-caption">
 											{{item.rating | number: '1.1-1'}}<i class="fas fa-star"></i>
 										</figcaption>
+										<div *ngIf="item.isStock == 'out_of_stock'" class="out_of_stock"><span>Out Of Stock</span></div>
 									</figure>
 								</div>
 								
@@ -188,8 +190,8 @@
 		<!-- slider 3 -->
 		<section class="section_box">
 			<figure class="sceBannerStuff">
-				<img src="assets/images/home/banner/Packof7X8ml.jpg" class="img-fluid d-md-block d-none" alt="Packof7X8ml" style="width:inherit" />
-				<img src="assets/images/home/banner/M-Packof7X8ml.jpg" class="img-fluid d-md-none d-block" alt="Packof7X8ml" style="width:inherit" />
+				<img src="assets/images/home/banner/Packof7X8ml.webp" class="img-fluid d-md-block d-none" alt="Packof7X8ml" style="width:inherit" />
+				<img src="assets/images/home/banner/M-Packof7X8ml.webp" class="img-fluid d-md-none d-block" alt="Packof7X8ml" style="width:inherit" />
 				<figcaption class="figure-caption">
 					<span>COMBO SET OF 7 PERFUMES</span> 7 PERFUME FOR 7 DAYS
 				</figcaption>
@@ -218,6 +220,7 @@
 										<figcaption *ngIf="item.rating" class="figure-caption">
 											{{item.rating | number: '1.1-1'}}<i class="fas fa-star"></i>
 										</figcaption>
+										<div *ngIf="item.isStock == 'out_of_stock'" class="out_of_stock"><span>Out Of Stock</span></div>
 									</figure>
 								</div>
 								
@@ -259,8 +262,8 @@
 		<!-- slider 4 -->
 		<section class="section_box">
 			<figure class="sceBannerStuff">
-				<img src="assets/images/home/banner/Lightr+7X8ml.jpg" class="img-fluid d-md-block d-none" alt="Lightr+7X8ml" style="width:inherit" />
-				<img src="assets/images/home/banner/M-Lightr+7X8ml.jpg" class="img-fluid d-md-none d-block" alt="Lightr+7X8ml" style="width:inherit" />
+				<img src="assets/images/home/banner/Lightr+7X8ml.webp" class="img-fluid d-md-block d-none" alt="Lightr+7X8ml" style="width:inherit" />
+				<img src="assets/images/home/banner/M-Lightr+7X8ml.webp" class="img-fluid d-md-none d-block" alt="Lightr+7X8ml" style="width:inherit" />
 				<figcaption class="figure-caption">
 					<span>LIGHTR WITH 7 PERFUMES</span> CARRY YOUR PERFUME IN STYLE
 				</figcaption>
@@ -289,6 +292,7 @@
 										<figcaption *ngIf="item.rating" class="figure-caption">
 											{{item.rating | number: '1.1-1'}}<i class="fas fa-star"></i>
 										</figcaption>
+										<div *ngIf="item.isStock == 'out_of_stock'" class="out_of_stock"><span>Out Of Stock</span></div>
 									</figure>
 								</div>
 								
@@ -330,8 +334,8 @@
 		<!-- slider 5 -->
 		<section class="section_box">
 			<figure class="sceBannerStuff">
-				<img src="assets/images/home/banner/RefillOf3X8ml.jpg" class="img-fluid d-md-block d-none" alt="RefillOf3X8ml" style="width:inherit" />
-				<img src="assets/images/home/banner/M-RefillOf3X8ml.jpg" class="img-fluid d-md-none d-block" alt="RefillOf3X8ml" style="width:inherit" />
+				<img src="assets/images/home/banner/RefillOf3X8ml.webp" class="img-fluid d-md-block d-none" alt="RefillOf3X8ml" style="width:inherit" />
+				<img src="assets/images/home/banner/M-RefillOf3X8ml.webp" class="img-fluid d-md-none d-block" alt="RefillOf3X8ml" style="width:inherit" />
 				<figcaption class="figure-caption">
 					<span>SET of 3 PERFUMES</span> TRY BEFORE YOU BUY
 				</figcaption>
@@ -360,6 +364,7 @@
 										<figcaption *ngIf="item.rating" class="figure-caption">
 											{{item.rating | number: '1.1-1'}}<i class="fas fa-star"></i>
 										</figcaption>
+										<div *ngIf="item.isStock == 'out_of_stock'" class="out_of_stock"><span>Out Of Stock</span></div>
 									</figure>
 								</div>
 								
@@ -403,8 +408,8 @@
 		<section class="section_box">
 			<figure class="sceBannerStuff">
 				<span class="imgTagLine">Rendering Beautiful Product Shots</span>
-				<img src="assets/images/home/banner/Single50ml.jpg" class="img-fluid d-md-block d-none" alt="Single50ml" style="width:inherit" />
-				<img src="assets/images/home/banner/M-Single50ml.jpg" class="img-fluid d-md-none d-block" alt="Single50ml" style="width:inherit" />
+				<img src="assets/images/home/banner/Single50ml.webp" class="img-fluid d-md-block d-none" alt="Single50ml" style="width:inherit" />
+				<img src="assets/images/home/banner/M-Single50ml.webp" class="img-fluid d-md-none d-block" alt="Single50ml" style="width:inherit" />
 				<figcaption class="figure-caption">
 					<span>FULL SIZE PERFUMES</span> For Everyday Affordable Use
 				</figcaption>
@@ -433,6 +438,7 @@
 										<figcaption *ngIf="item.rating" class="figure-caption">
 											{{item.rating | number: '1.1-1'}}<i class="fas fa-star"></i>
 										</figcaption>
+										<div *ngIf="item.isStock == 'out_of_stock'" class="out_of_stock"><span>Out Of Stock</span></div>
 									</figure>
 								</div>
 								

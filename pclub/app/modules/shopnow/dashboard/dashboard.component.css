@@ -38,6 +38,9 @@
 .productItems .card .card-body .card-text{font-size: .9rem; color: #1E2D4D; display: flex; flex-direction: column; align-items: flex-end; padding: 0;}
 .productItems .card .card-body .card-text del{font-size: .9rem; margin-top: .15rem; color: #92B4EC;}
 
+/* start of out_of_stock css */
+.out_of_stock{position:absolute; top:0; left:0; height:100%; width:100%; background:rgba(256,256,256,0.6); z-index:1; text-align:center;}
+.out_of_stock span{position:relative; top:50%; font-size:28px; display:block; color:rgba(0,0,0,0.4); border-width:1px 0; border-style:solid; border-color:rgba(0,0,0,0.4); display:inline-block; text-transform:uppercase; transform:rotate(-7deg); -moz-transform:rotate(-7deg); -ms-transform:rotate(-7deg); -o-transform:rotate(-7deg); -webkit-transform:rotate(-7deg);}
 /****************** start of media css *******************/
 
 @media (max-width: 767.98px) {

@@ -84,6 +84,7 @@
 								<figcaption class="figure-caption" *ngIf="item.rating" >
 									<i class="fas fa-star"></i>{{item.rating | number: '1.1-1'}}
 								</figcaption>
+								<div *ngIf="item.isStock == 'out_of_stock'" class="out_of_stock"><span>Out Of Stock</span></div>
 							</figure>
 							<div class="card-body">
 								<h5 class="card-title">
